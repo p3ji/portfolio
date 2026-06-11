@@ -166,27 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
     revealObserver.observe(element);
   });
 
-  // Animate skill bars when they come into view
-  const skillsSection = document.getElementById('skills');
-  const skillBars = document.querySelectorAll('.skill-bar-fill');
 
-  const skillsObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        skillBars.forEach(bar => {
-          const targetWidth = bar.getAttribute('data-width');
-          bar.style.width = targetWidth;
-        });
-        observer.unobserve(entry.target);
-      }
-    });
-  }, {
-    threshold: 0.2
-  });
-
-  if (skillsSection) {
-    skillsObserver.observe(skillsSection);
-  }
 
   // ==========================================
   // CONTACT FORM REAL HANDLING (FormSubmit AJAX)
