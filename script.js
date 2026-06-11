@@ -177,6 +177,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
+      // Fallback for file:// protocol: browsers block CORS fetch requests from local files.
+      // We set attributes and submit via standard form POST instead of AJAX.
+      if (window.location.protocol === 'file:') {
+        contactForm.setAttribute('action', 'https://formsubmit.co/peter.s.jiao@gmail.com');
+        contactForm.setAttribute('method', 'POST');
+        return; // Proceed with normal submission
+      }
+
       e.preventDefault();
 
       // Disable button & change text to show sending status
