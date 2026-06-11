@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================
-  // CONTACT FORM MOCK HANDLING
+  // CONTACT FORM REAL HANDLING (FormSubmit AJAX)
   // ==========================================
   const contactForm = document.getElementById('contactForm');
   const formStatus = document.getElementById('formStatus');
@@ -204,8 +204,30 @@ document.addEventListener('DOMContentLoaded', () => {
       const originalBtnText = btnSubmit.innerHTML;
       btnSubmit.innerHTML = 'Sending Message <i class="fa-solid fa-spinner fa-spin"></i>';
 
-      // Simulating API submit request
-      setTimeout(() => {
+      const formData = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        subject: document.getElementById('subject').value,
+        message: document.getElementById('message').value
+      };
+
+      // Send actual email via FormSubmit AJAX endpoint
+      fetch("https://formsubmit.co/ajax/peter.s.jiao@gmail.com", {
+        method: "POST",
+        headers: { 
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(formData)
+      })
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Form submission failed.");
+        }
+      })
+      .then(data => {
         // Success feedback
         formStatus.textContent = 'Message sent successfully! Peter will get back to you shortly.';
         formStatus.className = 'form-status success';
@@ -213,6 +235,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Reset form details
         contactForm.reset();
+      })
+      .catch(error => {
+        // Error feedback
+        formStatus.textContent = 'Oops! There was an issue sending your message. Please try again.';
+        formStatus.className = 'form-status error';
+        formStatus.style.display = 'block';
+      })
+      .finally(() => {
         btnSubmit.disabled = false;
         btnSubmit.innerHTML = originalBtnText;
 
@@ -220,7 +250,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
           formStatus.style.display = 'none';
         }, 5000);
-      }, 1200);
+      });
     });
   }
 });
