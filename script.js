@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // ==========================================
-  // CONTACT FORM REAL HANDLING (FormSubmit AJAX)
+  // CONTACT FORM REAL HANDLING (Web3Forms AJAX)
   // ==========================================
   const contactForm = document.getElementById('contactForm');
   const formStatus = document.getElementById('formStatus');
@@ -180,7 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Fallback for file:// protocol: browsers block CORS fetch requests from local files.
       // We set attributes and submit via standard form POST instead of AJAX.
       if (window.location.protocol === 'file:') {
-        contactForm.setAttribute('action', 'https://formsubmit.co/peter.s.jiao@gmail.com');
+        contactForm.setAttribute('action', 'https://api.web3forms.com/submit');
         contactForm.setAttribute('method', 'POST');
         return; // Proceed with normal submission
       }
@@ -193,14 +193,16 @@ document.addEventListener('DOMContentLoaded', () => {
       btnSubmit.innerHTML = 'Sending Message <i class="fa-solid fa-spinner fa-spin"></i>';
 
       const formData = {
+        access_key: "f9dce08f-5abc-4c00-b142-42da309d94ef",
         name: document.getElementById('name').value,
         email: document.getElementById('email').value,
         subject: document.getElementById('subject').value,
-        message: document.getElementById('message').value
+        message: document.getElementById('message').value,
+        from_name: "Peter Jiao Portfolio"
       };
 
-      // Send actual email via FormSubmit AJAX endpoint
-      fetch("https://formsubmit.co/ajax/peter.s.jiao@gmail.com", {
+      // Send actual email via Web3Forms AJAX endpoint
+      fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: { 
           "Content-Type": "application/json",
@@ -216,19 +218,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       })
       .then(data => {
-        // Success feedback
-        formStatus.textContent = 'Message sent successfully! Peter will get back to you shortly.';
-        formStatus.className = 'form-status success';
-        formStatus.style.display = 'block';
+        if (data.success) {
+          // Success feedback
+          formStatus.textContent = 'Message sent successfully! Peter will get back to you shortly.';
+          formStatus.className = 'form-status success';
+          formStatus.style.display = 'block';
 
-        // Reset form details
-        contactForm.reset();
+          // Reset form details
+          contactForm.reset();
+        } else {
+          throw new Error(data.message || "Failed to submit form.");
+        }
       })
       .catch(error => {
-        // Fallback: If AJAX fails (e.g. domain not activated yet or network error),
-        // submit the form normally so FormSubmit can show its activation or captcha page.
-        console.warn("AJAX submission failed, falling back to standard POST:", error);
-        contactForm.setAttribute('action', 'https://formsubmit.co/peter.s.jiao@gmail.com');
+        // Fallback: If AJAX fails (e.g. network error), submit via standard POST
+        console.warn("Web3Forms AJAX failed, falling back to standard POST:", error);
+        contactForm.setAttribute('action', 'https://api.web3forms.com/submit');
         contactForm.setAttribute('method', 'POST');
         contactForm.submit();
       })
