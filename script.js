@@ -192,23 +192,13 @@ document.addEventListener('DOMContentLoaded', () => {
       const originalBtnText = btnSubmit.innerHTML;
       btnSubmit.innerHTML = 'Sending Message <i class="fa-solid fa-spinner fa-spin"></i>';
 
-      const formData = {
-        access_key: "f9dce08f-5abc-4c00-b142-42da309d94ef",
-        name: document.getElementById('name').value,
-        email: document.getElementById('email').value,
-        subject: document.getElementById('subject').value,
-        message: document.getElementById('message').value,
-        from_name: "Peter Jiao Portfolio"
-      };
+      const formData = new FormData(contactForm);
+      formData.append("from_name", "Peter Jiao Portfolio");
 
       // Send actual email via Web3Forms AJAX endpoint
       fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { 
-          "Content-Type": "application/json",
-          "Accept": "application/json"
-        },
-        body: JSON.stringify(formData)
+        body: formData
       })
       .then(response => {
         if (response.ok) {
