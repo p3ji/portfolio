@@ -225,10 +225,12 @@ document.addEventListener('DOMContentLoaded', () => {
         contactForm.reset();
       })
       .catch(error => {
-        // Error feedback
-        formStatus.textContent = 'Oops! There was an issue sending your message. Please try again.';
-        formStatus.className = 'form-status error';
-        formStatus.style.display = 'block';
+        // Fallback: If AJAX fails (e.g. domain not activated yet or network error),
+        // submit the form normally so FormSubmit can show its activation or captcha page.
+        console.warn("AJAX submission failed, falling back to standard POST:", error);
+        contactForm.setAttribute('action', 'https://formsubmit.co/peter.s.jiao@gmail.com');
+        contactForm.setAttribute('method', 'POST');
+        contactForm.submit();
       })
       .finally(() => {
         btnSubmit.disabled = false;
