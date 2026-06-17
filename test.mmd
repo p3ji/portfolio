@@ -1,0 +1,95 @@
+﻿flowchart TD
+
+          subgraph DECIDE[1. Decision making]
+
+            subgraph STREAM1[Stream A - Direct Human Prompting]
+              H[Human with\nDomain Knowledge]
+            end
+
+            subgraph STREAM2[Stream B - Autonomous Idea Pipeline]
+              M[(Obsidian Vault)]
+              N[Daily Review Agent]
+              M -->|Daily scheduled review| N
+            end
+
+            R[Research and Analysis]
+
+            R -->|Informs and shapes| H
+            R -->|Captures insights| M
+            H -->|Direct prompt| O
+            N -.->|"Suggested prompt"| H
+            O[Antigravity AI]
+          end
+
+          subgraph EXECUTE[2. Execution]
+            UI[System and UI Design]
+            DM[Data Management]
+
+            subgraph EXISTING[Handled by Existing Systems]
+              MCP[Model Context Protocol]
+              LLM[LLM APIs and Orchestration]
+              SEC[Security and Optimization]
+            end
+
+            UI --> DM
+            DM --> MCP
+            MCP --> LLM
+            LLM --> SEC
+          end
+
+          subgraph DELIVER[3. Delivery]
+            G[Local Testing and Debugging]
+            DP{Deployment}
+            I[Vercel and Netlify]
+            J[Hugging Face Spaces]
+            K[GitHub Codebase / CI]
+            P[Portfolio Site Showcase]
+            W[Web3Forms Contact]
+            L[Iterative Feedback]
+
+            G --> DP
+            DP -->|Web Apps & UIs| I
+            DP -->|AI Models & Python Backends| J
+            DP -->|All Source Code| K
+            DP -->|Curated Highlights| P
+            P --> W
+            I --> L
+            J --> L
+            K --> L
+            P --> L
+            W --> L
+          end
+
+          DECIDE ~~~ EXECUTE
+          EXECUTE ~~~ DELIVER
+
+          O -->|Scaffold and generate code| UI
+          SEC --> G
+
+          R <-->|"Refine direction"| L
+          L -.->|"Capture new ideas"| M
+          L -.->|"Direct follow-up"| H
+          G -.->|"Test results"| H
+
+          %% Interactive Tooltips and Clicks
+          click MCP "javascript:void(0)" "Example Project: statcan_mcp"
+
+          classDef human fill:#1e3a5f,stroke:#60a5fa,color:#eff6ff
+          classDef obsidian fill:#2d1b69,stroke:#a78bfa,color:#ede9fe
+          classDef agent fill:#1c1208,stroke:#f59e0b,color:#fef3c7
+          classDef ai fill:#061828,stroke:#06b6d4,color:#e0f2fe
+          classDef execute fill:#0f0a1e,stroke:#6366f1,color:#e0e7ff
+          classDef existing fill:#1a0a1e,stroke:#d946ef,color:#fae8ff
+          classDef deliver fill:#091a09,stroke:#10b981,color:#d1fae5
+          classDef feedback fill:#0a1f0a,stroke:#22c55e,color:#dcfce7
+
+          class R,H human
+          class M obsidian
+          class N agent
+          class O ai
+          class UI,DM execute
+          class LLM,SEC existing
+          class G,DP,I,J,K deliver
+          class L feedback
+
+

@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="style.css?v=2">
+  <link rel="stylesheet" href="style.css?v=8">
 </head>
 <body>
 
@@ -54,7 +54,7 @@
       <div class="hero-content">
         <div class="hero-badge">
           <span class="hero-badge-dot"></span>
-          AI Research &bull; Educational Leave Prototypes
+          Exploration &bull; Prototypes
         </div>
         <h1 class="hero-title">
           Designing AI systems to <br>
@@ -85,25 +85,22 @@
           
           <div class="visual-content">
             <div class="visual-stat-row">
-              <span class="visual-stat-label">CIP to NOC Mapping</span>
-              <span class="visual-stat-value">Completed</span>
+              <span class="visual-stat-label">Journey Start Date</span>
+              <span class="visual-stat-value">June 4, 2026</span>
             </div>
             <div class="visual-stat-row">
-              <span class="visual-stat-label">RAG Policy Retrieval</span>
-              <span class="visual-stat-value">99.4% Acc</span>
-            </div>
-            <div class="visual-stat-row">
-              <span class="visual-stat-label">AI Disruption Risk</span>
-              <span class="visual-stat-value" style="color: var(--accent-secondary);">Analyzed</span>
+              <span class="visual-stat-label">Last GitHub Update</span>
+              <span class="visual-stat-value" id="github-update-date">Loading...</span>
             </div>
             
-            <div class="visual-graph">
-              <div class="visual-graph-bar"></div>
-              <div class="visual-graph-bar"></div>
-              <div class="visual-graph-bar"></div>
-              <div class="visual-graph-bar"></div>
-              <div class="visual-graph-bar"></div>
-              <div class="visual-graph-bar"></div>
+            <div class="visual-progress-container" style="margin-top: 1.5rem;">
+              <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 1px;">
+                <span>Time elapsed to 1 year mark</span>
+                <span id="progress-percentage">0%</span>
+              </div>
+              <div class="visual-progress-bar" style="width: 100%; height: 8px; background: rgba(255, 255, 255, 0.1); border-radius: 4px; overflow: hidden;">
+                <div id="progress-fill" style="width: 0%; height: 100%; background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary)); border-radius: 4px; transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1);"></div>
+              </div>
             </div>
           </div>
           
@@ -298,14 +295,7 @@
           <span class="stat-number">5</span>
           <span class="stat-label">Functional Prototypes</span>
         </div>
-        <div class="stat-card">
-          <span class="stat-number">100%</span>
-          <span class="stat-label">Policy Grounded</span>
-        </div>
-        <div class="stat-card">
-          <span class="stat-number">10+</span>
-          <span class="stat-label">Data Sources Mapped</span>
-        </div>
+
         <div class="stat-card">
           <span class="stat-number">1</span>
           <span class="stat-label">Year of Exploration</span>
@@ -411,22 +401,15 @@
           %% Interactive Tooltips and Clicks
           click MCP "javascript:void(0)" "Example Project: statcan_mcp"
 
-          classDef human fill:#1e3a5f,stroke:#60a5fa,color:#eff6ff
-          classDef obsidian fill:#2d1b69,stroke:#a78bfa,color:#ede9fe
-          classDef agent fill:#1c1208,stroke:#f59e0b,color:#fef3c7
-          classDef ai fill:#061828,stroke:#06b6d4,color:#e0f2fe
-          classDef execute fill:#0f0a1e,stroke:#6366f1,color:#e0e7ff
-          classDef existing fill:#1a0a1e,stroke:#d946ef,color:#fae8ff
-          classDef deliver fill:#091a09,stroke:#10b981,color:#d1fae5
-          classDef feedback fill:#0a1f0a,stroke:#22c55e,color:#dcfce7
+          %% Classes are now styled via external CSS in style.css for Light/Dark mode support
 
           class R,H human
           class M obsidian
           class N agent
           class O ai
-          class UI,DM execute
+          class UI,DM,MCP execute
           class LLM,SEC existing
-          class G,DP,I,J,K deliver
+          class G,DP,I,J,K,P,W deliver
           class L feedback
         </pre>
     </div>
@@ -520,7 +503,7 @@
   </footer>
 
   <!-- Custom JS -->
-  <script src="script.js"></script>
+  <script src="script.js?v=4"></script>
   
   <!-- Mermaid.js for visual diagram -->
   <script type="module">
@@ -539,5 +522,55 @@
       }
     });
   </script>
+  <!-- GitHub API and Progress Script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // 1. Fetch Last GitHub Update
+      fetch('https://api.github.com/repos/p3ji/portfolio/commits?per_page=1')
+        .then(response => response.json())
+        .then(data => {
+          if(data && data.length > 0) {
+            const dateStr = data[0].commit.author.date;
+            const dateObj = new Date(dateStr);
+            const options = { month: 'short', day: 'numeric', year: 'numeric' };
+            document.getElementById('github-update-date').textContent = dateObj.toLocaleDateString('en-US', options);
+          } else {
+            document.getElementById('github-update-date').textContent = "Unavailable";
+          }
+        })
+        .catch(err => {
+          console.error("Error fetching GitHub commits:", err);
+          document.getElementById('github-update-date').textContent = "Unavailable";
+        });
+
+      // 2. Calculate Progress to 1 Year Mark
+      // Journey start date is June 4, 2026
+      const startDate = new Date("2026-06-04T00:00:00Z");
+      const oneYearDate = new Date("2027-06-04T00:00:00Z");
+      const now = new Date();
+      
+      let progress = 0;
+      const msPerDay = 1000 * 60 * 60 * 24;
+      let daysLeft = Math.ceil((oneYearDate.getTime() - now.getTime()) / msPerDay);
+      if (daysLeft < 0) daysLeft = 0;
+
+      if (now >= oneYearDate) {
+        progress = 100;
+      } else if (now > startDate) {
+        const totalDuration = oneYearDate.getTime() - startDate.getTime();
+        const elapsed = now.getTime() - startDate.getTime();
+        progress = (elapsed / totalDuration) * 100;
+      }
+      
+      const progressFormatted = Math.min(Math.max(progress, 0), 100).toFixed(1);
+      
+      // Animate progress bar fill after a tiny delay for visual effect
+      setTimeout(() => {
+        document.getElementById('progress-percentage').textContent = daysLeft + " days left";
+        document.getElementById('progress-fill').style.width = progressFormatted + "%";
+      }, 500);
+    });
+  </script>
+
 </body>
 </html>

@@ -73,15 +73,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const typedTextSpan = document.getElementById('typed-text');
   const textArray = [
     "transform workflows.",
-    "optimize public policy.",
-    "model career economics.",
-    "explore AI design concepts."
+    "explore AI design concepts.",
+    "prototype new products.",
+    "imagine new services."
   ];
   const typingSpeed = 80;
   const erasingSpeed = 40;
   const newTextDelay = 2000;
   let textArrayIndex = 0;
-  let charIndex = 0;
+  let charIndex = textArray[0].length;
 
   function type() {
     if (charIndex < textArray[textArrayIndex].length) {
@@ -105,9 +105,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Initial typing trigger
+  // Initial trigger: text is already in HTML, so wait then erase
   if (typedTextSpan) {
-    setTimeout(type, 1000);
+    typedTextSpan.textContent = textArray[0];
+    setTimeout(erase, newTextDelay);
   }
 
   // ==========================================

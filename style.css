@@ -128,7 +128,7 @@ ul {
 }
 
 .section {
-  padding: 8rem 0 4rem;
+  padding: 6rem 0;
   position: relative;
 }
 
@@ -332,7 +332,7 @@ body.light-mode .theme-toggle .fa-sun {
    HERO SECTION
    ========================================== */
 .hero {
-  min-height: 100vh;
+  min-height: 80vh;
   display: flex;
   align-items: center;
   padding-top: var(--header-height);
@@ -374,7 +374,7 @@ body.light-mode .theme-toggle .fa-sun {
   font-size: 3.5rem;
   line-height: 1.15;
   font-weight: 500;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .hero-title span.gradient {
@@ -578,8 +578,8 @@ body.light-mode .theme-toggle .fa-sun {
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 3rem;
 }
 
 .project-card {
@@ -1198,15 +1198,38 @@ textarea.form-input {
   height: auto !important;
 }
 
+/* Base Node Setup */
 .mermaid .node rect, 
 .mermaid .node circle, 
 .mermaid .node polygon,
 .mermaid .node path {
-  fill: var(--bg-secondary) !important;
-  stroke: var(--border-color) !important;
   stroke-width: 1.5px !important;
   transition: var(--transition-smooth);
 }
+
+/* ==========================================
+   MERMAID SEMANTIC CLASSES (DARK MODE DEFAULT)
+   ========================================== */
+.mermaid .human rect, .mermaid .human polygon, .mermaid .human circle, .mermaid .human path, .mermaid .human ellipse { fill: #1e3a5f !important; stroke: #60a5fa !important; }
+.mermaid .obsidian rect, .mermaid .obsidian polygon, .mermaid .obsidian circle, .mermaid .obsidian path, .mermaid .obsidian ellipse { fill: #2d1b69 !important; stroke: #a78bfa !important; }
+.mermaid .agent rect, .mermaid .agent polygon, .mermaid .agent circle, .mermaid .agent path, .mermaid .agent ellipse { fill: #1c1208 !important; stroke: #f59e0b !important; }
+.mermaid .ai rect, .mermaid .ai polygon, .mermaid .ai circle, .mermaid .ai path, .mermaid .ai ellipse { fill: #061828 !important; stroke: #06b6d4 !important; }
+.mermaid .execute rect, .mermaid .execute polygon, .mermaid .execute circle, .mermaid .execute path, .mermaid .execute ellipse { fill: #0f0a1e !important; stroke: #6366f1 !important; }
+.mermaid .existing rect, .mermaid .existing polygon, .mermaid .existing circle, .mermaid .existing path, .mermaid .existing ellipse { fill: #1a0a1e !important; stroke: #d946ef !important; }
+.mermaid .deliver rect, .mermaid .deliver polygon, .mermaid .deliver circle, .mermaid .deliver path, .mermaid .deliver ellipse { fill: #091a09 !important; stroke: #10b981 !important; }
+.mermaid .feedback rect, .mermaid .feedback polygon, .mermaid .feedback circle, .mermaid .feedback path, .mermaid .feedback ellipse { fill: #0a1f0a !important; stroke: #22c55e !important; }
+
+/* ==========================================
+   MERMAID SEMANTIC CLASSES (LIGHT MODE)
+   ========================================== */
+body.light-mode .mermaid .human rect, body.light-mode .mermaid .human polygon, body.light-mode .mermaid .human circle, body.light-mode .mermaid .human path, body.light-mode .mermaid .human ellipse { fill: #eff6ff !important; stroke: #3b82f6 !important; }
+body.light-mode .mermaid .obsidian rect, body.light-mode .mermaid .obsidian polygon, body.light-mode .mermaid .obsidian circle, body.light-mode .mermaid .obsidian path, body.light-mode .mermaid .obsidian ellipse { fill: #f5f3ff !important; stroke: #8b5cf6 !important; }
+body.light-mode .mermaid .agent rect, body.light-mode .mermaid .agent polygon, body.light-mode .mermaid .agent circle, body.light-mode .mermaid .agent path, body.light-mode .mermaid .agent ellipse { fill: #fffbeb !important; stroke: #f59e0b !important; }
+body.light-mode .mermaid .ai rect, body.light-mode .mermaid .ai polygon, body.light-mode .mermaid .ai circle, body.light-mode .mermaid .ai path, body.light-mode .mermaid .ai ellipse { fill: #ecfeff !important; stroke: #06b6d4 !important; }
+body.light-mode .mermaid .execute rect, body.light-mode .mermaid .execute polygon, body.light-mode .mermaid .execute circle, body.light-mode .mermaid .execute path, body.light-mode .mermaid .execute ellipse { fill: #eef2ff !important; stroke: #6366f1 !important; }
+body.light-mode .mermaid .existing rect, body.light-mode .mermaid .existing polygon, body.light-mode .mermaid .existing circle, body.light-mode .mermaid .existing path, body.light-mode .mermaid .existing ellipse { fill: #fdf4ff !important; stroke: #d946ef !important; }
+body.light-mode .mermaid .deliver rect, body.light-mode .mermaid .deliver polygon, body.light-mode .mermaid .deliver circle, body.light-mode .mermaid .deliver path, body.light-mode .mermaid .deliver ellipse { fill: #ecfdf5 !important; stroke: #10b981 !important; }
+body.light-mode .mermaid .feedback rect, body.light-mode .mermaid .feedback polygon, body.light-mode .mermaid .feedback circle, body.light-mode .mermaid .feedback path, body.light-mode .mermaid .feedback ellipse { fill: #f0fdf4 !important; stroke: #22c55e !important; }
 
 .mermaid .node:hover rect, 
 .mermaid .node:hover circle, 
@@ -1216,8 +1239,27 @@ textarea.form-input {
   filter: drop-shadow(0 0 6px rgba(16, 185, 129, 0.3));
 }
 
-.mermaid .node .label {
-  color: var(--text-primary) !important;
+/* Ensure all text inside nodes is forcefully readable */
+body.light-mode .mermaid .node .label,
+body.light-mode .mermaid .node .label *,
+body.light-mode .mermaid .node text,
+body.light-mode .mermaid .node tspan {
+  color: #0f172a !important;
+  fill: #0f172a !important;
+}
+
+/* Edge Labels (text on the connecting arrows) */
+body.light-mode .mermaid .edgeLabel,
+body.light-mode .mermaid .edgeLabel span,
+body.light-mode .mermaid .edgeLabel div {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  color: #0f172a !important;
+}
+body.light-mode .mermaid .edgeLabel rect {
+  fill: rgba(255, 255, 255, 0.95) !important;
+}
+body.light-mode .mermaid .edgeLabel * {
+  color: #0f172a !important;
 }
 
 .mermaid .edgePath .path {
