@@ -326,23 +326,23 @@
     <div class="reveal" style="border: 1px solid var(--border-color); background: var(--bg-card); padding: 2.5rem; border-radius: 20px; backdrop-filter: blur(12px); overflow-x: auto;">
       <pre class="mermaid" style="display: flex; justify-content: center;">
         graph TD
-          A[Socio-Economic Context] -->|Identify bottlenecks & labor trends| B(Research & Data Analysis)
-          B -->|Design schemas & UI prototypes| C(System & UI Design)
+          A["Socio-Economic Context"] -->|Identify bottlenecks & labor trends| B("Research & Data Analysis")
+          B -->|Design schemas & UI prototypes| C("System & UI Design")
           
-          subgraph Prototyping Phase
-            C --> D[Data Management & Semantic Metadata]
-            D --> E[Orchestration & LLM Prompting]
-            E --> F[Model Optimization & Security]
+          subgraph "Prototyping Phase"
+            C --> D["Data Management & Semantic Metadata"]
+            D --> E["Orchestration & LLM Prompting"]
+            E --> F["Model Optimization & Security"]
           end
           
-          F -->|Local CLI & API validation| G(Local Testing & Debugging)
-          G -->|Continuous Integration| H{Deployment Platforms}
+          F -->|Local CLI & API validation| G("Local Testing & Debugging")
+          G -->|Continuous Integration| H{"Deployment Platforms"}
           
-          H -->|Vite / HTML / JS| I[Vercel & Netlify]
-          H -->|Python / Streamlit / Docker| J[Hugging Face Spaces]
-          H -->|Command Line Tool| K[GitHub Codebase]
+          H -->|Vite / HTML / JS| I["Vercel & Netlify"]
+          H -->|Python / Streamlit / Docker| J["Hugging Face Spaces"]
+          H -->|Command Line Tool| K["GitHub Codebase"]
           
-          I -->|User input & execution logs| L(Iterative Design Feedback)
+          I -->|User input & execution logs| L("Iterative Design Feedback")
           J -->|User input & execution logs| L
           K -->|User input & execution logs| L
           L -->|Refine rules & architecture| B
