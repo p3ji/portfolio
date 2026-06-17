@@ -320,42 +320,106 @@
   <section class="section container" id="workflow">
     <h2 class="section-title">My current workflow</h2>
     <p style="color: var(--text-secondary); margin-bottom: 3rem; max-width: 700px;">
-      This diagram maps how I design, prototype, and refine my digital products. It visualizes the cycle from identifying organizational bottlenecks to local development, security hardening, and deployment. You can easily update this flow in the source code as experiments evolve.
+      This diagram maps how I am currently experimenting and developing prototypes. Note that these are conceptual layers, not temporal phases. It is common to switch back and forth between decision making, execution, and delivery in the course of a project.
     </p>
     
-    <div class="reveal" style="border: 1px solid var(--border-color); background: var(--bg-card); padding: 2.5rem; border-radius: 20px; backdrop-filter: blur(12px); overflow-x: auto;">
-      <pre class="mermaid" style="display: flex; justify-content: center;">
-        graph TD
-          A["Socio-Economic Context"] -->|Identify bottlenecks & labor trends| B("Research & Data Analysis")
-          B -->|Design schemas & UI prototypes| C("System & UI Design")
-          
-          subgraph "Prototyping Phase"
-            C --> D["Data Management & Semantic Metadata"]
-            D --> E["Orchestration & LLM Prompting"]
-            E --> F["Model Optimization & Security"]
+    <div class="reveal" style="border: 1px solid var(--border-color); background: var(--bg-card); padding: 2.5rem; border-radius: 20px; backdrop-filter: blur(12px); overflow-x: auto; -webkit-overflow-scrolling: touch;">
+      <div style="min-width: 800px; margin: 0 auto;">
+        <pre class="mermaid" style="text-align: center;">
+          %%{init: {"flowchart": {"padding": 30, "rankSpacing": 80, "nodeSpacing": 60}, "theme": "dark"}}%%
+          flowchart TD
+
+          subgraph GH[GitHub Version Control]
+
+            subgraph DECIDE[1. Decision making]
+
+              subgraph STREAM1[Stream A - Direct Human Prompting]
+                H[Human with\nDomain Knowledge]
+              end
+
+              subgraph STREAM2[Stream B - Autonomous Idea Pipeline]
+                M[(Obsidian Vault)]
+                N[Daily Review Agent]
+                M -->|Daily scheduled review| N
+              end
+
+              R[Research and Analysis]
+
+              R -->|Informs and shapes| H
+              R -->|Captures insights| M
+              H -->|Direct prompt| O
+              H <-- Suggested prompt --- N
+              O[Antigravity AI]
+            end
+
+            subgraph EXECUTE[2. Execution]
+              UI[System and UI Design]
+              DM[Data Management]
+
+              subgraph EXISTING[Handled by Existing Systems]
+                LLM[LLM APIs and Orchestration]
+                SEC[Security and Optimization]
+              end
+
+              UI --> DM
+              DM --> LLM
+              LLM --> SEC
+            end
+
+            subgraph DELIVER[3. Delivery]
+              G[Local Testing and Debugging]
+              DP{Deployment}
+              I[Vercel and Netlify]
+              J[Hugging Face Spaces]
+              K[GitHub Codebase / CI]
+              P[Portfolio Site Showcase]
+              W[Web3Forms Contact]
+              L[Iterative Feedback]
+
+              G --> DP
+              DP --> I
+              DP --> J
+              DP --> K
+              DP --> P
+              P --> W
+              I --> L
+              J --> L
+              K --> L
+              P --> L
+              W --> L
+            end
+
+            DECIDE ~~~ EXECUTE
+            EXECUTE ~~~ DELIVER
+
           end
-          
-          F -->|Local CLI & API validation| G("Local Testing & Debugging")
-          G -->|Continuous Integration| H{"Deployment Platforms"}
-          
-          H -->|Vite / HTML / JS| I["Vercel & Netlify"]
-          H -->|Python / Streamlit / Docker| J["Hugging Face Spaces"]
-          H -->|Command Line Tool| K["GitHub Codebase"]
-          
-          I -->|User input & execution logs| L("Iterative Design Feedback")
-          J -->|User input & execution logs| L
-          K -->|User input & execution logs| L
-          L -->|Refine rules & architecture| B
-          
-          %% Styling classes
-          classDef default fill:var(--bg-secondary),stroke:var(--border-color),color:var(--text-primary);
-          classDef sub fill:rgba(18, 26, 47, 0.6),stroke:var(--accent-primary),color:var(--text-primary);
-          classDef endpoint fill:rgba(99, 102, 241, 0.1),stroke:var(--accent-tertiary),color:var(--text-primary);
-          
-          class B,C,G,L default;
-          class D,E,F sub;
-          class I,J,K endpoint;
-      </pre>
+
+          O -->|Scaffold and generate code| UI
+          SEC --> G
+
+          L -.->|Refine direction| R
+          L -.->|Capture new ideas| M
+          L -.->|Direct follow-up| H
+          G -.->|Test results| H
+
+          classDef human fill:#1e3a5f,stroke:#60a5fa,color:#eff6ff
+          classDef obsidian fill:#2d1b69,stroke:#a78bfa,color:#ede9fe
+          classDef agent fill:#1c1208,stroke:#f59e0b,color:#fef3c7
+          classDef ai fill:#061828,stroke:#06b6d4,color:#e0f2fe
+          classDef execute fill:#0f0a1e,stroke:#6366f1,color:#e0e7ff
+          classDef existing fill:#1a0a1e,stroke:#d946ef,color:#fae8ff
+          classDef deliver fill:#091a09,stroke:#10b981,color:#d1fae5
+          classDef feedback fill:#0a1f0a,stroke:#22c55e,color:#dcfce7
+
+          class R,H human
+          class M obsidian
+          class N agent
+          class O ai
+          class UI,DM execute
+          class LLM,SEC existing
+          class G,DP,I,J,K deliver
+          class L feedback
+        </pre>
     </div>
   </section>
 

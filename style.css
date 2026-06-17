@@ -1043,6 +1043,8 @@ textarea.form-input {
   transform: translateY(0);
 }
 
+
+
 /* ==========================================
    RESPONSIVE DESIGN MEDIA QUERIES
    ========================================== */
@@ -1210,6 +1212,15 @@ textarea.form-input {
   fill: rgba(255, 255, 255, 0.02) !important;
   stroke: var(--border-color) !important;
   stroke-dasharray: 5 5;
+}
+
+.mermaid .cluster-label text,
+.mermaid .cluster-label span,
+.mermaid .cluster .label foreignObject {
+  font-size: 1.15rem !important;
+  font-weight: 800 !important;
+  fill: var(--text-primary) !important;
+  color: var(--text-primary) !important;
 }
 
 body.light-mode .mermaid .cluster rect {
