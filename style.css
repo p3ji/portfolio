@@ -1157,3 +1157,61 @@ textarea.form-input {
     padding: 1.5rem;
   }
 }
+
+/* ==========================================
+   MERMAID DIAGRAM CUSTOM THEME
+   ========================================== */
+.mermaid {
+  background: transparent !important;
+  font-family: var(--font-sans) !important;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.mermaid svg {
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+.mermaid .node rect, 
+.mermaid .node circle, 
+.mermaid .node polygon,
+.mermaid .node path {
+  fill: var(--bg-secondary) !important;
+  stroke: var(--border-color) !important;
+  stroke-width: 1.5px !important;
+  transition: var(--transition-smooth);
+}
+
+.mermaid .node:hover rect, 
+.mermaid .node:hover circle, 
+.mermaid .node:hover polygon,
+.mermaid .node:hover path {
+  stroke: var(--accent-primary) !important;
+  filter: drop-shadow(0 0 6px rgba(16, 185, 129, 0.3));
+}
+
+.mermaid .node .label {
+  color: var(--text-primary) !important;
+}
+
+.mermaid .edgePath .path {
+  stroke: var(--text-muted) !important;
+  stroke-width: 1.5px !important;
+}
+
+.mermaid .edgePath .arrowheadPath {
+  fill: var(--text-muted) !important;
+  stroke: var(--text-muted) !important;
+}
+
+.mermaid .cluster rect {
+  fill: rgba(255, 255, 255, 0.02) !important;
+  stroke: var(--border-color) !important;
+  stroke-dasharray: 5 5;
+}
+
+body.light-mode .mermaid .cluster rect {
+  fill: rgba(0, 0, 0, 0.02) !important;
+}

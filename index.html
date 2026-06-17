@@ -27,6 +27,7 @@
         <a href="#home" class="nav-link active" id="link-home">Home</a>
         <a href="#projects" class="nav-link" id="link-projects">Projects</a>
         <a href="#philosophy" class="nav-link" id="link-philosophy">Approach</a>
+        <a href="#workflow" class="nav-link" id="link-workflow">Workflow</a>
         <a href="#contact" class="nav-link" id="link-contact">Contact</a>
       </nav>
       
@@ -313,6 +314,51 @@
     </div>
   </section>
 
+  <!-- ==========================================
+       WORKFLOW SECTION
+       ========================================== -->
+  <section class="section container" id="workflow">
+    <h2 class="section-title">My current workflow</h2>
+    <p style="color: var(--text-secondary); margin-bottom: 3rem; max-width: 700px;">
+      This diagram maps how I design, prototype, and refine my digital products. It visualizes the cycle from identifying organizational bottlenecks to local development, security hardening, and deployment. You can easily update this flow in the source code as experiments evolve.
+    </p>
+    
+    <div class="reveal" style="border: 1px solid var(--border-color); background: var(--bg-card); padding: 2.5rem; border-radius: 20px; backdrop-filter: blur(12px); overflow-x: auto;">
+      <pre class="mermaid" style="display: flex; justify-content: center;">
+        graph TD
+          A[Socio-Economic Context] -->|Identify bottlenecks & labor trends| B(Research & Data Analysis)
+          B -->|Design schemas & UI prototypes| C(System & UI Design)
+          
+          subgraph Prototyping Phase
+            C --> D[Data Management & Semantic Metadata]
+            D --> E[Orchestration & LLM Prompting]
+            E --> F[Model Optimization & Security]
+          end
+          
+          F -->|Local CLI & API validation| G(Local Testing & Debugging)
+          G -->|Continuous Integration| H{Deployment Platforms}
+          
+          H -->|Vite / HTML / JS| I[Vercel & Netlify]
+          H -->|Python / Streamlit / Docker| J[Hugging Face Spaces]
+          H -->|Command Line Tool| K[GitHub Codebase]
+          
+          I -->|User input & execution logs| L(Iterative Design Feedback)
+          J -->|User input & execution logs| L
+          K -->|User input & execution logs| L
+          L -->|Refine rules & architecture| B
+          
+          %% Styling classes
+          classDef default fill:var(--bg-secondary),stroke:var(--border-color),color:var(--text-primary);
+          classDef sub fill:rgba(18, 26, 47, 0.6),stroke:var(--accent-primary),color:var(--text-primary);
+          classDef endpoint fill:rgba(99, 102, 241, 0.1),stroke:var(--accent-tertiary),color:var(--text-primary);
+          
+          class B,C,G,L default;
+          class D,E,F sub;
+          class I,J,K endpoint;
+      </pre>
+    </div>
+  </section>
+
 
   <!-- ==========================================
        CONTACT SECTION
@@ -402,5 +448,23 @@
 
   <!-- Custom JS -->
   <script src="script.js"></script>
+  
+  <!-- Mermaid.js for visual diagram -->
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'dark',
+      themeVariables: {
+        background: 'transparent',
+        primaryColor: '#0c1222',
+        primaryTextColor: '#f8fafc',
+        primaryBorderColor: '#10b981',
+        lineColor: '#6366f1',
+        secondaryColor: '#121a2f',
+        tertiaryColor: '#121a2f'
+      }
+    });
+  </script>
 </body>
 </html>
