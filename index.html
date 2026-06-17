@@ -334,7 +334,7 @@
           %%{init: {"securityLevel": "loose", "flowchart": {"padding": 30, "rankSpacing": 80, "nodeSpacing": 60}, "theme": "dark"}}%%
           flowchart TD
 
-          subgraph DECIDE[1. Decision making]
+          subgraph DECIDE["<span style='font-size: 2em; font-weight: 700;'>1. Decision making</span>"]
 
             subgraph STREAM1[Stream A - Direct Human Prompting]
               H[Human with\nDomain Knowledge]
@@ -356,23 +356,25 @@
             O[Antigravity AI]
           end
 
-          subgraph EXECUTE[2. Execution]
-            UI["&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System and UI Design&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"]
-            DM["&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Data Management&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"]
+          subgraph EXECUTE["<span style='font-size: 2em; font-weight: 700;'>2. Execution</span>"]
+            UI[System and UI Design]
+            DM[Data Management]
+            MCP[Model Context Protocol]
 
             subgraph EXISTING[Handled by Existing Systems]
-              MCP[Model Context Protocol]
               LLM[LLM APIs and Orchestration]
               SEC[Security and Optimization]
             end
-
-            UI --> DM
-            DM --> MCP
-            MCP --> LLM
-            LLM --> SEC
           end
 
-          subgraph DELIVER[3. Delivery]
+          UI --> LLM
+          UI --> DM
+          UI --> MCP
+          DM --> LLM
+          MCP --> LLM
+          LLM --> SEC
+
+          subgraph DELIVER["<span style='font-size: 2em; font-weight: 700;'>3. Delivery</span>"]
             G[Local Testing and Debugging]
             DP{Deployment}
             I[Vercel and Netlify]
