@@ -1161,6 +1161,27 @@ textarea.form-input {
 }
 
 /* ==========================================
+   WORKFLOW DIAGRAM RESPONSIVENESS
+   ========================================== */
+.workflow-wrapper {
+  padding: 2.5rem 0; /* Only vertical padding, no side box padding needed */
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.workflow-inner {
+  min-width: 800px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .workflow-wrapper {
+    padding: 1rem; /* Massively reduce padding on mobile to maximize scroll viewport */
+    border-radius: 12px;
+  }
+}
+
+/* ==========================================
    MERMAID DIAGRAM CUSTOM THEME
    ========================================== */
 .mermaid {
@@ -1172,6 +1193,7 @@ textarea.form-input {
 }
 
 .mermaid svg {
+  background: transparent !important;
   max-width: 100% !important;
   height: auto !important;
 }

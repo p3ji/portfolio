@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=2">
 </head>
 <body>
 
@@ -323,84 +323,91 @@
       This diagram maps how I am currently experimenting and developing prototypes. Note that these are conceptual layers, not temporal phases. It is common to switch back and forth between decision making, execution, and delivery in the course of a project.
     </p>
     
-    <div class="reveal" style="border: 1px solid var(--border-color); background: var(--bg-card); padding: 2.5rem; border-radius: 20px; backdrop-filter: blur(12px); overflow-x: auto; -webkit-overflow-scrolling: touch;">
-      <div style="min-width: 800px; margin: 0 auto;">
+    <script>
+      function showNodeInfo(info) {
+        alert(info);
+      }
+    </script>
+    <div class="workflow-wrapper reveal">
+      <div class="workflow-inner">
         <pre class="mermaid" style="text-align: center;">
-          %%{init: {"flowchart": {"padding": 30, "rankSpacing": 80, "nodeSpacing": 60}, "theme": "dark"}}%%
+          %%{init: {"securityLevel": "loose", "flowchart": {"padding": 30, "rankSpacing": 80, "nodeSpacing": 60}, "theme": "dark"}}%%
           flowchart TD
 
-          subgraph GH[GitHub Version Control]
+          subgraph DECIDE[1. Decision making]
 
-            subgraph DECIDE[1. Decision making]
-
-              subgraph STREAM1[Stream A - Direct Human Prompting]
-                H[Human with\nDomain Knowledge]
-              end
-
-              subgraph STREAM2[Stream B - Autonomous Idea Pipeline]
-                M[(Obsidian Vault)]
-                N[Daily Review Agent]
-                M -->|Daily scheduled review| N
-              end
-
-              R[Research and Analysis]
-
-              R -->|Informs and shapes| H
-              R -->|Captures insights| M
-              H -->|Direct prompt| O
-              H <-- Suggested prompt --- N
-              O[Antigravity AI]
+            subgraph STREAM1[Stream A - Direct Human Prompting]
+              H[Human with\nDomain Knowledge]
             end
 
-            subgraph EXECUTE[2. Execution]
-              UI[System and UI Design]
-              DM[Data Management]
-
-              subgraph EXISTING[Handled by Existing Systems]
-                LLM[LLM APIs and Orchestration]
-                SEC[Security and Optimization]
-              end
-
-              UI --> DM
-              DM --> LLM
-              LLM --> SEC
+            subgraph STREAM2[Stream B - Autonomous Idea Pipeline]
+              M[(Obsidian Vault)]
+              N[Daily Review Agent]
+              M -->|Daily scheduled review| N
             end
 
-            subgraph DELIVER[3. Delivery]
-              G[Local Testing and Debugging]
-              DP{Deployment}
-              I[Vercel and Netlify]
-              J[Hugging Face Spaces]
-              K[GitHub Codebase / CI]
-              P[Portfolio Site Showcase]
-              W[Web3Forms Contact]
-              L[Iterative Feedback]
+            R[Research and Analysis]
 
-              G --> DP
-              DP --> I
-              DP --> J
-              DP --> K
-              DP --> P
-              P --> W
-              I --> L
-              J --> L
-              K --> L
-              P --> L
-              W --> L
-            end
-
-            DECIDE ~~~ EXECUTE
-            EXECUTE ~~~ DELIVER
-
+            R -->|Informs and shapes| H
+            R -->|Captures insights| M
+            H -->|Direct prompt| O
+            H ~~~ N
+            N -.->|"Suggested prompt"| H
+            O[Antigravity AI]
           end
+
+          subgraph EXECUTE[2. Execution]
+            UI["&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System and UI Design&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"]
+            DM["&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Data Management&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"]
+
+            subgraph EXISTING[Handled by Existing Systems]
+              MCP[Model Context Protocol]
+              LLM[LLM APIs and Orchestration]
+              SEC[Security and Optimization]
+            end
+
+            UI --> DM
+            DM --> MCP
+            MCP --> LLM
+            LLM --> SEC
+          end
+
+          subgraph DELIVER[3. Delivery]
+            G[Local Testing and Debugging]
+            DP{Deployment}
+            I[Vercel and Netlify]
+            J[Hugging Face Spaces]
+            K[GitHub Codebase / CI]
+            P[Portfolio Site Showcase]
+            W[Web3Forms Contact]
+            L[Iterative Feedback]
+
+            G --> DP
+            DP -->|Web Apps & UIs| I
+            DP -->|AI Models & Python Backends| J
+            DP -->|All Source Code| K
+            DP -->|Curated Highlights| P
+            P --> W
+            I --> L
+            J --> L
+            K --> L
+            P --> L
+            W --> L
+          end
+
+          DECIDE ~~~ EXECUTE
+          EXECUTE ~~~ DELIVER
 
           O -->|Scaffold and generate code| UI
           SEC --> G
 
-          L -.->|Refine direction| R
-          L -.->|Capture new ideas| M
-          L -.->|Direct follow-up| H
-          G -.->|Test results| H
+          R <-->|"Refine direction"| L
+          M <-->|"Capture new ideas"| L
+          H <-->|"Direct follow-up"| L
+          H <-->|"Test results"| G
+
+          %% Interactive Tooltips and Clicks
+          click MCP "javascript:void(0)" "Example Project: statcan_mcp"
 
           classDef human fill:#1e3a5f,stroke:#60a5fa,color:#eff6ff
           classDef obsidian fill:#2d1b69,stroke:#a78bfa,color:#ede9fe
