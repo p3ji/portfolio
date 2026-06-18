@@ -1134,6 +1134,7 @@ textarea.form-input {
   
   .hero-title {
     font-size: 2.5rem;
+    min-height: 11.5rem;
   }
   
   .projects-header {
