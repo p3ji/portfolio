@@ -126,15 +126,17 @@
       </div>
       <div class="filter-tabs" id="filterTabs">
         <span class="filter-tab active" data-filter="all">All Projects</span>
-        <span class="filter-tab" data-filter="rag">AI Agents & RAG</span>
-        <span class="filter-tab" data-filter="data">Economics & Policy</span>
+        <span class="filter-tab" data-filter="health">Health</span>
+        <span class="filter-tab" data-filter="economy">Economy</span>
+        <span class="filter-tab" data-filter="public-services">Public Services</span>
+        <span class="filter-tab" data-filter="productivity">Productivity</span>
       </div>
     </div>
     
     <div class="projects-grid" id="projectsGrid">
 
       <!-- Project: Gmail Cleaner CLI -->
-      <div class="project-card reveal" data-category="data">
+      <div class="project-card reveal" data-category="productivity">
         <div class="project-header">
           <div class="project-icon-box">
             <i class="fa-solid fa-envelope"></i>
@@ -151,16 +153,14 @@
             A command-line tool to clean, organize, and label emails in your Gmail inbox using IMAP. Built with Python and Rich for a polished terminal experience.
           </p>
           <div class="project-tags">
-            <span class="project-tag">Python</span>
-            <span class="project-tag">CLI</span>
-            <span class="project-tag">IMAP</span>
-            <span class="project-tag">Automation</span>
+            <span class="project-tag">Productivity</span>
+            <span class="project-tag">CLI App</span>
           </div>
         </div>
       </div>
 
       <!-- Project: Drug Utilization Monitoring Dashboard -->
-      <div class="project-card reveal" data-category="data">
+      <div class="project-card reveal" data-category="health">
         <div class="project-header">
           <div class="project-icon-box">
             <i class="fa-solid fa-capsules"></i>
@@ -180,16 +180,14 @@
             An interactive dashboard and data pipeline monitoring utilization of drugs of concern in Canada using simulated public claims and private proxy volumes.
           </p>
           <div class="project-tags">
-            <span class="project-tag">Data Pipeline</span>
-            <span class="project-tag">Chart.js</span>
-            <span class="project-tag">Healthcare Data</span>
-            <span class="project-tag">Open API</span>
+            <span class="project-tag">Health</span>
+            <span class="project-tag">Data Dashboard</span>
           </div>
         </div>
       </div>
 
       <!-- Project 1: NIHB Policy Assistant -->
-      <div class="project-card reveal" data-category="rag,data">
+      <div class="project-card reveal" data-category="health,public-services">
         <div class="project-header">
           <div class="project-icon-box">
             <i class="fa-solid fa-file-shield"></i>
@@ -209,16 +207,16 @@
             An experimental AI query engine designed to provide source-cited policy answers about the Non-Insured Health Benefits program.
           </p>
           <div class="project-tags">
-            <span class="project-tag">LLM Wrapper</span>
-            <span class="project-tag">RAG Search</span>
-            <span class="project-tag">Policy AI</span>
-            <span class="project-tag">API Integration</span>
+            <span class="project-tag">Health</span>
+            <span class="project-tag">Public Services</span>
+            <span class="project-tag">LLM Integration</span>
+            <span class="project-tag">Web App</span>
           </div>
         </div>
       </div>
 
       <!-- Project 2: Canadian AI Jobs Report -->
-      <div class="project-card reveal" data-category="data">
+      <div class="project-card reveal" data-category="economy">
         <div class="project-header">
           <div class="project-icon-box">
             <i class="fa-solid fa-chart-line"></i>
@@ -238,16 +236,14 @@
             An interactive dashboard analyzing the economic value of Canadian college majors. Maps CIP programs to NOC occupations, displaying median salaries, 10-year job growth, competition metrics, and AI disruption risk.
           </p>
           <div class="project-tags">
-            <span class="project-tag">React / Vite</span>
-            <span class="project-tag">Data Mapping</span>
-            <span class="project-tag">Economic Model</span>
-            <span class="project-tag">AI Impact Risk</span>
+            <span class="project-tag">Economy</span>
+            <span class="project-tag">Data Dashboard</span>
           </div>
         </div>
       </div>
 
       <!-- Project 3: WFA Policy Expert Agent -->
-      <div class="project-card reveal" data-category="rag">
+      <div class="project-card reveal" data-category="public-services">
         <div class="project-header">
           <div class="project-icon-box">
             <i class="fa-solid fa-scale-balanced"></i>
@@ -267,16 +263,15 @@
             An interactive Canadian Federal Public Service WFA (Work Force Adjustment) advisor chatbot. Navigates complex Treasury Board guidelines, opting periods, and voluntary departures with strict documentation groundings.
           </p>
           <div class="project-tags">
-            <span class="project-tag">RAG Chatbot</span>
-            <span class="project-tag">Treasury Board</span>
-            <span class="project-tag">Vanilla JS</span>
-            <span class="project-tag">Workflow Design</span>
+            <span class="project-tag">Public Services</span>
+            <span class="project-tag">LLM Integration</span>
+            <span class="project-tag">Web App</span>
           </div>
         </div>
       </div>
 
       <!-- Project 4: Ottawa Recreation Discovery Map -->
-      <div class="project-card reveal" data-category="data">
+      <div class="project-card reveal" data-category="public-services">
         <div class="project-header">
           <div class="project-icon-box">
             <i class="fa-solid fa-map-location-dot"></i>
@@ -296,39 +291,12 @@
             A visual discovery tool and interactive map for parents to find municipal recreation facilities and summer camps in Ottawa by proximity, amenities, and geographical sectors.
           </p>
           <div class="project-tags">
-            <span class="project-tag">Streamlit</span>
-            <span class="project-tag">Folium Maps</span>
-            <span class="project-tag">Geopy</span>
-            <span class="project-tag">Pandas</span>
+            <span class="project-tag">Public Services</span>
+            <span class="project-tag">Data Dashboard</span>
           </div>
         </div>
       </div>
 
-      <!-- Project 5: Gmail Cleaner CLI -->
-      <div class="project-card reveal" data-category="data,rag">
-        <div class="project-header">
-          <div class="project-icon-box">
-            <i class="fa-solid fa-envelope-open-text"></i>
-          </div>
-          <div class="project-links">
-            <a href="https://github.com/p3ji/gmailcleaner" class="project-link" target="_blank" rel="noopener noreferrer" title="View Source on GitHub">
-              <i class="fa-brands fa-github"></i>
-            </a>
-          </div>
-        </div>
-        <div class="project-body">
-          <h3 class="project-title">Gmail Cleaner CLI</h3>
-          <p class="project-description">
-            A command-line tool to clean, organize, and label emails in your Gmail inbox using IMAP. Implements dry-run previews, automated trashing, and custom label application.
-          </p>
-          <div class="project-tags">
-            <span class="project-tag">Python</span>
-            <span class="project-tag">IMAP SSL</span>
-            <span class="project-tag">Rich Terminal</span>
-            <span class="project-tag">Workflow Automation</span>
-          </div>
-        </div>
-      </div>
 
     </div>
   </section>
