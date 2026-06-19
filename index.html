@@ -117,12 +117,29 @@
   </section>
 
   <!-- ==========================================
+       STATS SECTION
+       ========================================== -->
+  <section class="section container" id="stats" style="padding-top: 4rem; padding-bottom: 2rem;">
+    <div class="stats-grid reveal" style="max-width: 800px; margin: 0 auto;">
+      <div class="stat-card">
+        <span class="stat-number">6</span>
+        <span class="stat-label">Functional Prototypes and counting</span>
+      </div>
+
+      <div class="stat-card">
+        <span class="stat-number">1</span>
+        <span class="stat-label">Year of Exploration</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
        PROJECTS SECTION
        ========================================== -->
   <section class="section container" id="projects">
     <div class="projects-header">
       <div>
-        <h2 class="section-title">Selected Work</h2>
+        <h2 class="section-title">Ongoing projects</h2>
       </div>
       <div class="filter-tabs" id="filterTabs">
         <span class="filter-tab active" data-filter="all">All Projects</span>
@@ -302,30 +319,53 @@
   </section>
 
   <!-- ==========================================
-       PHILOSOPHY / STATS SECTION
+       APPROACH SECTION
        ========================================== -->
-  <section class="section philosophy" id="philosophy">
-    <div class="container philosophy-grid reveal">
-      <div class="philosophy-content">
-        <h2 class="section-title">My approach</h2>
-        <p>
-          As a sociologist, economist, and on-leave manager in the public service, I view artificial intelligence not just as an engineering marvel, but as fundamentally shifting how work is organized individually and within groups at every level. As a long-time observer of technology and AI’s economic and societal impact, I am taking some dedicated time to explore more closely the capabilities and possibilities of this quickly evolving technology. To do this, I am building functional prototypes, experimenting with new workflows, and analyzing how AI can transform organizational operations.
-        </p>
-        <p>
-          My initial focus is exploring how AI can be leveraged to build entirely new digital products, or optimize existing workflows to meet evolving needs. To do this, I am diving deep into the end-to-end AI stack—covering everything from data management and semantic metadata to orchestration frameworks, model optimization, application security, and AI product design. Ultimately, I am taking a 'learning by doing' approach, and I'm excited to share what I build along the way.
-        </p>
-      </div>
-      
-      <div class="stats-grid">
-        <div class="stat-card">
-          <span class="stat-number">6</span>
-          <span class="stat-label">Functional Prototypes</span>
+  <section class="section container" id="approach">
+    <div class="reveal">
+      <h2 class="section-title">My approach</h2>
+      <div style="display: flex; flex-direction: column; gap: 2.5rem; max-width: 800px;">
+        
+        <div>
+          <h3 style="font-size: 1.3rem; margin-bottom: 0.8rem;">Dedicated deep exploration of AI</h3>
+          <p style="color: var(--text-secondary); line-height: 1.7;">
+            As sociologist, economist, and on-leave manager in the public service, I am drawn to the enormous transformational potential of AI - as a <a href="https://knightcolumbia.org/content/ai-as-normal-technology" style="color: var(--accent-primary); text-decoration: none;">normal technology</a>. Throughout my <a href="https://www.linkedin.com/in/petershijiao/" style="color: var(--accent-primary); text-decoration: none;">career</a>, I have been involved in various projects studying the trends and impacts of technology on society and the economy from a statistical and research perspective. For the next year, I will be shifting my focus towards deep exploration of the capabilities, possibilities, and risks of this quickly evolving technology. I want to be able to not only understand the ecosystem that enables this technology, but also to be able to fluently use and architect realistic business solutions with it.
+          </p>
         </div>
 
-        <div class="stat-card">
-          <span class="stat-number">1</span>
-          <span class="stat-label">Year of Exploration</span>
+        <div>
+          <h3 style="font-size: 1.3rem; margin-bottom: 0.8rem;">...through learning by doing</h3>
+          <p style="color: var(--text-secondary); line-height: 1.7;">
+            Over the next year (and probably longer!), I will be building functional prototypes, experimenting with new workflows, and thinking deeply about how AI can transform organizational strategy and operations. My work will likely fall along several buckets:
+          </p>
+          <ol type="a" style="color: var(--text-secondary); line-height: 1.7; margin-top: 0.5rem; padding-left: 1.5rem;">
+            <li>building products with AI (e.g. old-school app)</li>
+            <li>products with an AI integration component (e.g. LLM API integration or something more local)</li>
+            <li>evolving my workflow to incorporate more agentic loops that change how I work</li>
+            <li>abstracting from these experiments to imagine different organizational models and processes</li>
+          </ol>
         </div>
+
+        <div>
+          <h3 style="font-size: 1.3rem; margin-bottom: 0.8rem;">...and study and reflection</h3>
+          <p style="color: var(--text-secondary); line-height: 1.7;">
+            As an non-IT professional, there is a lot for me to learn about the technical ecosystem in which AI technologies are embedded. To do this, I am diving deep into the end-to-end AI stack, including but not limited to:
+          </p>
+          <ol type="a" style="color: var(--text-secondary); line-height: 1.7; margin-top: 0.5rem; padding-left: 1.5rem;">
+            <li>data and metadata management (e.g. cloud solutions, local solutions)</li>
+            <li>AI product design</li>
+            <li>foundational AI engineering concepts (see: Chip Huyen's "AI Engineering")</li>
+            <li>responsible AI (e.g. security, ethics)</li>
+          </ol>
+        </div>
+
+        <div>
+          <h3 style="font-size: 1.3rem; margin-bottom: 0.8rem;">...in order to avoid hype and play an effective business role</h3>
+          <p style="color: var(--text-secondary); line-height: 1.7;">
+            I want to find that middle-ground where I can contribute ambitious, innovative ideas and solutions that are well-thought-out and grounded in technical understanding.
+          </p>
+        </div>
+        
       </div>
     </div>
   </section>
@@ -335,8 +375,8 @@
        ========================================== -->
   <section class="section container" id="workflow">
     <h2 class="section-title">My current workflow</h2>
-    <p style="color: var(--text-secondary); margin-bottom: 3rem; max-width: 700px;">
-      This diagram maps how I am currently experimenting and developing prototypes. Note that these are conceptual layers, not temporal phases. It is common to switch back and forth between decision making, execution, and delivery in the course of a project.
+    <p style="color: var(--text-secondary); margin-bottom: 3rem; max-width: 800px; line-height: 1.7;">
+      This diagram maps how I am currently experimenting and developing prototypes. At some point, I may want to separate out the tech stuff from the conceptual layers. However, for now, this offers an idea of the autonomous vs. manual aspects of the <strong>decision-making</strong>, <strong>execution</strong>, and <strong>delivery</strong> parts of my workflow.
     </p>
     
     <script>
