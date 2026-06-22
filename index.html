@@ -1,636 +1,922 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Peter Jiao's Portfolio - Sociologist, Economist, & Manager exploring workflow automation, AI Policy Agents, and economic data visualization.">
-  <title>Peter Jiao | AI Workflow Explorer & Policy Prototypes</title>
-  
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Peter Jiao's Portfolio - Sociologist, Economist, &amp; Manager exploring workflow automation, AI Policy Agents, and economic data visualization." name="description"/>
+  <title>
+   Peter Jiao | AI Workflow Explorer &amp; Policy Prototypes
+  </title>
   <!-- FontAwesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="style.css?v=8">
-</head>
-<body>
-
+  <link href="style.css?v=8" rel="stylesheet"/>
+ </head>
+ <body>
   <!-- ==========================================
        NAVIGATION HEADER
        ========================================== -->
   <header class="header" id="header">
-    <div class="container nav-container">
-      <a href="#home" class="logo">
-        Peter Jiao<span class="logo-dot"></span>
+   <div class="container nav-container">
+    <a class="logo" href="#home">
+     Peter Jiao
+     <span class="logo-dot">
+     </span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+     <a class="nav-link active" href="#home" id="link-home">
+      Home
+     </a>
+     <div class="nav-dropdown">
+      <a class="nav-link" href="#projects" id="link-projects">
+       Projects
+       <i class="fa-solid fa-chevron-down" style="font-size: 0.7em; margin-left: 0.2rem;">
+       </i>
       </a>
-      
-      <nav class="nav-links" id="navLinks">
-        <a href="#home" class="nav-link active" id="link-home">Home</a>
-                <div class="nav-dropdown">
-          <a href="#projects" class="nav-link" id="link-projects">Projects <i class="fa-solid fa-chevron-down" style="font-size: 0.7em; margin-left: 0.2rem;"></i></a>
-          <div class="dropdown-content">
-            <a href="#concepts">Concepts</a>
-            <a href="#prototypes">Prototypes</a>
-          </div>
-        </div>
-        <a href="#approach" class="nav-link" id="link-approach">Approach</a>
-        <a href="#workflow" class="nav-link" id="link-workflow">Workflow</a>
-        <a href="#contact" class="nav-link" id="link-contact">Contact</a>
-      </nav>
-      
-      <div class="nav-actions">
-        <button class="theme-toggle" id="themeToggle" aria-label="Toggle Light/Dark Mode" title="Toggle Light/Dark Mode">
-          <i class="fa-solid fa-moon"></i>
-          <i class="fa-solid fa-sun"></i>
-        </button>
-        
-        <div class="menu-toggle" id="menuToggle">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
+      <div class="dropdown-content">
+       <a href="#concepts">
+        Concepts
+       </a>
+       <a href="#prototypes">
+        Prototypes
+       </a>
       </div>
+     </div>
+     <a class="nav-link" href="#approach" id="link-approach">
+      Approach
+     </a>
+     <a class="nav-link" href="#workflow" id="link-workflow">
+      Workflow
+     </a>
+     <a class="nav-link" href="#contact" id="link-contact">
+      Contact
+     </a>
+    </nav>
+    <div class="nav-actions">
+     <button aria-label="Toggle Light/Dark Mode" class="theme-toggle" id="themeToggle" title="Toggle Light/Dark Mode">
+      <i class="fa-solid fa-moon">
+      </i>
+      <i class="fa-solid fa-sun">
+      </i>
+     </button>
+     <div class="menu-toggle" id="menuToggle">
+      <span>
+      </span>
+      <span>
+      </span>
+      <span>
+      </span>
+     </div>
     </div>
+   </div>
   </header>
-
   <!-- ==========================================
        HERO SECTION
        ========================================== -->
   <section class="hero section" id="home">
-    <div class="container hero-grid">
-      <div class="hero-content">
-        <div class="hero-badge">
-          <span class="hero-badge-dot"></span>
-          Exploration &bull; Prototypes
-        </div>
-        <h1 class="hero-title">
-          Designing AI systems to <br>
-          <span class="gradient" id="typed-text">transform workflows.</span>
-        </h1>
-        <p class="hero-tagline">
-          Hi, I'm Peter Jiao. I'm a sociologist, economist, and manager (on leave) exploring how AI transforms workflows, organizational design, and product delivery. Here are some design concepts and functional prototypes I've built during my career break.
-        </p>
-        <div class="hero-cta">
-          <a href="#projects" class="btn btn-primary">
-            Explore My Work <i class="fa-solid fa-arrow-right"></i>
-          </a>
-          <a href="#contact" class="btn btn-secondary">Get in Touch</a>
-        </div>
-      </div>
-      
-      <div class="hero-visual">
-        <div class="visual-canvas"></div>
-        <div class="visual-box">
-          <div class="visual-header">
-            <div class="visual-dot-container">
-              <span class="visual-dot"></span>
-              <span class="visual-dot"></span>
-              <span class="visual-dot"></span>
-            </div>
-            <div class="visual-status-group" style="display: flex; flex-direction: column; align-items: flex-end; gap: 0.4rem;">
-              <div class="visual-status"><span class="logo-dot" style="background-color: var(--accent-primary);"></span> AGENT ACTIVE</div>
-              <div class="visual-status"><span class="logo-dot" style="background-color: var(--accent-primary);"></span> HUMAN-ON-THE-LOOP</div>
-            </div>
-          </div>
-          
-          <div class="visual-content">
-            <div class="visual-stat-row">
-              <span class="visual-stat-label">Journey Start Date</span>
-              <span class="visual-stat-value">June 1, 2026</span>
-            </div>
-            <div class="visual-stat-row">
-              <span class="visual-stat-label">Last GitHub Update</span>
-              <span class="visual-stat-value" id="github-update-date">Loading...</span>
-            </div>
-            
-            <div class="visual-progress-container" style="margin-top: 1.5rem;">
-              <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 1px;">
-                <span>Time elapsed to 1 year mark</span>
-                <span id="progress-percentage">0%</span>
-              </div>
-              <div class="visual-progress-bar" style="width: 100%; height: 8px; background: rgba(255, 255, 255, 0.1); border-radius: 4px; overflow: hidden;">
-                <div id="progress-fill" style="width: 0%; height: 100%; background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary)); border-radius: 4px; transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1);"></div>
-              </div>
-            </div>
-          </div>
-          
-          <div class="visual-footer">
-            <span>SYS_LOC: Ottawa, CA</span>
-            <span>v1.2.0</span>
-          </div>
-        </div>
-      </div>
+   <div class="container hero-grid">
+    <div class="hero-content">
+     <div class="hero-badge">
+      <span class="hero-badge-dot">
+      </span>
+      Exploration • Prototypes
+     </div>
+     <h1 class="hero-title">
+      Designing AI systems to
+      <br/>
+      <span class="gradient" id="typed-text">
+       transform workflows.
+      </span>
+     </h1>
+     <p class="hero-tagline">
+      Hi, I'm Peter Jiao. I'm a sociologist, economist, and manager (on leave) exploring how AI transforms workflows, organizational design, and product delivery. Here are some design concepts and functional prototypes I've built during my career break.
+     </p>
+     <div class="hero-cta">
+      <a class="btn btn-primary" href="#projects">
+       Explore My Work
+       <i class="fa-solid fa-arrow-right">
+       </i>
+      </a>
+      <a class="btn btn-secondary" href="#contact">
+       Get in Touch
+      </a>
+     </div>
     </div>
+    <div class="hero-visual">
+     <div class="visual-canvas">
+     </div>
+     <div class="visual-box">
+      <div class="visual-header">
+       <div class="visual-dot-container">
+        <span class="visual-dot">
+        </span>
+        <span class="visual-dot">
+        </span>
+        <span class="visual-dot">
+        </span>
+       </div>
+       <div class="visual-status-group" style="display: flex; flex-direction: column; align-items: flex-end; gap: 0.4rem;">
+        <div class="visual-status">
+         <span class="logo-dot" style="background-color: var(--accent-primary);">
+         </span>
+         AGENT ACTIVE
+        </div>
+        <div class="visual-status">
+         <span class="logo-dot" style="background-color: var(--accent-primary);">
+         </span>
+         HUMAN-ON-THE-LOOP
+        </div>
+       </div>
+      </div>
+      <div class="visual-content">
+       <div class="visual-stat-row">
+        <span class="visual-stat-label">
+         Journey Start Date
+        </span>
+        <span class="visual-stat-value">
+         June 1, 2026
+        </span>
+       </div>
+       <div class="visual-stat-row">
+        <span class="visual-stat-label">
+         Last GitHub Update
+        </span>
+        <span class="visual-stat-value" id="github-update-date">
+         Loading...
+        </span>
+       </div>
+       <div class="visual-progress-container" style="margin-top: 1.5rem;">
+        <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 1px;">
+         <span>
+          Time elapsed to 1 year mark
+         </span>
+         <span id="progress-percentage">
+          0%
+         </span>
+        </div>
+        <div class="visual-progress-bar" style="width: 100%; height: 8px; background: rgba(255, 255, 255, 0.1); border-radius: 4px; overflow: hidden;">
+         <div id="progress-fill" style="width: 0%; height: 100%; background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary)); border-radius: 4px; transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1);">
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="visual-footer">
+       <span>
+        SYS_LOC: Ottawa, CA
+       </span>
+       <span>
+        v1.2.0
+       </span>
+      </div>
+     </div>
+    </div>
+   </div>
   </section>
-
   <!-- ==========================================
        STATS SECTION
        ========================================== -->
   <section class="section container" id="stats" style="padding-top: 4rem; padding-bottom: 2rem;">
-    <div class="stats-grid reveal" style="max-width: 800px; margin: 0 auto;">
-      <div class="stat-card">
-        <span class="stat-number">9</span>
-        <span class="stat-label">Functional Prototypes</span>
-      </div>
-
-      <div class="stat-card">
-        <span class="stat-number">4</span>
-        <span class="stat-label">Concepts</span>
-      </div>
-
-      <div class="stat-card">
-        <span class="stat-number">1</span>
-        <span class="stat-label">Year of Exploration</span>
-      </div>
+   <div class="stats-grid reveal" style="max-width: 800px; margin: 0 auto;">
+    <div class="stat-card">
+     <span class="stat-number">
+      9
+     </span>
+     <span class="stat-label">
+      Functional Prototypes
+     </span>
     </div>
+    <div class="stat-card">
+     <span class="stat-number">
+      4
+     </span>
+     <span class="stat-label">
+      Concepts
+     </span>
+    </div>
+    <div class="stat-card">
+     <span class="stat-number">
+      1
+     </span>
+     <span class="stat-label">
+      Year of Exploration
+     </span>
+    </div>
+   </div>
   </section>
-
   <!-- ==========================================
        PROJECTS SECTION
        ========================================== -->
   <section class="section container" id="projects">
-    <div class="projects-header">
-      <div>
-        <h2 class="section-title">Ongoing projects</h2>
-      </div>
-      <div class="filter-tabs" id="filterTabs">
-        <span class="filter-tab active" data-filter="all">All Projects</span>
-        <span class="filter-tab" data-filter="health">Health</span>
-        <span class="filter-tab" data-filter="economy">Economy</span>
-        <span class="filter-tab" data-filter="public-services">Public Services</span>
-        <span class="filter-tab" data-filter="productivity">Productivity</span>
-        <span class="filter-tab" data-filter="games">Games</span>
-      </div>
+   <div class="projects-header">
+    <div>
+     <h2 class="section-title">
+      Ongoing projects
+     </h2>
     </div>
-    
-    
-    <!-- Filter Tabs are above this. We keep them. -->
-    
-    <div id="concepts" style="margin-top: 2rem;">
-      <h3 style="font-size: 1.5rem; margin-bottom: 2rem; color: var(--accent-primary);">Concepts</h3>
-      <div class="projects-grid">
-      
-      <!-- Project: Schema-Driven Mobile Survey Engine -->
-      <div class="project-card reveal" data-category="tech">
-        <div class="project-header">
-          <div class="project-icon-box">
-            <i class="fa-solid fa-mobile-screen"></i>
-          </div>
-          <div class="project-links">
-          </div>
-        </div>
-        <div class="project-body">
-          <h3 class="project-title">Mobile Survey Builder</h3>
-          <details class="project-details">
-            <summary class="project-summary">Project Details</summary>
-            <p class="project-description">
-            An extensible, open-source survey builder optimized for mobile devices to collect data through survey questions and sensors. Adheres to DDI lifecycle standard.
-          </p>
-          </details>
-          <div class="project-tags">
-            <span class="project-tag stage-tag concept">Concept</span>
-            <span class="project-tag">Tech</span>
-            <span class="project-tag">Mobile App</span>
-            <span class="project-tag">Flutter</span>
-          </div>
-        </div>
-      </div>
-      <!-- Project: Data Validation Assistant -->
-      <div class="project-card reveal" data-category="automation">
-        <div class="project-header">
-          <div class="project-icon-box">
-            <i class="fa-solid fa-list-check"></i>
-          </div>
-          <div class="project-links">
-          </div>
-        </div>
-        <div class="project-body">
-          <h3 class="project-title">Data Validation Assistant</h3>
-          <details class="project-details">
-            <summary class="project-summary">Project Details</summary>
-            <p class="project-description">
-            An interoperable automated data validation tool that analyzes datasets against a 6-pillar framework to assist the data validation process.
-          </p>
-          </details>
-          <div class="project-tags">
-            <span class="project-tag stage-tag concept">Concept</span>
-            <span class="project-tag">Automation</span>
-            <span class="project-tag">Data Dashboard</span>
-            <span class="project-tag">Python</span>
-          </div>
-        </div>
-      </div>
-
-
-      <!-- Project: Digital brain -->
-      <div class="project-card reveal" data-category="productivity">
-        <div class="project-header">
-          <div class="project-icon-box">
-            <i class="fa-solid fa-brain"></i>
-          </div>
-          <div class="project-links">
-          </div>
-        </div>
-        <div class="project-body">
-          <h3 class="project-title">Digital brain</h3>
-          <details class="project-details">
-            <summary class="project-summary">Project Details</summary>
-            <p class="project-description">
-            Applying the idea of using a personal knowledge graph (PKG) to drive and monitor agentic processes and workflows. <br><br>Current nodes of my PKG: 268 (<span>0</span> since 1 day ago)
-          </p>
-          </details>
-          <div class="project-tags">
-            <span class="project-tag stage-tag concept">Concept</span>
-            <span class="project-tag">Productivity</span>
-            <span class="project-tag">Agentic Workflows</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Project: Statistical Metadata Assistant -->
-      <div class="project-card reveal" data-category="public-services">
-        <div class="project-header">
-          <div class="project-icon-box">
-            <i class="fa-solid fa-file-code"></i>
-          </div>
-          <div class="project-links">
-          </div>
-        </div>
-        <div class="project-body">
-          <h3 class="project-title">Statistical Metadata Assistant</h3>
-          <details class="project-details">
-            <summary class="project-summary">Project Details</summary>
-            <p class="project-description">
-            Takes available information about a survey (e.g. survey questions, etc.) and produces necessary statistical metadata (e.g. DDI).
-          </p>
-          </details>
-          <div class="project-tags">
-            <span class="project-tag stage-tag concept">Concept</span>
-            <span class="project-tag">Public Services</span>
-            <span class="project-tag">Data Engineering</span>
-            <span class="project-tag">Automation</span>
-          </div>
-        </div>
-      </div>
-      </div>
+    <div class="filter-tabs" id="filterTabs">
+     <span class="filter-tab active" data-filter="all">
+      All Projects
+     </span>
+     <span class="filter-tab" data-filter="health">
+      Health
+     </span>
+     <span class="filter-tab" data-filter="economy">
+      Economy
+     </span>
+     <span class="filter-tab" data-filter="work-tools">
+      Work Tools
+     </span>
+     <span class="filter-tab" data-filter="personal-tools">
+      Personal Tools
+     </span>
+     <span class="filter-tab" data-filter="games">
+      Games
+     </span>
     </div>
-
-    <div id="prototypes" style="margin-top: 4rem;">
-      <h3 style="font-size: 1.5rem; margin-bottom: 2rem; color: var(--accent-primary);">Functional Prototypes</h3>
-      <div class="projects-grid" id="projectsGrid">
-
-      <!-- Project: Debate Game -->
-      <div class="project-card reveal" data-category="games">
-        <div class="project-header">
-          <div class="project-icon-box">
-            <i class="fa-solid fa-gamepad"></i>
-          </div>
-          <div class="project-links">
-            <a href="https://github.com/p3ji/debate_game" class="project-link" target="_blank" rel="noopener noreferrer" title="View Source on GitHub">
-              <i class="fa-brands fa-github"></i>
-            </a>
-            <a href="https://p3ji.github.io/debate_game/" class="project-link" target="_blank" rel="noopener noreferrer" title="Visit Live Site">
-              <i class="fa-solid fa-play"></i>
-            </a>
-          </div>
+   </div>
+   <!-- Filter Tabs are above this. We keep them. -->
+   <div id="concepts" style="margin-top: 2rem;">
+    <h3 style="font-size: 1.5rem; margin-bottom: 2rem; color: var(--accent-primary);">
+     Concepts
+    </h3>
+    <div class="projects-grid">
+     <!-- Project: Schema-Driven Mobile Survey Engine -->
+     <div class="project-card reveal" data-category="work-tools">
+      <div class="project-header">
+       <div class="project-header-left">
+        <div class="project-icon-box">
+         <i class="fa-solid fa-mobile-screen">
+         </i>
         </div>
-        <div class="project-body">
-          <h3 class="project-title">Debate Game</h3>
-          <details class="project-details">
-            <summary class="project-summary">Project Details</summary>
-            A new functional prototype game.
-          </details>
-          <div class="project-tags">
-            <span class="project-tag stage-tag prototype">Prototype</span>
-            <span class="project-tag">Game</span>
-          </div>
-        </div>
+        <span class="stage-badge concept">
+         Concept
+        </span>
+       </div>
+       <div class="project-links">
+       </div>
       </div>
-
-      <!-- Project: n-1 -->
-      <div class="project-card reveal" data-category="games">
-        <div class="project-header">
-          <div class="project-icon-box">
-            <i class="fa-solid fa-gamepad"></i>
-          </div>
-          <div class="project-links">
-            <a href="https://github.com/p3ji/n-1game" class="project-link" target="_blank" rel="noopener noreferrer" title="View Source on GitHub">
-              <i class="fa-brands fa-github"></i>
-            </a>
-            <a href="https://n-1game.vercel.app/" class="project-link" target="_blank" rel="noopener noreferrer" title="Visit Live Site">
-              <i class="fa-solid fa-play"></i>
-            </a>
-          </div>
-        </div>
-        <div class="project-body">
-          <h3 class="project-title">n-1</h3>
-          <details class="project-details">
-            <summary class="project-summary">Project Details</summary>
-            A new functional prototype game.
-          </details>
-          <div class="project-tags">
-            <span class="project-tag stage-tag prototype">Prototype</span>
-            <span class="project-tag">Game</span>
-          </div>
-        </div>
+      <div class="project-body">
+       <h3 class="project-title">
+        Mobile Survey Builder
+       </h3>
+       <details class="project-details">
+        <summary class="project-summary">
+         Project Details
+        </summary>
+        <p class="project-description">
+         An extensible, open-source survey builder optimized for mobile devices to collect data through survey questions and sensors. Adheres to DDI lifecycle standard.
+        </p>
+       </details>
+       <div class="project-tags">
+        <span class="project-tag">
+         Work Tools
+        </span>
+       </div>
       </div>
-      
-      <!-- Project: DB Early Retirement Calculator -->
-      <div class="project-card reveal" data-category="economy">
-        <div class="project-header">
-          <div class="project-icon-box">
-            <i class="fa-solid fa-calculator"></i>
-          </div>
-          <div class="project-links">
-            <a href="https://github.com/p3ji/financialtool" class="project-link" target="_blank" rel="noopener noreferrer" title="View Source on GitHub">
-              <i class="fa-brands fa-github"></i>
-            </a>
-            <a href="https://p3ji.github.io/financialtool/" class="project-link" target="_blank" rel="noopener noreferrer" title="Visit Live Site">
-              <i class="fa-solid fa-play"></i>
-            </a>
-          </div>
+     </div>
+     <!-- Project: Data Validation Assistant -->
+     <div class="project-card reveal" data-category="work-tools">
+      <div class="project-header">
+       <div class="project-header-left">
+        <div class="project-icon-box">
+         <i class="fa-solid fa-list-check">
+         </i>
         </div>
-        <div class="project-body">
-          <h3 class="project-title">DB Early Retirement Calculator</h3>
-          <details class="project-details">
-            <summary class="project-summary">Project Details</summary>
-            <p class="project-description">
-            An early retirement calculator tailored for individuals with a Defined Benefit pension plan, mapping out the portfolio and pension timeline to find your retirement age.
-          </p>
-          </details>
-          <div class="project-tags">
-            <span class="project-tag stage-tag prototype">Prototype</span>
-            <span class="project-tag">Economy</span>
-            <span class="project-tag">Data Dashboard</span>
-          </div>
-        </div>
+        <span class="stage-badge concept">
+         Concept
+        </span>
+       </div>
+       <div class="project-links">
+       </div>
       </div>
-      <!-- Project: Gmail Cleaner CLI -->
-      <div class="project-card reveal" data-category="productivity">
-        <div class="project-header">
-          <div class="project-icon-box">
-            <i class="fa-solid fa-envelope"></i>
-          </div>
-          <div class="project-links">
-            <a href="https://github.com/p3ji/gmailcleaner" class="project-link" target="_blank" rel="noopener noreferrer" title="View Source on GitHub">
-              <i class="fa-brands fa-github"></i>
-            </a>
-            <a href="https://github.com/p3ji/gmailcleaner/archive/refs/heads/main.zip" class="project-link" target="_blank" rel="noopener noreferrer" title="Download ZIP">
-              <i class="fa-solid fa-download"></i>
-            </a>
-          </div>
-        </div>
-        <div class="project-body">
-          <h3 class="project-title">Gmail Cleaner CLI</h3>
-          <details class="project-details">
-            <summary class="project-summary">Project Details</summary>
-            <p class="project-description">
-            A command-line tool to clean, organize, and label emails in your Gmail inbox using IMAP. Built with Python and Rich for a polished terminal experience.
-          </p>
-          </details>
-          <div class="project-tags">
-            <span class="project-tag stage-tag prototype">Prototype</span>
-            <span class="project-tag">Productivity</span>
-            <span class="project-tag">CLI App</span>
-          </div>
-        </div>
+      <div class="project-body">
+       <h3 class="project-title">
+        Data Validation Assistant
+       </h3>
+       <details class="project-details">
+        <summary class="project-summary">
+         Project Details
+        </summary>
+        <p class="project-description">
+         An interoperable automated data validation tool that analyzes datasets against a 6-pillar framework to assist the data validation process.
+        </p>
+       </details>
+       <div class="project-tags">
+        <span class="project-tag">
+         Work Tools
+        </span>
+       </div>
       </div>
-
-      <!-- Project: Drug Utilization Monitoring Dashboard -->
-      <div class="project-card reveal" data-category="health">
-        <div class="project-header">
-          <div class="project-icon-box">
-            <i class="fa-solid fa-capsules"></i>
-          </div>
-          <div class="project-links">
-            <a href="https://github.com/p3ji/drug" class="project-link" target="_blank" rel="noopener noreferrer" title="View Source on GitHub">
-              <i class="fa-brands fa-github"></i>
-            </a>
-            <a href="https://p3ji.github.io/drug/" class="project-link" target="_blank" rel="noopener noreferrer" title="Visit Live Site">
-              <i class="fa-solid fa-play"></i>
-            </a>
-          </div>
+     </div>
+     <!-- Project: Digital brain -->
+     <div class="project-card reveal" data-category="personal-tools">
+      <div class="project-header">
+       <div class="project-header-left">
+        <div class="project-icon-box">
+         <i class="fa-solid fa-brain">
+         </i>
         </div>
-        <div class="project-body">
-          <h3 class="project-title">Drug Utilization Dashboard</h3>
-          <details class="project-details">
-            <summary class="project-summary">Project Details</summary>
-            <p class="project-description">
-            An interactive dashboard and data pipeline monitoring utilization of drugs of concern in Canada using simulated public claims and private proxy volumes.
-          </p>
-          </details>
-          <div class="project-tags">
-            <span class="project-tag stage-tag prototype">Prototype</span>
-            <span class="project-tag">Health</span>
-            <span class="project-tag">Data Dashboard</span>
-          </div>
-        </div>
+        <span class="stage-badge concept">
+         Concept
+        </span>
+       </div>
+       <div class="project-links">
+       </div>
       </div>
-
-      <!-- Project 1: NIHB Policy Assistant -->
-      <div class="project-card reveal" data-category="health,public-services">
-        <div class="project-header">
-          <div class="project-icon-box">
-            <i class="fa-solid fa-file-shield"></i>
-          </div>
-          <div class="project-links">
-            <a href="https://github.com/p3ji/nihb_wrapper" class="project-link" target="_blank" rel="noopener noreferrer" title="View Source on GitHub">
-              <i class="fa-brands fa-github"></i>
-            </a>
-            <a href="https://nihbwrap.netlify.app/" class="project-link" target="_blank" rel="noopener noreferrer" title="Visit Live Site">
-              <i class="fa-solid fa-play"></i>
-            </a>
-          </div>
-        </div>
-        <div class="project-body">
-          <h3 class="project-title">NIHB Policy Assistant</h3>
-          <details class="project-details">
-            <summary class="project-summary">Project Details</summary>
-            <p class="project-description">
-            An experimental AI query engine designed to provide source-cited policy answers about the Non-Insured Health Benefits program.
-          </p>
-          </details>
-          <div class="project-tags">
-            <span class="project-tag stage-tag prototype">Prototype</span>
-            <span class="project-tag">Health</span>
-            <span class="project-tag">Public Services</span>
-            <span class="project-tag">LLM Integration</span>
-            <span class="project-tag">Web App</span>
-          </div>
-        </div>
+      <div class="project-body">
+       <h3 class="project-title">
+        Digital brain
+       </h3>
+       <details class="project-details">
+        <summary class="project-summary">
+         Project Details
+        </summary>
+        <p class="project-description">
+         Applying the idea of using a personal knowledge graph (PKG) to drive and monitor agentic processes and workflows.
+         <br/>
+         <br/>
+         Current nodes of my PKG: 268 (
+         <span>
+          0
+         </span>
+         since 1 day ago)
+        </p>
+       </details>
+       <div class="project-tags">
+        <span class="project-tag">
+         Personal Tools
+        </span>
+       </div>
       </div>
-
-      <!-- Project 2: Canadian AI Jobs Report -->
-      <div class="project-card reveal" data-category="economy">
-        <div class="project-header">
-          <div class="project-icon-box">
-            <i class="fa-solid fa-chart-line"></i>
-          </div>
-          <div class="project-links">
-            <a href="https://github.com/p3ji/occupation_ai" class="project-link" target="_blank" rel="noopener noreferrer" title="View Source on GitHub">
-              <i class="fa-brands fa-github"></i>
-            </a>
-            <a href="https://occupation-ai.vercel.app/" class="project-link" target="_blank" rel="noopener noreferrer" title="Visit Live Site">
-              <i class="fa-solid fa-play"></i>
-            </a>
-          </div>
+     </div>
+     <!-- Project: Statistical Metadata Assistant -->
+     <div class="project-card reveal" data-category="work-tools">
+      <div class="project-header">
+       <div class="project-header-left">
+        <div class="project-icon-box">
+         <i class="fa-solid fa-file-code">
+         </i>
         </div>
-        <div class="project-body">
-          <h3 class="project-title">Canadian AI Jobs Report</h3>
-          <details class="project-details">
-            <summary class="project-summary">Project Details</summary>
-            <p class="project-description">
-            An interactive dashboard analyzing the economic value of Canadian college majors. Maps CIP programs to NOC occupations, displaying median salaries, 10-year job growth, competition metrics, and AI disruption risk.
-          </p>
-          </details>
-          <div class="project-tags">
-            <span class="project-tag stage-tag prototype">Prototype</span>
-            <span class="project-tag">Economy</span>
-            <span class="project-tag">Data Dashboard</span>
-          </div>
-        </div>
+        <span class="stage-badge concept">
+         Concept
+        </span>
+       </div>
+       <div class="project-links">
+       </div>
       </div>
-
-      <!-- Project 3: WFA Policy Expert Agent -->
-      <div class="project-card reveal" data-category="public-services">
-        <div class="project-header">
-          <div class="project-icon-box">
-            <i class="fa-solid fa-scale-balanced"></i>
-          </div>
-          <div class="project-links">
-            <a href="https://github.com/p3ji/wfa" class="project-link" target="_blank" rel="noopener noreferrer" title="View Source on GitHub">
-              <i class="fa-brands fa-github"></i>
-            </a>
-            <a href="https://wfa-blond.vercel.app/" class="project-link" target="_blank" rel="noopener noreferrer" title="Visit Live Site">
-              <i class="fa-solid fa-play"></i>
-            </a>
-          </div>
-        </div>
-        <div class="project-body">
-          <h3 class="project-title">WFA Policy Advisor</h3>
-          <details class="project-details">
-            <summary class="project-summary">Project Details</summary>
-            <p class="project-description">
-            An interactive Canadian Federal Public Service WFA (Work Force Adjustment) advisor chatbot. Navigates complex Treasury Board guidelines, opting periods, and voluntary departures with strict documentation groundings.
-          </p>
-          </details>
-          <div class="project-tags">
-            <span class="project-tag stage-tag prototype">Prototype</span>
-            <span class="project-tag">Public Services</span>
-            <span class="project-tag">LLM Integration</span>
-            <span class="project-tag">Web App</span>
-          </div>
-        </div>
+      <div class="project-body">
+       <h3 class="project-title">
+        Statistical Metadata Assistant
+       </h3>
+       <details class="project-details">
+        <summary class="project-summary">
+         Project Details
+        </summary>
+        <p class="project-description">
+         Takes available information about a survey (e.g. survey questions, etc.) and produces necessary statistical metadata (e.g. DDI).
+        </p>
+       </details>
+       <div class="project-tags">
+        <span class="project-tag">
+         Work Tools
+        </span>
+       </div>
       </div>
-
-      <!-- Project 4: Ottawa Recreation Discovery Map -->
-      <div class="project-card reveal" data-category="public-services">
-        <div class="project-header">
-          <div class="project-icon-box">
-            <i class="fa-solid fa-map-location-dot"></i>
-          </div>
-          <div class="project-links">
-            <a href="https://huggingface.co/spaces/p3ji/p3ji/tree/main" class="project-link" target="_blank" rel="noopener noreferrer" title="View Source Code">
-              <i class="fa-solid fa-code"></i>
-            </a>
-            <a href="https://p3ji-p3ji.hf.space/" class="project-link" target="_blank" rel="noopener noreferrer" title="Visit Live Space">
-              <i class="fa-solid fa-play"></i>
-            </a>
-          </div>
-        </div>
-        <div class="project-body">
-          <h3 class="project-title">Ottawa Recreation Discovery</h3>
-          <details class="project-details">
-            <summary class="project-summary">Project Details</summary>
-            <p class="project-description">
-            A visual discovery tool and interactive map for parents to find municipal recreation facilities and summer camps in Ottawa by proximity, amenities, and geographical sectors.
-          </p>
-          </details>
-          <div class="project-tags">
-            <span class="project-tag stage-tag prototype">Prototype</span>
-            <span class="project-tag">Public Services</span>
-            <span class="project-tag">Data Dashboard</span>
-          </div>
-        </div>
-      </div>
-
-
+     </div>
     </div>
+   </div>
+   <div id="prototypes" style="margin-top: 4rem;">
+    <h3 style="font-size: 1.5rem; margin-bottom: 2rem; color: var(--accent-primary);">
+     Functional Prototypes
+    </h3>
+    <div class="projects-grid" id="projectsGrid">
+     <!-- Project: Debate Game -->
+     <div class="project-card reveal" data-category="games">
+      <div class="project-header">
+       <div class="project-header-left">
+        <div class="project-icon-box">
+         <i class="fa-solid fa-gamepad">
+         </i>
+        </div>
+        <span class="stage-badge prototype">
+         Prototype
+        </span>
+       </div>
+       <div class="project-links">
+        <a class="project-link" href="https://github.com/p3ji/debate_game" rel="noopener noreferrer" target="_blank" title="View Source on GitHub">
+         <i class="fa-brands fa-github">
+         </i>
+        </a>
+        <a class="project-link" href="https://p3ji.github.io/debate_game/" rel="noopener noreferrer" target="_blank" title="Visit Live Site">
+         <i class="fa-solid fa-play">
+         </i>
+        </a>
+       </div>
+      </div>
+      <div class="project-body">
+       <h3 class="project-title">
+        Debate Game
+       </h3>
+       <details class="project-details">
+        <summary class="project-summary">
+         Project Details
+        </summary>
+        A new functional prototype game.
+       </details>
+       <div class="project-tags">
+        <span class="project-tag">
+         Games
+        </span>
+       </div>
+      </div>
+     </div>
+     <!-- Project: n-1 -->
+     <div class="project-card reveal" data-category="games">
+      <div class="project-header">
+       <div class="project-header-left">
+        <div class="project-icon-box">
+         <i class="fa-solid fa-gamepad">
+         </i>
+        </div>
+        <span class="stage-badge prototype">
+         Prototype
+        </span>
+       </div>
+       <div class="project-links">
+        <a class="project-link" href="https://github.com/p3ji/n-1game" rel="noopener noreferrer" target="_blank" title="View Source on GitHub">
+         <i class="fa-brands fa-github">
+         </i>
+        </a>
+        <a class="project-link" href="https://n-1game.vercel.app/" rel="noopener noreferrer" target="_blank" title="Visit Live Site">
+         <i class="fa-solid fa-play">
+         </i>
+        </a>
+       </div>
+      </div>
+      <div class="project-body">
+       <h3 class="project-title">
+        n-1
+       </h3>
+       <details class="project-details">
+        <summary class="project-summary">
+         Project Details
+        </summary>
+        A new functional prototype game.
+       </details>
+       <div class="project-tags">
+        <span class="project-tag">
+         Games
+        </span>
+       </div>
+      </div>
+     </div>
+     <!-- Project: DB Early Retirement Calculator -->
+     <div class="project-card reveal" data-category="economy,personal-tools">
+      <div class="project-header">
+       <div class="project-header-left">
+        <div class="project-icon-box">
+         <i class="fa-solid fa-calculator">
+         </i>
+        </div>
+        <span class="stage-badge prototype">
+         Prototype
+        </span>
+       </div>
+       <div class="project-links">
+        <a class="project-link" href="https://github.com/p3ji/financialtool" rel="noopener noreferrer" target="_blank" title="View Source on GitHub">
+         <i class="fa-brands fa-github">
+         </i>
+        </a>
+        <a class="project-link" href="https://p3ji.github.io/financialtool/" rel="noopener noreferrer" target="_blank" title="Visit Live Site">
+         <i class="fa-solid fa-play">
+         </i>
+        </a>
+       </div>
+      </div>
+      <div class="project-body">
+       <h3 class="project-title">
+        DB Early Retirement Calculator
+       </h3>
+       <details class="project-details">
+        <summary class="project-summary">
+         Project Details
+        </summary>
+        <p class="project-description">
+         An early retirement calculator tailored for individuals with a Defined Benefit pension plan, mapping out the portfolio and pension timeline to find your retirement age.
+        </p>
+       </details>
+       <div class="project-tags">
+        <span class="project-tag">
+         Economy
+        </span>
+        <span class="project-tag">
+         Personal Tools
+        </span>
+       </div>
+      </div>
+     </div>
+     <!-- Project: Gmail Cleaner CLI -->
+     <div class="project-card reveal" data-category="personal-tools">
+      <div class="project-header">
+       <div class="project-header-left">
+        <div class="project-icon-box">
+         <i class="fa-solid fa-envelope">
+         </i>
+        </div>
+        <span class="stage-badge prototype">
+         Prototype
+        </span>
+       </div>
+       <div class="project-links">
+        <a class="project-link" href="https://github.com/p3ji/gmailcleaner" rel="noopener noreferrer" target="_blank" title="View Source on GitHub">
+         <i class="fa-brands fa-github">
+         </i>
+        </a>
+        <a class="project-link" href="https://github.com/p3ji/gmailcleaner/archive/refs/heads/main.zip" rel="noopener noreferrer" target="_blank" title="Download ZIP">
+         <i class="fa-solid fa-download">
+         </i>
+        </a>
+       </div>
+      </div>
+      <div class="project-body">
+       <h3 class="project-title">
+        Gmail Cleaner CLI
+       </h3>
+       <details class="project-details">
+        <summary class="project-summary">
+         Project Details
+        </summary>
+        <p class="project-description">
+         A command-line tool to clean, organize, and label emails in your Gmail inbox using IMAP. Built with Python and Rich for a polished terminal experience.
+        </p>
+       </details>
+       <div class="project-tags">
+        <span class="project-tag">
+         Personal Tools
+        </span>
+       </div>
+      </div>
+     </div>
+     <!-- Project: Drug Utilization Monitoring Dashboard -->
+     <div class="project-card reveal" data-category="health">
+      <div class="project-header">
+       <div class="project-header-left">
+        <div class="project-icon-box">
+         <i class="fa-solid fa-capsules">
+         </i>
+        </div>
+        <span class="stage-badge prototype">
+         Prototype
+        </span>
+       </div>
+       <div class="project-links">
+        <a class="project-link" href="https://github.com/p3ji/drug" rel="noopener noreferrer" target="_blank" title="View Source on GitHub">
+         <i class="fa-brands fa-github">
+         </i>
+        </a>
+        <a class="project-link" href="https://p3ji.github.io/drug/" rel="noopener noreferrer" target="_blank" title="Visit Live Site">
+         <i class="fa-solid fa-play">
+         </i>
+        </a>
+       </div>
+      </div>
+      <div class="project-body">
+       <h3 class="project-title">
+        Drug Utilization Dashboard
+       </h3>
+       <details class="project-details">
+        <summary class="project-summary">
+         Project Details
+        </summary>
+        <p class="project-description">
+         An interactive dashboard and data pipeline monitoring utilization of drugs of concern in Canada using simulated public claims and private proxy volumes.
+        </p>
+       </details>
+       <div class="project-tags">
+        <span class="project-tag">
+         Health
+        </span>
+        <span class="project-tag">
+         Data Dashboard
+        </span>
+       </div>
+      </div>
+     </div>
+     <!-- Project 1: NIHB Policy Assistant -->
+     <div class="project-card reveal" data-category="health,public-services">
+      <div class="project-header">
+       <div class="project-header-left">
+        <div class="project-icon-box">
+         <i class="fa-solid fa-file-shield">
+         </i>
+        </div>
+        <span class="stage-badge prototype">
+         Prototype
+        </span>
+       </div>
+       <div class="project-links">
+        <a class="project-link" href="https://github.com/p3ji/nihb_wrapper" rel="noopener noreferrer" target="_blank" title="View Source on GitHub">
+         <i class="fa-brands fa-github">
+         </i>
+        </a>
+        <a class="project-link" href="https://nihbwrap.netlify.app/" rel="noopener noreferrer" target="_blank" title="Visit Live Site">
+         <i class="fa-solid fa-play">
+         </i>
+        </a>
+       </div>
+      </div>
+      <div class="project-body">
+       <h3 class="project-title">
+        NIHB Policy Assistant
+       </h3>
+       <details class="project-details">
+        <summary class="project-summary">
+         Project Details
+        </summary>
+        <p class="project-description">
+         An experimental AI query engine designed to provide source-cited policy answers about the Non-Insured Health Benefits program.
+        </p>
+       </details>
+       <div class="project-tags">
+        <span class="project-tag">
+         Health
+        </span>
+        <span class="project-tag">
+         Public Services
+        </span>
+        <span class="project-tag">
+         LLM Integration
+        </span>
+        <span class="project-tag">
+         Web App
+        </span>
+       </div>
+      </div>
+     </div>
+     <!-- Project 2: Canadian AI Jobs Report -->
+     <div class="project-card reveal" data-category="economy">
+      <div class="project-header">
+       <div class="project-header-left">
+        <div class="project-icon-box">
+         <i class="fa-solid fa-chart-line">
+         </i>
+        </div>
+        <span class="stage-badge prototype">
+         Prototype
+        </span>
+       </div>
+       <div class="project-links">
+        <a class="project-link" href="https://github.com/p3ji/occupation_ai" rel="noopener noreferrer" target="_blank" title="View Source on GitHub">
+         <i class="fa-brands fa-github">
+         </i>
+        </a>
+        <a class="project-link" href="https://occupation-ai.vercel.app/" rel="noopener noreferrer" target="_blank" title="Visit Live Site">
+         <i class="fa-solid fa-play">
+         </i>
+        </a>
+       </div>
+      </div>
+      <div class="project-body">
+       <h3 class="project-title">
+        Canadian AI Jobs Report
+       </h3>
+       <details class="project-details">
+        <summary class="project-summary">
+         Project Details
+        </summary>
+        <p class="project-description">
+         An interactive dashboard analyzing the economic value of Canadian college majors. Maps CIP programs to NOC occupations, displaying median salaries, 10-year job growth, competition metrics, and AI disruption risk.
+        </p>
+       </details>
+       <div class="project-tags">
+        <span class="project-tag">
+         Economy
+        </span>
+        <span class="project-tag">
+         Data Dashboard
+        </span>
+       </div>
+      </div>
+     </div>
+     <!-- Project 3: WFA Policy Expert Agent -->
+     <div class="project-card reveal" data-category="public-services">
+      <div class="project-header">
+       <div class="project-header-left">
+        <div class="project-icon-box">
+         <i class="fa-solid fa-scale-balanced">
+         </i>
+        </div>
+        <span class="stage-badge prototype">
+         Prototype
+        </span>
+       </div>
+       <div class="project-links">
+        <a class="project-link" href="https://github.com/p3ji/wfa" rel="noopener noreferrer" target="_blank" title="View Source on GitHub">
+         <i class="fa-brands fa-github">
+         </i>
+        </a>
+        <a class="project-link" href="https://wfa-blond.vercel.app/" rel="noopener noreferrer" target="_blank" title="Visit Live Site">
+         <i class="fa-solid fa-play">
+         </i>
+        </a>
+       </div>
+      </div>
+      <div class="project-body">
+       <h3 class="project-title">
+        WFA Policy Advisor
+       </h3>
+       <details class="project-details">
+        <summary class="project-summary">
+         Project Details
+        </summary>
+        <p class="project-description">
+         An interactive Canadian Federal Public Service WFA (Work Force Adjustment) advisor chatbot. Navigates complex Treasury Board guidelines, opting periods, and voluntary departures with strict documentation groundings.
+        </p>
+       </details>
+       <div class="project-tags">
+        <span class="project-tag">
+         Public Services
+        </span>
+        <span class="project-tag">
+         LLM Integration
+        </span>
+        <span class="project-tag">
+         Web App
+        </span>
+       </div>
+      </div>
+     </div>
+     <!-- Project 4: Ottawa Recreation Discovery Map -->
+     <div class="project-card reveal" data-category="public-services">
+      <div class="project-header">
+       <div class="project-header-left">
+        <div class="project-icon-box">
+         <i class="fa-solid fa-map-location-dot">
+         </i>
+        </div>
+        <span class="stage-badge prototype">
+         Prototype
+        </span>
+       </div>
+       <div class="project-links">
+        <a class="project-link" href="https://huggingface.co/spaces/p3ji/p3ji/tree/main" rel="noopener noreferrer" target="_blank" title="View Source Code">
+         <i class="fa-solid fa-code">
+         </i>
+        </a>
+        <a class="project-link" href="https://p3ji-p3ji.hf.space/" rel="noopener noreferrer" target="_blank" title="Visit Live Space">
+         <i class="fa-solid fa-play">
+         </i>
+        </a>
+       </div>
+      </div>
+      <div class="project-body">
+       <h3 class="project-title">
+        Ottawa Recreation Discovery
+       </h3>
+       <details class="project-details">
+        <summary class="project-summary">
+         Project Details
+        </summary>
+        <p class="project-description">
+         A visual discovery tool and interactive map for parents to find municipal recreation facilities and summer camps in Ottawa by proximity, amenities, and geographical sectors.
+        </p>
+       </details>
+       <div class="project-tags">
+        <span class="project-tag">
+         Public Services
+        </span>
+        <span class="project-tag">
+         Data Dashboard
+        </span>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
   </section>
-
   <!-- ==========================================
        APPROACH SECTION
        ========================================== -->
   <section class="section container" id="approach">
-    <div class="reveal">
-      <h2 class="section-title">My approach</h2>
-      <div style="display: flex; flex-direction: column; gap: 2.5rem; max-width: 800px;">
-        
-        <div>
-          <h3 style="font-size: 1.3rem; margin-bottom: 0.8rem;">Dedicated deep exploration of AI</h3>
-          <p style="color: var(--text-secondary); line-height: 1.7;">
-            As sociologist, economist, and on-leave manager in the public service, I am drawn to the enormous transformational potential of AI - as a <a href="https://knightcolumbia.org/content/ai-as-normal-technology" style="color: var(--accent-primary); text-decoration: none;">normal technology</a>. Throughout my <a href="https://www.linkedin.com/in/petershijiao/" style="color: var(--accent-primary); text-decoration: none;">career</a>, I have been involved in various projects studying the trends and impacts of technology on society and the economy from a statistical and research perspective. For the next year, I will be shifting my focus towards deep exploration of the capabilities, possibilities, and risks of this quickly evolving technology. I want to be able to not only understand the ecosystem that enables this technology, but also to be able to fluently use and architect realistic business solutions with it.
-          </p>
-        </div>
-
-        <div>
-          <h3 style="font-size: 1.3rem; margin-bottom: 0.8rem;"><i class="fa-solid fa-screwdriver-wrench" style="color: var(--accent-primary); margin-right: 0.5rem;"></i>...through learning by doing</h3>
-          <p style="color: var(--text-secondary); line-height: 1.7;">
-            Over the next year (and probably longer!), I will be building functional prototypes, experimenting with new workflows, and thinking deeply about how AI can transform organizational strategy and operations. My work will likely fall along several buckets:
-          </p>
-          <ol type="a" style="color: var(--text-secondary); line-height: 1.7; margin-top: 0.5rem; padding-left: 1.5rem;">
-            <li>building products with AI (e.g. old-school app)</li>
-            <li>products with an AI integration component (e.g. LLM API integration or something more local)</li>
-            <li>evolving my workflow to incorporate more agentic loops that change how I work</li>
-            <li>abstracting from these experiments to imagine different organizational models and processes</li>
-          </ol>
-        </div>
-
-        <div>
-          <h3 style="font-size: 1.3rem; margin-bottom: 0.8rem;"><i class="fa-solid fa-book-open" style="color: var(--accent-primary); margin-right: 0.5rem;"></i>...as well as study and reflection</h3>
-          <p style="color: var(--text-secondary); line-height: 1.7;">
-            As an non-IT professional, there is a lot for me to learn about the technical ecosystem in which AI technologies are embedded. To do this, I am diving deep into the end-to-end AI stack, including but not limited to:
-          </p>
-          <ol type="a" style="color: var(--text-secondary); line-height: 1.7; margin-top: 0.5rem; padding-left: 1.5rem;">
-            <li>data and metadata management (e.g. cloud solutions, local solutions)</li>
-            <li>AI product design</li>
-            <li>foundational AI engineering concepts (see: Chip Huyen's "AI Engineering")</li>
-            <li>responsible AI (e.g. security, ethics)</li>
-            <li>others to add...</li>
-          </ol>
-        </div>
-
-        <div>
-          <h3 style="font-size: 1.3rem; margin-bottom: 0.8rem;"><i class="fa-solid fa-bullseye" style="color: var(--accent-primary); margin-right: 0.5rem;"></i>...in order to avoid hype and act more effectively</h3>
-          <p style="color: var(--text-secondary); line-height: 1.7;">
-            I want to find that middle-ground where I can contribute ambitious, innovative ideas and solutions that are well-thought-out and grounded in technical understanding.
-          </p>
-        </div>
-        
-      </div>
+   <div class="reveal">
+    <h2 class="section-title">
+     My approach
+    </h2>
+    <div style="display: flex; flex-direction: column; gap: 2.5rem; max-width: 800px;">
+     <div>
+      <h3 style="font-size: 1.3rem; margin-bottom: 0.8rem;">
+       Dedicated deep exploration of AI
+      </h3>
+      <p style="color: var(--text-secondary); line-height: 1.7;">
+       As sociologist, economist, and on-leave manager in the public service, I am drawn to the enormous transformational potential of AI - as a
+       <a href="https://knightcolumbia.org/content/ai-as-normal-technology" style="color: var(--accent-primary); text-decoration: none;">
+        normal technology
+       </a>
+       . Throughout my
+       <a href="https://www.linkedin.com/in/petershijiao/" style="color: var(--accent-primary); text-decoration: none;">
+        career
+       </a>
+       , I have been involved in various projects studying the trends and impacts of technology on society and the economy from a statistical and research perspective. For the next year, I will be shifting my focus towards deep exploration of the capabilities, possibilities, and risks of this quickly evolving technology. I want to be able to not only understand the ecosystem that enables this technology, but also to be able to fluently use and architect realistic business solutions with it.
+      </p>
+     </div>
+     <div>
+      <h3 style="font-size: 1.3rem; margin-bottom: 0.8rem;">
+       <i class="fa-solid fa-screwdriver-wrench" style="color: var(--accent-primary); margin-right: 0.5rem;">
+       </i>
+       ...through learning by doing
+      </h3>
+      <p style="color: var(--text-secondary); line-height: 1.7;">
+       Over the next year (and probably longer!), I will be building functional prototypes, experimenting with new workflows, and thinking deeply about how AI can transform organizational strategy and operations. My work will likely fall along several buckets:
+      </p>
+      <ol style="color: var(--text-secondary); line-height: 1.7; margin-top: 0.5rem; padding-left: 1.5rem;" type="a">
+       <li>
+        building products with AI (e.g. old-school app)
+       </li>
+       <li>
+        products with an AI integration component (e.g. LLM API integration or something more local)
+       </li>
+       <li>
+        evolving my workflow to incorporate more agentic loops that change how I work
+       </li>
+       <li>
+        abstracting from these experiments to imagine different organizational models and processes
+       </li>
+      </ol>
+     </div>
+     <div>
+      <h3 style="font-size: 1.3rem; margin-bottom: 0.8rem;">
+       <i class="fa-solid fa-book-open" style="color: var(--accent-primary); margin-right: 0.5rem;">
+       </i>
+       ...as well as study and reflection
+      </h3>
+      <p style="color: var(--text-secondary); line-height: 1.7;">
+       As an non-IT professional, there is a lot for me to learn about the technical ecosystem in which AI technologies are embedded. To do this, I am diving deep into the end-to-end AI stack, including but not limited to:
+      </p>
+      <ol style="color: var(--text-secondary); line-height: 1.7; margin-top: 0.5rem; padding-left: 1.5rem;" type="a">
+       <li>
+        data and metadata management (e.g. cloud solutions, local solutions)
+       </li>
+       <li>
+        AI product design
+       </li>
+       <li>
+        foundational AI engineering concepts (see: Chip Huyen's "AI Engineering")
+       </li>
+       <li>
+        responsible AI (e.g. security, ethics)
+       </li>
+       <li>
+        others to add...
+       </li>
+      </ol>
+     </div>
+     <div>
+      <h3 style="font-size: 1.3rem; margin-bottom: 0.8rem;">
+       <i class="fa-solid fa-bullseye" style="color: var(--accent-primary); margin-right: 0.5rem;">
+       </i>
+       ...in order to avoid hype and act more effectively
+      </h3>
+      <p style="color: var(--text-secondary); line-height: 1.7;">
+       I want to find that middle-ground where I can contribute ambitious, innovative ideas and solutions that are well-thought-out and grounded in technical understanding.
+      </p>
+     </div>
     </div>
+   </div>
   </section>
-
   <!-- ==========================================
        WORKFLOW SECTION
        ========================================== -->
   <section class="section container" id="workflow">
-    <h2 class="section-title">My current workflow</h2>
-    <p style="color: var(--text-secondary); margin-bottom: 3rem; max-width: 800px; line-height: 1.7;">
-      This diagram maps how I am currently experimenting and developing prototypes. At some point, I may want to separate out the tech stuff from the conceptual layers. However, for now, this offers an idea of the autonomous vs. manual aspects of the <strong>decision-making</strong>, <strong>execution</strong>, and <strong>delivery</strong> parts of my workflow.
-    </p>
-    
-    <script>
-      function showNodeInfo(info) {
+   <h2 class="section-title">
+    My current workflow
+   </h2>
+   <p style="color: var(--text-secondary); margin-bottom: 3rem; max-width: 800px; line-height: 1.7;">
+    This diagram maps how I am currently experimenting and developing prototypes. At some point, I may want to separate out the tech stuff from the conceptual layers. However, for now, this offers an idea of the autonomous vs. manual aspects of the
+    <strong>
+     decision-making
+    </strong>
+    ,
+    <strong>
+     execution
+    </strong>
+    , and
+    <strong>
+     delivery
+    </strong>
+    parts of my workflow.
+   </p>
+   <script>
+    function showNodeInfo(info) {
         alert(info);
       }
-    </script>
-    <div class="workflow-wrapper reveal">
-      <div class="workflow-inner">
-        <pre class="mermaid" style="text-align: center;">
+   </script>
+   <div class="workflow-wrapper reveal">
+    <div class="workflow-inner">
+     <pre class="mermaid" style="text-align: center;">
           %%{init: {"securityLevel": "loose", "flowchart": {"padding": 30, "rankSpacing": 80, "nodeSpacing": 60}, "theme": "dark"}}%%
           flowchart TD
 
-          subgraph DECIDE["<span style='font-size: 2em; font-weight: 700;'>1. Decision making</span>"]
+          subgraph DECIDE["<span style="font-size: 2em; font-weight: 700;">1. Decision making</span>"]
 
             subgraph STREAM1[Stream A - Direct Human Prompting]
               H[Human with\nDomain Knowledge]
@@ -639,20 +925,20 @@
             subgraph STREAM2[Stream B - Autonomous Idea Pipeline]
               M[(Obsidian Vault)]
               N[Daily Review Agent]
-              M -->|Daily scheduled review| N
+              M --&gt;|Daily scheduled review| N
             end
 
             R[Research and Analysis]
 
-            R -->|Informs and shapes| H
-            R -->|Captures insights| M
-            H -->|Direct prompt| O
+            R --&gt;|Informs and shapes| H
+            R --&gt;|Captures insights| M
+            H --&gt;|Direct prompt| O
             H ~~~ N
-            N -.->|"Suggested prompt"| H
+            N -.-&gt;|"Suggested prompt"| H
             O[Antigravity AI]
           end
 
-          subgraph EXECUTE["<span style='font-size: 2em; font-weight: 700;'>2. Execution</span>"]
+          subgraph EXECUTE["<span style="font-size: 2em; font-weight: 700;">2. Execution</span>"]
             UI[System and UI Design]
             DM[Data Management]
             MCP[Model Context Protocol]
@@ -663,14 +949,14 @@
             end
           end
 
-          UI --> LLM
-          UI --> DM
-          UI --> MCP
-          DM --> LLM
-          MCP --> LLM
-          LLM --> SEC
+          UI --&gt; LLM
+          UI --&gt; DM
+          UI --&gt; MCP
+          DM --&gt; LLM
+          MCP --&gt; LLM
+          LLM --&gt; SEC
 
-          subgraph DELIVER["<span style='font-size: 2em; font-weight: 700;'>3. Delivery</span>"]
+          subgraph DELIVER["<span style="font-size: 2em; font-weight: 700;">3. Delivery</span>"]
             G[Local Testing and Debugging]
             DP{Deployment}
             I[Vercel and Netlify]
@@ -680,29 +966,29 @@
             W[Web3Forms Contact]
             L[Iterative Feedback]
 
-            G --> DP
-            DP -->|Web Apps & UIs| I
-            DP -->|AI Models & Python Backends| J
-            DP -->|All Source Code| K
-            DP -->|Curated Highlights| P
-            P --> W
-            I --> L
-            J --> L
-            K --> L
-            P --> L
-            W --> L
+            G --&gt; DP
+            DP --&gt;|Web Apps &amp; UIs| I
+            DP --&gt;|AI Models &amp; Python Backends| J
+            DP --&gt;|All Source Code| K
+            DP --&gt;|Curated Highlights| P
+            P --&gt; W
+            I --&gt; L
+            J --&gt; L
+            K --&gt; L
+            P --&gt; L
+            W --&gt; L
           end
 
           DECIDE ~~~ EXECUTE
           EXECUTE ~~~ DELIVER
 
-          O -->|Scaffold and generate code| UI
-          SEC --> G
+          O --&gt;|Scaffold and generate code| UI
+          SEC --&gt; G
 
-          R <-->|"Refine direction"| L
-          M <-->|"Capture new ideas"| L
-          H <-->|"Direct follow-up"| L
-          H <-->|"Test results"| G
+          R &lt;--&gt;|"Refine direction"| L
+          M &lt;--&gt;|"Capture new ideas"| L
+          H &lt;--&gt;|"Direct follow-up"| L
+          H &lt;--&gt;|"Test results"| G
 
           %% Interactive Tooltips and Clicks
           click MCP "javascript:void(0)" "Example Project: statcan_mcp"
@@ -719,101 +1005,115 @@
           class L feedback
         </pre>
     </div>
+   </div>
   </section>
-
-
   <!-- ==========================================
        CONTACT SECTION
        ========================================== -->
   <section class="section container" id="contact">
-    <h2 class="section-title">Let's Connect</h2>
-    
-    <div class="contact-grid reveal">
-      <div class="contact-info">
-        <div>
-          <p class="contact-info-text">
-            I am always interested in discussing AI workflows, socio-economic modeling, public policy technology, or design ideas. Reach out directly or send a message using the form.
-          </p>
+   <h2 class="section-title">
+    Let's Connect
+   </h2>
+   <div class="contact-grid reveal">
+    <div class="contact-info">
+     <div>
+      <p class="contact-info-text">
+       I am always interested in discussing AI workflows, socio-economic modeling, public policy technology, or design ideas. Reach out directly or send a message using the form.
+      </p>
+     </div>
+     <div class="contact-methods">
+      <a class="contact-method-card" href="https://www.linkedin.com/in/petershijiao/" rel="noopener noreferrer" target="_blank">
+       <div class="contact-icon">
+        <i class="fa-brands fa-linkedin-in">
+        </i>
+       </div>
+       <div>
+        <div class="contact-detail-title">
+         LinkedIn
         </div>
-        
-        <div class="contact-methods">
-          <a href="https://www.linkedin.com/in/petershijiao/" class="contact-method-card" target="_blank" rel="noopener noreferrer">
-            <div class="contact-icon">
-              <i class="fa-brands fa-linkedin-in"></i>
-            </div>
-            <div>
-              <div class="contact-detail-title">LinkedIn</div>
-              <div class="contact-detail-value">petershijiao</div>
-            </div>
-          </a>
-          
-          <a href="https://github.com/p3ji" class="contact-method-card" target="_blank" rel="noopener noreferrer">
-            <div class="contact-icon">
-              <i class="fa-brands fa-github"></i>
-            </div>
-            <div>
-              <div class="contact-detail-title">GitHub</div>
-              <div class="contact-detail-value">p3ji</div>
-            </div>
-          </a>
-
+        <div class="contact-detail-value">
+         petershijiao
         </div>
-      </div>
-      
-      <form class="contact-form" id="contactForm">
-        <input type="hidden" name="access_key" value="f9dce08f-5abc-4c00-b142-42da309d94ef">
-        <div class="form-group">
-          <label for="name" class="form-label">Name</label>
-          <input type="text" id="name" name="name" class="form-input" placeholder="Your name" required>
+       </div>
+      </a>
+      <a class="contact-method-card" href="https://github.com/p3ji" rel="noopener noreferrer" target="_blank">
+       <div class="contact-icon">
+        <i class="fa-brands fa-github">
+        </i>
+       </div>
+       <div>
+        <div class="contact-detail-title">
+         GitHub
         </div>
-        
-        <div class="form-group">
-          <label for="email" class="form-label">Email</label>
-          <input type="email" id="email" name="email" class="form-input" placeholder="Your email address" required>
+        <div class="contact-detail-value">
+         p3ji
         </div>
-        
-        <div class="form-group">
-          <label for="subject" class="form-label">Subject</label>
-          <input type="text" id="subject" name="subject" class="form-input" placeholder="What is this about?" required>
-        </div>
-        
-        <div class="form-group">
-          <label for="message" class="form-label">Message</label>
-          <textarea id="message" name="message" class="form-input" placeholder="Write your message..." required></textarea>
-        </div>
-        
-        <button type="submit" class="btn btn-primary" id="btnSubmit">
-          Send Message <i class="fa-regular fa-paper-plane"></i>
-        </button>
-        
-        <div class="form-status" id="formStatus"></div>
-      </form>
+       </div>
+      </a>
+     </div>
     </div>
+    <form class="contact-form" id="contactForm">
+     <input name="access_key" type="hidden" value="f9dce08f-5abc-4c00-b142-42da309d94ef"/>
+     <div class="form-group">
+      <label class="form-label" for="name">
+       Name
+      </label>
+      <input class="form-input" id="name" name="name" placeholder="Your name" required="" type="text"/>
+     </div>
+     <div class="form-group">
+      <label class="form-label" for="email">
+       Email
+      </label>
+      <input class="form-input" id="email" name="email" placeholder="Your email address" required="" type="email"/>
+     </div>
+     <div class="form-group">
+      <label class="form-label" for="subject">
+       Subject
+      </label>
+      <input class="form-input" id="subject" name="subject" placeholder="What is this about?" required="" type="text"/>
+     </div>
+     <div class="form-group">
+      <label class="form-label" for="message">
+       Message
+      </label>
+      <textarea class="form-input" id="message" name="message" placeholder="Write your message..." required=""></textarea>
+     </div>
+     <button class="btn btn-primary" id="btnSubmit" type="submit">
+      Send Message
+      <i class="fa-regular fa-paper-plane">
+      </i>
+     </button>
+     <div class="form-status" id="formStatus">
+     </div>
+    </form>
+   </div>
   </section>
-
   <!-- ==========================================
        FOOTER
        ========================================== -->
   <footer class="footer">
-    <div class="container footer-container">
-      <p>&copy; 2026 Peter Jiao. Built with HTML, CSS, and Javascript.</p>
-      <div class="footer-socials">
-        <a href="https://www.linkedin.com/in/petershijiao/" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-          <i class="fa-brands fa-linkedin"></i>
-        </a>
-        <a href="https://github.com/p3ji" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-          <i class="fa-brands fa-github"></i>
-        </a>
-      </div>
+   <div class="container footer-container">
+    <p>
+     © 2026 Peter Jiao. Built with HTML, CSS, and Javascript.
+    </p>
+    <div class="footer-socials">
+     <a aria-label="LinkedIn" class="social-link" href="https://www.linkedin.com/in/petershijiao/" rel="noopener noreferrer" target="_blank">
+      <i class="fa-brands fa-linkedin">
+      </i>
+     </a>
+     <a aria-label="GitHub" class="social-link" href="https://github.com/p3ji" rel="noopener noreferrer" target="_blank">
+      <i class="fa-brands fa-github">
+      </i>
+     </a>
     </div>
+   </div>
   </footer>
-
   <!-- Custom JS -->
-  <script src="script.js?v=4"></script>
-  
+  <script src="script.js?v=4">
+  </script>
   <!-- Mermaid.js for visual diagram -->
   <script type="module">
-    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+   import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
     mermaid.initialize({
       startOnLoad: true,
       theme: 'dark',
@@ -830,7 +1130,7 @@
   </script>
   <!-- GitHub API and Progress Script -->
   <script>
-    document.addEventListener("DOMContentLoaded", function() {
+   document.addEventListener("DOMContentLoaded", function() {
       // 1. Fetch Last GitHub Update
       fetch('https://api.github.com/repos/p3ji/portfolio/commits?per_page=1')
         .then(response => response.json())
@@ -877,6 +1177,5 @@
       }, 500);
     });
   </script>
-
-</body>
+ </body>
 </html>
