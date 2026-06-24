@@ -60,8 +60,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     links.forEach(link => {
+      const href = link.getAttribute('href');
+      if (!href || !href.startsWith('#')) return; // skip cross-page links
       link.classList.remove('active');
-      if (link.getAttribute('href') === `#${currentSection}`) {
+      if (href === `#${currentSection}`) {
         link.classList.add('active');
       }
     });

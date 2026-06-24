@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Peter Jiao's One Year AI Journey — approach, workflow, and a scrollable timeline of projects, self-study, and reflections." name="description"/>
+  <title>One Year AI Journey | Peter Jiao</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+  <link href="style.css?v=9" rel="stylesheet"/>
+ </head>
+ <body>
+  <!-- ==========================================
+       NAVIGATION HEADER
+       ========================================== -->
+  <header class="header" id="header">
+   <div class="container nav-container">
+    <a class="logo" href="index.html">
+     Peter Jiao
+     <span class="logo-dot"></span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+     <a class="nav-link" href="index.html#home" id="link-home">Home</a>
+     <div class="nav-dropdown">
+      <a class="nav-link" href="index.html#projects" id="link-projects">
+       Projects
+       <i class="fa-solid fa-chevron-down" style="font-size: 0.7em; margin-left: 0.2rem;"></i>
+      </a>
+      <div class="dropdown-content">
+       <a href="index.html#concepts">Concepts</a>
+       <a href="index.html#prototypes">Prototypes</a>
+      </div>
+     </div>
+     <a class="nav-link active" href="journey.html" id="link-journey">AI Journey</a>
+     <a class="nav-link" href="index.html#contact" id="link-contact">Contact</a>
+    </nav>
+    <div class="nav-actions">
+     <button aria-label="Toggle Light/Dark Mode" class="theme-toggle" id="themeToggle" title="Toggle Light/Dark Mode">
+      <i class="fa-solid fa-moon"></i>
+      <i class="fa-solid fa-sun"></i>
+     </button>
+     <div class="menu-toggle" id="menuToggle">
+      <span></span>
+      <span></span>
+      <span></span>
+     </div>
+    </div>
+   </div>
+  </header>
+
+  <!-- ==========================================
+       JOURNEY HERO
+       ========================================== -->
+  <section class="section" id="journey-top" style="padding-top: calc(var(--header-height) + 5rem); padding-bottom: 3rem; text-align: center;">
+   <div class="container">
+    <div class="hero-badge" style="display: inline-flex; margin-bottom: 1.5rem;">
+     <span class="hero-badge-dot"></span>
+     June 2026 — Ongoing
+    </div>
+    <h1 class="section-title" style="font-size: 3rem; display: inline-block; margin-bottom: 1.5rem;">
+     One Year AI Journey
+    </h1>
+    <p class="hero-tagline" style="max-width: 620px; margin: 0 auto; font-size: 1.05rem;">
+     A documented year of deep exploration: building prototypes, studying the AI stack, and thinking seriously about how this technology transforms how we work and organize.
+    </p>
+   </div>
+  </section>
+
+  <!-- ==========================================
+       STICKY SUB-NAVIGATION
+       ========================================== -->
+  <div class="journey-subnav" id="journeySubnav">
+   <nav class="journey-subnav-links">
+    <a class="journey-subnav-link" href="#approach">My Approach</a>
+    <a class="journey-subnav-link" href="#workflow">My Workflow</a>
+    <a class="journey-subnav-link" href="#timeline">My Journey So Far</a>
+   </nav>
+  </div>
+
+  <!-- ==========================================
+       MY APPROACH
+       ========================================== -->
+  <section class="section container" id="approach">
+   <div class="reveal">
+    <h2 class="section-title">My approach</h2>
+    <div style="display: flex; flex-direction: column; gap: 2.5rem; max-width: 800px;">
+     <div>
+      <h3 style="font-size: 1.3rem; margin-bottom: 0.8rem;">Dedicated deep exploration of AI</h3>
+      <p style="color: var(--text-secondary); line-height: 1.7;">
+       As a sociologist, economist, and on-leave manager in the public service, I am drawn to the enormous transformational potential of AI — as a
+       <a href="https://knightcolumbia.org/content/ai-as-normal-technology" style="color: var(--accent-primary); text-decoration: none;">normal technology</a>.
+       Throughout my <a href="https://www.linkedin.com/in/petershijiao/" style="color: var(--accent-primary); text-decoration: none;">career</a>,
+       I have been involved in various projects studying the trends and impacts of technology on society and the economy from a statistical and research perspective. For the next year, I will be shifting my focus towards deep exploration of the capabilities, possibilities, and risks of this quickly evolving technology. I want to be able to not only understand the ecosystem that enables this technology, but also to be able to fluently use and architect realistic business solutions with it.
+      </p>
+     </div>
+     <div>
+      <h3 style="font-size: 1.3rem; margin-bottom: 0.8rem;">
+       <i class="fa-solid fa-screwdriver-wrench" style="color: var(--accent-primary); margin-right: 0.5rem;"></i>
+       ...through learning by doing
+      </h3>
+      <p style="color: var(--text-secondary); line-height: 1.7;">
+       Over the next year (and probably longer!), I will be building functional prototypes, experimenting with new workflows, and thinking deeply about how AI can transform organizational strategy and operations. My work will likely fall along several buckets:
+      </p>
+      <ol style="color: var(--text-secondary); line-height: 1.7; margin-top: 0.5rem; padding-left: 1.5rem;" type="a">
+       <li>building products with AI (e.g. old-school app)</li>
+       <li>products with an AI integration component (e.g. LLM API integration or something more local)</li>
+       <li>evolving my workflow to incorporate more agentic loops that change how I work</li>
+       <li>abstracting from these experiments to imagine different organizational models and processes</li>
+      </ol>
+     </div>
+     <div>
+      <h3 style="font-size: 1.3rem; margin-bottom: 0.8rem;">
+       <i class="fa-solid fa-book-open" style="color: var(--accent-primary); margin-right: 0.5rem;"></i>
+       ...as well as study and reflection
+      </h3>
+      <p style="color: var(--text-secondary); line-height: 1.7;">
+       As a non-IT professional, there is a lot for me to learn about the technical ecosystem in which AI technologies are embedded. To do this, I am diving deep into the end-to-end AI stack, including but not limited to:
+      </p>
+      <ol style="color: var(--text-secondary); line-height: 1.7; margin-top: 0.5rem; padding-left: 1.5rem;" type="a">
+       <li>data and metadata management (e.g. cloud solutions, local solutions)</li>
+       <li>AI product design</li>
+       <li>foundational AI engineering concepts (see: Chip Huyen's "AI Engineering")</li>
+       <li>responsible AI (e.g. security, ethics)</li>
+       <li>others to add...</li>
+      </ol>
+     </div>
+     <div>
+      <h3 style="font-size: 1.3rem; margin-bottom: 0.8rem;">
+       <i class="fa-solid fa-bullseye" style="color: var(--accent-primary); margin-right: 0.5rem;"></i>
+       ...in order to avoid hype and act more effectively
+      </h3>
+      <p style="color: var(--text-secondary); line-height: 1.7;">
+       I want to find that middle-ground where I can contribute ambitious, innovative ideas and solutions that are well-thought-out and grounded in technical understanding.
+      </p>
+     </div>
+    </div>
+   </div>
+  </section>
+
+  <!-- ==========================================
+       MY CURRENT WORKFLOW
+       ========================================== -->
+  <section class="section container" id="workflow">
+   <h2 class="section-title">My current workflow</h2>
+   <p style="color: var(--text-secondary); margin-bottom: 3rem; max-width: 800px; line-height: 1.7;">
+    This diagram maps how I am currently experimenting and developing prototypes. At some point, I may want to separate out the tech stuff from the conceptual layers. However, for now, this offers an idea of the autonomous vs. manual aspects of the
+    <strong>decision-making</strong>, <strong>execution</strong>, and <strong>delivery</strong> parts of my workflow.
+   </p>
+   <script>
+    function showNodeInfo(info) { alert(info); }
+   </script>
+   <div class="workflow-wrapper reveal">
+    <div class="workflow-inner">
+     <pre class="mermaid" style="text-align: center;">
+          %%{init: {"securityLevel": "loose", "flowchart": {"padding": 30, "rankSpacing": 80, "nodeSpacing": 60}, "theme": "dark"}}%%
+          flowchart TD
+
+          subgraph DECIDE["<span style="font-size: 2em; font-weight: 700;">1. Decision making</span>"]
+
+            subgraph STREAM1[Stream A - Direct Human Prompting]
+              H[Human with\nDomain Knowledge]
+            end
+
+            subgraph STREAM2[Stream B - Autonomous Idea Pipeline]
+              M[(Obsidian Vault)]
+              N[Daily Review Agent]
+              M --&gt;|Daily scheduled review| N
+            end
+
+            R[Research and Analysis]
+
+            R --&gt;|Informs and shapes| H
+            R --&gt;|Captures insights| M
+            H --&gt;|Direct prompt| O
+            H ~~~ N
+            N -.-&gt;|"Suggested prompt"| H
+            O[Antigravity AI]
+          end
+
+          subgraph EXECUTE["<span style="font-size: 2em; font-weight: 700;">2. Execution</span>"]
+            UI[System and UI Design]
+            DM[Data Management]
+            MCP[Model Context Protocol]
+
+            subgraph EXISTING[Handled by Existing Systems]
+              LLM[LLM APIs and Orchestration]
+              SEC[Security and Optimization]
+            end
+          end
+
+          UI --&gt; LLM
+          UI --&gt; DM
+          UI --&gt; MCP
+          DM --&gt; LLM
+          MCP --&gt; LLM
+          LLM --&gt; SEC
+
+          subgraph DELIVER["<span style="font-size: 2em; font-weight: 700;">3. Delivery</span>"]
+            G[Local Testing and Debugging]
+            DP{Deployment}
+            I[Vercel and Netlify]
+            J[Hugging Face Spaces]
+            K[GitHub Codebase / CI]
+            P[Portfolio Site Showcase]
+            W[Web3Forms Contact]
+            L[Iterative Feedback]
+
+            G --&gt; DP
+            DP --&gt;|Web Apps &amp; UIs| I
+            DP --&gt;|AI Models &amp; Python Backends| J
+            DP --&gt;|All Source Code| K
+            DP --&gt;|Curated Highlights| P
+            P --&gt; W
+            I --&gt; L
+            J --&gt; L
+            K --&gt; L
+            P --&gt; L
+            W --&gt; L
+          end
+
+          DECIDE ~~~ EXECUTE
+          EXECUTE ~~~ DELIVER
+
+          O --&gt;|Scaffold and generate code| UI
+          SEC --&gt; G
+
+          R &lt;--&gt;|"Refine direction"| L
+          M &lt;--&gt;|"Capture new ideas"| L
+          H &lt;--&gt;|"Direct follow-up"| L
+          H &lt;--&gt;|"Test results"| G
+
+          %% Interactive Tooltips and Clicks
+          click MCP "javascript:void(0)" "Example Project: statcan_mcp"
+
+          %% Classes are now styled via external CSS in style.css for Light/Dark mode support
+
+          class R,H human
+          class M obsidian
+          class N agent
+          class O ai
+          class UI,DM,MCP execute
+          class LLM,SEC existing
+          class G,DP,I,J,K,P,W deliver
+          class L feedback
+        </pre>
+    </div>
+   </div>
+  </section>
+
+  <!-- ==========================================
+       MY JOURNEY SO FAR — TIMELINE
+       ========================================== -->
+  <section class="section container" id="timeline">
+   <h2 class="section-title">My journey so far</h2>
+   <p style="color: var(--text-secondary); margin-bottom: 2.5rem; max-width: 700px; line-height: 1.7;">
+    A living log of milestones, prototypes, self-study, and reflections. I'll keep adding entries as the journey unfolds.
+   </p>
+   <!-- Legend -->
+   <div style="display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 3rem;">
+    <span class="timeline-badge milestone">Milestone</span>
+    <span class="timeline-badge study">Study</span>
+    <span class="timeline-badge prototype">Prototype</span>
+    <span class="timeline-badge concept">Concept</span>
+    <span class="timeline-badge blog">Reflection</span>
+   </div>
+   <div class="timeline" id="journeyTimeline"></div>
+  </section>
+
+  <!-- ==========================================
+       FOOTER
+       ========================================== -->
+  <footer class="footer">
+   <div class="container footer-container">
+    <p>© 2026 Peter Jiao. Built with HTML, CSS, and Javascript.</p>
+    <div class="footer-socials">
+     <a aria-label="LinkedIn" class="social-link" href="https://www.linkedin.com/in/petershijiao/" rel="noopener noreferrer" target="_blank">
+      <i class="fa-brands fa-linkedin"></i>
+     </a>
+     <a aria-label="GitHub" class="social-link" href="https://github.com/p3ji" rel="noopener noreferrer" target="_blank">
+      <i class="fa-brands fa-github"></i>
+     </a>
+    </div>
+   </div>
+  </footer>
+
+  <!-- Shared scripts (theme toggle, mobile menu, reveal animations) -->
+  <script src="script.js?v=5"></script>
+
+  <!-- Mermaid.js -->
+  <script type="module">
+   import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+   mermaid.initialize({
+     startOnLoad: true,
+     theme: 'dark',
+     themeVariables: {
+       background: 'transparent',
+       primaryColor: '#0c1222',
+       primaryTextColor: '#f8fafc',
+       primaryBorderColor: '#10b981',
+       lineColor: '#6366f1',
+       secondaryColor: '#121a2f',
+       tertiaryColor: '#121a2f'
+     }
+   });
+  </script>
+
+  <!-- Timeline data & render -->
+  <script>
+   const timelineData = [
+     {
+       date: "Spring 2026",
+       type: "study",
+       title: "Deep Dive: Foundations",
+       description: "Intensive self-study before the official career break. Working through Chip Huyen's \"AI Engineering\", exploring the LLM ecosystem (APIs, agents, vector databases), and completing Coursera courses on AI product design and ML fundamentals.",
+       tags: ["Coursera", "AI Engineering", "Self-study", "LLMs"]
+     },
+     {
+       date: "June 1, 2026",
+       type: "milestone",
+       title: "Journey Officially Begins",
+       description: "Started a formal one-year career break dedicated to deep, hands-on exploration of AI — its capabilities, architectures, and potential for transforming organizations and workflows.",
+       tags: ["Career Break"]
+     },
+     {
+       date: "Early June 2026",
+       type: "study",
+       title: "Getting the Stack Running",
+       description: "First weeks of hands-on experimentation: set up local dev environment, learned Git workflows, deployed first projects to GitHub Pages and Vercel, and got comfortable with the full HTML/CSS/JS stack.",
+       tags: ["Git", "Deployment", "Dev Setup", "HTML/CSS/JS"]
+     },
+     {
+       date: "June 10, 2026",
+       type: "prototype",
+       title: "Canadian AI Jobs Report",
+       description: "An interactive dashboard analyzing the economic value of Canadian college majors — mapping CIP programs to NOC occupations with AI disruption risk scores, median salaries, and 10-year job growth metrics.",
+       tags: ["Economy", "Data Viz"],
+       links: [
+         { label: "GitHub", icon: "fa-brands fa-github", href: "https://github.com/p3ji/occupation_ai" },
+         { label: "Live", icon: "fa-solid fa-play", href: "https://occupation-ai.vercel.app/" }
+       ]
+     },
+     {
+       date: "June 11, 2026",
+       type: "prototype",
+       title: "Ottawa Recreation Discovery",
+       description: "A visual discovery tool and interactive map for parents to find municipal recreation facilities and summer camps in Ottawa by proximity, amenities, and geographical sector.",
+       tags: ["Personal Tools", "Maps"],
+       links: [
+         { label: "Live", icon: "fa-solid fa-play", href: "https://p3ji-p3ji.hf.space/" }
+       ]
+     },
+     {
+       date: "June 12–13, 2026",
+       type: "prototype",
+       title: "Policy AI Assistants — NIHB + WFA",
+       description: "Two RAG-based policy chatbots grounded in real government documentation: one navigating the Non-Insured Health Benefits program, the other advising on Federal Public Service Work Force Adjustment guidelines.",
+       tags: ["Health", "Work Tools", "RAG", "LLM"],
+       links: [
+         { label: "NIHB", icon: "fa-solid fa-play", href: "https://nihbwrap.netlify.app/" },
+         { label: "WFA", icon: "fa-solid fa-play", href: "https://wfa-blond.vercel.app/" }
+       ]
+     },
+     {
+       date: "June 17, 2026",
+       type: "milestone",
+       title: "Portfolio Site Launched",
+       description: "Built and deployed this portfolio to document the journey publicly — complete with an agent-status hero widget, live GitHub stats, a projects grid with filtering, and a workflow architecture diagram.",
+       links: [
+         { label: "GitHub", icon: "fa-brands fa-github", href: "https://github.com/p3ji/portfolio" }
+       ]
+     },
+     {
+       date: "June 18, 2026",
+       type: "prototype",
+       title: "Gmail Cleaner CLI",
+       description: "A Python command-line tool to clean, organize, and label Gmail inboxes via IMAP — first foray into developer-facing tooling and Python packaging.",
+       tags: ["Personal Tools", "Python", "CLI"],
+       links: [
+         { label: "GitHub", icon: "fa-brands fa-github", href: "https://github.com/p3ji/gmailcleaner" }
+       ]
+     },
+     {
+       date: "June 20, 2026",
+       type: "prototype",
+       title: "Drug Utilization Dashboard + Retirement Calculator",
+       description: "Two analytical tools in a single sprint: a monitoring dashboard for drug utilization data in Canada, and a Defined Benefit pension early retirement calculator mapping portfolio and pension timelines.",
+       tags: ["Health", "Economy", "Dashboards"],
+       links: [
+         { label: "Drug", icon: "fa-solid fa-play", href: "https://p3ji.github.io/drug/" },
+         { label: "Finance", icon: "fa-solid fa-play", href: "https://p3ji.github.io/financialtool/" }
+       ]
+     },
+     {
+       date: "June 21–22, 2026",
+       type: "prototype",
+       title: "Games Sprint — Debate, n-1, WordString",
+       description: "A rapid games sprint exploring PWA architecture, service workers, offline caching, and Web Audio API: a mobile-first debate facilitator for kids, an anagram word-unscrambling game, and a cozy sewing-themed word puzzle.",
+       tags: ["Games", "PWA", "Mobile", "Web Audio"],
+       links: [
+         { label: "Debate", icon: "fa-solid fa-play", href: "https://p3ji.github.io/debate_game/" },
+         { label: "n-1", icon: "fa-solid fa-play", href: "https://n-1game.vercel.app/" },
+         { label: "WordString", icon: "fa-solid fa-play", href: "https://p3ji.github.io/wordstring/" }
+       ]
+     },
+     {
+       date: "June 24, 2026",
+       type: "prototype",
+       title: "Mobile Survey Builder — Now Live",
+       description: "A DDI-compliant, mobile-first survey design and EQ authoring tool — built to rigorous statistical agency standards, featuring nested rosters, complex skip logic, bilingual support, and WCAG accessibility.",
+       tags: ["Work Tools", "DDI", "Mobile", "Accessibility"],
+       links: [
+         { label: "GitHub", icon: "fa-brands fa-github", href: "https://github.com/p3ji/mobilesurvey" },
+         { label: "Live", icon: "fa-solid fa-play", href: "https://p3ji.github.io/mobilesurvey/" }
+       ]
+     }
+   ];
+
+   function renderTimeline() {
+     const container = document.getElementById('journeyTimeline');
+     if (!container) return;
+
+     container.innerHTML = timelineData.map(item => {
+       const tagsHtml = (item.tags || [])
+         .map(t => `<span class="timeline-tag">${t}</span>`)
+         .join('');
+       const linksHtml = (item.links || [])
+         .map(l => `<a class="timeline-link-btn" href="${l.href}" target="_blank" rel="noopener noreferrer" title="${l.label}"><i class="${l.icon}"></i></a>`)
+         .join('');
+       const hasFooter = (item.tags && item.tags.length) || (item.links && item.links.length);
+       const badgeLabel = item.type === 'blog' ? 'Reflection' : item.type.charAt(0).toUpperCase() + item.type.slice(1);
+
+       return `
+         <div class="timeline-entry" data-type="${item.type}">
+           <div class="timeline-dot"></div>
+           <div class="timeline-meta">
+             <span class="timeline-badge ${item.type}">${badgeLabel}</span>
+             <span class="timeline-date-text">${item.date}</span>
+           </div>
+           <div class="timeline-card">
+             <h3 class="timeline-title">${item.title}</h3>
+             <p class="timeline-desc">${item.description}</p>
+             ${hasFooter ? `<div class="timeline-footer">${tagsHtml}${linksHtml}</div>` : ''}
+           </div>
+         </div>
+       `;
+     }).join('');
+
+     const cards = container.querySelectorAll('.timeline-entry');
+     const observer = new IntersectionObserver((observed) => {
+       observed.forEach(obs => {
+         if (obs.isIntersecting) {
+           obs.target.classList.add('visible');
+           observer.unobserve(obs.target);
+         }
+       });
+     }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+     cards.forEach(card => observer.observe(card));
+   }
+
+   function updateSubnav() {
+     const ids = ['approach', 'workflow', 'timeline'];
+     const subLinks = document.querySelectorAll('.journey-subnav-link');
+     let current = '';
+     ids.forEach(id => {
+       const el = document.getElementById(id);
+       if (el && window.scrollY >= el.offsetTop - 140) current = id;
+     });
+     subLinks.forEach(link => {
+       link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
+     });
+   }
+
+   document.addEventListener('DOMContentLoaded', renderTimeline);
+   window.addEventListener('scroll', updateSubnav, { passive: true });
+  </script>
+ </body>
+</html>
