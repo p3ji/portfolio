@@ -1,0 +1,131 @@
+[
+  {
+    "date": "Spring 2026",
+    "type": "study",
+    "title": "Exploring Foundations",
+    "description": "Self-study before the official experimentation phase begins. Working through Chip Huyen's \\",
+    "tags": [
+      "Coursera",
+      "AI Engineering",
+      "Self-study",
+      "LLMs"
+    ]
+  },
+  {
+    "date": "June 1, 2026",
+    "type": "milestone",
+    "title": "Journey Officially Begins",
+    "description": "Started a formal one-year exploration dedicated to deep, hands-on experimentation with AI — its capabilities, architectures, and potential for transforming organizations and workflows.",
+    "tags": [
+      "Career Break"
+    ]
+  },
+  {
+    "date": "Early June 2026",
+    "type": "study",
+    "title": "Getting the Stack Running",
+    "description": "First weeks of hands-on experimentation: set up local dev environment, learned Git workflows, deployed first projects to GitHub Pages, Vercel, and Netlify.",
+    "tags": [
+      "Git",
+      "Deployment",
+      "Dev Setup",
+      "HTML/CSS/JS"
+    ]
+  },
+  {
+    "date": "June 10, 2026",
+    "type": "prototype",
+    "title": "Canadian AI Jobs Report",
+    "description": "An interactive dashboard analyzing the economic value of Canadian college majors — mapping CIP programs to NOC occupations with AI disruption risk scores, median salaries, and 10-year job growth metrics.",
+    "tags": [
+      "Economy",
+      "Data Viz"
+    ]
+  },
+  {
+    "date": "June 11, 2026",
+    "type": "prototype",
+    "title": "Ottawa Recreation Discovery",
+    "description": "A visual discovery tool and interactive map for parents to find municipal recreation facilities and summer camps in Ottawa by proximity, amenities, and geographical sector.",
+    "tags": [
+      "Personal Tools",
+      "Maps"
+    ]
+  },
+  {
+    "date": "June 12–13, 2026",
+    "type": "prototype",
+    "title": "Policy AI Assistants — NIHB + WFA",
+    "description": "Two RAG-based policy chatbots grounded in real government documentation: one navigating the Non-Insured Health Benefits program, the other advising on Federal Public Service Work Force Adjustment guidelines.",
+    "tags": [
+      "Health",
+      "Work Tools",
+      "RAG",
+      "LLM"
+    ]
+  },
+  {
+    "date": "June 17, 2026",
+    "type": "milestone",
+    "title": "Portfolio Site Launched",
+    "description": "Built and deployed this portfolio to document the journey publicly — complete with an live GitHub stats, expansion of the "
+  },
+  {
+    "date": "June 18, 2026",
+    "type": "prototype",
+    "title": "Gmail Cleaner CLI",
+    "description": "A Python command-line tool to clean, organize, and label Gmail inboxes via IMAP.",
+    "tags": [
+      "Personal Tools",
+      "Python",
+      "CLI"
+    ]
+  },
+  {
+    "date": "June 20, 2026",
+    "type": "prototype",
+    "title": "Drug Utilization Dashboard + Retirement Calculator",
+    "description": "Two analytical tools in quick succession: a monitoring dashboard for drug utilization data in Canada, and a Defined Benefit pension early retirement calculator mapping portfolio and pension timelines.",
+    "tags": [
+      "Health",
+      "Economy",
+      "Dashboards"
+    ]
+  },
+  {
+    "date": "June 21–22, 2026",
+    "type": "prototype",
+    "title": "Games Sprint — Debate, n-1, WordString",
+    "description": "A rapid games sprint building webapps: a debate facilitator for kids, an anagram word-unscrambling game, and a cozy sewing-themed word puzzle.  Complete with high scores that sync with Supabase.  Next:  how to get this onto an app store (free of course!).",
+    "tags": [
+      "Games",
+      "PWA",
+      "Mobile",
+      "Web Audio"
+    ]
+  },
+  {
+    "date": "June 24, 2026",
+    "type": "prototype",
+    "title": "Mobile Survey Builder — Now Live",
+    "description": "A DDI-compliant, mobile-first survey design and EQ authoring tool — featuring re-usable metadata components, nested rosters, complex skip logic, bilingual support, and WCAG accessibility.",
+    "tags": [
+      "Work Tools",
+      "DDI",
+      "Mobile",
+      "Accessibility"
+    ]
+  },
+  {
+    "date": "June 26, 2026",
+    "type": "prototype",
+    "title": "Modular Survey Tools — Analytics & Collection Dashboard",
+    "description": "Significant expansion: rebranded to Modular Survey Tools and added several new modular tools:  Collector (to manage surveys and monitor real-time KPIs) and Searcher (to discover metadata), Migrator (to import external surveys into Designer), and the first video in the Training Hub.",
+    "tags": [
+      "Work Tools",
+      "Analytics",
+      "Dashboards",
+      "Paradata"
+    ]
+  }
+]
