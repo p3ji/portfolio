@@ -3,7 +3,7 @@
     "date": "Spring 2026",
     "type": "study",
     "title": "Exploring Foundations",
-    "description": "Self-study before the official experimentation phase begins. Working through Chip Huyen's \\",
+    "description": "Self-study before the official experimentation phase begins. Working through Chip Huyen's AI Engineering, exploring the LLM ecosystem beyond AI chatbots, and completing Coursera courses.",
     "tags": [
       "Coursera",
       "AI Engineering",
@@ -40,6 +40,16 @@
     "tags": [
       "Economy",
       "Data Viz"
+    ],
+    "links": [
+      {
+        "label": "GitHub",
+        "href": "https://github.com/p3ji/occupation_ai"
+      },
+      {
+        "label": "Live",
+        "href": "https://occupation-ai.vercel.app/"
+      }
     ]
   },
   {
@@ -50,6 +60,12 @@
     "tags": [
       "Personal Tools",
       "Maps"
+    ],
+    "links": [
+      {
+        "label": "Live",
+        "href": "https://p3ji-p3ji.hf.space/"
+      }
     ]
   },
   {
@@ -62,13 +78,29 @@
       "Work Tools",
       "RAG",
       "LLM"
+    ],
+    "links": [
+      {
+        "label": "NIHB",
+        "href": "https://nihbwrap.netlify.app/"
+      },
+      {
+        "label": "WFA",
+        "href": "https://wfa-blond.vercel.app/"
+      }
     ]
   },
   {
     "date": "June 17, 2026",
     "type": "milestone",
     "title": "Portfolio Site Launched",
-    "description": "Built and deployed this portfolio to document the journey publicly — complete with an live GitHub stats, expansion of the "
+    "description": "Built and deployed this portfolio to document the journey publicly — complete with live GitHub stats, a digital brain expansion tracker, a projects grid with filtering, and a workflow architecture diagram.",
+    "links": [
+      {
+        "label": "GitHub",
+        "href": "https://github.com/p3ji/portfolio"
+      }
+    ]
   },
   {
     "date": "June 18, 2026",
@@ -79,6 +111,12 @@
       "Personal Tools",
       "Python",
       "CLI"
+    ],
+    "links": [
+      {
+        "label": "GitHub",
+        "href": "https://github.com/p3ji/gmailcleaner"
+      }
     ]
   },
   {
@@ -90,18 +128,42 @@
       "Health",
       "Economy",
       "Dashboards"
+    ],
+    "links": [
+      {
+        "label": "Drug",
+        "href": "https://p3ji.github.io/drug/"
+      },
+      {
+        "label": "Finance",
+        "href": "https://p3ji.github.io/financialtool/"
+      }
     ]
   },
   {
     "date": "June 21–22, 2026",
     "type": "prototype",
     "title": "Games Sprint — Debate, n-1, WordString",
-    "description": "A rapid games sprint building webapps: a debate facilitator for kids, an anagram word-unscrambling game, and a cozy sewing-themed word puzzle.  Complete with high scores that sync with Supabase.  Next:  how to get this onto an app store (free of course!).",
+    "description": "A rapid games sprint building three web apps: a debate facilitator for kids, an anagram word-unscrambling game, and a cozy sewing-themed word puzzle. Complete with high scores synced to Supabase.",
     "tags": [
       "Games",
       "PWA",
       "Mobile",
       "Web Audio"
+    ],
+    "links": [
+      {
+        "label": "Debate",
+        "href": "https://p3ji.github.io/debate_game/"
+      },
+      {
+        "label": "n-1",
+        "href": "https://n-1game.vercel.app/"
+      },
+      {
+        "label": "WordString",
+        "href": "https://p3ji.github.io/wordstring/"
+      }
     ]
   },
   {
@@ -114,18 +176,38 @@
       "DDI",
       "Mobile",
       "Accessibility"
+    ],
+    "links": [
+      {
+        "label": "GitHub",
+        "href": "https://github.com/p3ji/mobilesurvey"
+      },
+      {
+        "label": "Live",
+        "href": "https://p3ji.github.io/mobilesurvey/"
+      }
     ]
   },
   {
     "date": "June 26, 2026",
     "type": "prototype",
     "title": "Modular Survey Tools — Analytics & Collection Dashboard",
-    "description": "Significant expansion: rebranded to Modular Survey Tools and added several new modular tools:  Collector (to manage surveys and monitor real-time KPIs) and Searcher (to discover metadata), Migrator (to import external surveys into Designer), and the first video in the Training Hub.",
+    "description": "Significant expansion: rebranded to Modular Survey Tools and added several new modular tools — Collector (manage surveys and monitor real-time KPIs), Searcher (discover metadata), Migrator (import external surveys into Designer), and the first video in the Training Hub.",
     "tags": [
       "Work Tools",
       "Analytics",
       "Dashboards",
       "Paradata"
+    ],
+    "links": [
+      {
+        "label": "GitHub",
+        "href": "https://github.com/p3ji/mobilesurvey"
+      },
+      {
+        "label": "Live",
+        "href": "https://p3ji.github.io/mobilesurvey/"
+      }
     ]
   }
 ]

@@ -22,89 +22,22 @@ if (!fs.existsSync(DATA_DIR)) {
 }
 
 /**
- * Parse timeline entries from YAML-like format
- * Format:
- * - date: "..."
- *   type: "..."
- *   title: "..."
- *   description: "..."
- *   tags: [...]
- *   links:
- *     - label: "..."
- *       href: "..."
+ * Parse timeline entries from JSON code block under "### Timeline Data"
  */
 function parseTimeline(content) {
-  const entries = [];
+  const sectionStart = content.indexOf('### Timeline Data');
+  if (sectionStart === -1) return [];
 
-  // Find "## 📅 TIMELINE ENTRIES" section
-  const timelineStart = content.indexOf('## 📅 TIMELINE ENTRIES');
-  if (timelineStart === -1) return [];
+  const afterMarker = content.substring(sectionStart);
+  const blockMatch = afterMarker.match(/```json\s*([\s\S]*?)```/);
+  if (!blockMatch) return [];
 
-  // Extract content from timeline section to next ## header or end of file
-  const timelineSection = content.substring(timelineStart);
-  const nextHeaderMatch = timelineSection.match(/\n## /);
-  const timelineContent = nextHeaderMatch
-    ? timelineSection.substring(0, nextHeaderMatch.index)
-    : timelineSection;
-
-  // Split by "- date:" to get individual entries
-  const entryMatches = timelineContent.split(/\n- date:/);
-
-  for (let i = 1; i < entryMatches.length; i++) {
-    const entryText = '- date:' + entryMatches[i];
-    const entry = {};
-
-    // Parse each field
-    const dateMatch = entryText.match(/- date:\s*"([^"]*)"/);
-    if (dateMatch) entry.date = dateMatch[1];
-
-    const typeMatch = entryText.match(/type:\s*"([^"]*)"/);
-    if (typeMatch) entry.type = typeMatch[1];
-
-    const titleMatch = entryText.match(/title:\s*"([^"]*)"/);
-    if (titleMatch) entry.title = titleMatch[1];
-
-    const descMatch = entryText.match(/description:\s*"([^"]*)"/);
-    if (descMatch) entry.description = descMatch[1];
-
-    // Parse tags array
-    const tagsMatch = entryText.match(/tags:\s*\[(.*?)\]/);
-    if (tagsMatch) {
-      entry.tags = tagsMatch[1]
-        .split(',')
-        .map(t => t.trim().replace(/^["']|["']$/g, ''))
-        .filter(t => t);
-    }
-
-    // Parse links array
-    const linksMatch = entryText.match(/links:\s*([\s\S]*?)(?=\n### |\n- date:|$)/);
-    if (linksMatch) {
-      const links = [];
-      const linkLines = linksMatch[1].split('\n');
-      let currentLink = null;
-
-      for (const line of linkLines) {
-        const labelMatch = line.match(/label:\s*"([^"]*)"/);
-        const hrefMatch = line.match(/href:\s*"([^"]*)"/);
-
-        if (labelMatch && hrefMatch) {
-          links.push({
-            label: labelMatch[1],
-            href: hrefMatch[1]
-          });
-        }
-      }
-
-      if (links.length > 0) entry.links = links;
-    }
-
-    // Only add if we have at least date and type
-    if (entry.date && entry.type) {
-      entries.push(entry);
-    }
+  try {
+    return JSON.parse(blockMatch[1].trim());
+  } catch (e) {
+    console.error('✗ JSON parse error in timeline data:', e.message);
+    return [];
   }
-
-  return entries;
 }
 
 /**
