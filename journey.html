@@ -305,114 +305,16 @@
 
   <!-- Timeline data & render -->
   <script>
-   const timelineData = [
-     {
-       date: "Spring 2026",
-       type: "study",
-       title: "Deep Dive: Foundations",
-       description: "Studied AI fundamentals through Chip Huyen's AI Engineering course, online classes on AI product design and machine learning, and explored the ecosystem of tools and services that power modern AI."
-     },
-     {
-       date: "June 1, 2026",
-       type: "milestone",
-       title: "Journey Officially Begins",
-       description: "Started a one-year career break to explore AI hands-on — learning how it works, what it can do, and how it might change the way organizations work."
-     },
-     {
-       date: "Early June 2026",
-       type: "study",
-       title: "Getting the Stack Running",
-       description: "Set up my development environment, learned git and GitHub, and deployed my first projects to build familiarity with the web development toolchain."
-     },
-     {
-       date: "June 10, 2026",
-       type: "prototype",
-       title: "Canadian AI Jobs Report",
-       description: "Built an interactive dashboard exploring how AI might affect different job sectors in Canada, showing salary data and job growth trends by field of study.",
-       links: [
-         { label: "GitHub", icon: "fa-brands fa-github", href: "https://github.com/p3ji/occupation_ai" },
-         { label: "Live", icon: "fa-solid fa-play", href: "https://occupation-ai.vercel.app/" }
-       ]
-     },
-     {
-       date: "June 11, 2026",
-       type: "prototype",
-       title: "Ottawa Recreation Discovery",
-       description: "Created a searchable map to help parents find recreation centers and summer camps in Ottawa by location and what they offer.",
-       links: [
-         { label: "Live", icon: "fa-solid fa-play", href: "https://p3ji-p3ji.hf.space/" }
-       ]
-     },
-     {
-       date: "June 12–13, 2026",
-       type: "prototype",
-       title: "Policy AI Assistants — NIHB + WFA",
-       description: "Built two AI chatbots that help people navigate government policies — one for health benefits, one for workforce adjustment programs.",
-       links: [
-         { label: "NIHB", icon: "fa-solid fa-play", href: "https://nihbwrap.netlify.app/" },
-         { label: "WFA", icon: "fa-solid fa-play", href: "https://wfa-blond.vercel.app/" }
-       ]
-     },
-     {
-       date: "June 17, 2026",
-       type: "milestone",
-       title: "Portfolio Site Launched",
-       description: "Launched this portfolio site to share my projects, approach, and progress as I explore AI.",
-       links: [
-         { label: "GitHub", icon: "fa-brands fa-github", href: "https://github.com/p3ji/portfolio" }
-       ]
-     },
-     {
-       date: "June 18, 2026",
-       type: "prototype",
-       title: "Gmail Cleaner CLI",
-       description: "Built a command-line tool that helps organize and clean up Gmail inboxes automatically.",
-       links: [
-         { label: "GitHub", icon: "fa-brands fa-github", href: "https://github.com/p3ji/gmailcleaner" }
-       ]
-     },
-     {
-       date: "June 20, 2026",
-       type: "prototype",
-       title: "Drug Utilization Dashboard + Retirement Calculator",
-       description: "Created two tools: a dashboard to track drug usage patterns in Canada, and a calculator to help plan early retirement based on pension and savings.",
-       links: [
-         { label: "Drug", icon: "fa-solid fa-play", href: "https://p3ji.github.io/drug/" },
-         { label: "Finance", icon: "fa-solid fa-play", href: "https://p3ji.github.io/financialtool/" }
-       ]
-     },
-     {
-       date: "June 21–22, 2026",
-       type: "prototype",
-       title: "Games Sprint — Debate, n-1, WordString",
-       description: "Built three games that work on mobile and offline: a debate tool for kids, a word-unscrambling game, and a word puzzle game.",
-       links: [
-         { label: "Debate", icon: "fa-solid fa-play", href: "https://p3ji.github.io/debate_game/" },
-         { label: "n-1", icon: "fa-solid fa-play", href: "https://n-1game.vercel.app/" },
-         { label: "WordString", icon: "fa-solid fa-play", href: "https://p3ji.github.io/wordstring/" }
-       ]
-     },
-     {
-       date: "June 24, 2026",
-       type: "prototype",
-       title: "Mobile Survey Builder — Now Live",
-       description: "Created a mobile-first survey tool designed to meet statistical standards, with features like skip logic, bilingual support, and accessibility built in.",
-       links: [
-         { label: "GitHub", icon: "fa-brands fa-github", href: "https://github.com/p3ji/mobilesurvey" },
-         { label: "Live", icon: "fa-solid fa-play", href: "https://p3ji.github.io/mobilesurvey/" }
-       ]
-     },
-     {
-       date: "June 26, 2026",
-       type: "prototype",
-       title: "Modular Survey Tools — Analytics & Collection Dashboard",
-       description: "Expanded the survey tool with new features: a dashboard to track survey responses in real-time, visualizations to show usage patterns and feedback, and ability to export the collected data.",
-       links: [
-         { label: "GitHub", icon: "fa-brands fa-github", href: "https://github.com/p3ji/mobilesurvey" },
-         { label: "Live", icon: "fa-solid fa-play", href: "https://p3ji.github.io/mobilesurvey/" }
-       ]
-     }
-   ];
+   let timelineData = [];
+
+   // Fetch timeline from vault-generated JSON
+   fetch('_data/timeline.json')
+     .then(r => r.json())
+     .then(data => {
+       timelineData = data;
+       renderTimeline();
+     })
+     .catch(err => console.error('Failed to load timeline:', err));
 
    function renderTimeline() {
      const container = document.getElementById('journeyTimeline');
@@ -423,7 +325,10 @@
          .map(t => `<span class="timeline-tag">${t}</span>`)
          .join('');
        const linksHtml = (item.links || [])
-         .map(l => `<a class="timeline-link-btn" href="${l.href}" target="_blank" rel="noopener noreferrer" title="${l.label}"><i class="${l.icon}"></i></a>`)
+         .map(l => {
+           const icon = l.label === 'GitHub' ? 'fa-brands fa-github' : 'fa-solid fa-play';
+           return `<a class="timeline-link-btn" href="${l.href}" target="_blank" rel="noopener noreferrer" title="${l.label}"><i class="${icon}"></i></a>`;
+         })
          .join('');
        const hasFooter = (item.tags && item.tags.length) || (item.links && item.links.length);
        const badgeLabel = item.type === 'blog' ? 'Reflection' : item.type.charAt(0).toUpperCase() + item.type.slice(1);
