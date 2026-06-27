@@ -218,7 +218,18 @@ Link labels: `GitHub`, `Live`, or any short label (icon inferred from label).
       { "label": "GitHub", "href": "https://github.com/p3ji/mobilesurvey" },
       { "label": "Live", "href": "https://p3ji.github.io/mobilesurvey/" }
     ]
-  }
+  },
+  {
+  "date": "June 27, 2026",
+  "type": "prototype",
+  "title": "Modular Survey Tools — Grid Questions, Supabase & Phase 6 Complete",
+  "description": "Major sprint completing Phase 6: added matrix/grid question type across schema, engine, designer, and runtime; migrated backend from Hono+SQLite to Supabase (hosted DB + REST, no server to run); patched a privacy bug where exploration-only surveys were wrongly persisting responses. Also set up a vault-to-site content pipeline so the AI Journey timeline is now editable directly from Obsidian.",
+  "tags": ["Work Tools", "Analytics", "Supabase", "DDI", "Paradata"],
+  "links": [
+    { "label": "GitHub", "href": "https://github.com/p3ji/mobilesurvey" },
+    { "label": "Live", "href": "https://p3ji.github.io/mobilesurvey/" }
+  ]
+}
 ]
 ```
 
