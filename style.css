@@ -1602,6 +1602,42 @@ body.light-mode .mermaid .cluster rect {
 
 body.light-mode .timeline-tag { background: rgba(0,0,0,0.03); }
 
+.timeline-details {
+  margin-top: 0.75rem;
+}
+
+.timeline-details summary {
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  color: var(--accent-primary);
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.timeline-details summary::-webkit-details-marker { display: none; }
+
+.timeline-details summary::before {
+  content: '›';
+  font-size: 1rem;
+  transition: transform 0.2s ease;
+  display: inline-block;
+}
+
+.timeline-details[open] summary::before {
+  transform: rotate(90deg);
+}
+
+.timeline-details-text {
+  margin-top: 0.6rem;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
 .timeline-link-btn {
   width: 30px; height: 30px;
   border-radius: 50%;
