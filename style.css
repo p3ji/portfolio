@@ -466,11 +466,7 @@ body.light-mode .theme-toggle .fa-sun {
 }
 
 .visual-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid var(--border-color);
-  padding-bottom: 1rem;
+  display: none;
 }
 
 .visual-dot-container {
