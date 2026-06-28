@@ -56,6 +56,7 @@ When a chat session produces bugs, decisions, or changes, **route them here:**
   1. `"description"` — always visible short summary
   2. `"details"` — optional, rendered as collapsible `<details>/<summary>` ("More details" with rotating › arrow)
   3. `"url"` — optional, rendered as inline "Read more →" link to a separate reflection page
+- **Tags in JSON** — entries have a `"tags"` array in the JSON (e.g., "RAG", "LLM"), but they are **NOT rendered** in the timeline cards. Keep them in the JSON for metadata/organization, but do not display them.
 - Reflection pages live in `reflections/` and share the same `style.css`. Use `reflections/template.html` as the starting point.
 - To add a reflection: copy `template.html`, fill in content, add `"url": "reflections/my-file.html"` to the timeline.json entry.
 
