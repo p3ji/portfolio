@@ -28,6 +28,36 @@ When a chat session produces bugs, decisions, or changes, **route them here:**
 
 ## Conventions & gotchas
 - Follow the **Decide → Execute → Deliver** process in `WORKFLOW.md` (plan first, then implement, then verify).
+- Cache-bust `style.css` by incrementing `?v=N` in every HTML file that references it whenever CSS changes.
+- Always keep `.nojekyll` at the repo root — GitHub Pages/Jekyll silently drops `_data/` and `_scripts/` without it.
+- Test locally with `python -m http.server 8000` (not `file://`) — `fetch()` is blocked on file:// URLs.
+- Timeline data lives in `_data/timeline.json`. Renderer in `journey.html` reads it via `fetch()` at runtime.
+
+## Design decisions (session June 27–28 2026)
+
+### Color palette
+- Adopted **Sirin Labs-inspired palette**: dark charcoal greens + warm copper/peach accent + deep teal.
+- `--accent-primary: #D9B08C` (copper), `--bg-primary: #1a2422`, `--accent-tertiary: #116466` (teal).
+- Light mode uses warm cream family (`#f0ebe0`, `#e5dfd4`, `#f8f3ea`).
+
+### Removed visual elements
+- **Glassmorphism** (`backdrop-filter: blur()`) removed everywhere — header, cards, nav, forms, subnav.
+- **Morphing blob** (`.visual-canvas`) hidden via `display: none`.
+- **Gradient text-clip** on hero title and stat numbers — replaced with flat `color: var(--accent-primary)`.
+- **Section title hover-expand** animation removed.
+- **Logo dot** (`.logo-dot` span) removed from nav in both `index.html` and `journey.html`.
+- **Hero widget status lines** ("AGENT ACTIVE", "HUMAN-ON-THE-LOOP") removed from `index.html`.
+- **SYS_LOC / version footer** inside hero widget removed from `index.html`.
+- **Timeline legend badges** (MILESTONE/STUDY/PROTOTYPE/CONCEPT/REFLECTION row) removed from `journey.html`.
+- **GitHub/Live links** removed from timeline cards (links field still in JSON, just not rendered).
+
+### Timeline architecture
+- Timeline entries support three levels of content:
+  1. `"description"` — always visible short summary
+  2. `"details"` — optional, rendered as collapsible `<details>/<summary>` ("More details" with rotating › arrow)
+  3. `"url"` — optional, rendered as inline "Read more →" link to a separate reflection page
+- Reflection pages live in `reflections/` and share the same `style.css`. Use `reflections/template.html` as the starting point.
+- To add a reflection: copy `template.html`, fill in content, add `"url": "reflections/my-file.html"` to the timeline.json entry.
 
 ## Open Bugs
 *(Log bugs here as discovered)*

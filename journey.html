@@ -322,6 +322,10 @@
          ? `<details class="timeline-details"><summary>More details</summary><p class="timeline-details-text">${item.details}</p></details>`
          : '';
 
+       const readMoreHtml = item.url
+         ? `<a class="timeline-readmore" href="${item.url}">Read more →</a>`
+         : '';
+
        return `
          <div class="timeline-entry" data-type="${item.type}">
            <div class="timeline-dot"></div>
@@ -333,6 +337,7 @@
              <h3 class="timeline-title">${item.title}</h3>
              <p class="timeline-desc">${item.description}</p>
              ${detailsHtml}
+             ${readMoreHtml}
              ${hasFooter ? `<div class="timeline-footer">${tagsHtml}</div>` : ''}
            </div>
          </div>

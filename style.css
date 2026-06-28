@@ -1638,6 +1638,18 @@ body.light-mode .timeline-tag { background: rgba(0,0,0,0.03); }
   line-height: 1.6;
 }
 
+.timeline-readmore {
+  display: inline-block;
+  margin-top: 0.75rem;
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  color: var(--accent-primary);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: opacity 0.15s ease;
+}
+.timeline-readmore:hover { opacity: 0.75; }
+
 .timeline-link-btn {
   width: 30px; height: 30px;
   border-radius: 50%;
