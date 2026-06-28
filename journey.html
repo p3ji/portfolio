@@ -312,10 +312,6 @@
      if (!container) return;
 
      container.innerHTML = timelineData.map(item => {
-       const tagsHtml = (item.tags || [])
-         .map(t => `<span class="timeline-tag">${t}</span>`)
-         .join('');
-       const hasFooter = item.tags && item.tags.length;
        const badgeLabel = item.type === 'blog' ? 'Reflection' : item.type.charAt(0).toUpperCase() + item.type.slice(1);
 
        const detailsHtml = item.details
@@ -338,7 +334,6 @@
              <p class="timeline-desc">${item.description}</p>
              ${detailsHtml}
              ${readMoreHtml}
-             ${hasFooter ? `<div class="timeline-footer">${tagsHtml}</div>` : ''}
            </div>
          </div>
        `;
