@@ -254,6 +254,18 @@
     ]
   },
   {
+    "date": "June 29, 2026",
+    "type": "concept",
+    "title": "Virtual Tutor — Screen-Aware Learning Companion",
+    "description": "Conceived an AI tutoring assistant that syncs with the user's active screen to provide real-time, catered instructions and learning guidance.",
+    "details": "Unlike a standard chatbot, this concept centers on a visual companion that observes the active workspace (via screen capture/OCR or editor integration) and dynamically offers context-aware help, tips, and step-by-step explanations tailored to what the user is currently doing on screen.",
+    "tags": [
+      "Education",
+      "AI Companion",
+      "UX Design"
+    ]
+  },
+  {
     "date": "July 2, 2026",
     "type": "prototype",
     "title": "Real Estate Empire — Prototyping Started",
