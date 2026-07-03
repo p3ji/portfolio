@@ -233,5 +233,43 @@
         "href": "https://p3ji.github.io/mobilesurvey/"
       }
     ]
+  },
+  {
+    "date": "June 28, 2026",
+    "type": "prototype",
+    "title": "Local CRA-Compliant Bookkeeping App",
+    "description": "Built a fully offline desktop bookkeeping app for Canadian sole proprietors using Python and Streamlit.",
+    "details": "The app ingests Costco Mastercard CSV statements, matches receipts via local OCR (Tesseract), and auto-classifies expenses to CRA Form T2125 lines. It calculates GST/HST ITCs, flags audit risks, and runs entirely locally using DuckDB to ensure financial data privacy.",
+    "tags": [
+      "Finance",
+      "Python",
+      "Streamlit",
+      "OCR"
+    ],
+    "links": [
+      {
+        "label": "GitHub",
+        "href": "https://github.com/p3ji/bookkeeping"
+      }
+    ]
+  },
+  {
+    "date": "July 2, 2026",
+    "type": "prototype",
+    "title": "Real Estate Empire — Ottawa Edition",
+    "description": "A real-estate simulation game where you build a property empire on a high-resolution satellite map of Ottawa.",
+    "details": "Choose your starting backstory (from Elgin Street server to Kanata tech worker), scout listings across actual neighborhoods like The Glebe and Westboro, outbid AI competitors in real-time, and manage your cash flow as the game clock ticks.",
+    "tags": [
+      "Games",
+      "React",
+      "Simulation",
+      "Maps"
+    ],
+    "links": [
+      {
+        "label": "GitHub",
+        "href": "https://github.com/p3ji/realestateempire"
+      }
+    ]
   }
 ]
