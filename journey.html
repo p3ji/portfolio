@@ -105,12 +105,38 @@
        ========================================== -->
   <div class="journey-subnav" id="journeySubnav">
    <nav class="journey-subnav-links">
+    <a class="journey-subnav-link" href="#digital-brain">Digital Brain</a>
     <a class="journey-subnav-link" href="#approach">My Approach</a>
     <a class="journey-subnav-link" href="#workflow">My Workflow</a>
     <a class="journey-subnav-link" href="#timeline">My Journey So Far</a>
-    <a class="journey-subnav-link" href="#digital-brain">Digital Brain</a>
    </nav>
   </div>
+
+  <!-- ==========================================
+       DIGITAL BRAIN
+       ========================================== -->
+  <section class="section container" id="digital-brain" style="overflow: hidden; border: 1px solid var(--border-color); border-radius: 16px; margin-bottom: 5rem;">
+   <div class="brain-content reveal" style="position: relative; z-index: 1; text-align: left; padding: 2.5rem; background: rgba(26, 36, 34, 0.6); backdrop-filter: blur(10px); border-radius: 12px; border: 1px solid rgba(217, 176, 140, 0.15); width: 100%; box-sizing: border-box;">
+    <h2 class="section-title" style="margin-bottom: 1rem;">Digital Brain</h2>
+    <p id="brain-stat-text" style="color: var(--text-secondary); line-height: 1.6;">
+     As I learn more, the nodes in the digital brain grows.
+    </p>
+    <div id="brain-ui-controls" style="display: none; margin-top: 1.5rem; flex-direction: column; gap: 0.5rem; align-items: flex-start;">
+      <div id="brain-slider-label" style="font-size: 0.85rem; color: var(--text-secondary); font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 1px;">Timeline: June-Current</div>
+      <div style="display: flex; align-items: center; gap: 1rem; width: 100%;">
+        <button id="brain-play-btn" class="btn btn-primary" style="padding: 0.5rem; border-radius: 50%; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center;">
+          <i class="fa-solid fa-play"></i>
+        </button>
+        <input type="range" id="brain-slider" min="0" max="100" value="100" style="flex: 1; cursor: pointer; accent-color: var(--accent-primary);">
+      </div>
+      <ul id="brain-bullets" style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin-top: 0.5rem; padding-left: 1.2rem;">
+        <li><span style="color: var(--accent-primary);">+1</span> since 1 day ago</li>
+        <li><span style="color: var(--accent-primary);">+4</span> since 1 week ago</li>
+      </ul>
+    </div>
+   </div>
+   <div id="brain-canvas-container"></div>
+  </section>
 
   <!-- ==========================================
        MY APPROACH
@@ -340,27 +366,7 @@
    <div class="timeline" id="journeyTimeline"></div>
   </section>
 
-  <!-- ==========================================
-       DIGITAL BRAIN
-       ========================================== -->
-  <section class="section container" id="digital-brain" style="overflow: hidden; border: 1px solid var(--border-color); border-radius: 16px; margin-bottom: 5rem;">
-   <div class="brain-content reveal" style="position: relative; z-index: 1; text-align: left; padding: 2.5rem; background: rgba(26, 36, 34, 0.6); backdrop-filter: blur(10px); border-radius: 12px; border: 1px solid rgba(217, 176, 140, 0.15); width: 100%; box-sizing: border-box;">
-    <h2 class="section-title" style="margin-bottom: 1rem;">Digital Brain</h2>
-    <p id="brain-stat-text" style="color: var(--text-secondary); line-height: 1.6;">
-     As I learn more, the nodes in the digital brain grows. <br><br>Currently: 287 nodes (<span style="color: var(--accent-primary);">+1</span> since 1 day ago, <span style="color: var(--accent-primary);">+4</span> since 1 week ago)
-    </p>
-    <div id="brain-ui-controls" style="display: none; margin-top: 1.5rem; flex-direction: column; gap: 0.5rem; align-items: flex-start;">
-      <div id="brain-slider-label" style="font-size: 0.85rem; color: var(--text-secondary); font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 1px;">Timeline: June-Current</div>
-      <div style="display: flex; align-items: center; gap: 1rem; width: 100%;">
-        <button id="brain-play-btn" class="btn btn-primary" style="padding: 0.5rem; border-radius: 50%; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center;">
-          <i class="fa-solid fa-play"></i>
-        </button>
-        <input type="range" id="brain-slider" min="0" max="100" value="100" style="flex: 1; cursor: pointer; accent-color: var(--accent-primary);">
-      </div>
-    </div>
-   </div>
-   <div id="brain-canvas-container"></div>
-  </section>
+
 
   <!-- ==========================================
        FOOTER
