@@ -1,15 +1,5 @@
 [
   {
-    "date": "July 10, 2026",
-    "type": "prototype",
-    "title": "Built Custom Portfolio Editor",
-    "description": "Created a standalone local editor to manage the portfolio's content, complete with a one-click GitHub publish integration.",
-    "details": "To streamline workflow documentation, I replaced the hardcoded HTML with a dynamic JSON architecture. The accompanying Editor app allows me to easily add projects and timeline entries, view the Git diff of my changes, and automatically publish to the live site without touching the codebase.",
-    "tags": [
-      "personal-tools"
-    ]
-  },
-  {
     "date": "Spring 2026",
     "type": "study",
     "title": "Exploring Foundations",
@@ -315,6 +305,16 @@
         "label": "Live",
         "href": "https://p3ji.github.io/statcan_codr/"
       }
+    ]
+  },
+  {
+    "date": "July 10, 2026",
+    "type": "prototype",
+    "title": "Built Custom Portfolio Editor",
+    "description": "Created a standalone local editor to manage the portfolio's content, complete with a one-click GitHub publish integration.",
+    "details": "To streamline workflow documentation, I replaced the hardcoded HTML with a dynamic JSON architecture. The accompanying Editor app allows me to easily add projects and timeline entries, view the Git diff of my changes, and automatically publish to the live site without touching the codebase.",
+    "tags": [
+      "personal-tools"
     ]
   }
 ]
