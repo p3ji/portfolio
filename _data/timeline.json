@@ -300,6 +300,10 @@
       {
         "label": "GitHub",
         "href": "https://github.com/p3ji/statcan_codr"
+      },
+      {
+        "label": "Live",
+        "href": "https://p3ji.github.io/statcan_codr/"
       }
     ]
   }
