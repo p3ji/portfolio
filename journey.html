@@ -7,6 +7,37 @@
   <title>One Year AI Journey | Peter Jiao</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
   <link href="style.css?v=14" rel="stylesheet"/>
+   <style>
+    /* Prevent text and digital brain WebGL canvas from overlapping */
+    #digital-brain {
+      display: grid !important;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      align-items: center;
+      padding: 2.5rem 1.5rem !important;
+      position: relative;
+    }
+    @media (min-width: 992px) {
+      #digital-brain {
+        grid-template-columns: 1.2fr 1.8fr !important;
+        padding: 3rem 4% !important;
+        min-height: 480px;
+      }
+    }
+    #brain-canvas-container {
+      position: relative !important;
+      width: 100% !important;
+      height: 380px !important;
+      border-radius: 12px;
+      overflow: hidden;
+      z-index: 0;
+    }
+    @media (min-width: 992px) {
+      #brain-canvas-container {
+        height: 440px !important;
+      }
+    }
+   </style>
  </head>
  <body>
   <!-- ==========================================
@@ -316,6 +347,28 @@
   </section>
 
   <!-- ==========================================
+       DIGITAL BRAIN
+       ========================================== -->
+  <section class="section container" id="digital-brain" style="overflow: hidden; border: 1px solid var(--border-color); border-radius: 16px; margin-bottom: 5rem;">
+   <div class="brain-content reveal" style="position: relative; z-index: 1; text-align: left; padding: 2.5rem; background: rgba(26, 36, 34, 0.6); backdrop-filter: blur(10px); border-radius: 12px; border: 1px solid rgba(217, 176, 140, 0.15); width: 100%; box-sizing: border-box;">
+    <h2 class="section-title" style="margin-bottom: 1rem;">Digital Brain Stats</h2>
+    <p id="brain-stat-text" style="color: var(--text-secondary); line-height: 1.6;">
+     As I learn more, the nodes in the digital brain grows. <br><br>There are currently 287 nodes (<span style="color: var(--accent-primary);">+1</span> since 1 day ago, <span style="color: var(--accent-primary);">+4</span> since 1 week ago)
+    </p>
+    <div id="brain-ui-controls" style="display: none; margin-top: 1.5rem; flex-direction: column; gap: 0.5rem; align-items: flex-start;">
+      <div id="brain-slider-label" style="font-size: 0.85rem; color: var(--text-secondary); font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 1px;">Loading timeline...</div>
+      <div style="display: flex; align-items: center; gap: 1rem; width: 100%;">
+        <button id="brain-play-btn" class="btn btn-primary" style="padding: 0.5rem; border-radius: 50%; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center;">
+          <i class="fa-solid fa-play"></i>
+        </button>
+        <input type="range" id="brain-slider" min="0" max="100" value="100" style="flex: 1; cursor: pointer; accent-color: var(--accent-primary);">
+      </div>
+    </div>
+   </div>
+   <div id="brain-canvas-container"></div>
+  </section>
+
+  <!-- ==========================================
        FOOTER
        ========================================== -->
   <footer class="footer">
@@ -441,6 +494,6 @@
   </script>
   <!-- WebGL Brain -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="three-brain.js?v=3"></script>
+  <script src="three-brain.js?v=4"></script>
  </body>
 </html>
