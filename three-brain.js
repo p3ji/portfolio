@@ -168,17 +168,26 @@ document.addEventListener("DOMContentLoaded", async () => {
                 playInterval = null;
                 playBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
             } else {
-                if (parseInt(slider.value) === history.length - 1) {
-                    slider.value = 0;
+                // Slider value is a node COUNT (1..particleCount), not a history array
+                // index (history has far fewer entries) — walk history by index but
+                // drive the slider/visuals with the actual node count at each step.
+                let historyIdx = parseInt(slider.value) >= particleCount
+                    ? 0
+                    : history.findIndex(h => h.count >= parseInt(slider.value));
+                if (historyIdx === -1) historyIdx = 0;
+                if (historyIdx === 0) {
+                    slider.value = history[0].count;
+                    updateVisuals(history[0].count);
                 }
+
                 playBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
-                const frameTime = 3000 / Math.max(1, history.length); // 3 seconds total
+                const frameTime = 5000 / Math.max(1, history.length - 1); // 5 seconds total
                 playInterval = setInterval(() => {
-                    let val = parseInt(slider.value);
-                    if (val < history.length - 1) {
-                        val++;
-                        slider.value = val;
-                        updateVisuals(val);
+                    if (historyIdx < history.length - 1) {
+                        historyIdx++;
+                        const count = history[historyIdx].count;
+                        slider.value = count;
+                        updateVisuals(count);
                     } else {
                         clearInterval(playInterval);
                         playInterval = null;
@@ -189,7 +198,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
 
         // Initialize UI
-        updateVisuals(history.length - 1);
+        updateVisuals(particleCount);
     }
 
     // Mouse Interaction
