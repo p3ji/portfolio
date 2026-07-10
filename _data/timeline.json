@@ -283,5 +283,24 @@
         "href": "https://github.com/p3ji/realestateempire"
       }
     ]
+  },
+  {
+    "date": "July 9, 2026",
+    "type": "prototype",
+    "title": "Ottawa Global Benchmark Engine",
+    "description": "Built a comparative analytics dashboard comparing Ottawa with global peer cities (Austin, Adelaide, Helsinki) across labour, housing, and tech indicators.",
+    "details": "Uses Statistics Canada CODR API data via an MCP server, along with FRED, ABS, and Statistics Finland. Built with a DuckDB-Wasm backend in the browser for fast, on-the-fly index baseline and divergence trend analysis. Setting up a data pipeline for a major expansion once new census data becomes available.",
+    "tags": [
+      "Analytics",
+      "Python",
+      "DuckDB",
+      "API Ingestion"
+    ],
+    "links": [
+      {
+        "label": "GitHub",
+        "href": "https://github.com/p3ji/statcan_codr"
+      }
+    ]
   }
 ]
