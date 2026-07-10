@@ -33,9 +33,26 @@ document.addEventListener("DOMContentLoaded", async () => {
         try {
             const response = await fetch('brain_stats_history.json?v=' + new Date().getTime());
             const rawHistory = await response.json();
-            history = Object.keys(rawHistory)
+            let realHistory = Object.keys(rawHistory)
                 .sort((a, b) => new Date(a) - new Date(b))
                 .map(date => ({ date, count: rawHistory[date] }));
+                
+            if (realHistory.length > 0) {
+                const initialCount = realHistory[0].count;
+                if (initialCount > 1) {
+                    const fakeEntries = [];
+                    const steps = 40; // 40 smooth frames of initial growth
+                    for (let i = 1; i <= steps; i++) {
+                        const interpolatedCount = Math.round(1 + (initialCount - 1) * (i / steps));
+                        if (interpolatedCount < initialCount) {
+                            fakeEntries.push({ date: "Start", count: interpolatedCount });
+                        }
+                    }
+                    history = fakeEntries.concat(realHistory);
+                } else {
+                    history = realHistory;
+                }
+            }
         } catch (e) {
             console.error("Failed to load brain history", e);
         }
