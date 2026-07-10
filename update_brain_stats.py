@@ -82,10 +82,20 @@ else:
 with open(html_path, 'r', encoding='utf-8') as f:
     html = f.read()
 
-pattern = re.compile(r'(As I learn more, the nodes in the digital brain grows\.)(.*?)(</p>)', re.DOTALL)
+# Build bullets HTML
+bullets_html = ""
+change_1d = format_change(count_1d, total_nodes)
+if change_1d:
+    bullets_html += f"\n        <li>{change_1d} since 1 day ago</li>"
+change_7d = format_change(count_7d, total_nodes)
+if change_7d:
+    bullets_html += f"\n        <li>{change_7d} since 1 week ago</li>"
+bullets_html += "\n      "
+
+pattern = re.compile(r'(<ul id="brain-bullets"[^>]*>)(.*?)(</ul>)', re.DOTALL)
 
 def repl(match):
-    return f"{match.group(1)} <br><br>{stats_html}\n    {match.group(3)}"
+    return f"{match.group(1)}{bullets_html}{match.group(3)}"
 
 html = pattern.sub(repl, html)
 
