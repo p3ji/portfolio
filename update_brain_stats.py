@@ -93,3 +93,24 @@ with open(html_path, 'w', encoding='utf-8') as f:
     f.write(html)
 
 print("Updated index.html with new stats:", stats_html)
+
+# 6. Commit and push changes to GitHub to rebuild the page and update the "Last GitHub Update" date
+try:
+    import subprocess
+    # Check if there are changes to commit
+    status_res = subprocess.run(["git", "status", "--porcelain"], capture_output=True, text=True, check=True)
+    if status_res.stdout.strip():
+        subprocess.run(["git", "add", html_path, history_path], check=True)
+        subprocess.run(["git", "commit", "-m", "chore: update daily PKG node stats"], check=True)
+        subprocess.run(["git", "push"], check=True)
+        print("Successfully committed and pushed daily stats update to GitHub.")
+    else:
+        # Check if the branch is ahead (has unpushed commits)
+        status_full = subprocess.run(["git", "status"], capture_output=True, text=True, check=True)
+        if "ahead" in status_full.stdout:
+            subprocess.run(["git", "push"], check=True)
+            print("Successfully pushed pending commits to GitHub.")
+        else:
+            print("No changes to commit or push in portfolio repository.")
+except Exception as e:
+    print("Failed to commit and push daily stats update:", e)
