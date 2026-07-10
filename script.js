@@ -114,62 +114,172 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================
-  // PROJECT FILTERING SYSTEM
+  // DYNAMIC PROJECTS LOADING
   // ==========================================
-  const filterTabs = document.querySelectorAll('.filter-tab');
-  const projectCards = document.querySelectorAll('.project-card');
+  async function loadProjects() {
+    try {
+      const response = await fetch('_data/projects.json?v=' + new Date().getTime());
+      const projects = await response.json();
+      
+      const carouselTrack = document.getElementById('carouselTrack');
+      const conceptsGrid = document.getElementById('concepts-grid');
+      const prototypesGrid = document.getElementById('prototypes-grid');
 
-  filterTabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      // Update active tab styling
-      filterTabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
+      if (!carouselTrack || !conceptsGrid || !prototypesGrid) return;
 
-      const filterValue = tab.getAttribute('data-filter');
+      projects.forEach(project => {
+        // Map category keys to display labels
+        const tagsHtml = project.category.map(cat => {
+          let label = cat;
+          if (cat === 'work-tools') label = 'Work Tools';
+          if (cat === 'personal-tools') label = 'Personal Tools';
+          if (cat === 'health') label = 'Health';
+          if (cat === 'economy') label = 'Economy';
+          if (cat === 'games') label = 'Games';
+          return `<span class="project-tag">${label}</span>`;
+        }).join('');
 
-      // Filter project cards
-      projectCards.forEach(card => {
-        const categories = card.getAttribute('data-category').split(',');
-        
-        if (filterValue === 'all' || categories.includes(filterValue)) {
-          card.style.display = 'flex';
-          setTimeout(() => {
-            card.style.opacity = '1';
-            card.style.transform = 'translateY(0) scale(1)';
-          }, 50);
-        } else {
-          card.style.opacity = '0';
-          card.style.transform = 'translateY(20px) scale(0.95)';
-          setTimeout(() => {
-            card.style.display = 'none';
-          }, 300);
+        const linksHtml = project.links.map(link => {
+          // Fallback logic for icons based on label if link.icon doesn't have fa-brands prefix
+          let iconClass = link.icon;
+          if (iconClass === 'fa-github') iconClass = 'fa-brands fa-github';
+          else if (iconClass === 'fa-play' || iconClass === 'fa-code' || iconClass === 'fa-download') iconClass = 'fa-solid ' + iconClass;
+          else if (!iconClass.includes('fa-')) iconClass = 'fa-solid fa-play'; // fallback
+          
+          return `
+          <a class="project-link" href="${link.href}" rel="noopener noreferrer" target="_blank" title="${link.label}">
+            <i class="${iconClass}"></i>
+          </a>
+        `}).join('');
+
+        const cardHtml = `
+          <div class="project-card reveal" data-category="${project.category.join(',')}">
+            <div class="project-header">
+              <div class="project-header-left">
+                <div class="project-icon-box">
+                  <i class="fa-solid ${project.icon}"></i>
+                </div>
+                <span class="project-tag stage-tag ${project.stage}">
+                  ${project.stage.charAt(0).toUpperCase() + project.stage.slice(1)}
+                </span>
+              </div>
+              <div class="project-links">
+                ${linksHtml}
+              </div>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">${project.title}</h3>
+              <p class="project-description">${project.description}</p>
+              <details class="project-details">
+                <summary class="project-summary">Project Details</summary>
+                <p class="project-description">${project.details}</p>
+              </details>
+              <div class="project-tags">
+                ${tagsHtml}
+              </div>
+            </div>
+          </div>
+        `;
+
+        if (project.stage === 'concept') {
+          conceptsGrid.innerHTML += cardHtml;
+        } else if (project.stage === 'prototype') {
+          prototypesGrid.innerHTML += cardHtml;
+        }
+
+        // Build carousel slide if featured
+        if (project.featured) {
+          const slideHtml = `
+            <div class="carousel-slide">
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; max-width: 900px; margin: 0 auto;">
+                <div style="aspect-ratio: 16/9; overflow: hidden; background: var(--bg-secondary); border-radius: 16px; border: 1px solid var(--border-color); display: flex; align-items: center; justify-content: center; padding: 2rem;">
+                  <img src="${project.image || ''}" alt="${project.title}" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                </div>
+                <div>
+                  <h3 style="font-family: var(--font-serif); font-size: 1.8rem; font-weight: 600; margin-bottom: 1rem;">${project.title}</h3>
+                  <p style="color: var(--text-secondary); font-size: 1rem; line-height: 1.7; margin-bottom: 1.5rem;">${project.description}</p>
+                  <div style="display: flex; gap: 1rem;">
+                    ${project.links.map(link => `<a href="${link.href}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">${link.label}</a>`).join('')}
+                  </div>
+                </div>
+              </div>
+            </div>
+          `;
+          carouselTrack.innerHTML += slideHtml;
         }
       });
+
+      // Initialize logic after DOM is populated
+      initProjectFilters();
+      initReveal();
+      initCarousel();
+
+    } catch (error) {
+      console.error("Error loading projects:", error);
+    }
+  }
+
+  loadProjects();
+
+  // ==========================================
+  // PROJECT FILTERING SYSTEM
+  // ==========================================
+  function initProjectFilters() {
+    const filterTabs = document.querySelectorAll('.filter-tab');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    filterTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        // Update active tab styling
+        filterTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        const filterValue = tab.getAttribute('data-filter');
+
+        // Filter project cards
+        projectCards.forEach(card => {
+          const categories = card.getAttribute('data-category').split(',');
+          
+          if (filterValue === 'all' || categories.includes(filterValue)) {
+            card.style.display = 'flex';
+            setTimeout(() => {
+              card.style.opacity = '1';
+              card.style.transform = 'translateY(0) scale(1)';
+            }, 50);
+          } else {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px) scale(0.95)';
+            setTimeout(() => {
+              card.style.display = 'none';
+            }, 300);
+          }
+        });
+      });
     });
-  });
+  }
 
   // ==========================================
   // INTERSECTION OBSERVER (REVEAL ON SCROLL)
   // ==========================================
-  const revealElements = document.querySelectorAll('.reveal');
+  function initReveal() {
+    const revealElements = document.querySelectorAll('.reveal');
 
-  const revealObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('active');
-        observer.unobserve(entry.target); // Trigger once
-      }
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          observer.unobserve(entry.target); // Trigger once
+        }
+      });
+    }, {
+      threshold: 0.15,
+      rootMargin: '0px 0px -50px 0px'
     });
-  }, {
-    threshold: 0.15,
-    rootMargin: '0px 0px -50px 0px'
-  });
 
-  revealElements.forEach(element => {
-    revealObserver.observe(element);
-  });
-
-
+    revealElements.forEach(element => {
+      revealObserver.observe(element);
+    });
+  }
 
   // ==========================================
   // CONTACT FORM REAL HANDLING (Web3Forms AJAX)
@@ -245,63 +355,70 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================
   // FEATURED CAROUSEL
   // ==========================================
-  let carouselIndex = 0;
-  const carouselSlides = document.querySelectorAll('.carousel-slide');
-  const carouselTrack = document.getElementById('carouselTrack');
-  const carouselDotsContainer = document.getElementById('carouselDots');
-  let carouselAutoplay;
+  function initCarousel() {
+    let carouselIndex = 0;
+    const carouselSlides = document.querySelectorAll('.carousel-slide');
+    const carouselTrack = document.getElementById('carouselTrack');
+    const carouselDotsContainer = document.getElementById('carouselDots');
+    let carouselAutoplay;
+    
+    // Clear old dots just in case
+    if (carouselDotsContainer) {
+      carouselDotsContainer.innerHTML = '';
+    }
 
-  if (carouselSlides.length > 0) {
-    // Create dots
-    carouselSlides.forEach((_, i) => {
-      const dot = document.createElement('button');
-      dot.className = `carousel-dot ${i === 0 ? 'active' : ''}`;
-      dot.onclick = () => carouselGoTo(i);
-      carouselDotsContainer.appendChild(dot);
-    });
-
-    function updateCarousel() {
-      const offset = -carouselIndex * 100;
-      carouselTrack.style.transform = `translateX(${offset}%)`;
-
-      // Update dots
-      document.querySelectorAll('.carousel-dot').forEach((dot, i) => {
-        dot.classList.toggle('active', i === carouselIndex);
+    if (carouselSlides.length > 0) {
+      // Create dots
+      carouselSlides.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.className = `carousel-dot ${i === 0 ? 'active' : ''}`;
+        dot.onclick = () => carouselGoTo(i);
+        carouselDotsContainer.appendChild(dot);
       });
-    }
 
-    function carouselNext() {
-      carouselIndex = (carouselIndex + 1) % carouselSlides.length;
-      updateCarousel();
-      resetAutoplay();
-    }
+      function updateCarousel() {
+        const offset = -carouselIndex * 100;
+        carouselTrack.style.transform = `translateX(${offset}%)`;
 
-    function carouselPrev() {
-      carouselIndex = (carouselIndex - 1 + carouselSlides.length) % carouselSlides.length;
-      updateCarousel();
-      resetAutoplay();
-    }
+        // Update dots
+        document.querySelectorAll('.carousel-dot').forEach((dot, i) => {
+          dot.classList.toggle('active', i === carouselIndex);
+        });
+      }
 
-    function carouselGoTo(i) {
-      carouselIndex = i;
-      updateCarousel();
-      resetAutoplay();
-    }
-
-    function startAutoplay() {
-      carouselAutoplay = setInterval(() => {
+      function carouselNext() {
         carouselIndex = (carouselIndex + 1) % carouselSlides.length;
         updateCarousel();
-      }, 5000);
-    }
+        resetAutoplay();
+      }
 
-    function resetAutoplay() {
-      clearInterval(carouselAutoplay);
+      function carouselPrev() {
+        carouselIndex = (carouselIndex - 1 + carouselSlides.length) % carouselSlides.length;
+        updateCarousel();
+        resetAutoplay();
+      }
+
+      function carouselGoTo(i) {
+        carouselIndex = i;
+        updateCarousel();
+        resetAutoplay();
+      }
+
+      function startAutoplay() {
+        carouselAutoplay = setInterval(() => {
+          carouselIndex = (carouselIndex + 1) % carouselSlides.length;
+          updateCarousel();
+        }, 5000);
+      }
+
+      function resetAutoplay() {
+        clearInterval(carouselAutoplay);
+        startAutoplay();
+      }
+
+      window.carouselNext = carouselNext;
+      window.carouselPrev = carouselPrev;
       startAutoplay();
     }
-
-    window.carouselNext = carouselNext;
-    window.carouselPrev = carouselPrev;
-    startAutoplay();
   }
 });
