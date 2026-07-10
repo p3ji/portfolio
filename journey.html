@@ -74,6 +74,7 @@
     <a class="journey-subnav-link" href="#approach">My Approach</a>
     <a class="journey-subnav-link" href="#workflow">My Workflow</a>
     <a class="journey-subnav-link" href="#timeline">My Journey So Far</a>
+    <a class="journey-subnav-link" href="#digital-brain">Digital Brain</a>
    </nav>
   </div>
 
@@ -142,50 +143,96 @@
        ========================================== -->
   <section class="section container" id="workflow">
    <h2 class="section-title">My current workflow</h2>
-   <p style="color: var(--text-secondary); margin-bottom: 3rem; max-width: 800px; line-height: 1.7;">
-    This diagram maps how I am currently experimenting and developing prototypes. At some point, I may want to separate out the tech stuff from the conceptual layers. However, for now, this offers an idea of the autonomous vs. manual aspects of the
-    <strong>decision-making</strong>, <strong>execution</strong>, and <strong>delivery</strong> parts of my workflow.
+   <p style="color: var(--text-secondary); margin-bottom: 2.5rem; max-width: 800px; line-height: 1.7;">
+    At a glance: ideas get decided on, built with AI, then shipped and tested — with feedback looping back the whole way. Click a stage below for the full detail on how each one actually works.
    </p>
    <script>
     function showNodeInfo(info) { alert(info); }
    </script>
+
+   <!-- LEVEL 1: SIMPLE OVERVIEW -->
    <div class="workflow-wrapper reveal">
-    <div class="workflow-inner">
+    <div class="workflow-inner" style="min-width: 0;">
      <pre class="mermaid" style="text-align: center;">
-          %%{init: {"securityLevel": "loose", "flowchart": {"padding": 30, "rankSpacing": 80, "nodeSpacing": 60}, "theme": "dark"}}%%
+          %%{init: {"securityLevel": "loose", "flowchart": {"padding": 20, "nodeSpacing": 50, "rankSpacing": 70}, "theme": "dark"}}%%
+          flowchart LR
+          IDEA["💡 Ideas &amp; Research"]
+          DECIDE["🧠 Decide"]
+          EXECUTE["🛠️ Build with AI"]
+          DELIVER["🚀 Ship &amp; Test"]
+
+          IDEA --&gt; DECIDE --&gt; EXECUTE --&gt; DELIVER
+          DELIVER -.&gt;|feedback loops back| IDEA
+
+          class IDEA obsidian
+          class DECIDE human
+          class EXECUTE execute
+          class DELIVER deliver
+        </pre>
+    </div>
+   </div>
+
+   <!-- STAGE TABS -->
+   <div class="workflow-tabs" role="tablist" style="margin: 2.5rem 0 2rem;">
+    <button class="workflow-tab active" data-panel="decide" role="tab" aria-selected="true">🧠 Decision Making</button>
+    <button class="workflow-tab" data-panel="execute" role="tab" aria-selected="false">🛠️ Execution</button>
+    <button class="workflow-tab" data-panel="deliver" role="tab" aria-selected="false">🚀 Delivery</button>
+   </div>
+
+   <!-- LEVEL 2: DETAIL PANELS -->
+   <div class="workflow-detail active" data-panel="decide">
+    <p class="workflow-detail-caption">
+     Two streams feed decisions: <strong>direct human prompting</strong> when I know exactly what I want, and an <strong>autonomous pipeline</strong> where a daily agent reviews my Obsidian vault and suggests prompts. Research and analysis inform both, and results from Delivery loop back here to refine direction.
+    </p>
+    <div class="workflow-wrapper">
+     <div class="workflow-inner">
+      <pre class="mermaid">
+          %%{init: {"securityLevel": "loose", "flowchart": {"padding": 30, "rankSpacing": 60, "nodeSpacing": 50}, "theme": "dark"}}%%
           flowchart TD
-
-          subgraph DECIDE["<span style="font-size: 2em; font-weight: 700;">1. Decision making</span>"]
-
-            subgraph STREAM1[Stream A - Direct Human Prompting]
-              H[Human with\nDomain Knowledge]
-            end
-
-            subgraph STREAM2[Stream B - Autonomous Idea Pipeline]
-              M[(Obsidian Vault)]
-              N[Daily Review Agent]
-              M --&gt;|Daily scheduled review| N
-            end
-
-            R[Research and Analysis]
-
-            R --&gt;|Informs and shapes| H
-            R --&gt;|Captures insights| M
-            H --&gt;|Direct prompt| O
-            H ~~~ N
-            N -.-&gt;|"Suggested prompt"| H
-            O[Antigravity AI]
+          subgraph STREAM1[Stream A - Direct Human Prompting]
+            H[Human with Domain Knowledge]
           end
 
-          subgraph EXECUTE["<span style="font-size: 2em; font-weight: 700;">2. Execution</span>"]
-            UI[System and UI Design]
-            DM[Data Management]
-            MCP[Model Context Protocol]
+          subgraph STREAM2[Stream B - Autonomous Idea Pipeline]
+            M[(Obsidian Vault)]
+            N[Daily Review Agent]
+            M --&gt;|Daily scheduled review| N
+          end
 
-            subgraph EXISTING[Handled by Existing Systems]
-              LLM[LLM APIs and Orchestration]
-              SEC[Security and Optimization]
-            end
+          R[Research and Analysis]
+
+          R --&gt;|Informs and shapes| H
+          R --&gt;|Captures insights| M
+          H --&gt;|Direct prompt| O
+          H ~~~ N
+          N -.-&gt;|"Suggested prompt"| H
+          O[Antigravity AI]
+
+          class R,H human
+          class M obsidian
+          class N agent
+          class O ai
+        </pre>
+     </div>
+    </div>
+   </div>
+
+   <div class="workflow-detail" data-panel="execute">
+    <p class="workflow-detail-caption">
+     Once a direction is set, AI scaffolds and generates code across three parallel concerns — UI, data, and tool integration (MCP) — which route into existing, battle-tested infrastructure (LLM APIs, security, optimization) rather than reinventing it.
+    </p>
+    <div class="workflow-wrapper">
+     <div class="workflow-inner">
+      <pre class="mermaid">
+          %%{init: {"securityLevel": "loose", "flowchart": {"padding": 30, "rankSpacing": 60, "nodeSpacing": 50}, "theme": "dark"}}%%
+          flowchart TD
+          UI[System and UI Design]
+          DM[Data Management]
+          MCP[Model Context Protocol]
+
+          subgraph EXISTING[Handled by Existing Systems]
+            LLM[LLM APIs and Orchestration]
+            SEC[Security and Optimization]
           end
 
           UI --&gt; LLM
@@ -195,56 +242,66 @@
           MCP --&gt; LLM
           LLM --&gt; SEC
 
-          subgraph DELIVER["<span style="font-size: 2em; font-weight: 700;">3. Delivery</span>"]
-            G[Local Testing and Debugging]
-            DP{Deployment}
-            I[Vercel and Netlify]
-            J[Hugging Face Spaces]
-            K[GitHub Codebase / CI]
-            P[Portfolio Site Showcase]
-            W[Web3Forms Contact]
-            L[Iterative Feedback]
-
-            G --&gt; DP
-            DP --&gt;|Web Apps &amp; UIs| I
-            DP --&gt;|AI Models &amp; Python Backends| J
-            DP --&gt;|All Source Code| K
-            DP --&gt;|Curated Highlights| P
-            P --&gt; W
-            I --&gt; L
-            J --&gt; L
-            K --&gt; L
-            P --&gt; L
-            W --&gt; L
-          end
-
-          DECIDE ~~~ EXECUTE
-          EXECUTE ~~~ DELIVER
-
-          O --&gt;|Scaffold and generate code| UI
-          SEC --&gt; G
-
-          R &lt;--&gt;|"Refine direction"| L
-          M &lt;--&gt;|"Capture new ideas"| L
-          H &lt;--&gt;|"Direct follow-up"| L
-          H &lt;--&gt;|"Test results"| G
-
-          %% Interactive Tooltips and Clicks
           click MCP "javascript:void(0)" "Example Project: statcan_mcp"
 
-          %% Classes are now styled via external CSS in style.css for Light/Dark mode support
-
-          class R,H human
-          class M obsidian
-          class N agent
-          class O ai
           class UI,DM,MCP execute
           class LLM,SEC existing
+        </pre>
+     </div>
+    </div>
+   </div>
+
+   <div class="workflow-detail" data-panel="deliver">
+    <p class="workflow-detail-caption">
+     After local testing, each project routes to the right home based on what it is — web apps to Vercel/Netlify, AI models and Python backends to Hugging Face Spaces, all source to GitHub, and curated highlights to this portfolio. Every channel feeds iterative feedback back into the loop.
+    </p>
+    <div class="workflow-wrapper">
+     <div class="workflow-inner">
+      <pre class="mermaid">
+          %%{init: {"securityLevel": "loose", "flowchart": {"padding": 30, "rankSpacing": 60, "nodeSpacing": 50}, "theme": "dark"}}%%
+          flowchart TD
+          G[Local Testing and Debugging]
+          DP{Deployment}
+          I[Vercel and Netlify]
+          J[Hugging Face Spaces]
+          K[GitHub Codebase / CI]
+          P[Portfolio Site Showcase]
+          W[Web3Forms Contact]
+          L[Iterative Feedback]
+
+          G --&gt; DP
+          DP --&gt;|Web Apps &amp; UIs| I
+          DP --&gt;|AI Models &amp; Python Backends| J
+          DP --&gt;|All Source Code| K
+          DP --&gt;|Curated Highlights| P
+          P --&gt; W
+          I --&gt; L
+          J --&gt; L
+          K --&gt; L
+          P --&gt; L
+          W --&gt; L
+
           class G,DP,I,J,K,P,W deliver
           class L feedback
         </pre>
+     </div>
     </div>
    </div>
+
+   <script>
+    document.querySelectorAll('.workflow-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        const target = tab.getAttribute('data-panel');
+        document.querySelectorAll('.workflow-tab').forEach(t => {
+          t.classList.toggle('active', t === tab);
+          t.setAttribute('aria-selected', t === tab ? 'true' : 'false');
+        });
+        document.querySelectorAll('.workflow-detail').forEach(panel => {
+          panel.classList.toggle('active', panel.getAttribute('data-panel') === target);
+        });
+      });
+    });
+   </script>
   </section>
 
   <!-- ==========================================
@@ -256,6 +313,19 @@
     A living log of milestones, prototypes, self-study, and reflections. I'll keep adding entries as the journey unfolds.
    </p>
    <div class="timeline" id="journeyTimeline"></div>
+  </section>
+
+  <!-- ==========================================
+       DIGITAL BRAIN
+       ========================================== -->
+  <section class="section container" id="digital-brain" style="position: relative; overflow: hidden; border: 1px solid var(--border-color); border-radius: 16px; margin-bottom: 5rem; min-height: 400px; display: flex; align-items: center; justify-content: center;">
+   <div id="brain-canvas-container" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;"></div>
+   <div class="brain-content reveal" style="position: relative; z-index: 1; text-align: center; padding: 3rem; background: rgba(26, 36, 34, 0.6); backdrop-filter: blur(10px); border-radius: 12px; border: 1px solid rgba(217, 176, 140, 0.15); max-width: 600px;">
+    <h2 class="section-title" style="margin-bottom: 1rem;">Digital Brain Stats</h2>
+    <p style="color: var(--text-secondary); line-height: 1.6;">
+     As I learn more, the nodes in the digital brain grows. <br><br>There are currently 287 nodes (<span style="color: var(--accent-primary);">+1</span> since 1 day ago, <span style="color: var(--accent-primary);">+4</span> since 1 week ago)
+    </p>
+   </div>
   </section>
 
   <!-- ==========================================
@@ -282,7 +352,7 @@
   <script type="module">
    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
    mermaid.initialize({
-     startOnLoad: true,
+     startOnLoad: false,
      theme: 'dark',
      themeVariables: {
        background: 'transparent',
@@ -294,6 +364,19 @@
        tertiaryColor: '#121a2f'
      }
    });
+
+   // Mermaid can't measure diagrams inside display:none ancestors (renders them
+   // at near-zero size). Force all workflow panels visible-but-invisible during
+   // the render pass, then hand visibility back to the tab CSS.
+   const workflowPanels = document.querySelectorAll('.workflow-detail');
+   workflowPanels.forEach(p => { p.style.display = 'block'; p.style.visibility = 'hidden'; });
+   try {
+     await mermaid.run();
+   } catch (err) {
+     console.error('Mermaid render error:', err);
+   } finally {
+     workflowPanels.forEach(p => { p.style.display = ''; p.style.visibility = ''; });
+   }
   </script>
 
   <!-- Timeline data & render -->
@@ -353,9 +436,9 @@
      cards.forEach(card => observer.observe(card));
    }
 
-   function updateSubnav() {
-     const ids = ['approach', 'workflow', 'timeline'];
-     const subLinks = document.querySelectorAll('.journey-subnav-link');
+    function updateSubnav() {
+      const ids = ['approach', 'workflow', 'timeline', 'digital-brain'];
+      const subLinks = document.querySelectorAll('.journey-subnav-link');
      let current = '';
      ids.forEach(id => {
        const el = document.getElementById(id);
@@ -369,5 +452,7 @@
    document.addEventListener('DOMContentLoaded', renderTimeline);
    window.addEventListener('scroll', updateSubnav, { passive: true });
   </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="three-brain.js"></script>
  </body>
 </html>
