@@ -5,7 +5,7 @@ from datetime import datetime, timedelta
 import re
 
 vault_path = r"H:\My Drive\Brain2"
-html_path = "index.html"
+html_path = "journey.html"
 history_path = "brain_stats_history.json"
 
 # 1. Count current nodes
@@ -74,25 +74,25 @@ if change_30d:
     additions.append(f"{change_30d} since 1 month ago")
 
 if additions:
-    stats_html = f"Current nodes of my PKG: {total_nodes} (" + ", ".join(additions) + ")"
+    stats_html = f"Currently: {total_nodes} nodes (" + ", ".join(additions) + ")"
 else:
-    stats_html = f"Current nodes of my PKG: {total_nodes}"
+    stats_html = f"Currently: {total_nodes} nodes"
 
 # 5. Inject into HTML
 with open(html_path, 'r', encoding='utf-8') as f:
     html = f.read()
 
-pattern = re.compile(r'(Applying the idea of using a personal knowledge graph \(PKG\) to drive and monitor agentic processes and workflows\.)(.*?)(</p>)', re.DOTALL)
+pattern = re.compile(r'(As I learn more, the nodes in the digital brain grows\.)(.*?)(</p>)', re.DOTALL)
 
 def repl(match):
-    return f"{match.group(1)} <br><br>{stats_html}\n          {match.group(3)}"
+    return f"{match.group(1)} <br><br>{stats_html}\n    {match.group(3)}"
 
 html = pattern.sub(repl, html)
 
 with open(html_path, 'w', encoding='utf-8') as f:
     f.write(html)
 
-print("Updated index.html with new stats:", stats_html)
+print("Updated journey.html with new stats:", stats_html)
 
 # 6. Commit and push changes to GitHub to rebuild the page and update the "Last GitHub Update" date
 try:

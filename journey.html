@@ -9,6 +9,9 @@
   <link href="style.css?v=14" rel="stylesheet"/>
    <style>
     /* Prevent text and digital brain WebGL canvas from overlapping */
+    html {
+      scroll-padding-top: calc(var(--header-height) + 65px) !important;
+    }
     #digital-brain {
       display: grid !important;
       grid-template-columns: 1fr;
@@ -200,12 +203,11 @@
           DELIVER["🚀 Ship &amp; Test"]
 
           IDEA --&gt; DECIDE --&gt; EXECUTE --&gt; DELIVER
-          DELIVER -.&gt;|feedback loops back| IDEA
+          DELIVER -.-&gt;|feedback loops back| IDEA
 
-          class IDEA obsidian
-          class DECIDE human
-          class EXECUTE execute
-          class DELIVER deliver
+          linkStyle default stroke:#D9B08C,stroke-width:2px;
+
+          class IDEA,DECIDE,EXECUTE,DELIVER brand
         </pre>
      </div>
     </div>
@@ -348,7 +350,7 @@
      As I learn more, the nodes in the digital brain grows. <br><br>Currently: 287 nodes (<span style="color: var(--accent-primary);">+1</span> since 1 day ago, <span style="color: var(--accent-primary);">+4</span> since 1 week ago)
     </p>
     <div id="brain-ui-controls" style="display: none; margin-top: 1.5rem; flex-direction: column; gap: 0.5rem; align-items: flex-start;">
-      <div id="brain-slider-label" style="font-size: 0.85rem; color: var(--text-secondary); font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 1px;">Loading timeline...</div>
+      <div id="brain-slider-label" style="font-size: 0.85rem; color: var(--text-secondary); font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 1px;">Timeline: June-Current</div>
       <div style="display: flex; align-items: center; gap: 1rem; width: 100%;">
         <button id="brain-play-btn" class="btn btn-primary" style="padding: 0.5rem; border-radius: 50%; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center;">
           <i class="fa-solid fa-play"></i>
@@ -391,7 +393,7 @@
        primaryColor: '#0c1222',
        primaryTextColor: '#f8fafc',
        primaryBorderColor: '#10b981',
-       lineColor: '#6366f1',
+       lineColor: '#D9B08C',
        secondaryColor: '#121a2f',
        tertiaryColor: '#121a2f'
      }
@@ -486,6 +488,6 @@
   </script>
   <!-- WebGL Brain -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="three-brain.js?v=4"></script>
+  <script src="three-brain.js?v=6"></script>
  </body>
 </html>

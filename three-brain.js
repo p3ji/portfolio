@@ -168,18 +168,15 @@ document.addEventListener("DOMContentLoaded", async () => {
                 playInterval = null;
                 playBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
             } else {
-                if (parseInt(slider.value) === particleCount) {
-                    slider.value = 1;
-                    updateVisuals(1);
+                if (parseInt(slider.value) === history.length - 1) {
+                    slider.value = 0;
                 }
                 playBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
-                
-                const step = Math.max(1, Math.ceil(particleCount / 120));
-                
+                const frameTime = 3000 / Math.max(1, history.length); // 3 seconds total
                 playInterval = setInterval(() => {
                     let val = parseInt(slider.value);
-                    if (val < particleCount) {
-                        val = Math.min(val + step, particleCount);
+                    if (val < history.length - 1) {
+                        val++;
                         slider.value = val;
                         updateVisuals(val);
                     } else {
@@ -187,12 +184,12 @@ document.addEventListener("DOMContentLoaded", async () => {
                         playInterval = null;
                         playBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
                     }
-                }, 16);
+                }, frameTime);
             }
         });
 
         // Initialize UI
-        updateVisuals(particleCount);
+        updateVisuals(history.length - 1);
     }
 
     // Mouse Interaction

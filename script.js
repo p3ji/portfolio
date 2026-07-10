@@ -213,6 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
       initProjectFilters();
       initReveal();
       initCarousel();
+      init3DTilt();
 
     } catch (error) {
       console.error("Error loading projects:", error);
@@ -220,6 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   loadProjects();
+  initReveal();
 
   // ==========================================
   // PROJECT FILTERING SYSTEM
@@ -421,4 +423,46 @@ document.addEventListener('DOMContentLoaded', () => {
       startAutoplay();
     }
   }
+
+  // ==========================================
+  // 3D CARD TILT EFFECT
+  // ==========================================
+  function init3DTilt() {
+    const cards = document.querySelectorAll('.project-card');
+    cards.forEach(card => {
+      // Add glare element
+      const glare = document.createElement('div');
+      glare.classList.add('card-glare');
+      card.appendChild(glare);
+
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        // Calculate tilt
+        const rotateX = ((y - centerY) / centerY) * -8; // Max 8 deg tilt
+        const rotateY = ((x - centerX) / centerX) * 8;
+        
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+        card.style.transition = 'transform 0.1s ease';
+        card.style.zIndex = '10';
+        
+        // Move glare
+        glare.style.opacity = '1';
+        glare.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 60%)`;
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = ''; // Let CSS filter/reveal logic take over base transform
+        card.style.transition = 'transform 0.5s ease';
+        card.style.zIndex = '1';
+        glare.style.opacity = '0';
+      });
+    });
+  }
+
 });
