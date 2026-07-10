@@ -316,5 +316,28 @@
     "tags": [
       "personal-tools"
     ]
+  },
+  {
+    "date": "July 10, 2026",
+    "type": "prototype",
+    "title": "Wobbleton — Tower Workshop",
+    "description": "Built a cozy 3D physics-based tower building sandbox in the browser.",
+    "details": "First project using Three.js and the Web Audio API. Built a lightweight, custom rigid-body physics engine (sleeping/waking bodies, material stickiness/weight, and soft-sphere collisions) from scratch to simulate structures made of straw, wood, brick, stone, and glass. Test towers against disasters like earthquakes, tornadoes, meteors, and windstorms while generating native procedural lo-fi soundtrack loops and audio effects.",
+    "tags": [
+      "Games",
+      "Three.js",
+      "Physics",
+      "Web Audio API"
+    ],
+    "links": [
+      {
+        "label": "GitHub",
+        "href": "https://github.com/p3ji/wobbletower"
+      },
+      {
+        "label": "Live",
+        "href": "https://p3ji.github.io/wobbletower/"
+      }
+    ]
   }
 ]

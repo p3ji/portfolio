@@ -396,5 +396,29 @@
         "href": "https://p3ji.github.io/wordstring/"
       }
     ]
+  },
+  {
+    "id": "wobbletower",
+    "title": "Wobbleton — Tower Workshop",
+    "description": "Cozy 3D physics-based tower building sandbox.",
+    "details": "A browser-based 3D physics sandbox built with Three.js. Design and stack towers using 5 materials (straw, wood, brick, stone, glass) with custom friction and weights. Test your creations against earthquakes, tornadoes, meteors, and windstorms. Features a custom rigid-body physics engine (sleeping/waking bodies) and procedural lo-fi soundtrack loops generated via the Web Audio API.",
+    "category": [
+      "games"
+    ],
+    "stage": "prototype",
+    "icon": "fa-cubes",
+    "featured": false,
+    "links": [
+      {
+        "label": "GitHub",
+        "icon": "fa-github",
+        "href": "https://github.com/p3ji/wobbletower"
+      },
+      {
+        "label": "Live Site",
+        "icon": "fa-play",
+        "href": "https://p3ji.github.io/wobbletower/"
+      }
+    ]
   }
 ]
