@@ -381,5 +381,51 @@
         "href": "https://github.com/p3ji/ebatool"
       }
     ]
+  },
+  {
+    "date": "July 11, 2026",
+    "type": "game",
+    "title": "Zelda: 2-Player Link Battle Arena",
+    "description": "Ported a 2-player local battle game from Scratch to a premium responsive HTML5/CSS3 web dashboard.",
+    "details": "Using Turbowarp Packager CLI to compile Scratch asset logic, built a custom web wrapper featuring full-page canvas ambient particles, responsive layout tabs for character controls and lore, and local iframe execution with fullscreen controls.",
+    "tags": [
+      "Games",
+      "Scratch",
+      "Vite",
+      "Canvas"
+    ],
+    "links": [
+      {
+        "label": "GitHub",
+        "href": "https://github.com/p3ji/link"
+      },
+      {
+        "label": "Live",
+        "href": "https://2-player-link-web.netlify.app/"
+      }
+    ]
+  },
+  {
+    "date": "July 11, 2026",
+    "type": "game",
+    "title": "Fur & Fury: Tides of Clutter — Three.js RTS Prototype",
+    "description": "Built a playable 3D RTS game prototype using Three.js and Vite.",
+    "details": "Designed and coded a 5x5 MVP competitive real-time strategy framework featuring three asymmetric viral-animal factions. Built a fully functional game engine loop including 3D box-selection and context controls, two-resource harvesting economy, faction tech-tree gates, unit support auras/shields, and an escalating scripted AI base-builder opponent.",
+    "tags": [
+      "Games",
+      "Three.js",
+      "Vite",
+      "AI Opponent"
+    ],
+    "links": [
+      {
+        "label": "GitHub",
+        "href": "https://github.com/p3ji/rts"
+      },
+      {
+        "label": "Live",
+        "href": "https://p3ji.github.io/rts/"
+      }
+    ]
   }
 ]

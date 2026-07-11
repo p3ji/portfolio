@@ -173,6 +173,7 @@ app.post('/api/publish', async (req, res) => {
     const projects = JSON.parse(projectsStr);
     const prototypesCount = projects.filter(p => p.stage === 'prototype').length;
     const conceptsCount = projects.filter(p => p.stage === 'concept').length;
+    const gamesCount = projects.filter(p => p.stage === 'game').length;
 
     const indexPath = path.join(repoDir, 'index.html');
     let indexHtml = await fs.readFile(indexPath, 'utf-8');
@@ -187,6 +188,12 @@ app.post('/api/publish', async (req, res) => {
     indexHtml = indexHtml.replace(
       /(<span class="stat-number">\s*)\d+(\s*<\/span>\s*<span class="stat-label">\s*Concepts\s*<\/span>)/i,
       `$1${conceptsCount}$2`
+    );
+
+    // Update games
+    indexHtml = indexHtml.replace(
+      /(<span class="stat-number">\s*)\d+(\s*<\/span>\s*<span class="stat-label">\s*Games\s*<\/span>)/i,
+      `$1${gamesCount}$2`
     );
 
     // Update last GitHub update date to today (so it's hardcoded and fast)

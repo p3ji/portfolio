@@ -464,5 +464,53 @@
         "href": "https://p3ji.github.io/twoplay/"
       }
     ]
+  },
+  {
+    "id": "link-battle-arena",
+    "title": "Zelda: 2-Player Link Battle Arena",
+    "description": "A retro 2-player combat game ported from Scratch to HTML5.",
+    "details": "A local multiplayer battle arena featuring classic Zelda assets. Ported from Scratch using Turbowarp and wrapped in a custom responsive HTML5/CSS3 dashboard with canvas-based ambient particle background effects, dynamic tab views, and custom controls/lore guides.",
+    "category": [
+      "games"
+    ],
+    "stage": "game",
+    "icon": "fa-shield-halved",
+    "featured": false,
+    "links": [
+      {
+        "label": "GitHub",
+        "icon": "fa-github",
+        "href": "https://github.com/p3ji/link"
+      },
+      {
+        "label": "Live Site",
+        "icon": "fa-play",
+        "href": "https://2-player-link-web.netlify.app/"
+      }
+    ]
+  },
+  {
+    "id": "fur-and-fury-rts",
+    "title": "Fur & Fury: Tides of Clutter",
+    "description": "A competitive 3D RTS game prototype featuring asymmetric viral-animal factions.",
+    "details": "A browser-based real-time strategy (RTS) game prototype built with Three.js. Features three asymmetric factions modeled on StarCraft 2 archetypes: the Great Rodent Republic (capybaras with mobile structures and steam nets), the Trash Pandas (raccoons spreading speed-boosting trash slime), and the Celestial Pallas (Pallas's cats with teleportation warp-ins and Whisker Pylons). Implemented resource harvesting, unit/building tech tree gating, support auras, custom rigid-body collision, and a scripted AI opponent that builds bases and attacks in waves.",
+    "category": [
+      "games"
+    ],
+    "stage": "game",
+    "icon": "fa-gamepad",
+    "featured": true,
+    "links": [
+      {
+        "label": "GitHub",
+        "icon": "fa-github",
+        "href": "https://github.com/p3ji/rts"
+      },
+      {
+        "label": "Live Site",
+        "icon": "fa-play",
+        "href": "https://p3ji.github.io/rts/"
+      }
+    ]
   }
 ]
