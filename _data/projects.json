@@ -420,5 +420,49 @@
         "href": "https://p3ji.github.io/wobbletower/"
       }
     ]
+  },
+  {
+    "id": "capability-atlas",
+    "title": "Capability Atlas",
+    "description": "Modular Enterprise Business Architecture (EBA) application.",
+    "details": "A modular planning tool designed for public sector agencies. Features a 3-pass overlap detection system (structural duplication, semantic near-duplicates, and shared data-effort dependencies) and an automated transition roadmap engine that topologically sequences work packages and greedy-packs them into fiscal-year envelopes. Supports live client-side PDF business case generation.",
+    "category": [
+      "work-tools",
+      "economy"
+    ],
+    "stage": "prototype",
+    "icon": "fa-network-wired",
+    "featured": false,
+    "links": [
+      {
+        "label": "GitHub",
+        "icon": "fa-github",
+        "href": "https://github.com/p3ji/ebatool"
+      }
+    ]
+  },
+  {
+    "id": "twoplay",
+    "title": "Wobbleton — Game Night",
+    "description": "Offline-first local 2-player PWA party game hub.",
+    "details": "A PWA party game hub containing 12 physics-based and turn-based mini-games (e.g. Tug o' Rope, Frosty Pond, Log Joust, Statue Race) designed for 2 players sharing a single device. Built using Three.js and vanilla JS, optimized for mobile camera scaling, and packaged as an installable offline-first application.",
+    "category": [
+      "games"
+    ],
+    "stage": "game",
+    "icon": "fa-people-group",
+    "featured": false,
+    "links": [
+      {
+        "label": "GitHub",
+        "icon": "fa-github",
+        "href": "https://github.com/p3ji/twoplay"
+      },
+      {
+        "label": "Live Site",
+        "icon": "fa-play",
+        "href": "https://p3ji.github.io/twoplay/"
+      }
+    ]
   }
 ]

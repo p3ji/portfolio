@@ -339,5 +339,47 @@
         "href": "https://p3ji.github.io/wobbletower/"
       }
     ]
+  },
+  {
+    "date": "July 11, 2026",
+    "type": "game",
+    "title": "Wobbleton — Game Night PWA",
+    "description": "Completed a mobile-optimized 2-player local party game hub with 12 mini-games.",
+    "details": "Expanding the 'Wobbleton' design family. Built a collection of 12 distinct competitive mini-games sharing a single screen (including Tug o' Rope, Boxy Toe, Frosty Pond, and Statue Race). Configured full offline-first behavior using a custom Service Worker cache and fixed mobile browser viewport camera scaling issues.",
+    "tags": [
+      "Games",
+      "PWA",
+      "Three.js",
+      "Mobile"
+    ],
+    "links": [
+      {
+        "label": "GitHub",
+        "href": "https://github.com/p3ji/twoplay"
+      },
+      {
+        "label": "Live",
+        "href": "https://p3ji.github.io/twoplay/"
+      }
+    ]
+  },
+  {
+    "date": "July 11, 2026",
+    "type": "prototype",
+    "title": "Capability Atlas",
+    "description": "Developed a modular Enterprise Business Architecture (EBA) application for public sector modernization.",
+    "details": "Built using React 19, TypeScript, and Tailwind CSS v4. Implemented a 3-pass redundancy analyzer (surfacing organizational, semantic text-similarity, and shared-information data-effort overlap) and an automated greedy-packing transition roadmap engine that topologically sequences IT investments against fiscal budgets and compounding efficiency savings. Outputs a fully formatted PDF Business Case dynamically.",
+    "tags": [
+      "React",
+      "TypeScript",
+      "Enterprise Architecture",
+      "Tailwind"
+    ],
+    "links": [
+      {
+        "label": "GitHub",
+        "href": "https://github.com/p3ji/ebatool"
+      }
+    ]
   }
 ]
