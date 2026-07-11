@@ -73,7 +73,7 @@
     "category": [
       "games"
     ],
-    "stage": "concept",
+    "stage": "game",
     "icon": "fa-city",
     "featured": false,
     "links": [
@@ -332,7 +332,7 @@
     "category": [
       "games"
     ],
-    "stage": "prototype",
+    "stage": "game",
     "icon": "fa-gamepad",
     "featured": false,
     "links": [
@@ -356,7 +356,7 @@
     "category": [
       "games"
     ],
-    "stage": "prototype",
+    "stage": "game",
     "icon": "fa-gamepad",
     "image": "images/n-1.png",
     "featured": true,
@@ -381,7 +381,7 @@
     "category": [
       "games"
     ],
-    "stage": "prototype",
+    "stage": "game",
     "icon": "fa-gamepad",
     "featured": false,
     "links": [
@@ -405,7 +405,7 @@
     "category": [
       "games"
     ],
-    "stage": "prototype",
+    "stage": "game",
     "icon": "fa-cubes",
     "featured": false,
     "links": [

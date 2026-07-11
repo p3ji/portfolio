@@ -167,6 +167,7 @@ export default function ProjectsEditor() {
                 <select value={formData.stage} onChange={e => setFormData({...formData, stage: e.target.value})}>
                   <option value="concept">Concept</option>
                   <option value="prototype">Prototype</option>
+                  <option value="game">Game</option>
                 </select>
               </div>
               <div className="form-group flex-1" style={{flex: 1}}>

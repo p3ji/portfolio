@@ -142,7 +142,7 @@
   },
   {
     "date": "June 21–22, 2026",
-    "type": "prototype",
+    "type": "game",
     "title": "Games Sprint — Debate, n-1, WordString",
     "description": "A rapid games sprint building three web apps: a debate facilitator for kids, an anagram word-unscrambling game, and a cozy sewing-themed word puzzle. Complete with high scores synced to Supabase.",
     "tags": [
@@ -267,7 +267,7 @@
   },
   {
     "date": "July 2, 2026",
-    "type": "prototype",
+    "type": "game",
     "title": "Real Estate Empire — Prototyping Started",
     "description": "Started prototyping a real-estate simulation and strategy game mapped directly onto high-fidelity satellite imagery of Ottawa.",
     "details": "Choose your starting backstory (from Elgin Street server to Kanata tech worker), scout listings across actual neighborhoods like The Glebe and Westboro, outbid AI competitors in real-time, and manage your cash flow as the game clock ticks.",
@@ -319,7 +319,7 @@
   },
   {
     "date": "July 10, 2026",
-    "type": "prototype",
+    "type": "game",
     "title": "Wobbleton — Tower Workshop",
     "description": "Built a cozy 3D physics-based tower building sandbox in the browser.",
     "details": "First project using Three.js and the Web Audio API. Built a lightweight, custom rigid-body physics engine (sleeping/waking bodies, material stickiness/weight, and soft-sphere collisions) from scratch to simulate structures made of straw, wood, brick, stone, and glass. Test towers against disasters like earthquakes, tornadoes, meteors, and windstorms while generating native procedural lo-fi soundtrack loops and audio effects.",

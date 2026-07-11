@@ -124,8 +124,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const carouselTrack = document.getElementById('carouselTrack');
       const conceptsGrid = document.getElementById('concepts-grid');
       const prototypesGrid = document.getElementById('prototypes-grid');
+      const gamesGrid = document.getElementById('games-grid');
 
-      if (!carouselTrack || !conceptsGrid || !prototypesGrid) return;
+      if (!carouselTrack || !conceptsGrid || !prototypesGrid || !gamesGrid) return;
 
       projects.forEach(project => {
         // Map category keys to display labels
@@ -185,6 +186,8 @@ document.addEventListener('DOMContentLoaded', () => {
           conceptsGrid.innerHTML += cardHtml;
         } else if (project.stage === 'prototype') {
           prototypesGrid.innerHTML += cardHtml;
+        } else if (project.stage === 'game') {
+          gamesGrid.innerHTML += cardHtml;
         }
 
         // Build carousel slide if featured
