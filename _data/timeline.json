@@ -385,9 +385,9 @@
   {
     "date": "July 11, 2026",
     "type": "game",
-    "title": "Fur & Fury: Tides of Clutter — Three.js RTS Prototype",
-    "description": "Built a playable 3D RTS game prototype using Three.js and Vite.",
-    "details": "Designed and coded a 5x5 MVP competitive real-time strategy framework featuring three asymmetric viral-animal factions. Built a fully functional game engine loop including 3D box-selection and context controls, two-resource harvesting economy, faction tech-tree gates, unit support auras/shields, and an escalating scripted AI base-builder opponent.",
+    "title": "Kingdoms of Wobbleton — 3D Medieval RTS",
+    "description": "Re-themed and expanded the Three.js RTS engine into a boxy medieval game.",
+    "details": "Pivoted to a boxy medieval aesthetic using glTF assets. Implemented procedural seeded maps, deterministic simulation lockstep for online 1v1 play, dynamic fog of war, and synthesized runtime audio.",
     "tags": [
       "Games",
       "Three.js",
@@ -402,6 +402,25 @@
       {
         "label": "Live",
         "href": "https://p3ji.github.io/rts/"
+      }
+    ]
+  },
+  {
+    "date": "July 16, 2026",
+    "type": "blog",
+    "title": "First Substack Post: Teaching a Machine to File My Thoughts",
+    "description": "Published my first article on 'Artificially Sociological', reflecting on using agentic AI to build a persistent digital brain.",
+    "details": "A participant-observation analysis of taking a sabbatical after 15 years in public service statistics to learn AI. Explores the intellectual growth and cognitive economy of outsourcing summaries and building an Obsidian-based personal knowledge graph.",
+    "tags": [
+      "Sabbatical",
+      "Obsidian",
+      "Agentic AI",
+      "Writing"
+    ],
+    "links": [
+      {
+        "label": "Substack",
+        "href": "https://p3ji.substack.com/p/i-spent-my-sabbatical-teaching-a"
       }
     ]
   }

@@ -445,7 +445,7 @@
     "id": "twoplay",
     "title": "Wobbleton — Game Night",
     "description": "Offline-first local 2-player PWA party game hub.",
-    "details": "A PWA party game hub containing 12 physics-based and turn-based mini-games (e.g. Tug o' Rope, Frosty Pond, Log Joust, Statue Race) designed for 2 players sharing a single device. Built using Three.js and vanilla JS, optimized for mobile camera scaling, and packaged as an installable offline-first application.",
+    "details": "A PWA party game hub containing 18 physics-based and turn-based mini-games (e.g. Tug o' Rope, Frosty Pond, Log Joust, Statue Race, Boxy Match) designed for 2 players sharing a single device. Built using Three.js and vanilla JS, optimized for mobile camera scaling, and packaged as an installable offline-first application.",
     "category": [
       "games"
     ],
@@ -466,15 +466,15 @@
     ]
   },
   {
-    "id": "fur-and-fury-rts",
-    "title": "Fur & Fury: Tides of Clutter",
-    "description": "A competitive 3D RTS game prototype featuring asymmetric viral-animal factions.",
-    "details": "A browser-based real-time strategy (RTS) game prototype built with Three.js. Features three asymmetric factions modeled on StarCraft 2 archetypes: the Great Rodent Republic (capybaras with mobile structures and steam nets), the Trash Pandas (raccoons spreading speed-boosting trash slime), and the Celestial Pallas (Pallas's cats with teleportation warp-ins and Whisker Pylons). Implemented resource harvesting, unit/building tech tree gating, support auras, custom rigid-body collision, and a scripted AI opponent that builds bases and attacks in waves.",
+    "id": "kingdoms-of-wobbleton",
+    "title": "Kingdoms of Wobbleton",
+    "description": "A browser-based 3D medieval RTS game prototype built with Three.js.",
+    "details": "A cozy boxy-vector medieval real-time strategy (RTS) game prototype built with Three.js and Vite. Features procedural map generation (forests, gold mines, mountains), a deterministic simulation engine supporting online 1v1 multiplayer via WebSocket lockstep synchronization, dynamic fog of war, and 2-age technology upgrades with glTF medieval assets, dynamic unit roles, and synthesized runtime audio.",
     "category": [
       "games"
     ],
     "stage": "game",
-    "icon": "fa-gamepad",
+    "icon": "fa-chess-rook",
     "featured": false,
     "links": [
       {

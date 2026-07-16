@@ -4,7 +4,7 @@ import json
 from datetime import datetime, timedelta
 import re
 
-vault_path = r"H:\My Drive\Brain2"
+vault_path = r"D:\Brain2"
 html_path = "journey.html"
 history_path = "brain_stats_history.json"
 
