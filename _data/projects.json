@@ -485,7 +485,7 @@
       {
         "label": "Live Site",
         "icon": "fa-play",
-        "href": "https://p3ji.github.io/rts/"
+        "href": "https://rts-seven.vercel.app/"
       }
     ]
   }
