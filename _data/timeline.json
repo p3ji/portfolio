@@ -406,6 +406,25 @@
     ]
   },
   {
+    "date": "July 14, 2026",
+    "type": "game",
+    "title": "Kingdoms of Wobbleton — Lobbies & Control Upgrades",
+    "description": "Expanded multiplayer support to 4-player lobbies and implemented strategy controls.",
+    "details": "Upgraded the Three.js game room structure to support 4 players in lobbies. Implemented classic RTS mechanics including wall building, shift-queueing commands, double-tap control groups, and double-click multi-selection.",
+    "tags": [
+      "Games",
+      "Three.js",
+      "Vite",
+      "Multiplayer"
+    ],
+    "links": [
+      {
+        "label": "GitHub",
+        "href": "https://github.com/p3ji/rts"
+      }
+    ]
+  },
+  {
     "date": "July 16, 2026",
     "type": "blog",
     "title": "First Substack Post: Teaching a Machine to File My Thoughts",
@@ -421,6 +440,70 @@
       {
         "label": "Substack",
         "href": "https://p3ji.substack.com/p/i-spent-my-sabbatical-teaching-a"
+      }
+    ]
+  },
+  {
+    "date": "July 17, 2026",
+    "type": "prototype",
+    "title": "Modular Survey Tools — DDI-Lifecycle 3.3 Compliance",
+    "description": "Finished compliance updates to DDI-Lifecycle schemas with automated XSD validation tests.",
+    "details": "Successfully implemented Colectica-compliant FragmentInstance packaging. Verified that real, large-scale (14MB to 66MB) labor force survey XML files from Ireland import with full structural accuracy.",
+    "tags": [
+      "Metadata Standards",
+      "XML / XSD",
+      "Data Ingestion"
+    ],
+    "links": [
+      {
+        "label": "GitHub",
+        "href": "https://github.com/p3ji/mobilesurvey"
+      }
+    ]
+  },
+  {
+    "date": "July 18, 2026",
+    "type": "game",
+    "title": "Kingdoms of Wobbleton — Hosted Online Play",
+    "description": "Hosted the multiplayer WebSocket relay on Render to enable public online matches.",
+    "details": "Deployed the game's relay server to Render, moving the multiplayer matchmaking from local-only networks to public online matchmaking.",
+    "tags": [
+      "Games",
+      "WebSockets",
+      "Render",
+      "Multiplayer"
+    ],
+    "links": [
+      {
+        "label": "GitHub",
+        "href": "https://github.com/p3ji/rts"
+      },
+      {
+        "label": "Live",
+        "href": "https://rts-seven.vercel.app/"
+      }
+    ]
+  },
+  {
+    "date": "July 19, 2026",
+    "type": "study",
+    "title": "Open Stats Lab — AI Visibility Experiment Launched",
+    "description": "Pre-registered and deployed a controlled experiment to test if structured table mirrors improve data visibility for AI search engines.",
+    "details": "Conducted a 100-query pilot study analyzing how generative AI answers cite statistical agencies. Found that search crawlers ignore dynamic Javascript tables and robots-blocked CSV files, defaulting to stale analytical articles. Deployed static HTML mirror tables with structured schema.org/Dataset markup to measure crawlability differences against control tables over a 12-week period.",
+    "tags": [
+      "Analytics",
+      "Open Data",
+      "SEO / AI Crawler",
+      "Search Engines"
+    ],
+    "links": [
+      {
+        "label": "GitHub",
+        "href": "https://github.com/p3ji/stats"
+      },
+      {
+        "label": "Live",
+        "href": "https://p3ji.github.io/stats/"
       }
     ]
   }

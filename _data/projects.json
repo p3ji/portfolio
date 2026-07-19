@@ -300,10 +300,10 @@
     ]
   },
   {
-    "id": "ottawa-global-benchmark",
-    "title": "Ottawa Global Benchmark Engine",
-    "description": "Comparative global city indicators dashboard.",
-    "details": "A comparative analytics dashboard comparing Ottawa with global peer cities (Austin, Adelaide, Helsinki) across labour, housing, and tech-sector benchmarks. Uses Python to extract data from Statistics Canada's CODR API via an MCP server, FRED, ABS, and Statistics Finland, with a DuckDB-Wasm backend in the browser for fast, on-the-fly index baseline and divergence trend analysis.",
+    "id": "open-stats-lab",
+    "title": "Open Stats Lab",
+    "description": "An experiment to measure and improve public data visibility for AI search engines.",
+    "details": "A public data platform and experiment designed to improve how generative AI chatbots and search engines find and use Statistics Canada data. Features a 100-query pilot study analyzing why AI search engines cite static articles but miss current database values, a controlled experiment using structured HTML table mirrors (with schema.org/Dataset JSON-LD markup) on GitHub Pages to test crawlability, and a comparative global city benchmark dashboard powered by DuckDB-Wasm in the browser.",
     "category": [
       "economy",
       "work-tools"
@@ -315,12 +315,12 @@
       {
         "label": "GitHub",
         "icon": "fa-github",
-        "href": "https://github.com/p3ji/statcan_codr"
+        "href": "https://github.com/p3ji/stats"
       },
       {
         "label": "Live Site",
         "icon": "fa-play",
-        "href": "https://p3ji.github.io/statcan_codr/"
+        "href": "https://p3ji.github.io/stats/"
       }
     ]
   },
@@ -469,7 +469,7 @@
     "id": "kingdoms-of-wobbleton",
     "title": "Kingdoms of Wobbleton",
     "description": "A browser-based 3D medieval RTS game prototype built with Three.js.",
-    "details": "A cozy boxy-vector medieval real-time strategy (RTS) game prototype built with Three.js and Vite. Features procedural map generation (forests, gold mines, mountains), a deterministic simulation engine supporting online 1v1 multiplayer via WebSocket lockstep synchronization, dynamic fog of war, and 2-age technology upgrades with glTF medieval assets, dynamic unit roles, and synthesized runtime audio.",
+    "details": "A cozy boxy-vector medieval real-time strategy (RTS) game prototype built with Three.js and Vite. Features procedural seeded map generation, a deterministic simulation engine supporting up to 4-player lobbies and online play hosted on Render (wss://rtswobble.onrender.com), dynamic fog of war, 2-age technology upgrades, and advanced mechanics (shift-queueing, walls, double-tap control groups, double-click multi-selection), glTF assets, and synthesized runtime audio.",
     "category": [
       "games"
     ],
