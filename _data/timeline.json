@@ -444,6 +444,23 @@
     ]
   },
   {
+    "date": "July 16, 2026",
+    "type": "blog",
+    "title": "What Building AI Games with My Kids Taught Me About the Future of Labor",
+    "description": "One of the things I am doing this summer with my kids is building video games with AI.",
+    "url": "https://p3ji.substack.com/p/what-building-ai-games-with-my-kids",
+    "tags": [
+      "Substack",
+      "Writing"
+    ],
+    "links": [
+      {
+        "label": "Substack",
+        "href": "https://p3ji.substack.com/p/what-building-ai-games-with-my-kids"
+      }
+    ]
+  },
+  {
     "date": "July 17, 2026",
     "type": "prototype",
     "title": "Modular Survey Tools — DDI-Lifecycle 3.3 Compliance",
