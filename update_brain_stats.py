@@ -4,6 +4,13 @@ import json
 from datetime import datetime, timedelta
 import re
 
+# Auto-sync Substack articles
+try:
+    import sync_substack
+    sync_substack.sync()
+except Exception as e:
+    print("Warning: Could not sync Substack feed:", e)
+
 vault_path = r"D:\Brain2"
 html_path = "journey.html"
 history_path = "brain_stats_history.json"
@@ -110,8 +117,8 @@ try:
     # Check if there are changes to commit
     status_res = subprocess.run(["git", "status", "--porcelain"], capture_output=True, text=True, check=True)
     if status_res.stdout.strip():
-        subprocess.run(["git", "add", html_path, history_path], check=True)
-        subprocess.run(["git", "commit", "-m", "chore: update daily PKG node stats"], check=True)
+        subprocess.run(["git", "add", html_path, history_path, "_data/timeline.json"], check=True)
+        subprocess.run(["git", "commit", "-m", "chore: update daily PKG node stats and sync timeline"], check=True)
         subprocess.run(["git", "push"], check=True)
         print("Successfully committed and pushed daily stats update to GitHub.")
     else:
