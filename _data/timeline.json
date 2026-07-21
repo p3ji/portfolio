@@ -523,5 +523,83 @@
         "href": "https://p3ji.github.io/stats/"
       }
     ]
+  },
+  {
+    "date": "July 19, 2026",
+    "type": "game",
+    "title": "Kingdoms of Wobbleton — Desync Overhaul & Wall Snapping",
+    "description": "Rebuilt the multiplayer sync engine for desync self-healing and added gameplay micro features.",
+    "details": "Overhauled the multiplayer netcode to support desync auto-detection and self-healing resync. Sorted tick commands by player slot with round-robin execution for movement fairness. Added wall snap-to-grid placement, priest healer auto-follow behavior, and rotating ghost building previews.",
+    "tags": [
+      "Games",
+      "Three.js",
+      "Vite",
+      "Multiplayer"
+    ],
+    "links": [
+      {
+        "label": "GitHub",
+        "href": "https://github.com/p3ji/rts"
+      }
+    ]
+  },
+  {
+    "date": "July 20, 2026",
+    "type": "study",
+    "title": "Open Stats Lab — Search Console Verification",
+    "description": "Restructured the website layout into sub-apps and verified search console crawlability.",
+    "details": "Restructured the static site layout to host benchmark, mirror tables, and population maps as separate sub-apps under a root portal. Verified ownership on Google Search Console and Bing Webmaster, submitting XML sitemaps to kick off the search crawling experiment.",
+    "tags": [
+      "Analytics",
+      "Open Data",
+      "SEO / AI Crawler",
+      "Search Engines"
+    ],
+    "links": [
+      {
+        "label": "GitHub",
+        "href": "https://github.com/p3ji/stats"
+      },
+      {
+        "label": "Live",
+        "href": "https://p3ji.github.io/stats/"
+      }
+    ]
+  },
+  {
+    "date": "July 20, 2026",
+    "type": "prototype",
+    "title": "Modular Survey Tools — FAIR JSON-LD & UUIDv5 Identities",
+    "description": "Added JSON-LD serialization and upgraded identities to UUIDv5 for Colectica compatibility.",
+    "details": "Implemented standard UUIDv5 URN identities to resolve dot-escaping conflicts and match DDI-repository conventions. Developed a new JSON-LD exporter (`exportJsonLd`) that outputs a FAIR-compliant `@graph` structure using disco/SKOS vocabularies.",
+    "tags": [
+      "Metadata Standards",
+      "JSON-LD",
+      "Semantic Web"
+    ],
+    "links": [
+      {
+        "label": "GitHub",
+        "href": "https://github.com/p3ji/mobilesurvey"
+      }
+    ]
+  },
+  {
+    "date": "July 21, 2026",
+    "type": "prototype",
+    "title": "Local Investment Analyzer — Launch",
+    "description": "Built a client-side, privacy-first stock and real estate investment comparison engine.",
+    "details": "Designed a vanilla HTML/JS/CSS tool utilizing Chart.js for real-time asset projections. Model stock compound interest curves alongside leveraged real estate metrics (mortgages, Cap Rate, cash-on-cash). Features local JSON export/import for zero-cloud privacy and optional live stock price tracking.",
+    "tags": [
+      "Finance",
+      "Chart.js",
+      "Work Tools"
+    ],
+    "links": [
+      {
+        "label": "GitHub",
+        "href": "https://github.com/p3ji/investment"
+      }
+    ]
   }
 ]
