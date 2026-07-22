@@ -111,13 +111,65 @@ with open(html_path, 'w', encoding='utf-8') as f:
 
 print("Updated journey.html with new stats:", stats_html)
 
+# 5b. Update index.html (Last GitHub Update date & project counts from _data/projects.json)
+index_html_path = "index.html"
+projects_json_path = "_data/projects.json"
+
+if os.path.exists(index_html_path):
+    with open(index_html_path, 'r', encoding='utf-8') as f:
+        index_html = f.read()
+
+    # Update Last GitHub Update Date
+    date_str = f"{now.strftime('%B')} {now.day}, {now.year}"
+    index_html = re.sub(
+        r'(<span class="visual-stat-value" id="github-update-date">\s*)[^<]+?(\s*</span>)',
+        rf'\g<1>{date_str}\g<2>',
+        index_html,
+        flags=re.IGNORECASE
+    )
+
+    # Update stats counts if projects.json exists
+    if os.path.exists(projects_json_path):
+        try:
+            with open(projects_json_path, 'r', encoding='utf-8') as f:
+                projects_data = json.load(f)
+            
+            prototypes_count = sum(1 for p in projects_data if p.get('stage') == 'prototype')
+            concepts_count = sum(1 for p in projects_data if p.get('stage') == 'concept')
+            games_count = sum(1 for p in projects_data if p.get('stage') == 'game')
+
+            index_html = re.sub(
+                r'(<span class="stat-number">\s*)\d+(\s*</span>\s*<span class="stat-label">\s*Functional Prototypes\s*</span>)',
+                rf'\g<1>{prototypes_count}\g<2>',
+                index_html,
+                flags=re.IGNORECASE
+            )
+            index_html = re.sub(
+                r'(<span class="stat-number">\s*)\d+(\s*</span>\s*<span class="stat-label">\s*Concepts\s*</span>)',
+                rf'\g<1>{concepts_count}\g<2>',
+                index_html,
+                flags=re.IGNORECASE
+            )
+            index_html = re.sub(
+                r'(<span class="stat-number">\s*)\d+(\s*</span>\s*<span class="stat-label">\s*Games\s*</span>)',
+                rf'\g<1>{games_count}\g<2>',
+                index_html,
+                flags=re.IGNORECASE
+            )
+        except Exception as e:
+            print("Warning: Could not read projects.json for stats counts:", e)
+
+    with open(index_html_path, 'w', encoding='utf-8') as f:
+        f.write(index_html)
+    print("Updated index.html with Last GitHub Update date and project counts.")
+
 # 6. Commit and push changes to GitHub to rebuild the page and update the "Last GitHub Update" date
 try:
     import subprocess
     # Check if there are changes to commit
     status_res = subprocess.run(["git", "status", "--porcelain"], capture_output=True, text=True, check=True)
     if status_res.stdout.strip():
-        subprocess.run(["git", "add", html_path, history_path, "_data/timeline.json"], check=True)
+        subprocess.run(["git", "add", html_path, history_path, "_data/timeline.json", index_html_path], check=True)
         subprocess.run(["git", "commit", "-m", "chore: update daily PKG node stats and sync timeline"], check=True)
         subprocess.run(["git", "push"], check=True)
         print("Successfully committed and pushed daily stats update to GitHub.")
