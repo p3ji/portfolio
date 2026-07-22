@@ -377,7 +377,7 @@
     "id": "ottawabus",
     "title": "Ottawa Transit Live Tracker",
     "description": "Real-time 2D/3D GTFS bus fleet visualizer and schedule variance monitor for Ottawa.",
-    "details": "A real-time OC Transpo transit monitoring app built with React 19, Three.js, Leaflet, and Vite. Ingests GTFS Realtime feeds to stream live vehicle positions using 60 FPS dead-reckoning interpolation over OpenStreetMap tiles. Features an interactive schedule-variance slider to highlight off-schedule routes, route filtering, and a 3D vehicle spectate mode.",
+    "details": "A real-time OC Transpo transit monitoring app built with React 19, Three.js, Leaflet, and Vite. Ingests GTFS Realtime feeds to stream live vehicle positions using 60 FPS dead-reckoning interpolation over OpenStreetMap tiles. Features a collapsible left-hand HUD pane, an interactive schedule-variance slider to highlight off-schedule routes, route filtering, and a 3D vehicle spectate mode.",
     "category": [
       "work-tools"
     ],
