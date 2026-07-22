@@ -587,18 +587,39 @@
   {
     "date": "July 21, 2026",
     "type": "prototype",
-    "title": "Local Investment Analyzer — Launch",
-    "description": "Built a client-side, privacy-first stock and real estate investment comparison engine.",
-    "details": "Designed a vanilla HTML/JS/CSS tool utilizing Chart.js for real-time asset projections. Model stock compound interest curves alongside leveraged real estate metrics (mortgages, Cap Rate, cash-on-cash). Features local JSON export/import for zero-cloud privacy and optional live stock price tracking.",
+    "title": "Local Investment Analyzer — SEC Edgar Scraper & Portfolio Tracking",
+    "description": "Upgraded the privacy-first analyzer with real-time portfolio tracking and historical SEC financial charting.",
+    "details": "Designed a vanilla HTML/JS/CSS tool utilizing Chart.js for real-time asset projections. Model stock compound interest curves alongside leveraged real estate metrics (mortgages, Cap Rate, cash-on-cash). Added real-time portfolio performance tracking with gain/loss metrics and an integrated SEC Edgar scraper for fundamental financial analysis.",
     "tags": [
       "Finance",
       "Chart.js",
+      "SEC Edgar",
       "Work Tools"
     ],
     "links": [
       {
         "label": "GitHub",
         "href": "https://github.com/p3ji/investment"
+      }
+    ]
+  },
+  {
+    "date": "July 22, 2026",
+    "type": "prototype",
+    "title": "Ottawa Transit Live Tracker — Real-Time GTFS Engine",
+    "description": "Built a real-time OC Transpo transit tracking dashboard with dead-reckoning 60 FPS vehicle movement and schedule variance monitoring.",
+    "details": "Developed a React 19 & Three.js/Leaflet transit visualizer that ingests live GTFS Realtime feeds. Smooths vehicle locations using 60 FPS dead-reckoning interpolation over OpenStreetMap tiles, highlights off-schedule route delays via an interactive slider, and offers 3D vehicle spectate tracking.",
+    "tags": [
+      "React",
+      "Three.js",
+      "Leaflet",
+      "GTFS",
+      "Transit"
+    ],
+    "links": [
+      {
+        "label": "GitHub",
+        "href": "https://github.com/p3ji/ottawabus"
       }
     ]
   }

@@ -353,7 +353,7 @@
     "id": "investment-analyzer",
     "title": "Local Investment Analyzer",
     "description": "Privacy-first stock and real estate comparison engine.",
-    "details": "A client-side, privacy-first comparison engine built using vanilla HTML/JS/CSS and Chart.js. Model and compare long-term stock market compounding curves against leveraged real estate investments (including mortgage amortization, Cap Rate, and cash-on-cash returns). Features local JSON data import/export for zero-cloud persistence, and optional live price ticker tracking.",
+    "details": "A client-side, privacy-first comparison engine built using vanilla HTML/JS/CSS and Chart.js. Model and compare long-term stock market compounding curves against leveraged real estate investments. Features an integrated SEC Edgar scraper for fundamental financial analysis, historical financial charting, real-time portfolio tracking (gain/loss & average cost basis), and local JSON data import/export for zero-cloud persistence.",
     "category": [
       "work-tools"
     ],
@@ -370,6 +370,25 @@
         "label": "Live Site",
         "icon": "fa-play",
         "href": "https://p3ji.github.io/investment/"
+      }
+    ]
+  },
+  {
+    "id": "ottawabus",
+    "title": "Ottawa Transit Live Tracker",
+    "description": "Real-time 2D/3D GTFS bus fleet visualizer and schedule variance monitor for Ottawa.",
+    "details": "A real-time OC Transpo transit monitoring app built with React 19, Three.js, Leaflet, and Vite. Ingests GTFS Realtime feeds to stream live vehicle positions using 60 FPS dead-reckoning interpolation over OpenStreetMap tiles. Features an interactive schedule-variance slider to highlight off-schedule routes, route filtering, and a 3D vehicle spectate mode.",
+    "category": [
+      "work-tools"
+    ],
+    "stage": "prototype",
+    "icon": "fa-bus",
+    "featured": false,
+    "links": [
+      {
+        "label": "GitHub",
+        "icon": "fa-github",
+        "href": "https://github.com/p3ji/ottawabus"
       }
     ]
   },
