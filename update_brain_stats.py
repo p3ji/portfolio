@@ -169,8 +169,8 @@ try:
     # Check if there are changes to commit
     status_res = subprocess.run(["git", "status", "--porcelain"], capture_output=True, text=True, check=True)
     if status_res.stdout.strip():
-        subprocess.run(["git", "add", html_path, history_path, "_data/timeline.json", index_html_path], check=True)
-        subprocess.run(["git", "commit", "-m", "chore: update daily PKG node stats and sync timeline"], check=True)
+        subprocess.run(["git", "add", html_path, history_path, "_data/timeline.json", "_data/projects.json", index_html_path], check=True)
+        subprocess.run(["git", "commit", "-m", "chore: update daily PKG node stats, project counts, and sync timeline"], check=True)
         subprocess.run(["git", "push"], check=True)
         print("Successfully committed and pushed daily stats update to GitHub.")
     else:
