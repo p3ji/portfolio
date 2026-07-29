@@ -360,18 +360,7 @@
     "stage": "prototype",
     "icon": "fa-wallet",
     "featured": false,
-    "links": [
-      {
-        "label": "GitHub",
-        "icon": "fa-github",
-        "href": "https://github.com/p3ji/investment"
-      },
-      {
-        "label": "Live Site",
-        "icon": "fa-play",
-        "href": "https://p3ji.github.io/investment/"
-      }
-    ]
+    "links": []
   },
   {
     "id": "ottawabus",
