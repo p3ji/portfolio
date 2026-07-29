@@ -618,6 +618,50 @@
     ]
   },
   {
+    "date": "July 24, 2026",
+    "type": "prototype",
+    "title": "Family Kitchen — Meal Planner & OCR Recipe Scanner PWA",
+    "description": "Built an offline-first PWA for family meal planning, automated grocery list generation, and Tesseract.js recipe OCR scanning.",
+    "details": "Developed a mobile-first React 19 & Vite application for managing weekly family meals. Features local browser OCR via Tesseract.js to scan physical recipes, auto-aggregating grocery shopping lists, dietary profile preference tracking, and printable PDF schedule exports.",
+    "tags": [
+      "React",
+      "PWA",
+      "OCR",
+      "Tesseract.js",
+      "Personal Tools"
+    ],
+    "links": [
+      {
+        "label": "GitHub",
+        "href": "https://github.com/p3ji/meal"
+      },
+      {
+        "label": "Live Site",
+        "href": "https://p3ji.github.io/meal/"
+      }
+    ]
+  },
+  {
+    "date": "July 25, 2026",
+    "type": "prototype",
+    "title": "Command Centre — Local Workspace Dashboard & Git Diff Engine",
+    "description": "Built a zero-dependency desktop dashboard monitoring 40+ project repositories with live git diagnostics, file diff committing, script launchers, and Windows task automations.",
+    "details": "Designed a zero-dependency local Node/HTML/JS dashboard running over 40 sibling projects. Scans local filesystem and git metrics to track uncommitted/unpushed code, line count breakdowns by language, tech stack detection, one-click batch script execution (Start-*.bat), colorized file diff viewer with staging & commit controls, and Windows daily scheduled task toggles.",
+    "tags": [
+      "Node.js",
+      "Git Diagnostics",
+      "Dashboard",
+      "Dev Tools",
+      "Automation"
+    ],
+    "links": [
+      {
+        "label": "GitHub",
+        "href": "https://github.com/p3ji/command"
+      }
+    ]
+  },
+  {
     "date": "July 28, 2026",
     "type": "milestone",
     "title": "Realization: Agentic AI as an Engine for Custom Learning Software",

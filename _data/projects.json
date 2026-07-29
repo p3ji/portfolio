@@ -623,5 +623,49 @@
         "href": "https://p3ji.github.io/learn/apps/kids_philosophy/"
       }
     ]
+  },
+  {
+    "id": "command-centre",
+    "title": "Command Centre",
+    "description": "Desktop workspace dashboard & local git manager for all project repos.",
+    "details": "A zero-dependency local dashboard monitoring 40+ project repositories under C:\\Users\\pushp\\Documents\\Projects. Scans local filesystem and git diagnostics to track uncommitted/unpushed changes, line counts by language, tech stack signatures, one-click batch script launchers, an interactive colorized file diff & commit engine, and Windows scheduled task automations.",
+    "category": [
+      "work-tools",
+      "personal-tools"
+    ],
+    "stage": "prototype",
+    "icon": "fa-terminal",
+    "featured": false,
+    "links": [
+      {
+        "label": "GitHub",
+        "icon": "fa-github",
+        "href": "https://github.com/p3ji/command"
+      }
+    ]
+  },
+  {
+    "id": "family-kitchen-meal-planner",
+    "title": "Family Kitchen — Meal Planner",
+    "description": "Offline-first PWA for weekly family meal planning, recipe OCR & grocery lists.",
+    "details": "A mobile-first offline PWA built with React 19, Tesseract.js local OCR, and Vite. Features a weekly meal planner grid, family dietary profile tracking, automatic grocery list aggregation, in-browser recipe image text scanning, and printable PDF meal schedule exports.",
+    "category": [
+      "personal-tools"
+    ],
+    "stage": "prototype",
+    "icon": "fa-utensils",
+    "featured": false,
+    "links": [
+      {
+        "label": "GitHub",
+        "icon": "fa-github",
+        "href": "https://github.com/p3ji/meal"
+      },
+      {
+        "label": "Live Site",
+        "icon": "fa-play",
+        "href": "https://p3ji.github.io/meal/"
+      }
+    ]
   }
 ]
