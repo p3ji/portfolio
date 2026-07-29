@@ -426,7 +426,7 @@
   },
   {
     "date": "July 16, 2026",
-    "type": "blog",
+    "type": "milestone",
     "title": "First Substack Post: Teaching a Machine to File My Thoughts",
     "description": "Published my first article on 'Artificially Sociological', reflecting on using agentic AI to build a persistent digital brain.",
     "url": "https://p3ji.substack.com/p/i-spent-my-sabbatical-teaching-a",
@@ -619,7 +619,7 @@
   },
   {
     "date": "July 28, 2026",
-    "type": "reflection",
+    "type": "milestone",
     "title": "Realization: Agentic AI as an Engine for Custom Learning Software",
     "description": "Discovered a core paradigm shift in self-directed learning: using agentic AI to build tailored software bridges that connect a learner's current baseline directly to new concepts.",
     "details": "Off-the-shelf courses spend too little time on personal knowledge gaps and too much on familiar ground. With agentic AI, we can build custom learning software that acts as an individualized 1-on-1 tutor — interviewing the learner, anchoring new concepts in existing mental models (e.g., mapping SAS/Stata syntax to Python ML and LangGraph for adult professionals), and co-creating interactive exercises. Specifying what software to build to teach a concept turns out to be one of the strongest pedagogical tools for mastering it. Applied this framework to build adult study hubs (WatSPEED AI Hub, RAP Studio) and a gamified arcade for kids (Philosopher's Quest).",
