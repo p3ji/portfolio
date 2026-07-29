@@ -58,6 +58,7 @@
     "description": "Screen-aware real-time learning companion.",
     "details": "An AI tutoring assistant that syncs with the user's active screen to provide real-time, context-aware instructions and tailored learning guidance based on active workspace state.",
     "category": [
+      "learning",
       "personal-tools"
     ],
     "stage": "concept",
@@ -552,6 +553,7 @@
     "description": "Agentic AI study suite bridging legacy analytics to LLM workflows.",
     "details": "A comprehensive learning accelerator for the University of Waterloo's WatSPEED Agentic AI program. Features a SAS/Stata-to-LLM Rosetta Stone, Scikit-Learn vs. Google TabFM zero-shot tabular classification, LangGraph state graphs, MCP server tool integration, and 9 executable Jupyter notebooks.",
     "category": [
+      "learning",
       "work-tools",
       "personal-tools"
     ],
@@ -577,6 +579,7 @@
     "description": "Reproducible Analytical Pipelines maturity model & data engineering guide.",
     "details": "A structured data engineering framework guiding teams from loose script folders to production-ready Reproducible Analytical Pipelines (RAP). Covers locked environment isolation (pyproject.toml), declarative DAG task orchestration (Prefect/DVC), automated schema testing (pytest), and GitHub Actions CI/CD.",
     "category": [
+      "learning",
       "work-tools"
     ],
     "stage": "prototype",
@@ -601,6 +604,7 @@
     "description": "Gamified arcade introducing 8 to 12-year-olds to philosophy & mental models.",
     "details": "A vibrant, interactive learning portal for kids. Features collectible thinker cards (Socrates, Hypatia, Popper), interactive thought experiments (Plato's Cave, Ship of Theseus), mental model superpowers (First Principles, Occam's Razor), and a logical fallacy monster spotter game.",
     "category": [
+      "learning",
       "games",
       "personal-tools"
     ],
