@@ -533,7 +533,7 @@
     ],
     "stage": "game",
     "icon": "fa-chess-rook",
-    "featured": false,
+    "featured": true,
     "links": [
       {
         "label": "GitHub",
