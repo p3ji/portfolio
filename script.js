@@ -137,6 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
           if (cat === 'health') label = 'Health';
           if (cat === 'economy') label = 'Economy';
           if (cat === 'games') label = 'Games';
+          if (cat === 'learning') label = 'Learning';
           return `<span class="project-tag">${label}</span>`;
         }).join('');
 
