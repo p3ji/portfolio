@@ -688,5 +688,41 @@
         "href": "https://p3ji.github.io/learn/apps/kids_philosophy/"
       }
     ]
+  },
+  {
+    "date": "August 2, 2026",
+    "type": "prototype",
+    "title": "AI Job Search — Canada",
+    "description": "Forked the trending open-source AI job-search framework into the recognized Canadian community fork — Job Bank/GC Jobs and Talent.com/Eluta.ca search skills, bilingual EN/FR search, Canadian résumé formatting.",
+    "tags": [
+      "Job Search",
+      "Canada",
+      "Bilingual",
+      "Claude Code",
+      "Open Source"
+    ],
+    "links": [
+      {
+        "label": "GitHub",
+        "href": "https://github.com/p3ji/ai-job-search-ca"
+      }
+    ]
+  },
+  {
+    "date": "August 3, 2026",
+    "type": "prototype",
+    "title": "TenderSearch",
+    "description": "Started a tool for a small consulting group bidding on Canadian federal contracts: ingests CanadaBuys notices daily, matches against member capabilities, scores bid/no-bid fit.",
+    "tags": [
+      "Procurement",
+      "CanadaBuys",
+      "Consulting"
+    ],
+    "links": [
+      {
+        "label": "GitHub",
+        "href": "https://github.com/p3ji/tendersearch"
+      }
+    ]
   }
 ]

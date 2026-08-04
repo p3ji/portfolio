@@ -668,5 +668,45 @@
         "href": "https://p3ji.github.io/meal/"
       }
     ]
+  },
+  {
+    "id": "ai-job-search-ca",
+    "title": "AI Job Search — Canada",
+    "description": "The recognized Canadian community fork of the trending AI job-search framework.",
+    "details": "A Canadian fork of MadsLorentzen/ai-job-search, built on Claude Code — recognized by the upstream project as its Canadian community fork. Adds Job Bank/Guichet-Emplois and GC Jobs portal search skills alongside Talent.com and Eluta.ca, bilingual EN/FR search, and Canadian résumé conventions, covering both public and private sector job hunting.",
+    "category": [
+      "personal-tools",
+      "economy"
+    ],
+    "stage": "prototype",
+    "icon": "fa-briefcase",
+    "featured": true,
+    "links": [
+      {
+        "label": "GitHub",
+        "icon": "fa-github",
+        "href": "https://github.com/p3ji/ai-job-search-ca"
+      }
+    ]
+  },
+  {
+    "id": "tendersearch",
+    "title": "TenderSearch",
+    "description": "Bid/no-bid recommendations for Canadian federal procurement tenders.",
+    "details": "A daily pipeline for a small consulting group bidding on Canadian federal work: ingests CanadaBuys tender notices, matches them against member capability profiles, and scores fit against a structured bid/no-bid rubric to help prioritize what to pursue.",
+    "category": [
+      "work-tools",
+      "economy"
+    ],
+    "stage": "prototype",
+    "icon": "fa-gavel",
+    "featured": false,
+    "links": [
+      {
+        "label": "GitHub",
+        "icon": "fa-github",
+        "href": "https://github.com/p3ji/tendersearch"
+      }
+    ]
   }
 ]
