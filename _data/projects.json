@@ -533,6 +533,7 @@
     ],
     "stage": "game",
     "icon": "fa-chess-rook",
+    "image": "images/kingdoms.png",
     "featured": true,
     "links": [
       {
@@ -680,6 +681,7 @@
     ],
     "stage": "prototype",
     "icon": "fa-briefcase",
+    "image": "images/aijobsearch.png",
     "featured": true,
     "links": [
       {
@@ -700,7 +702,8 @@
     ],
     "stage": "prototype",
     "icon": "fa-gavel",
-    "featured": false,
+    "image": "images/tendersearch.png",
+    "featured": true,
     "links": [
       {
         "label": "GitHub",
