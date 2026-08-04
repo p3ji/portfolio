@@ -549,10 +549,10 @@
     ]
   },
   {
-    "id": "watspeed-agentic-ai-hub",
-    "title": "WatSPEED Agentic AI Hub",
+    "id": "knowledge-bridge",
+    "title": "Knowledge Bridge",
     "description": "Custom learning software: sociology to data scientist/AI engineer.",
-    "details": "A comprehensive learning accelerator for the University of Waterloo's WatSPEED Agentic AI program. Features a SAS/Stata-to-LLM Rosetta Stone, Scikit-Learn vs. Google TabFM zero-shot tabular classification, LangGraph state graphs, MCP server tool integration, and 9 executable Jupyter notebooks.",
+    "details": "A comprehensive learning accelerator designed to bridge legacy analytics (SAS/Stata) to modern AI workflows. Features a SAS/Stata-to-LLM Rosetta Stone, Scikit-Learn vs. Google TabFM zero-shot tabular classification, LangGraph state graphs, MCP server tool integration, and 9 executable Jupyter notebooks.",
     "category": [
       "learning",
       "work-tools",
