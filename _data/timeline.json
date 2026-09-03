@@ -724,5 +724,28 @@
         "href": "https://github.com/p3ji/tendersearch"
       }
     ]
+  },
+  {
+    "date": "August 16, 2026",
+    "type": "study",
+    "title": "Completed MBA Essentials — Rotman School of Management",
+    "description": "Completed the MBA Essentials executive program at the University of Toronto's Rotman School of Management, focusing on strategy, accounting, finance, marketing and the role of AI.",
+    "tags": [
+      "Rotman",
+      "Executive Education",
+      "Strategy",
+      "Finance",
+      "AI"
+    ]
+  },
+  {
+    "date": "September 1, 2026",
+    "type": "milestone",
+    "title": "Registered as a Sole Proprietorship",
+    "description": "Officially registered as a sole proprietorship to formalize my independent consulting and project work.",
+    "tags": [
+      "Career",
+      "Business"
+    ]
   }
 ]
