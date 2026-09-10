@@ -711,5 +711,64 @@
         "href": "https://github.com/p3ji/tendersearch"
       }
     ]
+  },
+  {
+    "id": "objectif-cbc",
+    "title": "Objectif CBC",
+    "description": "Offline-first study tool for federal French language exams.",
+    "details": "A private flashcard client for Canadian public servants preparing for B-level and C-level French exams. Runs 100% in your browser using local storage and spaced repetition. It schedules review intervals (1-day, 3-day, and 7-day) directly on your device with zero data sent to external servers.",
+    "category": [
+      "work-tools",
+      "personal-tools"
+    ],
+    "stage": "prototype",
+    "icon": "fa-language",
+    "featured": false,
+    "links": [
+      {
+        "label": "GitHub",
+        "icon": "fa-github",
+        "href": "https://github.com/p3ji/french"
+      }
+    ]
+  },
+  {
+    "id": "buynothing",
+    "title": "Buy Nothing",
+    "description": "Hyperlocal gifting app built to replace messy social media groups.",
+    "details": "A clean web app that helps neighbors give and receive free household items. Unlike busy social feeds where unclaimed items get buried, it highlights items waiting more than two days. Includes one-click re-listing when someone flakes, private porch address sharing, and one-tap pickup scheduling.",
+    "category": [
+      "personal-tools"
+    ],
+    "stage": "prototype",
+    "icon": "fa-gift",
+    "featured": false,
+    "links": [
+      {
+        "label": "GitHub",
+        "icon": "fa-github",
+        "href": "https://github.com/p3ji/buynothing"
+      }
+    ]
+  },
+  {
+    "id": "heritage-acupuncture",
+    "title": "Heritage Acupuncture",
+    "description": "Modern patient portal and condition guide for a 38-year clinic.",
+    "details": "A fast, clear website redesign for an established acupuncture and herbal clinic in Kanata. Replaces cluttered medical templates with an interactive search guide covering six health areas. Patients can search conditions, check transparent fees and Ontario insurance coverage, and book appointments through a simple intake form.",
+    "category": [
+      "health",
+      "personal-tools"
+    ],
+    "stage": "prototype",
+    "icon": "fa-notes-medical",
+    "featured": false,
+    "links": [
+      {
+        "label": "GitHub",
+        "icon": "fa-github",
+        "href": "https://github.com/p3ji/siteacu"
+      }
+    ]
   }
 ]

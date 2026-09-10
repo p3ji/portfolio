@@ -747,5 +747,25 @@
       "Career",
       "Business"
     ]
+  },
+  {
+    "date": "September 10, 2026",
+    "type": "prototype",
+    "title": "Objectif CBC — Local-First Study Tool for Federal French Exams",
+    "description": "Built an offline-first French study tool that runs spaced repetition entirely in browser storage with zero external tracking.",
+    "details": "Public servants need reliable practice for federal language evaluations without sending test performance across third-party servers. Built a static client in React and TypeScript that tracks question intervals (1, 3, and 7 days) in local browser storage. It balances reading and writing practice across 14 study sessions and allows learners to export their progress to JSON anytime.",
+    "tags": [
+      "Education",
+      "Local-First",
+      "React",
+      "TypeScript",
+      "Work Tools"
+    ],
+    "links": [
+      {
+        "label": "GitHub",
+        "href": "https://github.com/p3ji/french"
+      }
+    ]
   }
 ]
