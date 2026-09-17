@@ -767,5 +767,47 @@
         "href": "https://github.com/p3ji/french"
       }
     ]
+  },
+  {
+    "date": "September 14, 2026",
+    "type": "prototype",
+    "title": "Community Non-Profit Operations & Volunteer Shift PWA",
+    "description": "Automated weekly operations for a local skating club, replacing spreadsheet tracking with an installable volunteer scheduling PWA.",
+    "details": "Non-profit boards spend hours each week manually tracking volunteer hours and sending reminder emails. Built a mobile PWA with PIN-based sign-in and home-screen badge alerts. The tool schedules assistant shifts and exports clean attendance reports.",
+    "tags": [
+      "Non-Profit",
+      "PWA",
+      "Automation",
+      "Work Tools"
+    ],
+    "links": [
+      {
+        "label": "GitHub",
+        "href": "https://github.com/p3ji/skate"
+      }
+    ]
+  },
+  {
+    "date": "September 16, 2026",
+    "type": "milestone",
+    "title": "Launched Peji — Digital Practice & Embedded Portfolio Assistant",
+    "description": "Launched the public web presence for Peji, an independent consulting practice for non-profits and small businesses.",
+    "details": "Small organizations often struggle to separate practical digital tools from hype. Launched peji.ca to offer direct technical delivery, workflow automation, and data help. Features an embedded Gemini assistant that answers client questions using project data from this portfolio.",
+    "tags": [
+      "Consulting",
+      "Career",
+      "Small Business",
+      "Gemini"
+    ],
+    "links": [
+      {
+        "label": "Live Site",
+        "href": "https://peji.ca"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/p3ji/business"
+      }
+    ]
   }
 ]

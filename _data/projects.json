@@ -770,5 +770,49 @@
         "href": "https://github.com/p3ji/siteacu"
       }
     ]
+  },
+  {
+    "id": "skating-club-automation",
+    "title": "Club Operations & Volunteer Scheduler",
+    "description": "Mobile shift tracker and workflow automation for a community sports club.",
+    "details": "Built to cut weekly administrative overhead for a community skating club. Combines automated email reminders and name-tag printing with an offline-resilient PWA for volunteer shift sign-ups, session tracking, and home-screen notifications.",
+    "category": [
+      "work-tools",
+      "personal-tools"
+    ],
+    "stage": "prototype",
+    "icon": "fa-person-skating",
+    "featured": false,
+    "links": [
+      {
+        "label": "GitHub",
+        "icon": "fa-github",
+        "href": "https://github.com/p3ji/skate"
+      }
+    ]
+  },
+  {
+    "id": "peji-consulting",
+    "title": "Peji — Digital Practice & AI Assistant",
+    "description": "Independent consulting site with an embedded AI portfolio assistant.",
+    "details": "The public website for an independent digital practice helping non-profits and small teams. Includes an embedded AI assistant powered by Gemini that answers visitor questions by grounding responses directly in this project portfolio.",
+    "category": [
+      "work-tools"
+    ],
+    "stage": "prototype",
+    "icon": "fa-briefcase",
+    "featured": false,
+    "links": [
+      {
+        "label": "GitHub",
+        "icon": "fa-github",
+        "href": "https://github.com/p3ji/business"
+      },
+      {
+        "label": "Live Site",
+        "icon": "fa-play",
+        "href": "https://peji.ca"
+      }
+    ]
   }
 ]
