@@ -1,855 +1,878 @@
 [
-  {
-    "date": "Spring 2026",
-    "type": "study",
-    "title": "Exploring Foundations",
-    "description": "Self-study before the official experimentation phase begins. Working through Chip Huyen's AI Engineering, exploring the LLM ecosystem beyond AI chatbots, and completing Coursera courses.",
-    "tags": [
-      "Coursera",
-      "AI Engineering",
-      "Self-study",
-      "LLMs"
-    ]
-  },
-  {
-    "date": "June 1, 2026",
-    "type": "milestone",
-    "title": "Journey Officially Begins",
-    "description": "Started a formal one-year exploration dedicated to deep, hands-on experimentation with AI — its capabilities, architectures, and potential for transforming organizations and workflows.",
-    "tags": [
-      "Career Break"
-    ]
-  },
-  {
-    "date": "Early June 2026",
-    "type": "study",
-    "title": "Getting the Stack Running",
-    "description": "First weeks of hands-on experimentation: set up local dev environment, learned Git workflows, deployed first projects to GitHub Pages, Vercel, and Netlify.",
-    "tags": [
-      "Git",
-      "Deployment",
-      "Dev Setup",
-      "HTML/CSS/JS"
-    ]
-  },
-  {
-    "date": "June 10, 2026",
-    "type": "prototype",
-    "title": "Canadian AI Jobs Report",
-    "description": "An interactive dashboard analyzing the economic value of Canadian college majors — mapping CIP programs to NOC occupations with AI disruption risk scores, median salaries, and 10-year job growth metrics.",
-    "tags": [
-      "Economy",
-      "Data Viz"
-    ],
-    "links": [
-      {
-        "label": "GitHub",
-        "href": "https://github.com/p3ji/occupation_ai"
-      },
-      {
-        "label": "Live",
-        "href": "https://occupation-ai.vercel.app/"
-      }
-    ]
-  },
-  {
-    "date": "June 11, 2026",
-    "type": "prototype",
-    "title": "Ottawa Recreation Discovery",
-    "description": "A visual discovery tool and interactive map for parents to find municipal recreation facilities and summer camps in Ottawa by proximity, amenities, and geographical sector.",
-    "tags": [
-      "Personal Tools",
-      "Maps"
-    ],
-    "links": [
-      {
-        "label": "Live",
-        "href": "https://p3ji-p3ji.hf.space/"
-      }
-    ]
-  },
-  {
-    "date": "June 12–13, 2026",
-    "type": "prototype",
-    "title": "Policy AI Assistants — NIHB + WFA",
-    "description": "Two RAG-based policy chatbots grounded in real government documentation: one navigating the Non-Insured Health Benefits program, the other advising on Federal Public Service Work Force Adjustment guidelines.",
-    "tags": [
-      "Health",
-      "Work Tools",
-      "RAG",
-      "LLM"
-    ],
-    "links": [
-      {
-        "label": "NIHB",
-        "href": "https://nihbwrap.netlify.app/"
-      },
-      {
-        "label": "WFA",
-        "href": "https://wfa-blond.vercel.app/"
-      }
-    ]
-  },
-  {
-    "date": "June 17, 2026",
-    "type": "milestone",
-    "title": "Portfolio Site Launched",
-    "description": "Built and deployed this portfolio to document the journey publicly — complete with live GitHub stats, a digital brain expansion tracker, a projects grid with filtering, and a workflow architecture diagram.",
-    "links": [
-      {
-        "label": "GitHub",
-        "href": "https://github.com/p3ji/portfolio"
-      }
-    ]
-  },
-  {
-    "date": "June 18, 2026",
-    "type": "prototype",
-    "title": "Gmail Cleaner CLI",
-    "description": "A Python command-line tool to clean, organize, and label Gmail inboxes via IMAP.",
-    "tags": [
-      "Personal Tools",
-      "Python",
-      "CLI"
-    ],
-    "links": [
-      {
-        "label": "GitHub",
-        "href": "https://github.com/p3ji/gmailcleaner"
-      }
-    ]
-  },
-  {
-    "date": "June 20, 2026",
-    "type": "prototype",
-    "title": "Drug Utilization Dashboard + Retirement Calculator",
-    "description": "Two analytical tools in quick succession: a monitoring dashboard for drug utilization data in Canada, and a Defined Benefit pension early retirement calculator mapping portfolio and pension timelines.",
-    "tags": [
-      "Health",
-      "Economy",
-      "Dashboards"
-    ],
-    "links": [
-      {
-        "label": "Drug",
-        "href": "https://p3ji.github.io/drug/"
-      },
-      {
-        "label": "Finance",
-        "href": "https://p3ji.github.io/financialtool/"
-      }
-    ]
-  },
-  {
-    "date": "June 21–22, 2026",
-    "type": "game",
-    "title": "Games Sprint — Debate, n-1, WordString",
-    "description": "A rapid games sprint building three web apps: a debate facilitator for kids, an anagram word-unscrambling game, and a cozy sewing-themed word puzzle. Complete with high scores synced to Supabase.",
-    "tags": [
-      "Games",
-      "PWA",
-      "Mobile",
-      "Web Audio"
-    ],
-    "links": [
-      {
-        "label": "Debate",
-        "href": "https://p3ji.github.io/debate_game/"
-      },
-      {
-        "label": "n-1",
-        "href": "https://n-1game.vercel.app/"
-      },
-      {
-        "label": "WordString",
-        "href": "https://p3ji.github.io/wordstring/"
-      }
-    ]
-  },
-  {
-    "date": "June 24, 2026",
-    "type": "prototype",
-    "title": "Mobile Survey Builder — Now Live",
-    "description": "A DDI-compliant, mobile-first survey design and EQ authoring tool — featuring re-usable metadata components, nested rosters, complex skip logic, bilingual support, and WCAG accessibility.",
-    "tags": [
-      "Work Tools",
-      "DDI",
-      "Mobile",
-      "Accessibility"
-    ],
-    "links": [
-      {
-        "label": "GitHub",
-        "href": "https://github.com/p3ji/mobilesurvey"
-      },
-      {
-        "label": "Live",
-        "href": "https://p3ji.github.io/mobilesurvey/"
-      }
-    ]
-  },
-  {
-    "date": "June 26, 2026",
-    "type": "prototype",
-    "title": "Modular Survey Tools — Analytics & Collection Dashboard",
-    "description": "Significant expansion: rebranded to Modular Survey Tools and added several new modular tools — Collector (manage surveys and monitor real-time KPIs), Searcher (discover metadata), Migrator (import external surveys into Designer), and the first video in the Training Hub.",
-    "tags": [
-      "Work Tools",
-      "Analytics",
-      "Dashboards",
-      "Paradata"
-    ],
-    "links": [
-      {
-        "label": "GitHub",
-        "href": "https://github.com/p3ji/mobilesurvey"
-      },
-      {
-        "label": "Live",
-        "href": "https://p3ji.github.io/mobilesurvey/"
-      }
-    ]
-  },
-  {
-    "date": "June 27, 2026",
-    "type": "prototype",
-    "title": "Modular Survey Tools — Phase 6 Complete",
-    "description": "Major sprint completing Phase 6.",
-    "details": "Added matrix/grid question type across schema, engine, designer, and runtime; migrated backend from Hono+SQLite to Supabase (hosted DB + REST, no server to run); patched a privacy bug where exploration-only surveys were wrongly persisting responses. Also set up a vault-to-site content pipeline so the AI Journey timeline is now editable directly from Obsidian.",
-    "tags": [
-      "Work Tools",
-      "Analytics",
-      "Supabase",
-      "DDI",
-      "Paradata"
-    ],
-    "links": [
-      {
-        "label": "GitHub",
-        "href": "https://github.com/p3ji/mobilesurvey"
-      },
-      {
-        "label": "Live",
-        "href": "https://p3ji.github.io/mobilesurvey/"
-      }
-    ]
-  },
-  {
-    "date": "June 28, 2026",
-    "type": "prototype",
-    "title": "Local CRA-Compliant Bookkeeping App",
-    "description": "Built a fully offline desktop bookkeeping app for Canadian sole proprietors using Python and Streamlit.",
-    "details": "The app ingests Costco Mastercard CSV statements, matches receipts via local OCR (Tesseract), and auto-classifies expenses to CRA Form T2125 lines. It calculates GST/HST ITCs, flags audit risks, and runs entirely locally using DuckDB to ensure financial data privacy.",
-    "tags": [
-      "Finance",
-      "Python",
-      "Streamlit",
-      "OCR"
-    ],
-    "links": [
-      {
-        "label": "GitHub",
-        "href": "https://github.com/p3ji/bookkeeping"
-      }
-    ]
-  },
-  {
-    "date": "June 29, 2026",
-    "type": "concept",
-    "title": "Virtual Tutor — Screen-Aware Learning Companion",
-    "description": "Conceived an AI tutoring assistant that syncs with the user's active screen to provide real-time, catered instructions and learning guidance.",
-    "details": "Unlike a standard chatbot, this concept centers on a visual companion that observes the active workspace (via screen capture/OCR or editor integration) and dynamically offers context-aware help, tips, and step-by-step explanations tailored to what the user is currently doing on screen.",
-    "tags": [
-      "Education",
-      "AI Companion",
-      "UX Design"
-    ]
-  },
-  {
-    "date": "July 2, 2026",
-    "type": "game",
-    "title": "Real Estate Empire — Prototyping Started",
-    "description": "Started prototyping a real-estate simulation and strategy game mapped directly onto high-fidelity satellite imagery of Ottawa.",
-    "details": "Choose your starting backstory (from Elgin Street server to Kanata tech worker), scout listings across actual neighborhoods like The Glebe and Westboro, outbid AI competitors in real-time, and manage your cash flow as the game clock ticks.",
-    "tags": [
-      "Games",
-      "React",
-      "Simulation",
-      "Maps"
-    ],
-    "links": [
-      {
-        "label": "GitHub",
-        "href": "https://github.com/p3ji/realestateempire"
-      }
-    ]
-  },
-  {
-    "date": "July 9, 2026",
-    "type": "prototype",
-    "title": "Ottawa Global Benchmark Engine",
-    "description": "Built a comparative analytics dashboard comparing Ottawa with global peer cities (Austin, Adelaide, Helsinki) across labour, housing, and tech indicators.",
-    "details": "Uses Statistics Canada CODR API data via an MCP server, along with FRED, ABS, and Statistics Finland. Built with a DuckDB-Wasm backend in the browser for fast, on-the-fly index baseline and divergence trend analysis. Setting up a data pipeline for a major expansion once new census data becomes available.",
-    "tags": [
-      "Analytics",
-      "Python",
-      "DuckDB",
-      "API Ingestion"
-    ],
-    "links": [
-      {
-        "label": "GitHub",
-        "href": "https://github.com/p3ji/statcan_codr"
-      },
-      {
-        "label": "Live",
-        "href": "https://p3ji.github.io/statcan_codr/"
-      }
-    ]
-  },
-  {
-    "date": "July 10, 2026",
-    "type": "prototype",
-    "title": "Built Custom Portfolio Editor",
-    "description": "Created a standalone local editor to manage the portfolio's content, complete with a one-click GitHub publish integration.",
-    "details": "To streamline workflow documentation, I replaced the hardcoded HTML with a dynamic JSON architecture. The accompanying Editor app allows me to easily add projects and timeline entries, view the Git diff of my changes, and automatically publish to the live site without touching the codebase.",
-    "tags": [
-      "personal-tools"
-    ]
-  },
-  {
-    "date": "July 10, 2026",
-    "type": "game",
-    "title": "Wobbleton — Tower Workshop",
-    "description": "Built a cozy 3D physics-based tower building sandbox in the browser.",
-    "details": "First project using Three.js and the Web Audio API. Built a lightweight, custom rigid-body physics engine (sleeping/waking bodies, material stickiness/weight, and soft-sphere collisions) from scratch to simulate structures made of straw, wood, brick, stone, and glass. Test towers against disasters like earthquakes, tornadoes, meteors, and windstorms while generating native procedural lo-fi soundtrack loops and audio effects.",
-    "tags": [
-      "Games",
-      "Three.js",
-      "Physics",
-      "Web Audio API"
-    ],
-    "links": [
-      {
-        "label": "GitHub",
-        "href": "https://github.com/p3ji/wobbletower"
-      },
-      {
-        "label": "Live",
-        "href": "https://p3ji.github.io/wobbletower/"
-      }
-    ]
-  },
-  {
-    "date": "July 11, 2026",
-    "type": "game",
-    "title": "Wobbleton — Game Night PWA",
-    "description": "Completed a mobile-optimized 2-player local party game hub with 12 mini-games.",
-    "details": "Expanding the 'Wobbleton' design family. Built a collection of 12 distinct competitive mini-games sharing a single screen (including Tug o' Rope, Boxy Toe, Frosty Pond, and Statue Race). Configured full offline-first behavior using a custom Service Worker cache and fixed mobile browser viewport camera scaling issues.",
-    "tags": [
-      "Games",
-      "PWA",
-      "Three.js",
-      "Mobile"
-    ],
-    "links": [
-      {
-        "label": "GitHub",
-        "href": "https://github.com/p3ji/twoplay"
-      },
-      {
-        "label": "Live",
-        "href": "https://p3ji.github.io/twoplay/"
-      }
-    ]
-  },
-  {
-    "date": "July 11, 2026",
-    "type": "prototype",
-    "title": "Capability Atlas",
-    "description": "Developed a modular Enterprise Business Architecture (EBA) application for public sector modernization.",
-    "details": "Built using React 19, TypeScript, and Tailwind CSS v4. Implemented a 3-pass redundancy analyzer (surfacing organizational, semantic text-similarity, and shared-information data-effort overlap) and an automated greedy-packing transition roadmap engine that topologically sequences IT investments against fiscal budgets and compounding efficiency savings. Outputs a fully formatted PDF Business Case dynamically.",
-    "tags": [
-      "React",
-      "TypeScript",
-      "Enterprise Architecture",
-      "Tailwind"
-    ],
-    "links": [
-      {
-        "label": "GitHub",
-        "href": "https://github.com/p3ji/ebatool"
-      }
-    ]
-  },
-  {
-    "date": "July 11, 2026",
-    "type": "game",
-    "title": "Kingdoms of Wobbleton — 3D Medieval RTS",
-    "description": "Re-themed and expanded the Three.js RTS engine into a boxy medieval game.",
-    "details": "Pivoted to a boxy medieval aesthetic using glTF assets. Implemented procedural seeded maps, deterministic simulation lockstep for online 1v1 play, dynamic fog of war, and synthesized runtime audio.",
-    "tags": [
-      "Games",
-      "Three.js",
-      "Vite",
-      "AI Opponent"
-    ],
-    "links": [
-      {
-        "label": "GitHub",
-        "href": "https://github.com/p3ji/rts"
-      },
-      {
-        "label": "Live",
-        "href": "https://p3ji.github.io/rts/"
-      }
-    ]
-  },
-  {
-    "date": "July 14, 2026",
-    "type": "game",
-    "title": "Kingdoms of Wobbleton — Lobbies & Control Upgrades",
-    "description": "Expanded multiplayer support to 4-player lobbies and implemented strategy controls.",
-    "details": "Upgraded the Three.js game room structure to support 4 players in lobbies. Implemented classic RTS mechanics including wall building, shift-queueing commands, double-tap control groups, and double-click multi-selection.",
-    "tags": [
-      "Games",
-      "Three.js",
-      "Vite",
-      "Multiplayer"
-    ],
-    "links": [
-      {
-        "label": "GitHub",
-        "href": "https://github.com/p3ji/rts"
-      }
-    ]
-  },
-  {
-    "date": "July 16, 2026",
-    "type": "milestone",
-    "title": "First Substack Post: Teaching a Machine to File My Thoughts",
-    "description": "Published my first article on 'Artificially Sociological', reflecting on using agentic AI to build a persistent digital brain.",
-    "url": "https://p3ji.substack.com/p/i-spent-my-sabbatical-teaching-a",
-    "tags": [
-      "Sabbatical",
-      "Obsidian",
-      "Agentic AI",
-      "Writing"
-    ],
-    "links": [
-      {
-        "label": "Substack",
-        "href": "https://p3ji.substack.com/p/i-spent-my-sabbatical-teaching-a"
-      }
-    ]
-  },
-  {
-    "date": "July 16, 2026",
-    "type": "blog",
-    "title": "What Building AI Games with My Kids Taught Me About the Future of Labor",
-    "description": "One of the things I am doing this summer with my kids is building video games with AI.",
-    "url": "https://p3ji.substack.com/p/what-building-ai-games-with-my-kids",
-    "tags": [
-      "Substack",
-      "Writing"
-    ],
-    "links": [
-      {
-        "label": "Substack",
-        "href": "https://p3ji.substack.com/p/what-building-ai-games-with-my-kids"
-      }
-    ]
-  },
-  {
-    "date": "July 17, 2026",
-    "type": "prototype",
-    "title": "Modular Survey Tools — DDI-Lifecycle 3.3 Compliance",
-    "description": "Finished compliance updates to DDI-Lifecycle schemas with automated XSD validation tests.",
-    "details": "Successfully implemented Colectica-compliant FragmentInstance packaging. Verified that real, large-scale (14MB to 66MB) labor force survey XML files from Ireland import with full structural accuracy.",
-    "tags": [
-      "Metadata Standards",
-      "XML / XSD",
-      "Data Ingestion"
-    ],
-    "links": [
-      {
-        "label": "GitHub",
-        "href": "https://github.com/p3ji/mobilesurvey"
-      }
-    ]
-  },
-  {
-    "date": "July 18, 2026",
-    "type": "game",
-    "title": "Kingdoms of Wobbleton — Hosted Online Play",
-    "description": "Hosted the multiplayer WebSocket relay on Render to enable public online matches.",
-    "details": "Deployed the game's relay server to Render, moving the multiplayer matchmaking from local-only networks to public online matchmaking.",
-    "tags": [
-      "Games",
-      "WebSockets",
-      "Render",
-      "Multiplayer"
-    ],
-    "links": [
-      {
-        "label": "GitHub",
-        "href": "https://github.com/p3ji/rts"
-      },
-      {
-        "label": "Live",
-        "href": "https://rts-seven.vercel.app/"
-      }
-    ]
-  },
-  {
-    "date": "July 19, 2026",
-    "type": "study",
-    "title": "Open Stats Lab — AI Visibility Experiment Launched",
-    "description": "Pre-registered and deployed a controlled experiment to test if structured table mirrors improve data visibility for AI search engines.",
-    "details": "Conducted a 100-query pilot study analyzing how generative AI answers cite statistical agencies. Found that search crawlers ignore dynamic Javascript tables and robots-blocked CSV files, defaulting to stale analytical articles. Deployed static HTML mirror tables with structured schema.org/Dataset markup to measure crawlability differences against control tables over a 12-week period.",
-    "tags": [
-      "Analytics",
-      "Open Data",
-      "SEO / AI Crawler",
-      "Search Engines"
-    ],
-    "links": [
-      {
-        "label": "GitHub",
-        "href": "https://github.com/p3ji/stats"
-      },
-      {
-        "label": "Live",
-        "href": "https://p3ji.github.io/stats/"
-      }
-    ]
-  },
-  {
-    "date": "July 19, 2026",
-    "type": "game",
-    "title": "Kingdoms of Wobbleton — Desync Overhaul & Wall Snapping",
-    "description": "Rebuilt the multiplayer sync engine for desync self-healing and added gameplay micro features.",
-    "details": "Overhauled the multiplayer netcode to support desync auto-detection and self-healing resync. Sorted tick commands by player slot with round-robin execution for movement fairness. Added wall snap-to-grid placement, priest healer auto-follow behavior, and rotating ghost building previews.",
-    "tags": [
-      "Games",
-      "Three.js",
-      "Vite",
-      "Multiplayer"
-    ],
-    "links": [
-      {
-        "label": "GitHub",
-        "href": "https://github.com/p3ji/rts"
-      }
-    ]
-  },
-  {
-    "date": "July 20, 2026",
-    "type": "study",
-    "title": "Open Stats Lab — Search Console Verification",
-    "description": "Restructured the website layout into sub-apps and verified search console crawlability.",
-    "details": "Restructured the static site layout to host benchmark, mirror tables, and population maps as separate sub-apps under a root portal. Verified ownership on Google Search Console and Bing Webmaster, submitting XML sitemaps to kick off the search crawling experiment.",
-    "tags": [
-      "Analytics",
-      "Open Data",
-      "SEO / AI Crawler",
-      "Search Engines"
-    ],
-    "links": [
-      {
-        "label": "GitHub",
-        "href": "https://github.com/p3ji/stats"
-      },
-      {
-        "label": "Live",
-        "href": "https://p3ji.github.io/stats/"
-      }
-    ]
-  },
-  {
-    "date": "July 20, 2026",
-    "type": "prototype",
-    "title": "Modular Survey Tools — FAIR JSON-LD & UUIDv5 Identities",
-    "description": "Added JSON-LD serialization and upgraded identities to UUIDv5 for Colectica compatibility.",
-    "details": "Implemented standard UUIDv5 URN identities to resolve dot-escaping conflicts and match DDI-repository conventions. Developed a new JSON-LD exporter (`exportJsonLd`) that outputs a FAIR-compliant `@graph` structure using disco/SKOS vocabularies.",
-    "tags": [
-      "Metadata Standards",
-      "JSON-LD",
-      "Semantic Web"
-    ],
-    "links": [
-      {
-        "label": "GitHub",
-        "href": "https://github.com/p3ji/mobilesurvey"
-      }
-    ]
-  },
-  {
-    "date": "July 21, 2026",
-    "type": "prototype",
-    "title": "Local Investment Analyzer — SEC Edgar Scraper & Portfolio Tracking",
-    "description": "Upgraded the privacy-first analyzer with real-time portfolio tracking and historical SEC financial charting.",
-    "details": "Designed a vanilla HTML/JS/CSS tool utilizing Chart.js for real-time asset projections. Model stock compound interest curves alongside leveraged real estate metrics (mortgages, Cap Rate, cash-on-cash). Added real-time portfolio performance tracking with gain/loss metrics and an integrated SEC Edgar scraper for fundamental financial analysis.",
-    "tags": [
-      "Finance",
-      "Chart.js",
-      "SEC Edgar",
-      "Work Tools"
-    ]
-  },
-  {
-    "date": "July 22, 2026",
-    "type": "prototype",
-    "title": "Ottawa Transit Live Tracker — Real-Time GTFS Engine",
-    "description": "Built a real-time OC Transpo transit tracking dashboard with dead-reckoning 60 FPS vehicle movement and schedule variance monitoring.",
-    "details": "Developed a React 19 & Three.js/Leaflet transit visualizer that ingests live GTFS Realtime feeds. Smooths vehicle locations using 60 FPS dead-reckoning interpolation over OpenStreetMap tiles, highlights off-schedule route delays via an interactive slider, and offers 3D vehicle spectate tracking.",
-    "tags": [
-      "React",
-      "Three.js",
-      "Leaflet",
-      "GTFS",
-      "Transit"
-    ],
-    "links": [
-      {
-        "label": "GitHub",
-        "href": "https://github.com/p3ji/ottawabus"
-      }
-    ]
-  },
-  {
-    "date": "July 24, 2026",
-    "type": "prototype",
-    "title": "Family Kitchen — Meal Planner & OCR Recipe Scanner PWA",
-    "description": "Built an offline-first PWA for family meal planning, automated grocery list generation, and Tesseract.js recipe OCR scanning.",
-    "details": "Developed a mobile-first React 19 & Vite application for managing weekly family meals. Features local browser OCR via Tesseract.js to scan physical recipes, auto-aggregating grocery shopping lists, dietary profile preference tracking, and printable PDF schedule exports.",
-    "tags": [
-      "React",
-      "PWA",
-      "OCR",
-      "Tesseract.js",
-      "Personal Tools"
-    ],
-    "links": [
-      {
-        "label": "GitHub",
-        "href": "https://github.com/p3ji/meal"
-      },
-      {
-        "label": "Live Site",
-        "href": "https://p3ji.github.io/meal/"
-      }
-    ]
-  },
-  {
-    "date": "July 25, 2026",
-    "type": "prototype",
-    "title": "Command Centre — Local Workspace Dashboard & Git Diff Engine",
-    "description": "Built a zero-dependency desktop dashboard monitoring 40+ project repositories with live git diagnostics, file diff committing, script launchers, and Windows task automations.",
-    "details": "Designed a zero-dependency local Node/HTML/JS dashboard running over 40 sibling projects. Scans local filesystem and git metrics to track uncommitted/unpushed code, line count breakdowns by language, tech stack detection, one-click batch script execution (Start-*.bat), colorized file diff viewer with staging & commit controls, and Windows daily scheduled task toggles.",
-    "tags": [
-      "Node.js",
-      "Git Diagnostics",
-      "Dashboard",
-      "Dev Tools",
-      "Automation"
-    ],
-    "links": [
-      {
-        "label": "GitHub",
-        "href": "https://github.com/p3ji/command"
-      }
-    ]
-  },
-  {
-    "date": "July 28, 2026",
-    "type": "milestone",
-    "title": "Realization: Agentic AI as an Engine for Custom Learning Software",
-    "description": "Discovered a core paradigm shift in self-directed learning: using agentic AI to build tailored software bridges that connect a learner's current baseline directly to new concepts.",
-    "details": "Off-the-shelf courses spend too little time on personal knowledge gaps and too much on familiar ground. With agentic AI, we can build custom learning software that acts as an individualized 1-on-1 tutor — interviewing the learner, anchoring new concepts in existing mental models (e.g., mapping SAS/Stata syntax to Python ML and LangGraph for adult professionals), and co-creating interactive exercises. Specifying what software to build to teach a concept turns out to be one of the strongest pedagogical tools for mastering it. Applied this framework to build adult study hubs (Knowledge Bridge, RAP Studio) and a gamified arcade for kids (Philosopher's Quest).",
-    "tags": [
-      "Reflection",
-      "Agentic AI",
-      "Pedagogy",
-      "Custom Software",
-      "Mental Models"
-    ],
-    "links": [
-      {
-        "label": "Knowledge Bridge",
-        "href": "https://p3ji.github.io/learn/apps/watspeed_ai/"
-      },
-      {
-        "label": "RAP Studio",
-        "href": "https://p3ji.github.io/learn/apps/rap_studio/"
-      },
-      {
-        "label": "Kids Arcade",
-        "href": "https://p3ji.github.io/learn/apps/kids_philosophy/"
-      }
-    ]
-  },
-  {
-    "date": "August 2, 2026",
-    "type": "prototype",
-    "title": "AI Job Search — Canada",
-    "description": "Forked the trending open-source AI job-search framework into the recognized Canadian community fork — Job Bank/GC Jobs and Talent.com/Eluta.ca search skills, bilingual EN/FR search, Canadian résumé formatting.",
-    "tags": [
-      "Job Search",
-      "Canada",
-      "Bilingual",
-      "Claude Code",
-      "Open Source"
-    ],
-    "links": [
-      {
-        "label": "GitHub",
-        "href": "https://github.com/p3ji/ai-job-search-ca"
-      }
-    ]
-  },
-  {
-    "date": "August 3, 2026",
-    "type": "prototype",
-    "title": "TenderSearch",
-    "description": "Started a tool for a small consulting group bidding on Canadian federal contracts: ingests CanadaBuys notices daily, matches against member capabilities, scores bid/no-bid fit.",
-    "tags": [
-      "Procurement",
-      "CanadaBuys",
-      "Consulting"
-    ],
-    "links": [
-      {
-        "label": "GitHub",
-        "href": "https://github.com/p3ji/tendersearch"
-      }
-    ]
-  },
-  {
-    "date": "August 16, 2026",
-    "type": "study",
-    "title": "Completed MBA Essentials — Rotman School of Management",
-    "description": "Completed the MBA Essentials executive program at the University of Toronto's Rotman School of Management, focusing on strategy, accounting, finance, marketing and the role of AI.",
-    "tags": [
-      "Rotman",
-      "Executive Education",
-      "Strategy",
-      "Finance",
-      "AI"
-    ]
-  },
-  {
-    "date": "September 1, 2026",
-    "type": "milestone",
-    "title": "Registered as a Sole Proprietorship",
-    "description": "Officially registered as a sole proprietorship to formalize my independent consulting and project work.",
-    "tags": [
-      "Career",
-      "Business"
-    ]
-  },
-  {
-    "date": "September 10, 2026",
-    "type": "prototype",
-    "title": "Objectif CBC — Local-First Study Tool for Federal French Exams",
-    "description": "Built an offline-first French study tool that runs spaced repetition entirely in browser storage with zero external tracking.",
-    "details": "Public servants need reliable practice for federal language evaluations without sending test performance across third-party servers. Built a static client in React and TypeScript that tracks question intervals (1, 3, and 7 days) in local browser storage. It balances reading and writing practice across 14 study sessions and allows learners to export their progress to JSON anytime.",
-    "tags": [
-      "Education",
-      "Local-First",
-      "React",
-      "TypeScript",
-      "Work Tools"
-    ],
-    "links": [
-      {
-        "label": "GitHub",
-        "href": "https://github.com/p3ji/french"
-      }
-    ]
-  },
-  {
-    "date": "September 14, 2026",
-    "type": "prototype",
-    "title": "Community Non-Profit Operations & Volunteer Shift PWA",
-    "description": "Automated weekly operations for a local skating club, replacing spreadsheet tracking with an installable volunteer scheduling PWA.",
-    "details": "Non-profit boards spend hours each week manually tracking volunteer hours and sending reminder emails. Built a mobile PWA with PIN-based sign-in and home-screen badge alerts. The tool schedules assistant shifts and exports clean attendance reports.",
-    "tags": [
-      "Non-Profit",
-      "PWA",
-      "Automation",
-      "Work Tools"
-    ],
-    "links": [
-      {
-        "label": "GitHub",
-        "href": "https://github.com/p3ji/skate"
-      }
-    ]
-  },
-  {
-    "date": "September 16, 2026",
-    "type": "milestone",
-    "title": "Launched Peji — Digital Practice & Embedded Portfolio Assistant",
-    "description": "Launched the public web presence for Peji, an independent consulting practice for non-profits and small businesses.",
-    "details": "Small organizations often struggle to separate practical digital tools from hype. Launched peji.ca to offer direct technical delivery, workflow automation, and data help. Features an embedded Gemini assistant that answers client questions using project data from this portfolio.",
-    "tags": [
-      "Consulting",
-      "Career",
-      "Small Business",
-      "Gemini"
-    ],
-    "links": [
-      {
-        "label": "Live Site",
-        "href": "https://peji.ca"
-      },
-      {
-        "label": "GitHub",
-        "href": "https://github.com/p3ji/business"
-      }
-    ]
-  },
-  {
-    "date": "September 24, 2026",
-    "type": "milestone",
-    "title": "Local-First AI Stack — Zero-Egress Home Infrastructure",
-    "description": "Brought up a complete local LLM environment on an Apple Silicon host: a LiteLLM gateway routing to on-device models, with Neo4j, Qdrant and Redis behind it — no cloud API keys, all ports loopback-only.",
-    "details": "The stack powers a hybrid split-plane architecture: frontier cloud models handle complex reasoning while confidential data never leaves the machine. A GraphRAG layer ingests my digital brain into a knowledge graph with automatic incremental sync, so retrieval stays current without manual re-ingestion. The full architecture — deterministic hooks, on-device MCP delegation, format-preserving surrogates — is documented in the 'Sovereign AI Without Cloud Leakage' note.",
-    "url": "reflections/local-llm-architecture.html",
-    "tags": [
-      "Local LLM",
-      "LiteLLM",
-      "GraphRAG",
-      "Privacy",
-      "Neo4j"
-    ]
-  },
-  {
-    "date": "September 2026",
-    "type": "prototype",
-    "title": "Fully Offline Audio Analysis with Open-Source Local Models",
-    "description": "Built a four-phase, zero-network pipeline for analyzing confidential audio recordings entirely on-device.",
-    "details": "Whisper-large-v3-turbo transcribes offline; speaker diarization separates voices via embedding clustering; a local text LLM generates transcript-level reports; and Qwen2.5-Omni performs audio-level analysis — prosody, tone and affect beyond the words themselves. Runs on MLX with pre-downloaded models and network access hard-disabled: nothing ever touches the internet.",
-    "tags": [
-      "Local LLM",
-      "Audio",
-      "Whisper",
-      "MLX",
-      "Privacy"
-    ]
-  },
-  {
-    "date": "September 27, 2026",
-    "type": "prototype",
-    "title": "Metadata Knowledge Graph with Local-LLM Derivation Extraction",
-    "description": "Put local open-source models to work on the Statistics Canada metadata corpus: an extraction queue and forensic Reviewer Agent mining variable derivation lineage across ~439,000 variables.",
-    "details": "A durable extraction runner backed by a local Qwen 27B model proposes derivation edges; a reviewer agent expands range notation, attributes epistemic provenance (official vs. AI-inferred), and gates output behind stratified human sign-off. Pilot verified 965 lineage edges with zero hallucinations — a working template for applying local LLMs to official-statistics metadata without cloud exposure.",
-    "tags": [
-      "Metadata",
-      "Knowledge Graph",
-      "Local LLM",
-      "StatCan"
-    ]
-  }
+ {
+  "date": "Spring 2026",
+  "type": "study",
+  "title": "Exploring Foundations",
+  "description": "Self-study before the official experimentation phase begins. Working through Chip Huyen's AI Engineering, exploring the LLM ecosystem beyond AI chatbots, and completing Coursera courses.",
+  "tags": [
+   "Coursera",
+   "AI Engineering",
+   "Self-study",
+   "LLMs"
+  ]
+ },
+ {
+  "date": "June 1, 2026",
+  "type": "milestone",
+  "title": "Journey Officially Begins",
+  "description": "Started a formal one-year exploration dedicated to deep, hands-on experimentation with AI — its capabilities, architectures, and potential for transforming organizations and workflows.",
+  "tags": [
+   "Career Break"
+  ]
+ },
+ {
+  "date": "Early June 2026",
+  "type": "study",
+  "title": "Getting the Stack Running",
+  "description": "First weeks of hands-on experimentation: set up local dev environment, learned Git workflows, deployed first projects to GitHub Pages, Vercel, and Netlify.",
+  "tags": [
+   "Git",
+   "Deployment",
+   "Dev Setup",
+   "HTML/CSS/JS"
+  ]
+ },
+ {
+  "date": "June 10, 2026",
+  "type": "prototype",
+  "title": "Canadian AI Jobs Report",
+  "description": "An interactive dashboard analyzing the economic value of Canadian college majors — mapping CIP programs to NOC occupations with AI disruption risk scores, median salaries, and 10-year job growth metrics.",
+  "tags": [
+   "Economy",
+   "Data Viz"
+  ],
+  "links": [
+   {
+    "label": "GitHub",
+    "href": "https://github.com/p3ji/occupation_ai"
+   },
+   {
+    "label": "Live",
+    "href": "https://occupation-ai.vercel.app/"
+   }
+  ]
+ },
+ {
+  "date": "June 11, 2026",
+  "type": "prototype",
+  "title": "Ottawa Recreation Discovery",
+  "description": "A visual discovery tool and interactive map for parents to find municipal recreation facilities and summer camps in Ottawa by proximity, amenities, and geographical sector.",
+  "tags": [
+   "Personal Tools",
+   "Maps"
+  ],
+  "links": [
+   {
+    "label": "Live",
+    "href": "https://p3ji-p3ji.hf.space/"
+   }
+  ]
+ },
+ {
+  "date": "June 12–13, 2026",
+  "type": "prototype",
+  "title": "Policy AI Assistants — NIHB + WFA",
+  "description": "Two RAG-based policy chatbots grounded in real government documentation: one navigating the Non-Insured Health Benefits program, the other advising on Federal Public Service Work Force Adjustment guidelines.",
+  "tags": [
+   "Health",
+   "Work Tools",
+   "RAG",
+   "LLM"
+  ],
+  "links": [
+   {
+    "label": "NIHB",
+    "href": "https://nihbwrap.netlify.app/"
+   },
+   {
+    "label": "WFA",
+    "href": "https://wfa-blond.vercel.app/"
+   }
+  ]
+ },
+ {
+  "date": "June 17, 2026",
+  "type": "milestone",
+  "title": "Portfolio Site Launched",
+  "description": "Built and deployed this portfolio to document the journey publicly — complete with live GitHub stats, a digital brain expansion tracker, a projects grid with filtering, and a workflow architecture diagram.",
+  "links": [
+   {
+    "label": "GitHub",
+    "href": "https://github.com/p3ji/portfolio"
+   }
+  ]
+ },
+ {
+  "date": "June 18, 2026",
+  "type": "prototype",
+  "title": "Gmail Cleaner CLI",
+  "description": "A Python command-line tool to clean, organize, and label Gmail inboxes via IMAP.",
+  "tags": [
+   "Personal Tools",
+   "Python",
+   "CLI"
+  ],
+  "links": [
+   {
+    "label": "GitHub",
+    "href": "https://github.com/p3ji/gmailcleaner"
+   }
+  ]
+ },
+ {
+  "date": "June 20, 2026",
+  "type": "prototype",
+  "title": "Drug Utilization Dashboard + Retirement Calculator",
+  "description": "Two analytical tools in quick succession: a monitoring dashboard for drug utilization data in Canada, and a Defined Benefit pension early retirement calculator mapping portfolio and pension timelines.",
+  "tags": [
+   "Health",
+   "Economy",
+   "Dashboards"
+  ],
+  "links": [
+   {
+    "label": "Drug",
+    "href": "https://p3ji.github.io/drug/"
+   },
+   {
+    "label": "Finance",
+    "href": "https://p3ji.github.io/financialtool/"
+   }
+  ]
+ },
+ {
+  "date": "June 21–22, 2026",
+  "type": "game",
+  "title": "Games Sprint — Debate, n-1, WordString",
+  "description": "A rapid games sprint building three web apps: a debate facilitator for kids, an anagram word-unscrambling game, and a cozy sewing-themed word puzzle. Complete with high scores synced to Supabase.",
+  "tags": [
+   "Games",
+   "PWA",
+   "Mobile",
+   "Web Audio"
+  ],
+  "links": [
+   {
+    "label": "Debate",
+    "href": "https://p3ji.github.io/debate_game/"
+   },
+   {
+    "label": "n-1",
+    "href": "https://n-1game.vercel.app/"
+   },
+   {
+    "label": "WordString",
+    "href": "https://p3ji.github.io/wordstring/"
+   }
+  ]
+ },
+ {
+  "date": "June 24, 2026",
+  "type": "prototype",
+  "title": "Mobile Survey Builder — Now Live",
+  "description": "A DDI-compliant, mobile-first survey design and EQ authoring tool — featuring re-usable metadata components, nested rosters, complex skip logic, bilingual support, and WCAG accessibility.",
+  "tags": [
+   "Work Tools",
+   "DDI",
+   "Mobile",
+   "Accessibility"
+  ],
+  "links": [
+   {
+    "label": "GitHub",
+    "href": "https://github.com/p3ji/mobilesurvey"
+   },
+   {
+    "label": "Live",
+    "href": "https://p3ji.github.io/mobilesurvey/"
+   }
+  ]
+ },
+ {
+  "date": "June 26, 2026",
+  "type": "prototype",
+  "title": "Modular Survey Tools — Analytics & Collection Dashboard",
+  "description": "Significant expansion: rebranded to Modular Survey Tools and added several new modular tools — Collector (manage surveys and monitor real-time KPIs), Searcher (discover metadata), Migrator (import external surveys into Designer), and the first video in the Training Hub.",
+  "tags": [
+   "Work Tools",
+   "Analytics",
+   "Dashboards",
+   "Paradata"
+  ],
+  "links": [
+   {
+    "label": "GitHub",
+    "href": "https://github.com/p3ji/mobilesurvey"
+   },
+   {
+    "label": "Live",
+    "href": "https://p3ji.github.io/mobilesurvey/"
+   }
+  ]
+ },
+ {
+  "date": "June 27, 2026",
+  "type": "prototype",
+  "title": "Modular Survey Tools — Phase 6 Complete",
+  "description": "Major sprint completing Phase 6.",
+  "details": "Added matrix/grid question type across schema, engine, designer, and runtime; migrated backend from Hono+SQLite to Supabase (hosted DB + REST, no server to run); patched a privacy bug where exploration-only surveys were wrongly persisting responses. Also set up a vault-to-site content pipeline so the AI Journey timeline is now editable directly from Obsidian.",
+  "tags": [
+   "Work Tools",
+   "Analytics",
+   "Supabase",
+   "DDI",
+   "Paradata"
+  ],
+  "links": [
+   {
+    "label": "GitHub",
+    "href": "https://github.com/p3ji/mobilesurvey"
+   },
+   {
+    "label": "Live",
+    "href": "https://p3ji.github.io/mobilesurvey/"
+   }
+  ]
+ },
+ {
+  "date": "June 28, 2026",
+  "type": "prototype",
+  "title": "Local CRA-Compliant Bookkeeping App",
+  "description": "Built a fully offline desktop bookkeeping app for Canadian sole proprietors using Python and Streamlit.",
+  "details": "The app ingests Costco Mastercard CSV statements, matches receipts via local OCR (Tesseract), and auto-classifies expenses to CRA Form T2125 lines. It calculates GST/HST ITCs, flags audit risks, and runs entirely locally using DuckDB to ensure financial data privacy.",
+  "tags": [
+   "Finance",
+   "Python",
+   "Streamlit",
+   "OCR"
+  ],
+  "links": [
+   {
+    "label": "GitHub",
+    "href": "https://github.com/p3ji/bookkeeping"
+   }
+  ]
+ },
+ {
+  "date": "June 29, 2026",
+  "type": "concept",
+  "title": "Virtual Tutor — Screen-Aware Learning Companion",
+  "description": "Conceived an AI tutoring assistant that syncs with the user's active screen to provide real-time, catered instructions and learning guidance.",
+  "details": "Unlike a standard chatbot, this concept centers on a visual companion that observes the active workspace (via screen capture/OCR or editor integration) and dynamically offers context-aware help, tips, and step-by-step explanations tailored to what the user is currently doing on screen.",
+  "tags": [
+   "Education",
+   "AI Companion",
+   "UX Design"
+  ]
+ },
+ {
+  "date": "July 2, 2026",
+  "type": "game",
+  "title": "Real Estate Empire — Prototyping Started",
+  "description": "Started prototyping a real-estate simulation and strategy game mapped directly onto high-fidelity satellite imagery of Ottawa.",
+  "details": "Choose your starting backstory (from Elgin Street server to Kanata tech worker), scout listings across actual neighborhoods like The Glebe and Westboro, outbid AI competitors in real-time, and manage your cash flow as the game clock ticks.",
+  "tags": [
+   "Games",
+   "React",
+   "Simulation",
+   "Maps"
+  ],
+  "links": [
+   {
+    "label": "GitHub",
+    "href": "https://github.com/p3ji/realestateempire"
+   }
+  ]
+ },
+ {
+  "date": "July 9, 2026",
+  "type": "prototype",
+  "title": "Ottawa Global Benchmark Engine",
+  "description": "Built a comparative analytics dashboard comparing Ottawa with global peer cities (Austin, Adelaide, Helsinki) across labour, housing, and tech indicators.",
+  "details": "Uses Statistics Canada CODR API data via an MCP server, along with FRED, ABS, and Statistics Finland. Built with a DuckDB-Wasm backend in the browser for fast, on-the-fly index baseline and divergence trend analysis. Setting up a data pipeline for a major expansion once new census data becomes available.",
+  "tags": [
+   "Analytics",
+   "Python",
+   "DuckDB",
+   "API Ingestion"
+  ],
+  "links": [
+   {
+    "label": "GitHub",
+    "href": "https://github.com/p3ji/statcan_codr"
+   },
+   {
+    "label": "Live",
+    "href": "https://p3ji.github.io/statcan_codr/"
+   }
+  ]
+ },
+ {
+  "date": "July 10, 2026",
+  "type": "prototype",
+  "title": "Built Custom Portfolio Editor",
+  "description": "Created a standalone local editor to manage the portfolio's content, complete with a one-click GitHub publish integration.",
+  "details": "To streamline workflow documentation, I replaced the hardcoded HTML with a dynamic JSON architecture. The accompanying Editor app allows me to easily add projects and timeline entries, view the Git diff of my changes, and automatically publish to the live site without touching the codebase.",
+  "tags": [
+   "personal-tools"
+  ]
+ },
+ {
+  "date": "July 10, 2026",
+  "type": "game",
+  "title": "Wobbleton — Tower Workshop",
+  "description": "Built a cozy 3D physics-based tower building sandbox in the browser.",
+  "details": "First project using Three.js and the Web Audio API. Built a lightweight, custom rigid-body physics engine (sleeping/waking bodies, material stickiness/weight, and soft-sphere collisions) from scratch to simulate structures made of straw, wood, brick, stone, and glass. Test towers against disasters like earthquakes, tornadoes, meteors, and windstorms while generating native procedural lo-fi soundtrack loops and audio effects.",
+  "tags": [
+   "Games",
+   "Three.js",
+   "Physics",
+   "Web Audio API"
+  ],
+  "links": [
+   {
+    "label": "GitHub",
+    "href": "https://github.com/p3ji/wobbletower"
+   },
+   {
+    "label": "Live",
+    "href": "https://p3ji.github.io/wobbletower/"
+   }
+  ]
+ },
+ {
+  "date": "July 11, 2026",
+  "type": "game",
+  "title": "Wobbleton — Game Night PWA",
+  "description": "Completed a mobile-optimized 2-player local party game hub with 12 mini-games.",
+  "details": "Expanding the 'Wobbleton' design family. Built a collection of 12 distinct competitive mini-games sharing a single screen (including Tug o' Rope, Boxy Toe, Frosty Pond, and Statue Race). Configured full offline-first behavior using a custom Service Worker cache and fixed mobile browser viewport camera scaling issues.",
+  "tags": [
+   "Games",
+   "PWA",
+   "Three.js",
+   "Mobile"
+  ],
+  "links": [
+   {
+    "label": "GitHub",
+    "href": "https://github.com/p3ji/twoplay"
+   },
+   {
+    "label": "Live",
+    "href": "https://p3ji.github.io/twoplay/"
+   }
+  ]
+ },
+ {
+  "date": "July 11, 2026",
+  "type": "prototype",
+  "title": "Capability Atlas",
+  "description": "Developed a modular Enterprise Business Architecture (EBA) application for public sector modernization.",
+  "details": "Built using React 19, TypeScript, and Tailwind CSS v4. Implemented a 3-pass redundancy analyzer (surfacing organizational, semantic text-similarity, and shared-information data-effort overlap) and an automated greedy-packing transition roadmap engine that topologically sequences IT investments against fiscal budgets and compounding efficiency savings. Outputs a fully formatted PDF Business Case dynamically.",
+  "tags": [
+   "React",
+   "TypeScript",
+   "Enterprise Architecture",
+   "Tailwind"
+  ],
+  "links": [
+   {
+    "label": "GitHub",
+    "href": "https://github.com/p3ji/ebatool"
+   }
+  ]
+ },
+ {
+  "date": "July 11, 2026",
+  "type": "game",
+  "title": "Kingdoms of Wobbleton — 3D Medieval RTS",
+  "description": "Re-themed and expanded the Three.js RTS engine into a boxy medieval game.",
+  "details": "Pivoted to a boxy medieval aesthetic using glTF assets. Implemented procedural seeded maps, deterministic simulation lockstep for online 1v1 play, dynamic fog of war, and synthesized runtime audio.",
+  "tags": [
+   "Games",
+   "Three.js",
+   "Vite",
+   "AI Opponent"
+  ],
+  "links": [
+   {
+    "label": "GitHub",
+    "href": "https://github.com/p3ji/rts"
+   },
+   {
+    "label": "Live",
+    "href": "https://p3ji.github.io/rts/"
+   }
+  ]
+ },
+ {
+  "date": "July 14, 2026",
+  "type": "game",
+  "title": "Kingdoms of Wobbleton — Lobbies & Control Upgrades",
+  "description": "Expanded multiplayer support to 4-player lobbies and implemented strategy controls.",
+  "details": "Upgraded the Three.js game room structure to support 4 players in lobbies. Implemented classic RTS mechanics including wall building, shift-queueing commands, double-tap control groups, and double-click multi-selection.",
+  "tags": [
+   "Games",
+   "Three.js",
+   "Vite",
+   "Multiplayer"
+  ],
+  "links": [
+   {
+    "label": "GitHub",
+    "href": "https://github.com/p3ji/rts"
+   }
+  ]
+ },
+ {
+  "date": "July 16, 2026",
+  "type": "milestone",
+  "title": "First Substack Post: Teaching a Machine to File My Thoughts",
+  "description": "Published my first article on 'Artificially Sociological', reflecting on using agentic AI to build a persistent digital brain.",
+  "url": "https://p3ji.substack.com/p/i-spent-my-sabbatical-teaching-a",
+  "tags": [
+   "Sabbatical",
+   "Obsidian",
+   "Agentic AI",
+   "Writing"
+  ],
+  "links": [
+   {
+    "label": "Substack",
+    "href": "https://p3ji.substack.com/p/i-spent-my-sabbatical-teaching-a"
+   }
+  ]
+ },
+ {
+  "date": "July 16, 2026",
+  "type": "blog",
+  "title": "What Building AI Games with My Kids Taught Me About the Future of Labor",
+  "description": "One of the things I am doing this summer with my kids is building video games with AI.",
+  "url": "https://p3ji.substack.com/p/what-building-ai-games-with-my-kids",
+  "tags": [
+   "Substack",
+   "Writing"
+  ],
+  "links": [
+   {
+    "label": "Substack",
+    "href": "https://p3ji.substack.com/p/what-building-ai-games-with-my-kids"
+   }
+  ]
+ },
+ {
+  "date": "July 17, 2026",
+  "type": "prototype",
+  "title": "Modular Survey Tools — DDI-Lifecycle 3.3 Compliance",
+  "description": "Finished compliance updates to DDI-Lifecycle schemas with automated XSD validation tests.",
+  "details": "Successfully implemented Colectica-compliant FragmentInstance packaging. Verified that real, large-scale (14MB to 66MB) labor force survey XML files from Ireland import with full structural accuracy.",
+  "tags": [
+   "Metadata Standards",
+   "XML / XSD",
+   "Data Ingestion"
+  ],
+  "links": [
+   {
+    "label": "GitHub",
+    "href": "https://github.com/p3ji/mobilesurvey"
+   }
+  ]
+ },
+ {
+  "date": "July 18, 2026",
+  "type": "game",
+  "title": "Kingdoms of Wobbleton — Hosted Online Play",
+  "description": "Hosted the multiplayer WebSocket relay on Render to enable public online matches.",
+  "details": "Deployed the game's relay server to Render, moving the multiplayer matchmaking from local-only networks to public online matchmaking.",
+  "tags": [
+   "Games",
+   "WebSockets",
+   "Render",
+   "Multiplayer"
+  ],
+  "links": [
+   {
+    "label": "GitHub",
+    "href": "https://github.com/p3ji/rts"
+   },
+   {
+    "label": "Live",
+    "href": "https://rts-seven.vercel.app/"
+   }
+  ]
+ },
+ {
+  "date": "July 19, 2026",
+  "type": "study",
+  "title": "Open Stats Lab — AI Visibility Experiment Launched",
+  "description": "Pre-registered and deployed a controlled experiment to test if structured table mirrors improve data visibility for AI search engines.",
+  "details": "Conducted a 100-query pilot study analyzing how generative AI answers cite statistical agencies. Found that search crawlers ignore dynamic Javascript tables and robots-blocked CSV files, defaulting to stale analytical articles. Deployed static HTML mirror tables with structured schema.org/Dataset markup to measure crawlability differences against control tables over a 12-week period.",
+  "tags": [
+   "Analytics",
+   "Open Data",
+   "SEO / AI Crawler",
+   "Search Engines"
+  ],
+  "links": [
+   {
+    "label": "GitHub",
+    "href": "https://github.com/p3ji/stats"
+   },
+   {
+    "label": "Live",
+    "href": "https://p3ji.github.io/stats/"
+   }
+  ]
+ },
+ {
+  "date": "July 19, 2026",
+  "type": "game",
+  "title": "Kingdoms of Wobbleton — Desync Overhaul & Wall Snapping",
+  "description": "Rebuilt the multiplayer sync engine for desync self-healing and added gameplay micro features.",
+  "details": "Overhauled the multiplayer netcode to support desync auto-detection and self-healing resync. Sorted tick commands by player slot with round-robin execution for movement fairness. Added wall snap-to-grid placement, priest healer auto-follow behavior, and rotating ghost building previews.",
+  "tags": [
+   "Games",
+   "Three.js",
+   "Vite",
+   "Multiplayer"
+  ],
+  "links": [
+   {
+    "label": "GitHub",
+    "href": "https://github.com/p3ji/rts"
+   }
+  ]
+ },
+ {
+  "date": "July 20, 2026",
+  "type": "study",
+  "title": "Open Stats Lab — Search Console Verification",
+  "description": "Restructured the website layout into sub-apps and verified search console crawlability.",
+  "details": "Restructured the static site layout to host benchmark, mirror tables, and population maps as separate sub-apps under a root portal. Verified ownership on Google Search Console and Bing Webmaster, submitting XML sitemaps to kick off the search crawling experiment.",
+  "tags": [
+   "Analytics",
+   "Open Data",
+   "SEO / AI Crawler",
+   "Search Engines"
+  ],
+  "links": [
+   {
+    "label": "GitHub",
+    "href": "https://github.com/p3ji/stats"
+   },
+   {
+    "label": "Live",
+    "href": "https://p3ji.github.io/stats/"
+   }
+  ]
+ },
+ {
+  "date": "July 20, 2026",
+  "type": "prototype",
+  "title": "Modular Survey Tools — FAIR JSON-LD & UUIDv5 Identities",
+  "description": "Added JSON-LD serialization and upgraded identities to UUIDv5 for Colectica compatibility.",
+  "details": "Implemented standard UUIDv5 URN identities to resolve dot-escaping conflicts and match DDI-repository conventions. Developed a new JSON-LD exporter (`exportJsonLd`) that outputs a FAIR-compliant `@graph` structure using disco/SKOS vocabularies.",
+  "tags": [
+   "Metadata Standards",
+   "JSON-LD",
+   "Semantic Web"
+  ],
+  "links": [
+   {
+    "label": "GitHub",
+    "href": "https://github.com/p3ji/mobilesurvey"
+   }
+  ]
+ },
+ {
+  "date": "July 21, 2026",
+  "type": "prototype",
+  "title": "Local Investment Analyzer — SEC Edgar Scraper & Portfolio Tracking",
+  "description": "Upgraded the privacy-first analyzer with real-time portfolio tracking and historical SEC financial charting.",
+  "details": "Designed a vanilla HTML/JS/CSS tool utilizing Chart.js for real-time asset projections. Model stock compound interest curves alongside leveraged real estate metrics (mortgages, Cap Rate, cash-on-cash). Added real-time portfolio performance tracking with gain/loss metrics and an integrated SEC Edgar scraper for fundamental financial analysis.",
+  "tags": [
+   "Finance",
+   "Chart.js",
+   "SEC Edgar",
+   "Work Tools"
+  ]
+ },
+ {
+  "date": "July 22, 2026",
+  "type": "prototype",
+  "title": "Ottawa Transit Live Tracker — Real-Time GTFS Engine",
+  "description": "Built a real-time OC Transpo transit tracking dashboard with dead-reckoning 60 FPS vehicle movement and schedule variance monitoring.",
+  "details": "Developed a React 19 & Three.js/Leaflet transit visualizer that ingests live GTFS Realtime feeds. Smooths vehicle locations using 60 FPS dead-reckoning interpolation over OpenStreetMap tiles, highlights off-schedule route delays via an interactive slider, and offers 3D vehicle spectate tracking.",
+  "tags": [
+   "React",
+   "Three.js",
+   "Leaflet",
+   "GTFS",
+   "Transit"
+  ],
+  "links": [
+   {
+    "label": "GitHub",
+    "href": "https://github.com/p3ji/ottawabus"
+   }
+  ]
+ },
+ {
+  "date": "July 24, 2026",
+  "type": "prototype",
+  "title": "Family Kitchen — Meal Planner & OCR Recipe Scanner PWA",
+  "description": "Built an offline-first PWA for family meal planning, automated grocery list generation, and Tesseract.js recipe OCR scanning.",
+  "details": "Developed a mobile-first React 19 & Vite application for managing weekly family meals. Features local browser OCR via Tesseract.js to scan physical recipes, auto-aggregating grocery shopping lists, dietary profile preference tracking, and printable PDF schedule exports.",
+  "tags": [
+   "React",
+   "PWA",
+   "OCR",
+   "Tesseract.js",
+   "Personal Tools"
+  ],
+  "links": [
+   {
+    "label": "GitHub",
+    "href": "https://github.com/p3ji/meal"
+   },
+   {
+    "label": "Live Site",
+    "href": "https://p3ji.github.io/meal/"
+   }
+  ]
+ },
+ {
+  "date": "July 25, 2026",
+  "type": "prototype",
+  "title": "Command Centre — Local Workspace Dashboard & Git Diff Engine",
+  "description": "Built a zero-dependency desktop dashboard monitoring 40+ project repositories with live git diagnostics, file diff committing, script launchers, and Windows task automations.",
+  "details": "Designed a zero-dependency local Node/HTML/JS dashboard running over 40 sibling projects. Scans local filesystem and git metrics to track uncommitted/unpushed code, line count breakdowns by language, tech stack detection, one-click batch script execution (Start-*.bat), colorized file diff viewer with staging & commit controls, and Windows daily scheduled task toggles.",
+  "tags": [
+   "Node.js",
+   "Git Diagnostics",
+   "Dashboard",
+   "Dev Tools",
+   "Automation"
+  ],
+  "links": [
+   {
+    "label": "GitHub",
+    "href": "https://github.com/p3ji/command"
+   }
+  ]
+ },
+ {
+  "date": "July 28, 2026",
+  "type": "milestone",
+  "title": "Realization: Agentic AI as an Engine for Custom Learning Software",
+  "description": "Discovered a core paradigm shift in self-directed learning: using agentic AI to build tailored software bridges that connect a learner's current baseline directly to new concepts.",
+  "details": "Off-the-shelf courses spend too little time on personal knowledge gaps and too much on familiar ground. With agentic AI, we can build custom learning software that acts as an individualized 1-on-1 tutor — interviewing the learner, anchoring new concepts in existing mental models (e.g., mapping SAS/Stata syntax to Python ML and LangGraph for adult professionals), and co-creating interactive exercises. Specifying what software to build to teach a concept turns out to be one of the strongest pedagogical tools for mastering it. Applied this framework to build adult study hubs (Knowledge Bridge, RAP Studio) and a gamified arcade for kids (Philosopher's Quest).",
+  "tags": [
+   "Reflection",
+   "Agentic AI",
+   "Pedagogy",
+   "Custom Software",
+   "Mental Models"
+  ],
+  "links": [
+   {
+    "label": "Knowledge Bridge",
+    "href": "https://p3ji.github.io/learn/apps/watspeed_ai/"
+   },
+   {
+    "label": "RAP Studio",
+    "href": "https://p3ji.github.io/learn/apps/rap_studio/"
+   },
+   {
+    "label": "Kids Arcade",
+    "href": "https://p3ji.github.io/learn/apps/kids_philosophy/"
+   }
+  ]
+ },
+ {
+  "date": "August 2, 2026",
+  "type": "prototype",
+  "title": "AI Job Search — Canada",
+  "description": "Forked the trending open-source AI job-search framework into the recognized Canadian community fork — Job Bank/GC Jobs and Talent.com/Eluta.ca search skills, bilingual EN/FR search, Canadian résumé formatting.",
+  "tags": [
+   "Job Search",
+   "Canada",
+   "Bilingual",
+   "Claude Code",
+   "Open Source"
+  ],
+  "links": [
+   {
+    "label": "GitHub",
+    "href": "https://github.com/p3ji/ai-job-search-ca"
+   }
+  ]
+ },
+ {
+  "date": "August 3, 2026",
+  "type": "prototype",
+  "title": "TenderSearch",
+  "description": "Started a tool for a small consulting group bidding on Canadian federal contracts: ingests CanadaBuys notices daily, matches against member capabilities, scores bid/no-bid fit.",
+  "tags": [
+   "Procurement",
+   "CanadaBuys",
+   "Consulting"
+  ],
+  "links": [
+   {
+    "label": "GitHub",
+    "href": "https://github.com/p3ji/tendersearch"
+   }
+  ]
+ },
+ {
+  "date": "August 16, 2026",
+  "type": "study",
+  "title": "Completed MBA Essentials — Rotman School of Management",
+  "description": "Completed the MBA Essentials executive program at the University of Toronto's Rotman School of Management, focusing on strategy, accounting, finance, marketing and the role of AI.",
+  "tags": [
+   "Rotman",
+   "Executive Education",
+   "Strategy",
+   "Finance",
+   "AI"
+  ]
+ },
+ {
+  "date": "September 1, 2026",
+  "type": "milestone",
+  "title": "Registered as a Sole Proprietorship",
+  "description": "Officially registered as a sole proprietorship to formalize my independent consulting and project work.",
+  "tags": [
+   "Career",
+   "Business"
+  ]
+ },
+ {
+  "date": "September 10, 2026",
+  "type": "prototype",
+  "title": "Objectif CBC — Local-First Study Tool for Federal French Exams",
+  "description": "Built an offline-first French study tool that runs spaced repetition entirely in browser storage with zero external tracking.",
+  "details": "Public servants need reliable practice for federal language evaluations without sending test performance across third-party servers. Built a static client in React and TypeScript that tracks question intervals (1, 3, and 7 days) in local browser storage. It balances reading and writing practice across 14 study sessions and allows learners to export their progress to JSON anytime.",
+  "tags": [
+   "Education",
+   "Local-First",
+   "React",
+   "TypeScript",
+   "Work Tools"
+  ],
+  "links": [
+   {
+    "label": "GitHub",
+    "href": "https://github.com/p3ji/french"
+   }
+  ]
+ },
+ {
+  "date": "September 14, 2026",
+  "type": "prototype",
+  "title": "Community Non-Profit Operations & Volunteer Shift PWA",
+  "description": "Automated weekly operations for a local skating club, replacing spreadsheet tracking with an installable volunteer scheduling PWA.",
+  "details": "Non-profit boards spend hours each week manually tracking volunteer hours and sending reminder emails. Built a mobile PWA with PIN-based sign-in and home-screen badge alerts. The tool schedules assistant shifts and exports clean attendance reports.",
+  "tags": [
+   "Non-Profit",
+   "PWA",
+   "Automation",
+   "Work Tools"
+  ],
+  "links": [
+   {
+    "label": "GitHub",
+    "href": "https://github.com/p3ji/skate"
+   }
+  ]
+ },
+ {
+  "date": "September 16, 2026",
+  "type": "milestone",
+  "title": "Launched Peji — Digital Practice & Embedded Portfolio Assistant",
+  "description": "Launched the public web presence for Peji, an independent consulting practice for non-profits and small businesses.",
+  "details": "Small organizations often struggle to separate practical digital tools from hype. Launched peji.ca to offer direct technical delivery, workflow automation, and data help. Features an embedded Gemini assistant that answers client questions using project data from this portfolio.",
+  "tags": [
+   "Consulting",
+   "Career",
+   "Small Business",
+   "Gemini"
+  ],
+  "links": [
+   {
+    "label": "Live Site",
+    "href": "https://peji.ca"
+   },
+   {
+    "label": "GitHub",
+    "href": "https://github.com/p3ji/business"
+   }
+  ]
+ },
+ {
+  "date": "September 24, 2026",
+  "type": "milestone",
+  "title": "Local-First AI Stack — Zero-Egress Home Infrastructure",
+  "description": "Brought up a complete local LLM environment on an Apple Silicon host: a LiteLLM gateway routing to on-device models, with Neo4j, Qdrant and Redis behind it — no cloud API keys, all ports loopback-only.",
+  "details": "The stack powers a hybrid split-plane architecture: frontier cloud models handle complex reasoning while confidential data never leaves the machine. A GraphRAG layer ingests my digital brain into a knowledge graph with automatic incremental sync, so retrieval stays current without manual re-ingestion. The full architecture — deterministic hooks, on-device MCP delegation, format-preserving surrogates — is documented in the 'Sovereign AI Without Cloud Leakage' note.",
+  "url": "reflections/local-llm-architecture.html",
+  "tags": [
+   "Local LLM",
+   "LiteLLM",
+   "GraphRAG",
+   "Privacy",
+   "Neo4j"
+  ]
+ },
+ {
+  "date": "September 2026",
+  "type": "prototype",
+  "title": "Fully Offline Audio Analysis with Open-Source Local Models",
+  "description": "Built a four-phase, zero-network pipeline for analyzing confidential audio recordings entirely on-device.",
+  "details": "Whisper-large-v3-turbo transcribes offline; speaker diarization separates voices via embedding clustering; a local text LLM generates transcript-level reports; and Qwen2.5-Omni performs audio-level analysis — prosody, tone and affect beyond the words themselves. Runs on MLX with pre-downloaded models and network access hard-disabled: nothing ever touches the internet.",
+  "tags": [
+   "Local LLM",
+   "Audio",
+   "Whisper",
+   "MLX",
+   "Privacy"
+  ]
+ },
+ {
+  "date": "September 27, 2026",
+  "type": "prototype",
+  "title": "Metadata Knowledge Graph with Local-LLM Derivation Extraction",
+  "description": "Put local open-source models to work on the Statistics Canada metadata corpus: an extraction queue and forensic Reviewer Agent mining variable derivation lineage across ~439,000 variables.",
+  "details": "A durable extraction runner backed by a local Qwen 27B model proposes derivation edges; a reviewer agent expands range notation, attributes epistemic provenance (official vs. AI-inferred), and gates output behind stratified human sign-off. Pilot verified 965 lineage edges with zero hallucinations — a working template for applying local LLMs to official-statistics metadata without cloud exposure.",
+  "tags": [
+   "Metadata",
+   "Knowledge Graph",
+   "Local LLM",
+   "StatCan"
+  ]
+ },
+ {
+  "date": "September 27–28, 2026",
+  "type": "prototype",
+  "title": "Jobist — A Job Match You Can Share",
+  "description": "A hosted job-fit assistant: upload your resume, search live Canadian postings, and get a plain-language fit read on each one. Built from an empty folder to a deployed site in two days.",
+  "details": "Most job-search tools assume you already know what you're looking for. Jobist starts from your experience instead: build a confirmed profile by uploading documents, answering four guided questions, or pasting your resume directly — then either explore directions the AI plans from your background across Canadian portals (Job Bank, Freehire, Eluta.ca), or run a targeted search against a specific posting. Every fit read is grounded in facts you supplied and confirmed; the tool never invents credentials and never submits anything on your behalf. Shipped with an end-to-end test suite covering the full user flow.",
+  "tags": [
+   "Career",
+   "Job Search",
+   "AI",
+   "Cloudflare Workers"
+  ],
+  "links": [
+   {
+    "label": "Live Site",
+    "href": "https://jobist.peji.ca"
+   },
+   {
+    "label": "GitHub",
+    "href": "https://github.com/p3ji/jobist"
+   }
+  ]
+ }
 ]

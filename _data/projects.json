@@ -1,818 +1,842 @@
 [
-  {
-    "id": "portfolio-editor",
-    "title": "Portfolio Editor App",
-    "description": "A custom local web app to manage and publish this portfolio's content.",
-    "details": "Re-architected the portfolio site to load dynamically from JSON files, and built a custom local React/Node.js editor to manage them. The editor features a one-click publish integration that computes Git diffs and pushes changes seamlessly to the live site.",
-    "category": [
-      "personal-tools",
-      "work-tools"
-    ],
-    "stage": "prototype",
-    "icon": "fa-pen-to-square",
-    "featured": false,
-    "links": []
-  },
-  {
-    "id": "data-validation-assistant",
-    "title": "Data Validation Assistant",
-    "description": "Validate and identify issues with data.",
-    "details": "An interoperable automated data validation tool that analyzes datasets against a 6-pillar framework to assist the data validation process.",
-    "category": [
-      "work-tools"
-    ],
-    "stage": "concept",
-    "icon": "fa-list-check",
-    "featured": false,
-    "links": []
-  },
-  {
-    "id": "digital-brain",
-    "title": "Digital brain",
-    "description": "Manage AI using a brain-like graph rather than prompts.",
-    "details": "Applying the idea of using a personal knowledge graph (PKG) to drive and monitor agentic processes and workflows. <br><br>Current nodes of my PKG: 287 (<span style=\"color: var(--accent-primary);\">+1</span> since 1 day ago, <span style=\"color: var(--accent-primary);\">+4</span> since 1 week ago)",
-    "category": [
-      "personal-tools"
-    ],
-    "stage": "concept",
-    "icon": "fa-brain",
-    "featured": false,
-    "links": []
-  },
-  {
-    "id": "statistical-metadata-assistant",
-    "title": "Statistical Metadata Assistant",
-    "description": "Automate the generation of statistical metadata.",
-    "details": "Takes available information about a survey (e.g. survey questions, etc.) and produces necessary statistical metadata (e.g. DDI).",
-    "category": [
-      "work-tools"
-    ],
-    "stage": "concept",
-    "icon": "fa-file-code",
-    "featured": false,
-    "links": []
-  },
-  {
-    "id": "virtual-tutor",
-    "title": "Virtual Tutor",
-    "description": "Screen-aware real-time learning companion.",
-    "details": "An AI tutoring assistant that syncs with the user's active screen to provide real-time, context-aware instructions and tailored learning guidance based on active workspace state.",
-    "category": [
-      "learning",
-      "personal-tools"
-    ],
-    "stage": "concept",
-    "icon": "fa-chalkboard-user",
-    "featured": false,
-    "links": []
-  },
-  {
-    "id": "real-estate-empire",
-    "title": "Real Estate Empire",
-    "description": "Ottawa real estate strategy game concept.",
-    "details": "A simulation game mapped onto high-fidelity satellite imagery of Ottawa. Choose a backstory, scout listings in real neighborhoods (The Glebe, Kanata), manage cash flow, and outbid AI competitors.",
-    "category": [
-      "games"
-    ],
-    "stage": "game",
-    "icon": "fa-city",
-    "featured": false,
-    "links": [
-      {
-        "label": "GitHub",
-        "icon": "fa-github",
-        "href": "https://github.com/p3ji/realestateempire"
-      }
-    ]
-  },
-  {
-    "id": "db-early-retirement",
-    "title": "DB Early Retirement Calculator",
-    "description": "Determine FIRE date and compare your income and expenses with Canadians.",
-    "details": "An early retirement calculator tailored for individuals with a Defined Benefit pension plan, mapping out the portfolio and pension timeline to find your retirement age.",
-    "category": [
-      "economy",
-      "personal-tools"
-    ],
-    "stage": "prototype",
-    "icon": "fa-calculator",
-    "image": "images/dbretire.png",
-    "featured": true,
-    "links": [
-      {
-        "label": "GitHub",
-        "icon": "fa-github",
-        "href": "https://github.com/p3ji/financialtool"
-      },
-      {
-        "label": "Live Site",
-        "icon": "fa-play",
-        "href": "https://p3ji.github.io/financialtool/"
-      }
-    ]
-  },
-  {
-    "id": "gmail-cleaner-cli",
-    "title": "Gmail Cleaner CLI",
-    "description": "Clean your mailbox.",
-    "details": "A command-line tool to clean, organize, and label emails in your Gmail inbox using IMAP. Built with Python and Rich for a polished terminal experience.",
-    "category": [
-      "personal-tools"
-    ],
-    "stage": "prototype",
-    "icon": "fa-envelope",
-    "featured": false,
-    "links": [
-      {
-        "label": "GitHub",
-        "icon": "fa-github",
-        "href": "https://github.com/p3ji/gmailcleaner"
-      },
-      {
-        "label": "Download ZIP",
-        "icon": "fa-download",
-        "href": "https://github.com/p3ji/gmailcleaner/archive/refs/heads/main.zip"
-      }
-    ]
-  },
-  {
-    "id": "drug-utilization-dashboard",
-    "title": "Drug Utilization Dashboard",
-    "description": "Monitor drug utilization data at the Canada-level. (*experimental*)",
-    "details": "An interactive dashboard and data pipeline monitoring utilization of drugs of concern in Canada using simulated public claims and private proxy volumes.",
-    "category": [
-      "health"
-    ],
-    "stage": "prototype",
-    "icon": "fa-capsules",
-    "featured": false,
-    "links": [
-      {
-        "label": "GitHub",
-        "icon": "fa-github",
-        "href": "https://github.com/p3ji/drug"
-      },
-      {
-        "label": "Live Site",
-        "icon": "fa-play",
-        "href": "https://p3ji.github.io/drug/"
-      }
-    ]
-  },
-  {
-    "id": "nihb-policy-assistant",
-    "title": "NIHB Policy Assistant",
-    "description": "Find info on NIHB policies. (*experimental*)",
-    "details": "An experimental AI query engine designed to provide source-cited policy answers about the Non-Insured Health Benefits program.",
-    "category": [
-      "health",
-      "work-tools"
-    ],
-    "stage": "prototype",
-    "icon": "fa-file-shield",
-    "featured": false,
-    "links": [
-      {
-        "label": "GitHub",
-        "icon": "fa-github",
-        "href": "https://github.com/p3ji/nihb_wrapper"
-      },
-      {
-        "label": "Live Site",
-        "icon": "fa-play",
-        "href": "https://nihbwrap.netlify.app/"
-      }
-    ]
-  },
-  {
-    "id": "canadian-ai-jobs-report",
-    "title": "Canadian AI Jobs Report",
-    "description": "Monitor what post-secondary fields will do well in an AI age. (*experimental*)",
-    "details": "An interactive dashboard analyzing the economic value of Canadian college majors. Maps CIP programs to NOC occupations, displaying median salaries, 10-year job growth, competition metrics, and AI disruption risk.",
-    "category": [
-      "economy"
-    ],
-    "stage": "prototype",
-    "icon": "fa-chart-line",
-    "featured": false,
-    "links": [
-      {
-        "label": "GitHub",
-        "icon": "fa-github",
-        "href": "https://github.com/p3ji/occupation_ai"
-      },
-      {
-        "label": "Live Site",
-        "icon": "fa-play",
-        "href": "https://occupation-ai.vercel.app/"
-      }
-    ]
-  },
-  {
-    "id": "wfa-policy-advisor",
-    "title": "WFA Policy Advisor",
-    "description": "Find info on WFA policies. (*experimental*)",
-    "details": "An interactive Canadian Federal Public Service WFA (Work Force Adjustment) advisor chatbot. Navigates complex Treasury Board guidelines, opting periods, and voluntary departures with strict documentation groundings.",
-    "category": [
-      "work-tools"
-    ],
-    "stage": "prototype",
-    "icon": "fa-scale-balanced",
-    "featured": false,
-    "links": [
-      {
-        "label": "GitHub",
-        "icon": "fa-github",
-        "href": "https://github.com/p3ji/wfa"
-      },
-      {
-        "label": "Live Site",
-        "icon": "fa-play",
-        "href": "https://wfa-blond.vercel.app/"
-      }
-    ]
-  },
-  {
-    "id": "ottawa-recreation-discovery",
-    "title": "Ottawa Recreation Discovery",
-    "description": "Find Ottawa recreation centres near you.",
-    "details": "A visual discovery tool and interactive map for parents to find municipal recreation facilities and summer camps in Ottawa by proximity, amenities, and geographical sectors.",
-    "category": [
-      "personal-tools"
-    ],
-    "stage": "prototype",
-    "icon": "fa-map-location-dot",
-    "featured": false,
-    "links": [
-      {
-        "label": "Source Code",
-        "icon": "fa-code",
-        "href": "https://huggingface.co/spaces/p3ji/p3ji/tree/main"
-      },
-      {
-        "label": "Live Space",
-        "icon": "fa-play",
-        "href": "https://p3ji-p3ji.hf.space/"
-      }
-    ]
-  },
-  {
-    "id": "modular-survey-tools",
-    "title": "Modular Survey Tools",
-    "description": "Build surveys for mobile devices.",
-    "details": "An extensible, open-source survey builder optimized for mobile devices to collect data through survey questions and sensors. Adheres to DDI lifecycle standard.",
-    "category": [
-      "work-tools"
-    ],
-    "stage": "prototype",
-    "icon": "fa-mobile-screen",
-    "image": "images/modularsurvey.png",
-    "featured": true,
-    "links": [
-      {
-        "label": "GitHub",
-        "icon": "fa-github",
-        "href": "https://github.com/p3ji/mobilesurvey"
-      },
-      {
-        "label": "Live Site",
-        "icon": "fa-play",
-        "href": "https://p3ji.github.io/mobilesurvey/"
-      }
-    ]
-  },
-  {
-    "id": "bookkeeping-app",
-    "title": "Bookkeeping App",
-    "description": "CRA-compliant offline bookkeeping.",
-    "details": "A fully offline desktop bookkeeping app for Canadian sole proprietors. Ingests credit card statement CSVs, matches receipts via local OCR (Tesseract), and auto-classifies expenses to CRA Form T2125 lines while calculating GST/HST ITCs.",
-    "category": [
-      "personal-tools"
-    ],
-    "stage": "prototype",
-    "icon": "fa-receipt",
-    "featured": false,
-    "links": [
-      {
-        "label": "GitHub",
-        "icon": "fa-github",
-        "href": "https://github.com/p3ji/bookkeeping"
-      }
-    ]
-  },
-  {
-    "id": "open-stats-lab",
-    "title": "Open Stats Lab",
-    "description": "An experiment to measure and improve public data visibility for AI search engines.",
-    "details": "A public data platform and experiment designed to improve how generative AI chatbots and search engines find and use Statistics Canada data. Features a 100-query pilot study analyzing why AI search engines cite static articles but miss current database values, and a controlled experiment using structured HTML table mirrors (with schema.org/Dataset JSON-LD markup) on GitHub Pages to test crawlability.",
-    "category": [
-      "economy",
-      "work-tools"
-    ],
-    "stage": "prototype",
-    "icon": "fa-flask",
-    "featured": false,
-    "links": [
-      {
-        "label": "GitHub",
-        "icon": "fa-github",
-        "href": "https://github.com/p3ji/stats"
-      },
-      {
-        "label": "Live Site",
-        "icon": "fa-play",
-        "href": "https://p3ji.github.io/stats/"
-      }
-    ]
-  },
-  {
-    "id": "ottawa-global-benchmark",
-    "title": "Ottawa Global Benchmark Engine",
-    "description": "Comparative global city indicators dashboard.",
-    "details": "A comparative analytics dashboard comparing Ottawa with global peer cities (Austin, Adelaide, Helsinki) across labour, housing, and tech-sector benchmarks. Uses Python to extract data from Statistics Canada's CODR API, FRED, ABS, and Statistics Finland, with a DuckDB-Wasm backend in the browser for fast, on-the-fly index baseline and divergence trend analysis.",
-    "category": [
-      "economy",
-      "work-tools"
-    ],
-    "stage": "prototype",
-    "icon": "fa-chart-line",
-    "featured": false,
-    "links": [
-      {
-        "label": "GitHub",
-        "icon": "fa-github",
-        "href": "https://github.com/p3ji/stats"
-      },
-      {
-        "label": "Live Site",
-        "icon": "fa-play",
-        "href": "https://p3ji.github.io/stats/benchmark/"
-      }
-    ]
-  },
-  {
-    "id": "investment-analyzer",
-    "title": "Local Investment Analyzer",
-    "description": "Privacy-first stock and real estate comparison engine.",
-    "details": "A client-side, privacy-first comparison engine built using vanilla HTML/JS/CSS and Chart.js. Model and compare long-term stock market compounding curves against leveraged real estate investments. Features an integrated SEC Edgar scraper for fundamental financial analysis, historical financial charting, real-time portfolio tracking (gain/loss & average cost basis), and local JSON data import/export for zero-cloud persistence.",
-    "category": [
-      "work-tools"
-    ],
-    "stage": "prototype",
-    "icon": "fa-wallet",
-    "featured": false,
-    "links": []
-  },
-  {
-    "id": "ottawabus",
-    "title": "Ottawa Transit Live Tracker",
-    "description": "Real-time 2D/3D GTFS bus fleet visualizer and schedule variance monitor for Ottawa.",
-    "details": "A real-time OC Transpo transit monitoring app built with React 19, Three.js, Leaflet, and Vite. Ingests GTFS Realtime feeds to stream live vehicle positions using 60 FPS dead-reckoning interpolation over OpenStreetMap tiles. Features a collapsible left-hand HUD pane, an interactive schedule-variance slider to highlight off-schedule routes, route filtering, and a 3D vehicle spectate mode.",
-    "category": [
-      "work-tools"
-    ],
-    "stage": "prototype",
-    "icon": "fa-bus",
-    "featured": false,
-    "links": [
-      {
-        "label": "GitHub",
-        "icon": "fa-github",
-        "href": "https://github.com/p3ji/ottawabus"
-      }
-    ]
-  },
-  {
-    "id": "debate-game",
-    "title": "Debate Game",
-    "description": "Facilitate children's debate games.",
-    "details": "A mobile-first debate facilitator for kids. Two named teams take turns arguing a randomly drawn topic.",
-    "category": [
-      "games"
-    ],
-    "stage": "game",
-    "icon": "fa-gamepad",
-    "featured": false,
-    "links": [
-      {
-        "label": "GitHub",
-        "icon": "fa-github",
-        "href": "https://github.com/p3ji/debate_game"
-      },
-      {
-        "label": "Live Site",
-        "icon": "fa-play",
-        "href": "https://p3ji.github.io/debate_game/"
-      }
-    ]
-  },
-  {
-    "id": "n-1",
-    "title": "n-1",
-    "description": "Fun anagram word game with a twist.",
-    "details": "A mobile-first word game (PWA) where players find all the shorter words hidden inside a 7-letter starter word by removing one letter at a time. Progress through 4 levels of increasing word length, racing against a 2-minute timer. Find the hidden bonus word to earn extra hints. Daily leaderboard included.",
-    "category": [
-      "games"
-    ],
-    "stage": "game",
-    "icon": "fa-gamepad",
-    "image": "images/n-1.png",
-    "featured": true,
-    "links": [
-      {
-        "label": "GitHub",
-        "icon": "fa-github",
-        "href": "https://github.com/p3ji/n-1game"
-      },
-      {
-        "label": "Live Site",
-        "icon": "fa-play",
-        "href": "https://n-1game.vercel.app/"
-      }
-    ]
-  },
-  {
-    "id": "wordstring",
-    "title": "WordString",
-    "description": "A cozy word puzzle with a sewing twist.",
-    "details": "A mobile-first, offline-first word game (PWA) wrapped in a warm sewing-and-yarn aesthetic. Spell words horizontally from the last letter of a vertical starter word using a pool of colorful thread-spool tiles. Race the clock, earn time bonuses for longer words, and trigger playful mascot celebrations. Daily leaderboard included.",
-    "category": [
-      "games"
-    ],
-    "stage": "game",
-    "icon": "fa-gamepad",
-    "featured": false,
-    "links": [
-      {
-        "label": "GitHub",
-        "icon": "fa-github",
-        "href": "https://github.com/p3ji/wordstring"
-      },
-      {
-        "label": "Live Site",
-        "icon": "fa-play",
-        "href": "https://p3ji.github.io/wordstring/"
-      }
-    ]
-  },
-  {
-    "id": "wobbletower",
-    "title": "Wobbleton — Tower Workshop",
-    "description": "Cozy 3D physics-based tower building sandbox.",
-    "details": "A browser-based 3D physics sandbox built with Three.js. Design and stack towers using 5 materials (straw, wood, brick, stone, glass) with custom friction and weights. Test your creations against earthquakes, tornadoes, meteors, and windstorms. Features a custom rigid-body physics engine (sleeping/waking bodies) and procedural lo-fi soundtrack loops generated via the Web Audio API.",
-    "category": [
-      "games"
-    ],
-    "stage": "game",
-    "icon": "fa-cubes",
-    "featured": false,
-    "links": [
-      {
-        "label": "GitHub",
-        "icon": "fa-github",
-        "href": "https://github.com/p3ji/wobbletower"
-      },
-      {
-        "label": "Live Site",
-        "icon": "fa-play",
-        "href": "https://p3ji.github.io/wobbletower/"
-      }
-    ]
-  },
-  {
-    "id": "capability-atlas",
-    "title": "Capability Atlas",
-    "description": "Modular Enterprise Business Architecture (EBA) application.",
-    "details": "A modular planning tool designed for public sector agencies. Features a 3-pass overlap detection system (structural duplication, semantic near-duplicates, and shared data-effort dependencies) and an automated transition roadmap engine that topologically sequences work packages and greedy-packs them into fiscal-year envelopes. Supports live client-side PDF business case generation.",
-    "category": [
-      "work-tools",
-      "economy"
-    ],
-    "stage": "prototype",
-    "icon": "fa-network-wired",
-    "featured": false,
-    "links": [
-      {
-        "label": "GitHub",
-        "icon": "fa-github",
-        "href": "https://github.com/p3ji/ebatool"
-      }
-    ]
-  },
-  {
-    "id": "twoplay",
-    "title": "Wobbleton — Game Night",
-    "description": "Offline-first local 2-player PWA party game hub.",
-    "details": "A PWA party game hub containing 18 physics-based and turn-based mini-games (e.g. Tug o' Rope, Frosty Pond, Log Joust, Statue Race, Boxy Match) designed for 2 players sharing a single device. Built using Three.js and vanilla JS, optimized for mobile camera scaling, and packaged as an installable offline-first application.",
-    "category": [
-      "games"
-    ],
-    "stage": "game",
-    "icon": "fa-people-group",
-    "featured": false,
-    "links": [
-      {
-        "label": "GitHub",
-        "icon": "fa-github",
-        "href": "https://github.com/p3ji/twoplay"
-      },
-      {
-        "label": "Live Site",
-        "icon": "fa-play",
-        "href": "https://p3ji.github.io/twoplay/"
-      }
-    ]
-  },
-  {
-    "id": "kingdoms-of-wobbleton",
-    "title": "Kingdoms of Wobbleton",
-    "description": "A browser-based 3D medieval RTS game prototype built with Three.js.",
-    "details": "A cozy boxy-vector medieval real-time strategy (RTS) game prototype built with Three.js and Vite. Features procedural seeded map generation, a deterministic simulation engine supporting up to 4-player lobbies and online play hosted on Render (wss://rtswobble.onrender.com), dynamic fog of war, 2-age technology upgrades, and advanced mechanics (shift-queueing, walls, double-tap control groups, double-click multi-selection), glTF assets, and synthesized runtime audio.",
-    "category": [
-      "games"
-    ],
-    "stage": "game",
-    "icon": "fa-chess-rook",
-    "image": "images/kingdoms.png",
-    "featured": true,
-    "links": [
-      {
-        "label": "GitHub",
-        "icon": "fa-github",
-        "href": "https://github.com/p3ji/rts"
-      },
-      {
-        "label": "Live Site",
-        "icon": "fa-play",
-        "href": "https://rts-seven.vercel.app/"
-      }
-    ]
-  },
-  {
-    "id": "knowledge-bridge",
-    "title": "Knowledge Bridge",
-    "description": "Custom learning software: sociology to data scientist/AI engineer.",
-    "details": "A comprehensive learning accelerator designed to bridge legacy analytics (SAS/Stata) to modern AI workflows. Features a SAS/Stata-to-LLM Rosetta Stone, Scikit-Learn vs. Google TabFM zero-shot tabular classification, LangGraph state graphs, MCP server tool integration, and 9 executable Jupyter notebooks.",
-    "category": [
-      "learning",
-      "work-tools",
-      "personal-tools"
-    ],
-    "stage": "prototype",
-    "icon": "fa-graduation-cap",
-    "image": "images/watspeed.png",
-    "featured": true,
-    "links": [
-      {
-        "label": "GitHub",
-        "icon": "fa-github",
-        "href": "https://github.com/p3ji/learn"
-      },
-      {
-        "label": "Live Hub",
-        "icon": "fa-play",
-        "href": "https://p3ji.github.io/learn/apps/watspeed_ai/"
-      }
-    ]
-  },
-  {
-    "id": "rap-studio",
-    "title": "RAP Studio — Analytical Pipelines",
-    "description": "Reproducible Analytical Pipelines maturity model & data engineering guide.",
-    "details": "A structured data engineering framework guiding teams from loose script folders to production-ready Reproducible Analytical Pipelines (RAP). Covers locked environment isolation (pyproject.toml), declarative DAG task orchestration (Prefect/DVC), automated schema testing (pytest), and GitHub Actions CI/CD.",
-    "category": [
-      "learning",
-      "work-tools"
-    ],
-    "stage": "prototype",
-    "icon": "fa-boxes-stacked",
-    "featured": false,
-    "links": [
-      {
-        "label": "GitHub",
-        "icon": "fa-github",
-        "href": "https://github.com/p3ji/learn"
-      },
-      {
-        "label": "Live Site",
-        "icon": "fa-play",
-        "href": "https://p3ji.github.io/learn/apps/rap_studio/"
-      }
-    ]
-  },
-  {
-    "id": "philosophers-quest-kids",
-    "title": "Philosopher's Quest & Mental Models",
-    "description": "Gamified arcade introducing 8 to 12-year-olds to philosophy & mental models.",
-    "details": "A vibrant, interactive learning portal for kids. Features collectible thinker cards (Socrates, Hypatia, Popper), interactive thought experiments (Plato's Cave, Ship of Theseus), mental model superpowers (First Principles, Occam's Razor), and a logical fallacy monster spotter game.",
-    "category": [
-      "learning",
-      "games",
-      "personal-tools"
-    ],
-    "stage": "game",
-    "icon": "fa-hat-wizard",
-    "featured": false,
-    "links": [
-      {
-        "label": "GitHub",
-        "icon": "fa-github",
-        "href": "https://github.com/p3ji/learn"
-      },
-      {
-        "label": "Play Arcade",
-        "icon": "fa-play",
-        "href": "https://p3ji.github.io/learn/apps/kids_philosophy/"
-      }
-    ]
-  },
-  {
-    "id": "command-centre",
-    "title": "Command Centre",
-    "description": "Desktop workspace dashboard & local git manager for all project repos.",
-    "details": "A zero-dependency local dashboard monitoring 40+ project repositories under C:\\Users\\pushp\\Documents\\Projects. Scans local filesystem and git diagnostics to track uncommitted/unpushed changes, line counts by language, tech stack signatures, one-click batch script launchers, an interactive colorized file diff & commit engine, and Windows scheduled task automations.",
-    "category": [
-      "work-tools",
-      "personal-tools"
-    ],
-    "stage": "prototype",
-    "icon": "fa-terminal",
-    "featured": false,
-    "links": [
-      {
-        "label": "GitHub",
-        "icon": "fa-github",
-        "href": "https://github.com/p3ji/command"
-      }
-    ]
-  },
-  {
-    "id": "family-kitchen-meal-planner",
-    "title": "Family Kitchen — Meal Planner",
-    "description": "Offline-first PWA for weekly family meal planning, recipe OCR & grocery lists.",
-    "details": "A mobile-first offline PWA built with React 19, Tesseract.js local OCR, and Vite. Features a weekly meal planner grid, family dietary profile tracking, automatic grocery list aggregation, in-browser recipe image text scanning, and printable PDF meal schedule exports.",
-    "category": [
-      "personal-tools"
-    ],
-    "stage": "prototype",
-    "icon": "fa-utensils",
-    "featured": false,
-    "links": [
-      {
-        "label": "GitHub",
-        "icon": "fa-github",
-        "href": "https://github.com/p3ji/meal"
-      },
-      {
-        "label": "Live Site",
-        "icon": "fa-play",
-        "href": "https://p3ji.github.io/meal/"
-      }
-    ]
-  },
-  {
-    "id": "ai-job-search-ca",
-    "title": "AI Job Search — Canada",
-    "description": "The recognized Canadian community fork of the trending AI job-search framework.",
-    "details": "A Canadian fork of MadsLorentzen/ai-job-search, built on Claude Code — recognized by the upstream project as its Canadian community fork. Adds Job Bank/Guichet-Emplois and GC Jobs portal search skills alongside Talent.com and Eluta.ca, bilingual EN/FR search, and Canadian résumé conventions, covering both public and private sector job hunting.",
-    "category": [
-      "personal-tools",
-      "economy"
-    ],
-    "stage": "prototype",
-    "icon": "fa-briefcase",
-    "image": "images/aijobsearch.png",
-    "featured": true,
-    "links": [
-      {
-        "label": "GitHub",
-        "icon": "fa-github",
-        "href": "https://github.com/p3ji/ai-job-search-ca"
-      }
-    ]
-  },
-  {
-    "id": "tendersearch",
-    "title": "TenderSearch",
-    "description": "Bid/no-bid recommendations for Canadian federal procurement tenders.",
-    "details": "A daily pipeline for a small consulting group bidding on Canadian federal work: ingests CanadaBuys tender notices, matches them against member capability profiles, and scores fit against a structured bid/no-bid rubric to help prioritize what to pursue.",
-    "category": [
-      "work-tools",
-      "economy"
-    ],
-    "stage": "prototype",
-    "icon": "fa-gavel",
-    "image": "images/tendersearch.png",
-    "featured": true,
-    "links": [
-      {
-        "label": "GitHub",
-        "icon": "fa-github",
-        "href": "https://github.com/p3ji/tendersearch"
-      }
-    ]
-  },
-  {
-    "id": "objectif-cbc",
-    "title": "Objectif CBC",
-    "description": "Offline-first study tool for federal French language exams.",
-    "details": "A private flashcard client for Canadian public servants preparing for B-level and C-level French exams. Runs 100% in your browser using local storage and spaced repetition. It schedules review intervals (1-day, 3-day, and 7-day) directly on your device with zero data sent to external servers.",
-    "category": [
-      "work-tools",
-      "personal-tools"
-    ],
-    "stage": "prototype",
-    "icon": "fa-language",
-    "featured": false,
-    "links": [
-      {
-        "label": "GitHub",
-        "icon": "fa-github",
-        "href": "https://github.com/p3ji/french"
-      }
-    ]
-  },
-  {
-    "id": "buynothing",
-    "title": "Buy Nothing",
-    "description": "Hyperlocal gifting app built to replace messy social media groups.",
-    "details": "A clean web app that helps neighbors give and receive free household items. Unlike busy social feeds where unclaimed items get buried, it highlights items waiting more than two days. Includes one-click re-listing when someone flakes, private porch address sharing, and one-tap pickup scheduling.",
-    "category": [
-      "personal-tools"
-    ],
-    "stage": "prototype",
-    "icon": "fa-gift",
-    "featured": false,
-    "links": [
-      {
-        "label": "GitHub",
-        "icon": "fa-github",
-        "href": "https://github.com/p3ji/buynothing"
-      }
-    ]
-  },
-  {
-    "id": "heritage-acupuncture",
-    "title": "Heritage Acupuncture",
-    "description": "Modern patient portal and condition guide for a 38-year clinic.",
-    "details": "A fast, clear website redesign for an established acupuncture and herbal clinic in Kanata. Replaces cluttered medical templates with an interactive search guide covering six health areas. Patients can search conditions, check transparent fees and Ontario insurance coverage, and book appointments through a simple intake form.",
-    "category": [
-      "health",
-      "personal-tools"
-    ],
-    "stage": "prototype",
-    "icon": "fa-notes-medical",
-    "featured": false,
-    "links": [
-      {
-        "label": "GitHub",
-        "icon": "fa-github",
-        "href": "https://github.com/p3ji/siteacu"
-      }
-    ]
-  },
-  {
-    "id": "skating-club-automation",
-    "title": "Club Operations & Volunteer Scheduler",
-    "description": "Mobile shift tracker and workflow automation for a community sports club.",
-    "details": "Built to cut weekly administrative overhead for a community skating club. Combines automated email reminders and name-tag printing with an offline-resilient PWA for volunteer shift sign-ups, session tracking, and home-screen notifications.",
-    "category": [
-      "work-tools",
-      "personal-tools"
-    ],
-    "stage": "prototype",
-    "icon": "fa-person-skating",
-    "featured": false,
-    "links": [
-      {
-        "label": "GitHub",
-        "icon": "fa-github",
-        "href": "https://github.com/p3ji/skate"
-      }
-    ]
-  },
-  {
-    "id": "peji-consulting",
-    "title": "Peji — Digital Practice & AI Assistant",
-    "description": "Independent consulting site with an embedded AI portfolio assistant.",
-    "details": "The public website for an independent digital practice helping non-profits and small teams. Includes an embedded AI assistant powered by Gemini that answers visitor questions by grounding responses directly in this project portfolio.",
-    "category": [
-      "work-tools"
-    ],
-    "stage": "prototype",
-    "icon": "fa-briefcase",
-    "featured": false,
-    "links": [
-      {
-        "label": "GitHub",
-        "icon": "fa-github",
-        "href": "https://github.com/p3ji/business"
-      },
-      {
-        "label": "Live Site",
-        "icon": "fa-play",
-        "href": "https://peji.ca"
-      }
-    ]
-  }
+ {
+  "id": "portfolio-editor",
+  "title": "Portfolio Editor App",
+  "description": "A custom local web app to manage and publish this portfolio's content.",
+  "details": "Re-architected the portfolio site to load dynamically from JSON files, and built a custom local React/Node.js editor to manage them. The editor features a one-click publish integration that computes Git diffs and pushes changes seamlessly to the live site.",
+  "category": [
+   "personal-tools",
+   "work-tools"
+  ],
+  "stage": "prototype",
+  "icon": "fa-pen-to-square",
+  "featured": false,
+  "links": []
+ },
+ {
+  "id": "data-validation-assistant",
+  "title": "Data Validation Assistant",
+  "description": "Validate and identify issues with data.",
+  "details": "An interoperable automated data validation tool that analyzes datasets against a 6-pillar framework to assist the data validation process.",
+  "category": [
+   "work-tools"
+  ],
+  "stage": "concept",
+  "icon": "fa-list-check",
+  "featured": false,
+  "links": []
+ },
+ {
+  "id": "digital-brain",
+  "title": "Digital brain",
+  "description": "Manage AI using a brain-like graph rather than prompts.",
+  "details": "Applying the idea of using a personal knowledge graph (PKG) to drive and monitor agentic processes and workflows. <br><br>Current nodes of my PKG: 287 (<span style=\"color: var(--accent-primary);\">+1</span> since 1 day ago, <span style=\"color: var(--accent-primary);\">+4</span> since 1 week ago)",
+  "category": [
+   "personal-tools"
+  ],
+  "stage": "concept",
+  "icon": "fa-brain",
+  "featured": false,
+  "links": []
+ },
+ {
+  "id": "statistical-metadata-assistant",
+  "title": "Statistical Metadata Assistant",
+  "description": "Automate the generation of statistical metadata.",
+  "details": "Takes available information about a survey (e.g. survey questions, etc.) and produces necessary statistical metadata (e.g. DDI).",
+  "category": [
+   "work-tools"
+  ],
+  "stage": "concept",
+  "icon": "fa-file-code",
+  "featured": false,
+  "links": []
+ },
+ {
+  "id": "virtual-tutor",
+  "title": "Virtual Tutor",
+  "description": "Screen-aware real-time learning companion.",
+  "details": "An AI tutoring assistant that syncs with the user's active screen to provide real-time, context-aware instructions and tailored learning guidance based on active workspace state.",
+  "category": [
+   "learning",
+   "personal-tools"
+  ],
+  "stage": "concept",
+  "icon": "fa-chalkboard-user",
+  "featured": false,
+  "links": []
+ },
+ {
+  "id": "real-estate-empire",
+  "title": "Real Estate Empire",
+  "description": "Ottawa real estate strategy game concept.",
+  "details": "A simulation game mapped onto high-fidelity satellite imagery of Ottawa. Choose a backstory, scout listings in real neighborhoods (The Glebe, Kanata), manage cash flow, and outbid AI competitors.",
+  "category": [
+   "games"
+  ],
+  "stage": "game",
+  "icon": "fa-city",
+  "featured": false,
+  "links": [
+   {
+    "label": "GitHub",
+    "icon": "fa-github",
+    "href": "https://github.com/p3ji/realestateempire"
+   }
+  ]
+ },
+ {
+  "id": "db-early-retirement",
+  "title": "DB Early Retirement Calculator",
+  "description": "Determine FIRE date and compare your income and expenses with Canadians.",
+  "details": "An early retirement calculator tailored for individuals with a Defined Benefit pension plan, mapping out the portfolio and pension timeline to find your retirement age.",
+  "category": [
+   "economy",
+   "personal-tools"
+  ],
+  "stage": "prototype",
+  "icon": "fa-calculator",
+  "image": "images/dbretire.png",
+  "featured": true,
+  "links": [
+   {
+    "label": "GitHub",
+    "icon": "fa-github",
+    "href": "https://github.com/p3ji/financialtool"
+   },
+   {
+    "label": "Live Site",
+    "icon": "fa-play",
+    "href": "https://p3ji.github.io/financialtool/"
+   }
+  ]
+ },
+ {
+  "id": "gmail-cleaner-cli",
+  "title": "Gmail Cleaner CLI",
+  "description": "Clean your mailbox.",
+  "details": "A command-line tool to clean, organize, and label emails in your Gmail inbox using IMAP. Built with Python and Rich for a polished terminal experience.",
+  "category": [
+   "personal-tools"
+  ],
+  "stage": "prototype",
+  "icon": "fa-envelope",
+  "featured": false,
+  "links": [
+   {
+    "label": "GitHub",
+    "icon": "fa-github",
+    "href": "https://github.com/p3ji/gmailcleaner"
+   },
+   {
+    "label": "Download ZIP",
+    "icon": "fa-download",
+    "href": "https://github.com/p3ji/gmailcleaner/archive/refs/heads/main.zip"
+   }
+  ]
+ },
+ {
+  "id": "drug-utilization-dashboard",
+  "title": "Drug Utilization Dashboard",
+  "description": "Monitor drug utilization data at the Canada-level. (*experimental*)",
+  "details": "An interactive dashboard and data pipeline monitoring utilization of drugs of concern in Canada using simulated public claims and private proxy volumes.",
+  "category": [
+   "health"
+  ],
+  "stage": "prototype",
+  "icon": "fa-capsules",
+  "featured": false,
+  "links": [
+   {
+    "label": "GitHub",
+    "icon": "fa-github",
+    "href": "https://github.com/p3ji/drug"
+   },
+   {
+    "label": "Live Site",
+    "icon": "fa-play",
+    "href": "https://p3ji.github.io/drug/"
+   }
+  ]
+ },
+ {
+  "id": "nihb-policy-assistant",
+  "title": "NIHB Policy Assistant",
+  "description": "Find info on NIHB policies. (*experimental*)",
+  "details": "An experimental AI query engine designed to provide source-cited policy answers about the Non-Insured Health Benefits program.",
+  "category": [
+   "health",
+   "work-tools"
+  ],
+  "stage": "prototype",
+  "icon": "fa-file-shield",
+  "featured": false,
+  "links": [
+   {
+    "label": "GitHub",
+    "icon": "fa-github",
+    "href": "https://github.com/p3ji/nihb_wrapper"
+   },
+   {
+    "label": "Live Site",
+    "icon": "fa-play",
+    "href": "https://nihbwrap.netlify.app/"
+   }
+  ]
+ },
+ {
+  "id": "canadian-ai-jobs-report",
+  "title": "Canadian AI Jobs Report",
+  "description": "Monitor what post-secondary fields will do well in an AI age. (*experimental*)",
+  "details": "An interactive dashboard analyzing the economic value of Canadian college majors. Maps CIP programs to NOC occupations, displaying median salaries, 10-year job growth, competition metrics, and AI disruption risk.",
+  "category": [
+   "economy"
+  ],
+  "stage": "prototype",
+  "icon": "fa-chart-line",
+  "featured": false,
+  "links": [
+   {
+    "label": "GitHub",
+    "icon": "fa-github",
+    "href": "https://github.com/p3ji/occupation_ai"
+   },
+   {
+    "label": "Live Site",
+    "icon": "fa-play",
+    "href": "https://occupation-ai.vercel.app/"
+   }
+  ]
+ },
+ {
+  "id": "wfa-policy-advisor",
+  "title": "WFA Policy Advisor",
+  "description": "Find info on WFA policies. (*experimental*)",
+  "details": "An interactive Canadian Federal Public Service WFA (Work Force Adjustment) advisor chatbot. Navigates complex Treasury Board guidelines, opting periods, and voluntary departures with strict documentation groundings.",
+  "category": [
+   "work-tools"
+  ],
+  "stage": "prototype",
+  "icon": "fa-scale-balanced",
+  "featured": false,
+  "links": [
+   {
+    "label": "GitHub",
+    "icon": "fa-github",
+    "href": "https://github.com/p3ji/wfa"
+   },
+   {
+    "label": "Live Site",
+    "icon": "fa-play",
+    "href": "https://wfa-blond.vercel.app/"
+   }
+  ]
+ },
+ {
+  "id": "ottawa-recreation-discovery",
+  "title": "Ottawa Recreation Discovery",
+  "description": "Find Ottawa recreation centres near you.",
+  "details": "A visual discovery tool and interactive map for parents to find municipal recreation facilities and summer camps in Ottawa by proximity, amenities, and geographical sectors.",
+  "category": [
+   "personal-tools"
+  ],
+  "stage": "prototype",
+  "icon": "fa-map-location-dot",
+  "featured": false,
+  "links": [
+   {
+    "label": "Source Code",
+    "icon": "fa-code",
+    "href": "https://huggingface.co/spaces/p3ji/p3ji/tree/main"
+   },
+   {
+    "label": "Live Space",
+    "icon": "fa-play",
+    "href": "https://p3ji-p3ji.hf.space/"
+   }
+  ]
+ },
+ {
+  "id": "modular-survey-tools",
+  "title": "Modular Survey Tools",
+  "description": "Build surveys for mobile devices.",
+  "details": "An extensible, open-source survey builder optimized for mobile devices to collect data through survey questions and sensors. Adheres to DDI lifecycle standard.",
+  "category": [
+   "work-tools"
+  ],
+  "stage": "prototype",
+  "icon": "fa-mobile-screen",
+  "image": "images/modularsurvey.png",
+  "featured": true,
+  "links": [
+   {
+    "label": "GitHub",
+    "icon": "fa-github",
+    "href": "https://github.com/p3ji/mobilesurvey"
+   },
+   {
+    "label": "Live Site",
+    "icon": "fa-play",
+    "href": "https://p3ji.github.io/mobilesurvey/"
+   }
+  ]
+ },
+ {
+  "id": "bookkeeping-app",
+  "title": "Bookkeeping App",
+  "description": "CRA-compliant offline bookkeeping.",
+  "details": "A fully offline desktop bookkeeping app for Canadian sole proprietors. Ingests credit card statement CSVs, matches receipts via local OCR (Tesseract), and auto-classifies expenses to CRA Form T2125 lines while calculating GST/HST ITCs.",
+  "category": [
+   "personal-tools"
+  ],
+  "stage": "prototype",
+  "icon": "fa-receipt",
+  "featured": false,
+  "links": [
+   {
+    "label": "GitHub",
+    "icon": "fa-github",
+    "href": "https://github.com/p3ji/bookkeeping"
+   }
+  ]
+ },
+ {
+  "id": "open-stats-lab",
+  "title": "Open Stats Lab",
+  "description": "An experiment to measure and improve public data visibility for AI search engines.",
+  "details": "A public data platform and experiment designed to improve how generative AI chatbots and search engines find and use Statistics Canada data. Features a 100-query pilot study analyzing why AI search engines cite static articles but miss current database values, and a controlled experiment using structured HTML table mirrors (with schema.org/Dataset JSON-LD markup) on GitHub Pages to test crawlability.",
+  "category": [
+   "economy",
+   "work-tools"
+  ],
+  "stage": "prototype",
+  "icon": "fa-flask",
+  "featured": false,
+  "links": [
+   {
+    "label": "GitHub",
+    "icon": "fa-github",
+    "href": "https://github.com/p3ji/stats"
+   },
+   {
+    "label": "Live Site",
+    "icon": "fa-play",
+    "href": "https://p3ji.github.io/stats/"
+   }
+  ]
+ },
+ {
+  "id": "ottawa-global-benchmark",
+  "title": "Ottawa Global Benchmark Engine",
+  "description": "Comparative global city indicators dashboard.",
+  "details": "A comparative analytics dashboard comparing Ottawa with global peer cities (Austin, Adelaide, Helsinki) across labour, housing, and tech-sector benchmarks. Uses Python to extract data from Statistics Canada's CODR API, FRED, ABS, and Statistics Finland, with a DuckDB-Wasm backend in the browser for fast, on-the-fly index baseline and divergence trend analysis.",
+  "category": [
+   "economy",
+   "work-tools"
+  ],
+  "stage": "prototype",
+  "icon": "fa-chart-line",
+  "featured": false,
+  "links": [
+   {
+    "label": "GitHub",
+    "icon": "fa-github",
+    "href": "https://github.com/p3ji/stats"
+   },
+   {
+    "label": "Live Site",
+    "icon": "fa-play",
+    "href": "https://p3ji.github.io/stats/benchmark/"
+   }
+  ]
+ },
+ {
+  "id": "investment-analyzer",
+  "title": "Local Investment Analyzer",
+  "description": "Privacy-first stock and real estate comparison engine.",
+  "details": "A client-side, privacy-first comparison engine built using vanilla HTML/JS/CSS and Chart.js. Model and compare long-term stock market compounding curves against leveraged real estate investments. Features an integrated SEC Edgar scraper for fundamental financial analysis, historical financial charting, real-time portfolio tracking (gain/loss & average cost basis), and local JSON data import/export for zero-cloud persistence.",
+  "category": [
+   "work-tools"
+  ],
+  "stage": "prototype",
+  "icon": "fa-wallet",
+  "featured": false,
+  "links": []
+ },
+ {
+  "id": "ottawabus",
+  "title": "Ottawa Transit Live Tracker",
+  "description": "Real-time 2D/3D GTFS bus fleet visualizer and schedule variance monitor for Ottawa.",
+  "details": "A real-time OC Transpo transit monitoring app built with React 19, Three.js, Leaflet, and Vite. Ingests GTFS Realtime feeds to stream live vehicle positions using 60 FPS dead-reckoning interpolation over OpenStreetMap tiles. Features a collapsible left-hand HUD pane, an interactive schedule-variance slider to highlight off-schedule routes, route filtering, and a 3D vehicle spectate mode.",
+  "category": [
+   "work-tools"
+  ],
+  "stage": "prototype",
+  "icon": "fa-bus",
+  "featured": false,
+  "links": [
+   {
+    "label": "GitHub",
+    "icon": "fa-github",
+    "href": "https://github.com/p3ji/ottawabus"
+   }
+  ]
+ },
+ {
+  "id": "debate-game",
+  "title": "Debate Game",
+  "description": "Facilitate children's debate games.",
+  "details": "A mobile-first debate facilitator for kids. Two named teams take turns arguing a randomly drawn topic.",
+  "category": [
+   "games"
+  ],
+  "stage": "game",
+  "icon": "fa-gamepad",
+  "featured": false,
+  "links": [
+   {
+    "label": "GitHub",
+    "icon": "fa-github",
+    "href": "https://github.com/p3ji/debate_game"
+   },
+   {
+    "label": "Live Site",
+    "icon": "fa-play",
+    "href": "https://p3ji.github.io/debate_game/"
+   }
+  ]
+ },
+ {
+  "id": "n-1",
+  "title": "n-1",
+  "description": "Fun anagram word game with a twist.",
+  "details": "A mobile-first word game (PWA) where players find all the shorter words hidden inside a 7-letter starter word by removing one letter at a time. Progress through 4 levels of increasing word length, racing against a 2-minute timer. Find the hidden bonus word to earn extra hints. Daily leaderboard included.",
+  "category": [
+   "games"
+  ],
+  "stage": "game",
+  "icon": "fa-gamepad",
+  "image": "images/n-1.png",
+  "featured": true,
+  "links": [
+   {
+    "label": "GitHub",
+    "icon": "fa-github",
+    "href": "https://github.com/p3ji/n-1game"
+   },
+   {
+    "label": "Live Site",
+    "icon": "fa-play",
+    "href": "https://n-1game.vercel.app/"
+   }
+  ]
+ },
+ {
+  "id": "wordstring",
+  "title": "WordString",
+  "description": "A cozy word puzzle with a sewing twist.",
+  "details": "A mobile-first, offline-first word game (PWA) wrapped in a warm sewing-and-yarn aesthetic. Spell words horizontally from the last letter of a vertical starter word using a pool of colorful thread-spool tiles. Race the clock, earn time bonuses for longer words, and trigger playful mascot celebrations. Daily leaderboard included.",
+  "category": [
+   "games"
+  ],
+  "stage": "game",
+  "icon": "fa-gamepad",
+  "featured": false,
+  "links": [
+   {
+    "label": "GitHub",
+    "icon": "fa-github",
+    "href": "https://github.com/p3ji/wordstring"
+   },
+   {
+    "label": "Live Site",
+    "icon": "fa-play",
+    "href": "https://p3ji.github.io/wordstring/"
+   }
+  ]
+ },
+ {
+  "id": "wobbletower",
+  "title": "Wobbleton — Tower Workshop",
+  "description": "Cozy 3D physics-based tower building sandbox.",
+  "details": "A browser-based 3D physics sandbox built with Three.js. Design and stack towers using 5 materials (straw, wood, brick, stone, glass) with custom friction and weights. Test your creations against earthquakes, tornadoes, meteors, and windstorms. Features a custom rigid-body physics engine (sleeping/waking bodies) and procedural lo-fi soundtrack loops generated via the Web Audio API.",
+  "category": [
+   "games"
+  ],
+  "stage": "game",
+  "icon": "fa-cubes",
+  "featured": false,
+  "links": [
+   {
+    "label": "GitHub",
+    "icon": "fa-github",
+    "href": "https://github.com/p3ji/wobbletower"
+   },
+   {
+    "label": "Live Site",
+    "icon": "fa-play",
+    "href": "https://p3ji.github.io/wobbletower/"
+   }
+  ]
+ },
+ {
+  "id": "capability-atlas",
+  "title": "Capability Atlas",
+  "description": "Modular Enterprise Business Architecture (EBA) application.",
+  "details": "A modular planning tool designed for public sector agencies. Features a 3-pass overlap detection system (structural duplication, semantic near-duplicates, and shared data-effort dependencies) and an automated transition roadmap engine that topologically sequences work packages and greedy-packs them into fiscal-year envelopes. Supports live client-side PDF business case generation.",
+  "category": [
+   "work-tools",
+   "economy"
+  ],
+  "stage": "prototype",
+  "icon": "fa-network-wired",
+  "featured": false,
+  "links": [
+   {
+    "label": "GitHub",
+    "icon": "fa-github",
+    "href": "https://github.com/p3ji/ebatool"
+   }
+  ]
+ },
+ {
+  "id": "twoplay",
+  "title": "Wobbleton — Game Night",
+  "description": "Offline-first local 2-player PWA party game hub.",
+  "details": "A PWA party game hub containing 18 physics-based and turn-based mini-games (e.g. Tug o' Rope, Frosty Pond, Log Joust, Statue Race, Boxy Match) designed for 2 players sharing a single device. Built using Three.js and vanilla JS, optimized for mobile camera scaling, and packaged as an installable offline-first application.",
+  "category": [
+   "games"
+  ],
+  "stage": "game",
+  "icon": "fa-people-group",
+  "featured": false,
+  "links": [
+   {
+    "label": "GitHub",
+    "icon": "fa-github",
+    "href": "https://github.com/p3ji/twoplay"
+   },
+   {
+    "label": "Live Site",
+    "icon": "fa-play",
+    "href": "https://p3ji.github.io/twoplay/"
+   }
+  ]
+ },
+ {
+  "id": "kingdoms-of-wobbleton",
+  "title": "Kingdoms of Wobbleton",
+  "description": "A browser-based 3D medieval RTS game prototype built with Three.js.",
+  "details": "A cozy boxy-vector medieval real-time strategy (RTS) game prototype built with Three.js and Vite. Features procedural seeded map generation, a deterministic simulation engine supporting up to 4-player lobbies and online play hosted on Render (wss://rtswobble.onrender.com), dynamic fog of war, 2-age technology upgrades, and advanced mechanics (shift-queueing, walls, double-tap control groups, double-click multi-selection), glTF assets, and synthesized runtime audio.",
+  "category": [
+   "games"
+  ],
+  "stage": "game",
+  "icon": "fa-chess-rook",
+  "image": "images/kingdoms.png",
+  "featured": true,
+  "links": [
+   {
+    "label": "GitHub",
+    "icon": "fa-github",
+    "href": "https://github.com/p3ji/rts"
+   },
+   {
+    "label": "Live Site",
+    "icon": "fa-play",
+    "href": "https://rts-seven.vercel.app/"
+   }
+  ]
+ },
+ {
+  "id": "knowledge-bridge",
+  "title": "Knowledge Bridge",
+  "description": "Custom learning software: sociology to data scientist/AI engineer.",
+  "details": "A comprehensive learning accelerator designed to bridge legacy analytics (SAS/Stata) to modern AI workflows. Features a SAS/Stata-to-LLM Rosetta Stone, Scikit-Learn vs. Google TabFM zero-shot tabular classification, LangGraph state graphs, MCP server tool integration, and 9 executable Jupyter notebooks.",
+  "category": [
+   "learning",
+   "work-tools",
+   "personal-tools"
+  ],
+  "stage": "prototype",
+  "icon": "fa-graduation-cap",
+  "image": "images/watspeed.png",
+  "featured": true,
+  "links": [
+   {
+    "label": "GitHub",
+    "icon": "fa-github",
+    "href": "https://github.com/p3ji/learn"
+   },
+   {
+    "label": "Live Hub",
+    "icon": "fa-play",
+    "href": "https://p3ji.github.io/learn/apps/watspeed_ai/"
+   }
+  ]
+ },
+ {
+  "id": "rap-studio",
+  "title": "RAP Studio — Analytical Pipelines",
+  "description": "Reproducible Analytical Pipelines maturity model & data engineering guide.",
+  "details": "A structured data engineering framework guiding teams from loose script folders to production-ready Reproducible Analytical Pipelines (RAP). Covers locked environment isolation (pyproject.toml), declarative DAG task orchestration (Prefect/DVC), automated schema testing (pytest), and GitHub Actions CI/CD.",
+  "category": [
+   "learning",
+   "work-tools"
+  ],
+  "stage": "prototype",
+  "icon": "fa-boxes-stacked",
+  "featured": false,
+  "links": [
+   {
+    "label": "GitHub",
+    "icon": "fa-github",
+    "href": "https://github.com/p3ji/learn"
+   },
+   {
+    "label": "Live Site",
+    "icon": "fa-play",
+    "href": "https://p3ji.github.io/learn/apps/rap_studio/"
+   }
+  ]
+ },
+ {
+  "id": "philosophers-quest-kids",
+  "title": "Philosopher's Quest & Mental Models",
+  "description": "Gamified arcade introducing 8 to 12-year-olds to philosophy & mental models.",
+  "details": "A vibrant, interactive learning portal for kids. Features collectible thinker cards (Socrates, Hypatia, Popper), interactive thought experiments (Plato's Cave, Ship of Theseus), mental model superpowers (First Principles, Occam's Razor), and a logical fallacy monster spotter game.",
+  "category": [
+   "learning",
+   "games",
+   "personal-tools"
+  ],
+  "stage": "game",
+  "icon": "fa-hat-wizard",
+  "featured": false,
+  "links": [
+   {
+    "label": "GitHub",
+    "icon": "fa-github",
+    "href": "https://github.com/p3ji/learn"
+   },
+   {
+    "label": "Play Arcade",
+    "icon": "fa-play",
+    "href": "https://p3ji.github.io/learn/apps/kids_philosophy/"
+   }
+  ]
+ },
+ {
+  "id": "command-centre",
+  "title": "Command Centre",
+  "description": "Desktop workspace dashboard & local git manager for all project repos.",
+  "details": "A zero-dependency local dashboard monitoring 40+ project repositories under C:\\Users\\pushp\\Documents\\Projects. Scans local filesystem and git diagnostics to track uncommitted/unpushed changes, line counts by language, tech stack signatures, one-click batch script launchers, an interactive colorized file diff & commit engine, and Windows scheduled task automations.",
+  "category": [
+   "work-tools",
+   "personal-tools"
+  ],
+  "stage": "prototype",
+  "icon": "fa-terminal",
+  "featured": false,
+  "links": [
+   {
+    "label": "GitHub",
+    "icon": "fa-github",
+    "href": "https://github.com/p3ji/command"
+   }
+  ]
+ },
+ {
+  "id": "family-kitchen-meal-planner",
+  "title": "Family Kitchen — Meal Planner",
+  "description": "Offline-first PWA for weekly family meal planning, recipe OCR & grocery lists.",
+  "details": "A mobile-first offline PWA built with React 19, Tesseract.js local OCR, and Vite. Features a weekly meal planner grid, family dietary profile tracking, automatic grocery list aggregation, in-browser recipe image text scanning, and printable PDF meal schedule exports.",
+  "category": [
+   "personal-tools"
+  ],
+  "stage": "prototype",
+  "icon": "fa-utensils",
+  "featured": false,
+  "links": [
+   {
+    "label": "GitHub",
+    "icon": "fa-github",
+    "href": "https://github.com/p3ji/meal"
+   },
+   {
+    "label": "Live Site",
+    "icon": "fa-play",
+    "href": "https://p3ji.github.io/meal/"
+   }
+  ]
+ },
+ {
+  "id": "ai-job-search-ca",
+  "title": "AI Job Search — Canada",
+  "description": "The recognized Canadian community fork of the trending AI job-search framework.",
+  "details": "A Canadian fork of MadsLorentzen/ai-job-search, built on Claude Code — recognized by the upstream project as its Canadian community fork. Adds Job Bank/Guichet-Emplois and GC Jobs portal search skills alongside Talent.com and Eluta.ca, bilingual EN/FR search, and Canadian résumé conventions, covering both public and private sector job hunting.",
+  "category": [
+   "personal-tools",
+   "economy"
+  ],
+  "stage": "prototype",
+  "icon": "fa-briefcase",
+  "image": "images/aijobsearch.png",
+  "featured": true,
+  "links": [
+   {
+    "label": "GitHub",
+    "icon": "fa-github",
+    "href": "https://github.com/p3ji/ai-job-search-ca"
+   }
+  ]
+ },
+ {
+  "id": "tendersearch",
+  "title": "TenderSearch",
+  "description": "Bid/no-bid recommendations for Canadian federal procurement tenders.",
+  "details": "A daily pipeline for a small consulting group bidding on Canadian federal work: ingests CanadaBuys tender notices, matches them against member capability profiles, and scores fit against a structured bid/no-bid rubric to help prioritize what to pursue.",
+  "category": [
+   "work-tools",
+   "economy"
+  ],
+  "stage": "prototype",
+  "icon": "fa-gavel",
+  "image": "images/tendersearch.png",
+  "featured": true,
+  "links": [
+   {
+    "label": "GitHub",
+    "icon": "fa-github",
+    "href": "https://github.com/p3ji/tendersearch"
+   }
+  ]
+ },
+ {
+  "id": "objectif-cbc",
+  "title": "Objectif CBC",
+  "description": "Offline-first study tool for federal French language exams.",
+  "details": "A private flashcard client for Canadian public servants preparing for B-level and C-level French exams. Runs 100% in your browser using local storage and spaced repetition. It schedules review intervals (1-day, 3-day, and 7-day) directly on your device with zero data sent to external servers.",
+  "category": [
+   "work-tools",
+   "personal-tools"
+  ],
+  "stage": "prototype",
+  "icon": "fa-language",
+  "featured": false,
+  "links": [
+   {
+    "label": "GitHub",
+    "icon": "fa-github",
+    "href": "https://github.com/p3ji/french"
+   }
+  ]
+ },
+ {
+  "id": "buynothing",
+  "title": "Buy Nothing",
+  "description": "Hyperlocal gifting app built to replace messy social media groups.",
+  "details": "A clean web app that helps neighbors give and receive free household items. Unlike busy social feeds where unclaimed items get buried, it highlights items waiting more than two days. Includes one-click re-listing when someone flakes, private porch address sharing, and one-tap pickup scheduling.",
+  "category": [
+   "personal-tools"
+  ],
+  "stage": "prototype",
+  "icon": "fa-gift",
+  "featured": false,
+  "links": [
+   {
+    "label": "GitHub",
+    "icon": "fa-github",
+    "href": "https://github.com/p3ji/buynothing"
+   }
+  ]
+ },
+ {
+  "id": "heritage-acupuncture",
+  "title": "Heritage Acupuncture",
+  "description": "Modern patient portal and condition guide for a 38-year clinic.",
+  "details": "A fast, clear website redesign for an established acupuncture and herbal clinic in Kanata. Replaces cluttered medical templates with an interactive search guide covering six health areas. Patients can search conditions, check transparent fees and Ontario insurance coverage, and book appointments through a simple intake form.",
+  "category": [
+   "health",
+   "personal-tools"
+  ],
+  "stage": "prototype",
+  "icon": "fa-notes-medical",
+  "featured": false,
+  "links": [
+   {
+    "label": "GitHub",
+    "icon": "fa-github",
+    "href": "https://github.com/p3ji/siteacu"
+   }
+  ]
+ },
+ {
+  "id": "skating-club-automation",
+  "title": "Club Operations & Volunteer Scheduler",
+  "description": "Mobile shift tracker and workflow automation for a community sports club.",
+  "details": "Built to cut weekly administrative overhead for a community skating club. Combines automated email reminders and name-tag printing with an offline-resilient PWA for volunteer shift sign-ups, session tracking, and home-screen notifications.",
+  "category": [
+   "work-tools",
+   "personal-tools"
+  ],
+  "stage": "prototype",
+  "icon": "fa-person-skating",
+  "featured": false,
+  "links": [
+   {
+    "label": "GitHub",
+    "icon": "fa-github",
+    "href": "https://github.com/p3ji/skate"
+   }
+  ]
+ },
+ {
+  "id": "peji-consulting",
+  "title": "Peji — Digital Practice & AI Assistant",
+  "description": "Independent consulting site with an embedded AI portfolio assistant.",
+  "details": "The public website for an independent digital practice helping non-profits and small teams. Includes an embedded AI assistant powered by Gemini that answers visitor questions by grounding responses directly in this project portfolio.",
+  "category": [
+   "work-tools"
+  ],
+  "stage": "prototype",
+  "icon": "fa-briefcase",
+  "featured": false,
+  "links": [
+   {
+    "label": "GitHub",
+    "icon": "fa-github",
+    "href": "https://github.com/p3ji/business"
+   },
+   {
+    "label": "Live Site",
+    "icon": "fa-play",
+    "href": "https://peji.ca"
+   }
+  ]
+ },
+ {
+  "id": "jobist",
+  "title": "Jobist — Job Fit Assistant",
+  "description": "Hosted job-search assistant that matches live Canadian postings to a confirmed candidate profile.",
+  "details": "Build a profile from documents, a short guided interview, or pasted resume text. Explore AI-planned search directions from your experience across Job Bank, Freehire and Eluta.ca, or run targeted searches against specific postings. Fit reads are grounded in facts you confirmed — nothing is invented, and the tool never submits applications for you.",
+  "category": [
+   "work-tools"
+  ],
+  "stage": "prototype",
+  "icon": "fa-briefcase",
+  "featured": false,
+  "links": [
+   {
+    "label": "GitHub",
+    "icon": "fa-github",
+    "href": "https://github.com/p3ji/jobist"
+   },
+   {
+    "label": "Live Site",
+    "icon": "fa-play",
+    "href": "https://jobist.peji.ca"
+   }
+  ]
+ }
 ]
