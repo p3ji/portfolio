@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="The split-plane architecture for using frontier cloud AI and local open-source models without ever sending confidential data over the wire." name="description"/>
+  <title>Sovereign AI Without Cloud Leakage | Peter Jiao</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+  <link href="../style.css?v=15" rel="stylesheet"/>
+ </head>
+ <body>
+  <header class="header" id="header">
+   <div class="container nav-container">
+    <a class="logo" href="../index.html">Peter Jiao</a>
+    <nav class="nav-links" id="navLinks">
+     <a class="nav-link" href="../index.html#home" id="link-home">Home</a>
+     <div class="nav-dropdown">
+      <a class="nav-link" href="../index.html#projects" id="link-projects">
+       Projects
+       <i class="fa-solid fa-chevron-down" style="font-size: 0.7em; margin-left: 0.2rem;"></i>
+      </a>
+      <div class="dropdown-content">
+       <a href="../index.html#concepts">Concepts</a>
+       <a href="../index.html#prototypes">Prototypes</a>
+      </div>
+     </div>
+     <a class="nav-link active" href="../journey.html" id="link-journey">AI Journey</a>
+     <a class="nav-link" href="../index.html#contact" id="link-contact">Contact</a>
+    </nav>
+    <div class="nav-actions">
+     <button aria-label="Toggle Light/Dark Mode" class="theme-toggle" id="themeToggle" title="Toggle Light/Dark Mode">
+      <i class="fa-solid fa-moon"></i>
+      <i class="fa-solid fa-sun"></i>
+     </button>
+     <div class="menu-toggle" id="menuToggle">
+      <span></span>
+      <span></span>
+      <span></span>
+     </div>
+    </div>
+   </div>
+  </header>
+
+  <article class="section container reflection-article" style="padding-top: calc(var(--header-height) + 4rem); max-width: 720px;">
+
+   <header class="reflection-header" style="margin-bottom: 2.5rem;">
+    <a class="timeline-readmore" href="../journey.html#timeline" style="margin-bottom: 1rem; display: inline-block;">← Back to timeline</a>
+    <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+     <span class="timeline-badge study">Architecture Note</span>
+     <span class="timeline-date-text">September 24, 2026</span>
+    </div>
+    <h1 style="font-size: 2rem; margin-bottom: 0.75rem;">Sovereign AI Without Cloud Leakage</h1>
+    <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.7;">How I use frontier cloud models for complex reasoning while confidential data — client records, financials, PII — never leaves the machine.</p>
+   </header>
+
+   <div class="reflection-body" style="color: var(--text-secondary); line-height: 1.8; font-size: 1rem;">
+    <p>The question every privacy-conscious practitioner faces with AI is a false dilemma: either accept cloud models and send sensitive data over the wire, or refuse them and give up frontier reasoning capability. My working answer over the past months has been a <strong>split-plane architecture</strong> — cloud and local LLMs each doing what they are best at, with a hard privacy boundary between them.</p>
+
+    <h2>The local plane</h2>
+    <p>All confidential work happens on-device. On an Apple Silicon host with 256 GB of unified memory, open-weight models such as Qwen 27B and DeepSeek-V4 run locally with zero latency, complete data residency, and zero marginal token cost. Behind a LiteLLM gateway I route different tasks to different local models — a fast coding model, a deep-reasoning model, an embeddings server — and the whole stack (gateway, Neo4j knowledge graph, Qdrant vector store, Redis) runs in containers with every port bound to loopback only. There are no cloud API keys anywhere in the configuration: egress is blocked <em>structurally</em>, not by policy.</p>
+
+    <h2>The four mechanisms of the air-gap</h2>
+    <p><strong>Deterministic hooks, not prompts.</strong> Most AI privacy setups rely on prompt instructions ("please do not leak secrets"). LLMs are probabilistic and inevitably fail. Instead, an OS-level hook intercepts file reads and shell commands: any attempt to touch files matching confidential patterns (PII, financials, credentials) is hard-blocked before anything reaches the network.</p>
+    <p><strong>On-device tool delegation.</strong> When a cloud agent encounters a task requiring sensitive records, it does not inspect the file. It issues a structured call to an on-device Model Context Protocol (MCP) server. The file path stays local; raw bytes never leave the host.</p>
+    <p><strong>Local compute for the sensitive step.</strong> The MCP server routes processing directly to the on-device models, which read the raw data and do the analysis where it can't leak.</p>
+    <p><strong>Format-preserving surrogates.</strong> The local model strips names, account numbers, and credentials, replacing them with structured surrogate tokens (&lt;PERSON_1&gt;, &lt;ACCOUNT_A&gt;) or mathematical aggregates. The cloud model then works safely on the sanitized structure — it gets the shape of the problem without any of the sensitive content.</p>
+
+    <h2>The flow</h2>
+    <div style="border: 1px solid var(--border-color, #333); padding: 24px 20px; overflow-x: auto; margin: 1.5rem 0;">
+     <pre style="margin: 0; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: clamp(0.68rem, 1.05vw, 0.85rem); line-height: 1.35; white-space: pre;">                              ┌──────────────────────────────┐
+                              │        Cloud Brain           │
+                              │ (frontier reasoning &amp; code)  │
+                              └──────────────┬───────────────┘
+                                             │
+              ┌──────────────────────────────┴──────────────────────────┐
+              │                                                         │
+   [Direct Read Attempt]                                    [Local Privacy MCP Call]
+              │                                                         │
+              ▼                                                         ▼
+┌───────────────────────┐                              ┌────────────────────────┐
+│  Hook Guard (OS-level)│                              │ Local privacy server   │
+└──────────┬────────────┘                              │ (runs on-device)       │
+           │                                           └───────────┬────────────┘
+      HARD DENIAL                                        Reads raw sensitive data
+    "Direct read blocked"                                            │
+                                                                     ▼
+                                                       ┌────────────────────────┐
+                                                       │  Local LLMs            │
+                                                       │ (Qwen 27B/DeepSeek-V4) │
+                                                       └───────────┬────────────┘
+                                                                   │
+                                                  Only surrogates, aggregates,
+                                                     or redactions return
+                                                                   │
+                                                                   ▼
+                                                       ┌────────────────────────┐
+                                                       │   Cloud safe context   │
+                                                       └────────────────────────┘</pre>
+    </div>
+
+    <h2>Where it applies</h2>
+    <p><strong>Financial &amp; ledger auditing.</strong> Reconcile transactions, detect discrepancies, and analyze multi-year balance sheets without uploading private financial statements to third-party model providers.</p>
+    <p><strong>Client records &amp; PII.</strong> Process intake forms, donor lists, or customer datasets. Sensitive identifiers are replaced with consistent surrogate tokens on-device, enabling cloud agents to design databases and user flows safely.</p>
+    <p><strong>High-volume code work.</strong> Offload file diffs, test generation, and schema verification to local compute at $0 marginal cost per token — which is what makes overnight autonomous runs economically sane.</p>
+
+    <h2>Why this split, and not "all local" or "all cloud"</h2>
+    <p>All-local means accepting weaker reasoning on the hardest problems; all-cloud means accepting that a prompt-level privacy promise is only as strong as the model's compliance. The split plane keeps both options: frontier capability for planning and code generation, sovereign compute for anything confidential — with the boundary enforced by deterministic tooling rather than trust. As open-weight models keep closing the gap, the local side of this trade gets stronger every quarter, but the architecture doesn't depend on that trend; it works whichever side is winning.</p>
+   </div>
+
+  </article>
+
+  <footer class="footer">
+   <div class="container footer-container">
+    <p>© 2026 Peter Jiao</p>
+    <div class="footer-socials">
+     <a aria-label="LinkedIn" class="social-link" href="https://www.linkedin.com/in/petershijiao/" rel="noopener noreferrer" target="_blank">
+      <i class="fa-brands fa-linkedin"></i>
+     </a>
+     <a aria-label="GitHub" class="social-link" href="https://github.com/p3ji" rel="noopener noreferrer" target="_blank">
+      <i class="fa-brands fa-github"></i>
+     </a>
+    </div>
+   </div>
+  </footer>
+
+  <script src="../script.js?v=5"></script>
+ </body>
+</html>

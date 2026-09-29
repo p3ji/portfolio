@@ -809,5 +809,47 @@
         "href": "https://github.com/p3ji/business"
       }
     ]
+  },
+  {
+    "date": "September 24, 2026",
+    "type": "milestone",
+    "title": "Local-First AI Stack — Zero-Egress Home Infrastructure",
+    "description": "Brought up a complete local LLM environment on an Apple Silicon host: a LiteLLM gateway routing to on-device models, with Neo4j, Qdrant and Redis behind it — no cloud API keys, all ports loopback-only.",
+    "details": "The stack powers a hybrid split-plane architecture: frontier cloud models handle complex reasoning while confidential data never leaves the machine. A GraphRAG layer ingests my digital brain into a knowledge graph with automatic incremental sync, so retrieval stays current without manual re-ingestion. The full architecture — deterministic hooks, on-device MCP delegation, format-preserving surrogates — is documented in the 'Sovereign AI Without Cloud Leakage' note.",
+    "url": "reflections/local-llm-architecture.html",
+    "tags": [
+      "Local LLM",
+      "LiteLLM",
+      "GraphRAG",
+      "Privacy",
+      "Neo4j"
+    ]
+  },
+  {
+    "date": "September 2026",
+    "type": "prototype",
+    "title": "Fully Offline Audio Analysis with Open-Source Local Models",
+    "description": "Built a four-phase, zero-network pipeline for analyzing confidential audio recordings entirely on-device.",
+    "details": "Whisper-large-v3-turbo transcribes offline; speaker diarization separates voices via embedding clustering; a local text LLM generates transcript-level reports; and Qwen2.5-Omni performs audio-level analysis — prosody, tone and affect beyond the words themselves. Runs on MLX with pre-downloaded models and network access hard-disabled: nothing ever touches the internet.",
+    "tags": [
+      "Local LLM",
+      "Audio",
+      "Whisper",
+      "MLX",
+      "Privacy"
+    ]
+  },
+  {
+    "date": "September 27, 2026",
+    "type": "prototype",
+    "title": "Metadata Knowledge Graph with Local-LLM Derivation Extraction",
+    "description": "Put local open-source models to work on the Statistics Canada metadata corpus: an extraction queue and forensic Reviewer Agent mining variable derivation lineage across ~439,000 variables.",
+    "details": "A durable extraction runner backed by a local Qwen 27B model proposes derivation edges; a reviewer agent expands range notation, attributes epistemic provenance (official vs. AI-inferred), and gates output behind stratified human sign-off. Pilot verified 965 lineage edges with zero hallucinations — a working template for applying local LLMs to official-statistics metadata without cloud exposure.",
+    "tags": [
+      "Metadata",
+      "Knowledge Graph",
+      "Local LLM",
+      "StatCan"
+    ]
   }
 ]
