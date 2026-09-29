@@ -11,7 +11,9 @@ try:
 except Exception as e:
     print("Warning: Could not sync Substack feed:", e)
 
-vault_path = r"D:\Brain2"
+# Vault location: override with BRAIN_VAULT_PATH, else ~/Brain2 (macOS).
+# Was hardcoded to the old Windows path D:\Brain2 — counted 0 nodes on this machine.
+vault_path = os.environ.get("BRAIN_VAULT_PATH") or os.path.expanduser("~/Brain2")
 html_path = "journey.html"
 history_path = "brain_stats_history.json"
 
