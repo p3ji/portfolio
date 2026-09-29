@@ -63,7 +63,7 @@ When a chat session produces bugs, decisions, or changes, **route them here:**
 
 ## Open Bugs
 *(Log bugs here as discovered)*
-- *(none logged)*
+- (fixed 2026-09-28) `update_brain_stats.py` counted the vault at old Windows path `D:\Brain2` → published "0 nodes". Now reads `~/Brain2` (override: `BRAIN_VAULT_PATH`).
 
 ## Pending Features / Decisions
 *(Log decisions and new feature requests here)*
