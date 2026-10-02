@@ -838,5 +838,18 @@
     "href": "https://jobist.peji.ca"
    }
   ]
+ },
+ {
+  "id": "canada-connect",
+  "title": "Canada Connect — One-Stop Government Services",
+  "description": "Interactive design proposal aggregating federal, provincial and municipal services around your situation.",
+  "details": "Describe what you need; see which programs across levels of government might apply to you. Phase 1 is a frontend prototype with simulated data clearly labelled as such. The longer-term idea: connected service data enabling tell-me-once — answer once, then auto-drafted applications and tracking across programs.",
+  "category": [
+   "civic"
+  ],
+  "stage": "concept",
+  "icon": "fa-landmark",
+  "featured": false,
+  "links": []
  }
 ]

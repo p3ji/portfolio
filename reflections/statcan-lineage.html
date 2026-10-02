@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="How I connected Statistics Canada data to the research that actually uses it — with a machine worker doing the finding and humans keeping the gate." name="description"/>
+  <title>Teaching a Machine to Read Official Statistics | Peter Jiao</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+  <link href="../style.css?v=15" rel="stylesheet"/>
+ </head>
+ <body>
+  <header class="header" id="header">
+   <div class="container nav-container">
+    <a class="logo" href="../index.html">Peter Jiao</a>
+    <nav class="nav-links" id="navLinks">
+     <a class="nav-link" href="../index.html#home" id="link-home">Home</a>
+     <div class="nav-dropdown">
+      <a class="nav-link" href="../index.html#projects" id="link-projects">
+       Projects
+       <i class="fa-solid fa-chevron-down" style="font-size: 0.75em; margin-left: 0.2rem;"></i>
+      </a>
+      <div class="dropdown-content">
+       <a href="../index.html#concepts">Concepts</a>
+       <a href="../index.html#prototypes">Prototypes</a>
+      </div>
+     </div>
+     <a class="nav-link" href="../journey.html" id="link-journey">AI Journey</a>
+     <a class="nav-link" href="../index.html#contact" id="link-contact">Contact</a>
+    </nav>
+    <div class="nav-actions">
+     <button aria-label="Toggle Light/Dark Mode" class="theme-toggle" id="themeToggle" title="Toggle Light/Dark Mode">
+      <i class="fa-solid fa-moon"></i>
+      <i class="fa-solid fa-sun"></i>
+     </button>
+     <div class="menu-toggle" id="menuToggle">
+      <span></span>
+      <span></span>
+      <span></span>
+     </div>
+    </div>
+   </div>
+  </header>
+
+  <article class="section container reflection-article" style="padding-top: calc(var(--header-height) + 4rem); max-width: 720px;">
+
+   <header class="reflection-header" style="margin-bottom: 2.5rem;">
+    <a class="timeline-readmore" href="../journey.html#timeline" style="margin-bottom: 1rem; display: inline-block;">← Back to timeline</a>
+    <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+     <span class="timeline-badge blog">Reflection</span>
+     <span class="timeline-date-text">October 2, 2026</span>
+    </div>
+    <h1 style="font-size: 2rem; margin-bottom: 0.75rem;">Teaching a Machine to Read Official Statistics</h1>
+    <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.7;">Statistics Canada publishes the numbers. Almost nobody publishes who used them, what they found, and whether the measure still means the same thing a decade later. I built a module that connects the two — with a machine worker doing the finding and humans keeping the gate.</p>
+   </header>
+
+   <div class="reflection-body" style="color: var(--text-secondary); line-height: 1.8; font-size: 1rem;">
+    <h2>The question it answers</h2>
+    <p>You're looking at a survey variable — say, a measure of household income from the Census. The official documentation tells you how it was collected. It does not tell you which studies used it, what they concluded, or whether a later report quietly redefined it. That second layer is where the real understanding lives: in academic papers and in grey literature — reports, briefs, and working documents that never appear in academic indexes but are often the first place a measure gets put to work.</p>
+    <p>The Researcher module answers one question: <em>"what do we already know about this?"</em> Every answer card links to the actual source document. A quick-stats timeline shows how a measure has changed cycle by cycle, so you can see when a number stopped meaning what it used to.</p>
+
+    <h2>Why not just let an AI search?</h2>
+    <p>The obvious version of this project is pointing a language model at the corpus and asking. I tried that instinct first, and it fails in exactly the way you'd expect: models are fluent about sources they have never seen. A confident citation to a study that doesn't exist is worse than no citation — with official statistics, it poisons downstream decisions.</p>
+    <p>So the design inverts the default. The catalogue of verified works is the product; the AI is a worker inside it. A persistent agent runs continuously: it reads through tens of thousands of open-ended comment boxes in the metadata — free-text fields where statisticians left notes like "this variable was redefined after 2016" — and proposes connections between survey variables and published works that use them. Every proposed link is marked as machine-inferred, then goes through human review before it ships. The worker can be wrong at scale — that's expected and fine — but nothing reaches a reader until a person has checked.</p>
+
+    <h2>The storage arithmetic</h2>
+    <p>The search layer behind this had its own constraint that shaped the architecture. The corpus sits in Supabase — roughly 300 MB of tables and indexes, growing with every survey cycle. A vector index for meaning-based search lives separately in Qdrant on a free tier: 4 GB of disk sounds generous until you realize duplicating the full corpus there would double every future migration, re-embedding, and backup.</p>
+    <p>The fix was to stop copying everything. The vector store holds only what needs meaning-matching — variable descriptions with enough substance to represent their subject. A mnemonic code or a bare list of categories is not semantic evidence, so it stays out. Result: the lexical path always works on its own (the free cluster can suspend after a week idle), and the index is cheap to rebuild from scratch whenever the embedding model changes.</p>
+
+    <h2>Where this sits</h2>
+    <p>There's a spectrum I keep coming back to. At one end: an information site — "here is what this variable means." In the middle: a connection layer — "here is who has used it and what they found." At the far end: automation — tell me your situation once, and the system drafts applications and tracks them for you across programs (that's the Canada Connect concept). The Researcher module is the second rung, and it's the load-bearing one. You can't responsibly automate anything about official data until a machine has learned to trace where each number came from and who has already put it to work.</p>
+    <p>The catalogue keeps building itself now. That was the point all along: a verified connection layer is only as good as its last audit, so I built the audit into the loop — a standing worker that proposes, reviewers who gate, and a public trail of what's official versus what the machine inferred.</p>
+   </div>
+
+  </article>
+
+  <footer class="footer">
+   <div class="container footer-container">
+    <p>© 2026 Peter Jiao</p>
+    <div class="footer-socials">
+     <a aria-label="LinkedIn" class="social-link" href="https://www.linkedin.com/in/petershijiao/" rel="noopener noreferrer" target="_blank">
+      <i class="fa-brands fa-linkedin"></i>
+     </a>
+     <a aria-label="GitHub" class="social-link" href="https://github.com/p3ji" rel="noopener noreferrer" target="_blank">
+      <i class="fa-brands fa-github"></i>
+     </a>
+    </div>
+   </div>
+  </footer>
+
+  <script src="../script.js?v=5"></script>
+ </body>
+</html>

@@ -874,5 +874,58 @@
     "href": "https://github.com/p3ji/jobist"
    }
   ]
+ },
+ {
+  "date": "October 1, 2026",
+  "type": "prototype",
+  "title": "Searcher — Three Ways to Find a Statistic",
+  "description": "Launched the search layer for the Statistics Canada corpus: plain word matching, meaning-based matching, and AI-assisted answers — each one citing where it found things.",
+  "details": "The corpus lives in Supabase as the single source of truth. Meaning-matching runs on a separate vector index (Qdrant) that holds only the searchable descriptions, because the free-tier storage was too small to keep a second full copy of everything — so each system keeps what it is good at and nothing is duplicated. A persistent Hermes worker also reads through tens of thousands of open-ended comment boxes in the metadata and proposes lineage connections between variables and the works that use them; every proposed link goes through human review before it ships.",
+  "tags": [
+   "StatCan",
+   "Search",
+   "Vector Search",
+   "Supabase",
+   "Qdrant"
+  ],
+  "links": [
+   {
+    "label": "Live Site",
+    "href": "https://msurvey.peji.ca"
+   }
+  ]
+ },
+ {
+  "date": "October 1, 2026",
+  "type": "concept",
+  "title": "Canada Connect — Tell Me Once, and the Government Remembers",
+  "description": "An interactive design proposal that aggregates services across federal, provincial, and municipal levels so you can see what you might qualify for in one place.",
+  "details": "Phase 1 is a working frontend prototype with clearly-labelled simulated data. The bigger idea: once service data from different levels of government is connected, the experience stops being an information site — it becomes tell-me-once, where you answer questions about your situation a single time and the system can draft applications and track them for you across programs. Digital-future imagination for now, but built as something real enough to test.",
+  "tags": [
+   "Government",
+   "Civic Tech",
+   "Concept",
+   "Data Integration"
+  ]
+ },
+ {
+  "date": "October 1–2, 2026",
+  "type": "prototype",
+  "title": "Researcher — Connecting Official Statistics to How They Are Used",
+  "description": "A research module that answers 'what do we already know about this?' by linking Statistics Canada data to the academic papers and grey literature that actually use it.",
+  "details": "The catalogue of verified works is not a one-time build — it is an auto-building function. A persistent Hermes worker keeps finding new connections between survey variables and published research, including reports and briefs that never appear in academic indexes, and adds them as they are verified. Each answer card links to the real source document; quick-stats timelines show how a measure has changed cycle by cycle. An audit pass with subject-matter reviewers caught false matches before launch.",
+  "url": "reflections/statcan-lineage.html",
+  "tags": [
+   "StatCan",
+   "Research",
+   "Knowledge Graph",
+   "Persistent Worker"
+  ],
+  "links": [
+   {
+    "label": "Live Site",
+    "href": "https://msurvey.peji.ca"
+   }
+  ]
  }
 ]
