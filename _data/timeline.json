@@ -844,7 +844,7 @@
   "type": "prototype",
   "title": "Metadata Knowledge Graph with Local-LLM Derivation Extraction",
   "description": "Put local open-source models to work on the Statistics Canada metadata corpus: an extraction queue and forensic Reviewer Agent mining variable derivation lineage across ~439,000 variables.",
-  "details": "A durable extraction runner backed by a local Qwen 27B model proposes derivation edges; a reviewer agent expands range notation, attributes epistemic provenance (official vs. AI-inferred), and gates output behind stratified human sign-off. Pilot verified 965 lineage edges with zero hallucinations — a working template for applying local LLMs to official-statistics metadata without cloud exposure.",
+  "details": "A durable extraction runner backed by a local Qwen 27B model proposes derivation edges; a reviewer agent expands range notation and attributes epistemic provenance — every output is labeled official vs. AI-inferred, with how it was derived and at what confidence, so readers always know what they're looking at. Human review works as stratified sampling over the outputs rather than exhaustive sign-off. Pilot surfaced 965 verified lineage edges with zero hallucinations — a working template for applying local LLMs to official-statistics metadata without cloud exposure.",
   "tags": [
    "Metadata",
    "Knowledge Graph",
@@ -880,7 +880,7 @@
   "type": "prototype",
   "title": "Searcher — Three Ways to Find a Statistic",
   "description": "Launched the search layer for the Statistics Canada corpus: plain word matching, meaning-based matching, and AI-assisted answers — each one citing where it found things.",
-  "details": "The corpus lives in Supabase as the single source of truth. Meaning-matching runs on a separate vector index (Qdrant) that holds only the searchable descriptions, because the free-tier storage was too small to keep a second full copy of everything — so each system keeps what it is good at and nothing is duplicated. A persistent Hermes worker also reads through tens of thousands of open-ended comment boxes in the metadata and proposes lineage connections between variables and the works that use them; every proposed link goes through human review before it ships.",
+  "details": "The corpus lives in Supabase as the single source of truth. Meaning-matching runs on a separate vector index (Qdrant) that holds only the searchable descriptions, because the free-tier storage was too small to keep a second full copy of everything — so each system keeps what it is good at and nothing is duplicated. A persistent Hermes worker also reads through tens of thousands of open-ended comment boxes in the metadata and proposes lineage connections between variables and the works that use them; every proposed link is labeled with its provenance and confidence, and human review samples outputs by stratum rather than checking each one.",
   "tags": [
    "StatCan",
    "Search",
@@ -913,7 +913,7 @@
   "type": "prototype",
   "title": "Researcher — Connecting Official Statistics to How They Are Used",
   "description": "A research module that answers 'what do we already know about this?' by linking Statistics Canada data to the academic papers and grey literature that actually use it.",
-  "details": "The catalogue of verified works is not a one-time build — it is an auto-building function. A persistent Hermes worker keeps finding new connections between survey variables and published research, including reports and briefs that never appear in academic indexes, and adds them as they are verified. Each answer card links to the real source document; quick-stats timelines show how a measure has changed cycle by cycle. An audit pass with subject-matter reviewers caught false matches before launch.",
+  "details": "The catalogue of works is not a one-time build — it is an auto-building function. A persistent Hermes worker keeps finding new connections between survey variables and published research, including reports and briefs that never appear in academic indexes, adding each with its provenance and confidence labeled. Every answer card links to the real source document; quick-stats timelines show how a measure has changed cycle by cycle. Pre-launch audit passes with subject-matter reviewers on sampled outputs caught false matches before launch.",
   "url": "reflections/statcan-lineage.html",
   "tags": [
    "StatCan",
