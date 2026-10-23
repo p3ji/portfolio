@@ -212,12 +212,17 @@
   ['scroll', 'wheel', 'keydown', 'touchstart'].forEach(ev => addEventListener(ev, () => cueArm(), { passive: true }));
   document.addEventListener('visibilitychange', () => { if (!document.hidden) cueArm(); });
   cueArm(Math.max(0, 4000 - performance.now()));
+  if (cue) {
+    const flyIn = () => goTo(vTop + vRange * 0.88, 1.5);
+    cue.addEventListener('click', flyIn);
+    cue.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); flyIn(); } });
+  }
 
   /* the painting is a WebGL plate: a 4000px texture with mipmaps (a zoom stays sharp) and a hand-built depth map, so the pointer and the scroll move near things more than far ones */
   const AR = 2000 / 1126, PAR = [.005, .0025], FOC = [.52, .58];
   const SPOT = { nsut: [.205, .42, .14, .15], oyo: [.905, .29, .10, .11], mmt: [.695, .36, .12, .16], eazydiner: [.82, .68, .11, .12], me: [.185, .72, .15, .15] };
   const glc = $('#glPlate'); let lastDraw = [0, 0, 0], glKey = '', nightLoad = null, nightReady = false, nf = 0, gl = null, glU = null, glReady = false, fa = 0, hspot = SPOT.eazydiner;
-  const gain = (e, d) => 1 + e * (.02 + d * .12);
+  const gain = (e, d) => 1 + e * (.08 + d * .35);
   (function initGL() {
     if (matchMedia('(max-width: 859px)').matches) { addEventListener('resize', () => { if (!gl && innerWidth >= 860) initGL(); }); }
     let g; try { g = glc.getContext('webgl2', { antialias: false, alpha: false, powerPreference: 'high-performance' }); } catch (_) {}
@@ -232,7 +237,7 @@ precision highp float;
 uniform sampler2D uTex, uTexN, uDep; uniform vec2 uRes, uSize, uOff; uniform vec3 uCam; uniform float uE, uDpr, uFocus, uNight; uniform vec4 uSpot;
 out vec4 o;
 const vec2 F = vec2(.52, .58);
-float gn(float d) { return 1. + uE * (.02 + d * .12); }
+float gn(float d) { return 1. + uE * (.08 + d * .35); }
 void main() {
   vec2 css = vec2(gl_FragCoord.x, uRes.y - gl_FragCoord.y) / uDpr;
   vec2 uv = ((css - uCam.xy) / uCam.z) / uSize;
@@ -422,11 +427,14 @@ void main() {
   if (!hoverable) hint.innerHTML = hint.innerHTML.replace('click a place', 'tap a place');
 
   function frameValley(dt, y) {
-    pV = mobile ? 0 : clamp((y - vTop) / vRange);
+    pV = clamp((y - vTop) / vRange);
     if (focusId && pV > .04) unfocus();
     const e = ss(pV);
     rate += ((focusId ? 3 : 2.2) - rate) * clamp(dt);
-    const T = focusId ? focusCam(focusId) : { x: baseX, y: baseY, s: 1 };
+    const flyS = 1 + e * 0.68;
+    const flyX = baseX - (flyS - 1) * SW * (mobile ? ax : 0.52);
+    const flyY = baseY - (flyS - 1) * SH * 0.58;
+    const T = focusId ? focusCam(focusId) : clampCam({ x: flyX, y: flyY, s: flyS });
     const k = reduce ? 1 : 1 - Math.exp(-dt * rate);
     cur.x += (T.x - cur.x) * k; cur.y += (T.y - cur.y) * k; cur.s += (T.s - cur.s) * k;
     ptr.sx += (ptr.x - ptr.sx) * clamp(dt * 1.6); ptr.sy += (ptr.y - ptr.sy) * clamp(dt * 1.6);
@@ -3519,6 +3527,9 @@ void main() {
   /* ---------- nav ---------- */
   $$('[data-go]').forEach(a => a.addEventListener('click', e => {
     e.preventDefault(); unfocus(); const id = a.dataset.go;
+    if (id === 'top') {
+      DONE.v = 0; valley.style.height = ''; layoutValley();
+    }
     const targetEl = id === 'top' ? null : (id === 'work' && (!$('#boxTrack') || !$('#boxTrack').offsetParent) ? $('#brand') : (id === 'work' ? $('#boxTrack') : $('#' + id)));
     goTo(!targetEl ? 0 : top(targetEl) + (id === 'journey' ? 4 : 0));
   }));
@@ -3543,6 +3554,11 @@ void main() {
     const dt = Math.min(.05, (t - last) / 1000); last = t;
     if (lenis) lenis.raf(t);
     let y = Y();
+    if (DONE.v && y < vRange) {
+      DONE.v = 0;
+      valley.style.height = '';
+      layoutValley();
+    }
     fold('v', valley, $('#journey'), () => { story.style.marginTop = '0px'; });
     fold('s', story, $('#journey'));
     const nextAfterJ = ($('#work') && $('#work').offsetParent) ? $('#work') : $('#brand');
@@ -3552,7 +3568,7 @@ void main() {
     if (!giftTap && nextAfterSt) fold('st', stackTrack, nextAfterSt);
     if (llRevTrack && llRevTrack.offsetParent) fold('ll', llRevTrack, llRoles);
     y = Y();
-    if (y < vTop + vRange + vh) frameValley(dt, DONE.v ? 0 : y);
+    if (y < vTop + vRange + vh) frameValley(dt, y);
     if (y > sTop - vh && y < sTop + sRange + vh) frameStory(DONE.s ? 1e9 : held('s', y, sTop - vh));
     if (y > jTop - vh && y < jTop + jRange + vh) frameJourney(dt, y);
     if (boxTrack && boxTrack.offsetParent && y > jTop + jRange - vh) frameWork(dt);

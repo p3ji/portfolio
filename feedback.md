@@ -4,6 +4,14 @@
 <!-- Use the in-app Review widget to drop pins and save changes here -->
 
 ## Resolved
+- [x] **Item #1 (2026-10-23)** (`#scene`)
+  - Current text: "Peji Systems Now R.H. Coats · StatCan 2011–26 Innis College "
+  - **Requested Change**: scroll to fly in doesn't work
+  - **Resolution**:
+    1. Fixed the camera zoom target in [app.js](file:///Users/pushp/Documents/Projects/visualportfolio/app.js#L429-L435): previously, camera scale `T.s` was hardcoded to `1`, meaning the camera was completely static and never zoomed into the valley on scroll. Added dynamic `flyS = 1 + e * 0.68` camera zoom tracking the focal point `(0.52, 0.58)` as `pV` moves from `0` to `1`.
+    2. Amplified depth layer parallax scaling (`gain(e, d)` and GLSL fragment shader `gn(d)`) from a flat 5% up to a vivid 3D depth expansion where foreground elements glide past and the valley opens up.
+    3. Fixed a critical scene freezing bug: previously, `fold('v', ...)` collapsed the valley to `100vh` and permanently set `DONE.v = 1`, causing `frameValley(dt, DONE.v ? 0 : y)` to hardcode `y = 0` whenever the user scrolled back up or clicked "Valley" in navigation. Restored live `y` tracking in `frameValley` and added automatic height & `DONE.v` unfolding when scrolling or navigating back to top.
+    4. Made `#cue` ("scroll to fly in") an interactive, clickable button in [index.html](file:///Users/pushp/Documents/Projects/visualportfolio/index.html#L69), [styles.css](file:///Users/pushp/Documents/Projects/visualportfolio/styles.css#L4374), and [app.js](file:///Users/pushp/Documents/Projects/visualportfolio/app.js#L215) with smooth cinematic scroll flight into the valley.
 - [x] **Item #1 (2026-10-23)** (`div.wrap.inner > div.keys-mat > div.keys.keys-three`)
   - Current text: "40+ open-source AI repos · @p3ji G P Independent digital p"
   - **Requested Change**: might as well add the LinkedIn link
