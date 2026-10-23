@@ -2986,22 +2986,18 @@ void main() {
   if (bookcaseShelves) {
     bookcaseShelves.innerHTML = SHELVES.map(s => `
       <div class="bc-shelf">
-        <div class="bc-shelf-meta">
+        <div class="bc-shelf-header">
           <span class="bc-shelf-tag"><span class="bc-brass-pin"></span>${s.section}</span>
-          <h3>${s.title}</h3>
-          <p>${s.desc}</p>
+          <h3 class="bc-shelf-title">${s.title}</h3>
         </div>
         <div class="bc-books-row">
           ${s.books.map(b => `
-            <div class="book-card" tabindex="0" role="article" aria-label="${b.n}: ${b.desc}">
+            <div class="book-card" tabindex="0" role="article" aria-label="${b.n}: ${b.role}" title="${b.n} · ${b.role}">
               <div class="book-spine"></div>
               <div class="book-face">
-                <div class="book-top">
-                  <div class="book-icon" style="background:${b.bg}">${b.icon}</div>
-                  <div class="book-role">${b.role}</div>
-                </div>
+                <div class="book-icon" style="background:${b.bg}">${b.icon}</div>
                 <h4 class="book-name">${b.n}</h4>
-                <p class="book-desc">${b.desc}</p>
+                <div class="book-role">${b.role}</div>
               </div>
             </div>
           `).join('')}
