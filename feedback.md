@@ -4,6 +4,24 @@
 <!-- Use the in-app Review widget to drop pins and save changes here -->
 
 ## Resolved
+- [x] **Item #1 (2026-10-23)** (`div.win > div.page:nth-of-type(2) > img`)
+  - Attributes: src: "v2/b/localllm.webp", alt: "Sovereign Local AI website home page"
+  - **Requested Change**: for this section, just highlight the work that was highlighted on Peji.ca as well.  also maybe highlight my published papers
+  - **Resolution**:
+    1. Replaced the generic placeholders in the `#brand` interactive showcase with Peji Systems' official client engagements and published peer-reviewed research papers:
+       - **Peji Digital Practice** (`peji.ca`) — AI systems, workflow automation, and custom software advisory.
+       - **Sovereign Local AI** (`v2/b/localllm.webp`) — Air-gapped on-device LLM infrastructure and private agentic workflows.
+       - **Ottawa Optical Demo Booking** (`demobooking.peji.ca`) — Tier 01 light build: high-conversion interactive booking & intake application.
+       - **Skating Club ETL Pipeline** (`mkdaily`) — Tier 02 daily data pipeline: automated ingest, schedule processing, and notification automation.
+       - **PA Volunteer Tracker** (`pa.peji.ca`) — Tier 03 custom web app: volunteer shift coordination, hours tracking, and role assignment.
+       - **Modular Survey & Data Tools** — Lightweight reproducible survey engines and quantitative analysis tooling.
+       - **"Who are the users of digital government services?"** (*Digital Insights*, 2026) — Empirical policy paper analyzing adoption across socio-demographic groups in Canada.
+       - **"The persistence of digital divides in Canada"** (*ICT Households*, Cetic.br, 2019) — International comparative research on broadband and digital inequality.
+       - **Canadian AI Jobs Report** — Quantitative research report analyzing Canada's AI talent and labour market demand.
+    2. Generated high-fidelity, crisp mockup assets for each tier engagement and published paper in [v2/b/](file:///Users/pushp/Documents/Projects/visualportfolio/v2/b/) (`demobooking.webp`, `mkdaily.webp`, `patracker.webp`, `paper-diggov.webp`, `paper-divide.webp`).
+    3. Updated section heading and kicker in [index.html](file:///Users/pushp/Documents/Projects/visualportfolio/index.html#L181-L182) to *"Client builds, prototypes & published papers"* with an informative description of client tiers and research publications.
+    4. Updated the `SITES` array configuration in [app.js](file:///Users/pushp/Documents/Projects/visualportfolio/app.js#L2766-L2776) with live URLs, tier tags, and links to research papers.
+
 - [x] **Item #1 (2026-10-23)** (`#scene`)
   - Current text: "Peji Systems Now R.H. Coats · StatCan 2011–26 Innis College "
   - **Requested Change**: scroll to fly in doesn't work
