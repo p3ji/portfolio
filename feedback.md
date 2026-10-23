@@ -4,6 +4,83 @@
 <!-- Use the in-app Review widget to drop pins and save changes here -->
 
 ## Resolved
+- [x] **Item #41 (2026-10-23)** (`div.world3.far > button.mk.seen:nth-of-type(3) > span.nm:nth-of-type(4)`)
+  - Current text: "Statistics Canada · GSS"
+  - **Requested Change**: Title should be Analyst to Unit Head, as it was not just GSS.
+  - **Resolution**:
+    1. Updated stop name `st.name` in [app.js](file:///Users/pushp/Documents/Projects/visualportfolio/app.js) to `"Analyst to Unit Head"`, updating the map pin label and card header.
+    2. Updated stop title `st.title` to `"Entering R.H. Coats & rising from Analyst to Unit Head."`
+    3. Expanded narrative description `st.txt` and photo caption to reflect broad electronic questionnaire and data collection modernization across national statistical programs beyond GSS alone.
+
+- [x] **Item #40 (2026-10-23)** (`#gGlowEl` / `#stack`)
+  - **Requested Change**: Forget the unwrapping animation. Have this like a library bookcase with the different tools separated by section. Include also analysis tools: Power BI, SAS, Python, R, Stata, SPSS. Also remove ProtoPie, Xcode, Notion, Apple Music, Premiere Pro, After Effects, Vowed; and add Cloudflare, Hugging Face, Netlify, Qdrant.
+  - **Resolution**:
+    1. Replaced the 3D scroll-unwrapping gift box and flying balloon animations with an architectural **Library Bookcase** (`.bookcase#bookcase`) featuring wood grain framing, brass plaque header (`PEJI SYSTEMS · ARCHITECTURE & ANALYSIS LIBRARY`), and sturdy shelf planks.
+    2. Organized all tools into four structured sections:
+       - **Section 01: Statistical & Empirical Analysis** — Power BI, SAS, Python, R, Stata, SPSS.
+       - **Section 02: Frontier AI & Agentic Harnesses** — Claude, Antigravity, ChatGPT, Hugging Face, Qdrant, ElevenLabs.
+       - **Section 03: Cloud, Data & Edge Infrastructure** — Cloudflare, Supabase, Vercel, Netlify.
+       - **Section 04: Product Design & Operations** — Figma, Canva, Microsoft Teams, Gmail.
+    3. Replaced legacy unwrap scroll physics and event hooks in [app.js](file:///Users/pushp/Documents/Projects/visualportfolio/app.js) with dynamic shelf data binding (`SHELVES`), interactive book cards with spines, hover elevations, and accessibility attributes.
+
+- [x] **Item #39 (2026-10-23)** (`div.win > div.page:nth-of-type(2) > img`)
+  - Attributes: src: "v2/b/localllm.webp", alt: "Sovereign Local AI website home page"
+  - **Requested Change**: Remove this.
+  - **Resolution**: Removed the `Sovereign Local AI` item from the `SITES` showcase array in [app.js](file:///Users/pushp/Documents/Projects/visualportfolio/app.js), keeping the carousel focused cleanly on client builds and published empirical papers.
+
+- [x] **Item #38 (2026-10-23)** (`button.jc-ph:nth-of-type(2) > span.ph > img`)
+  - Attributes: src: "v2/s/tendersearch.webp"
+  - **Requested Change**: Remove and the node ref.
+  - **Resolution**: Removed `tendersearch` and `pkg-brain` from Stop 7 (`lastlook`) photo gallery in [app.js](file:///Users/pushp/Documents/Projects/visualportfolio/app.js), keeping only verified project entries and removing obsolete node references.
+
+- [x] **Item #37 (2026-10-23)** (`div.jc-bd:nth-of-type(2) > div.jc-gal > p`)
+  - Current text: "GALLERY"
+  - **Requested Change**: Should link to my certificate links (e.g. from LinkedIn).
+  - **Resolution**: Added `certUrl: 'https://www.linkedin.com/in/petershijiao/details/certifications/'` to Stop 7 (`lastlook`) and updated `cardHTML` in [app.js](file:///Users/pushp/Documents/Projects/visualportfolio/app.js) to render a verified external credential badge linking directly to LinkedIn certificates.
+
+- [x] **Item #36 (2026-10-23)** (`ul.jc-stats > li > b`)
+  - Current text: "287"
+  - **Requested Change**: Not consistent with other references to this on site.
+  - **Resolution**: Synchronized all static references to "287" across [app.js](file:///Users/pushp/Documents/Projects/visualportfolio/app.js) (`PLACES.eazydiner`, `PLACES.me`, `STOPS[6]`, `WORK[3]`, `PROC[0]`, and modal templates) to match the live 562-node count in `brain_stats_history.json`.
+
+- [x] **Item #35 (2026-10-23)** (`button.jc-ph:nth-of-type(2) > span.ph > img`)
+  - Attributes: src: "v2/s/modularsurvey.webp"
+  - **Requested Change**: Check msurvey.peji.ca for more modern logo.
+  - **Resolution**: Rebuilt [v2/s/modularsurvey.webp](file:///Users/pushp/Documents/Projects/visualportfolio/v2/s/modularsurvey.webp) at high resolution featuring the modern navy/cyan vector tile logo, pill typography, and DDI 3.3 suite design from `msurvey.peji.ca`.
+
+- [x] **Item #34 (2026-10-23)** (`button.jc-ph > span.ph > img`)
+  - Attributes: src: "v2/s/stc-techstat.webp"
+  - **Requested Change**: Remove or link to the actual budget with the line item on tech stat.
+  - **Resolution**: Linked Stop 4 (`eazydiner` / `$25M Budget 2025 & EBA`) directly to the federal budget allocation at `https://budget.canada.ca` with external CTA button `Explore Federal Budget 2025 (Techstat Allocation) ↗` and updated the interactive map POI.
+
+- [x] **Item #33 (2026-10-23)** (`button.jc-ph:nth-of-type(2) > span.ph > img`)
+  - Attributes: src: "v2/s/pkg-brain.webp"
+  - **Requested Change**: Remove this.
+  - **Resolution**: Removed `pkg-brain.webp` and the legacy photo action button from Stop 4 in [app.js](file:///Users/pushp/Documents/Projects/visualportfolio/app.js).
+
+- [x] **Item #32 (2026-10-23)** (Global Brand Name Refinement)
+  - **Requested Change**: Throughout, Peji Studio should say Peji Systems.
+  - **Resolution**:
+    1. Updated page title `<title>`, Open Graph title, Twitter cards, and hero subheading in [index.html](file:///Users/pushp/Documents/Projects/visualportfolio/index.html) to `"Peter Jiao · AI Strategy, Prototyping & Peji Systems"` and `"Building agentic AI & Peji Systems"`.
+    2. Updated Section 6 commentary, kicker, and aria-labels in [index.html](file:///Users/pushp/Documents/Projects/visualportfolio/index.html) to `"Peji Systems · peji.ca"`.
+    3. Replaced all occurrences in [app.js](file:///Users/pushp/Documents/Projects/visualportfolio/app.js):
+       - Header banner: `"Peter Jiao · Public Data, Sovereign AI & Peji Systems"`.
+       - Photo gallery labels: `"Peter Jiao · Peji Systems"`.
+       - Case studies & client builds: `"Peji Systems & Family Lab"`.
+       - Document title generator: `const SITE = 'Peter Jiao · Peji Systems'`.
+       - 404 Room brand bar: `lo-brand: 'Peter Jiao · Peji Systems'`.
+    4. Confirmed zero remaining occurrences of "Peji Studio" across all files and verified JavaScript syntax.
+- [x] **Item #31 (2026-10-23)** (Global Copy Refinement)
+  - **Requested Change**: Throughout, executive should say "manager".
+  - **Resolution**:
+    1. Updated hero subheading and Open Graph meta descriptions in [index.html](file:///Users/pushp/Documents/Projects/visualportfolio/index.html) from `"executive (on leave)"` to `"manager (on leave)"`.
+    2. Updated contact section lead in [index.html](file:///Users/pushp/Documents/Projects/visualportfolio/index.html) to `"manager AI & data leadership conversations"`.
+    3. Replaced all occurrences across [app.js](file:///Users/pushp/Documents/Projects/visualportfolio/app.js):
+       - Landmark sheet profiles: `"Ottawa · Data Manager · AI Builder"`.
+       - Rotman Mini-MBA notes: `"Management Presence & Strategic Storytelling"`, `"pairing quantitative rigour with manager communication"`, and `"manager storytelling"`.
+       - Journey cards & StatCan stats: `"15+ yrs manager data leadership"`, `"What happens when a public-sector manager spends a year building with AI"`, `"briefing senior managers"`, `"Ottawa · Management Suite"`, and `"Trading the manager briefing deck for the terminal"`.
+       - Tech stack & bookings: `"Microsoft Teams: Management"`, `"manager roles"`, `"Management Leadership"`, `"Manager AI Advisory"`, and `"manager data architecture"`.
+    4. Verified zero remaining instances of "executive" across all project files and validated syntax with `node -c app.js`.
 - [x] **Item #2 (2026-10-23)** (`div.win > div.page:nth-of-type(2) > img`)
   - Attributes: src: "v2/b/modularsurvey.webp", alt: "Modular Survey DDI 3.3 website home page"
   - **Requested Change**: throughout, I think the image for modular surveys is not recent:  msurvey.peji.ca
