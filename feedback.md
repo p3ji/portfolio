@@ -4,6 +4,13 @@
 <!-- Use the in-app Review widget to drop pins and save changes here -->
 
 ## Resolved
+- [x] **Item #1 (2026-10-23)** (`div.kw:nth-of-type(3) > a.key > span.cap`)
+  - Current text: "M"
+  - **Requested Change**: I don't think hello@peji.ca is an email. I think it is contact@peji.ca
+  - **Resolution**:
+    1. Updated the <kbd>M</kbd> keyboard key link and aria-label in [index.html](file:///Users/pushp/Documents/Projects/visualportfolio/index.html#L533-L534) to `mailto:contact@peji.ca` and updated the copyable email text span `#mailText` to `contact@peji.ca`.
+    2. Updated all fallback email triggers, case study inquiries, modal action links, and desk stationery item descriptions in [app.js](file:///Users/pushp/Documents/Projects/visualportfolio/app.js) to consistently use `contact@peji.ca`.
+
 - [x] **Item #1 (2026-10-23)** (`div.win > div.page:nth-of-type(2) > img`)
   - Attributes: src: "v2/b/localllm.webp", alt: "Sovereign Local AI website home page"
   - **Requested Change**: for this section, just highlight the work that was highlighted on Peji.ca as well.  also maybe highlight my published papers
