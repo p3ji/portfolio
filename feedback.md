@@ -4,6 +4,13 @@
 <!-- Use the in-app Review widget to drop pins and save changes here -->
 
 ## Resolved
+- [x] **Item #1 (2026-10-23)** (`div.wrap.inner > div.keys-mat > div.keys.keys-three`)
+  - Current text: "40+ open-source AI repos · @p3ji G P Independent digital p"
+  - **Requested Change**: might as well add the LinkedIn link
+  - **Resolution**:
+    1. Added the <kbd>L</kbd> key for **LinkedIn** (`https://www.linkedin.com/in/petershijiao/`) with official LinkedIn blue brand styling (`--kc:#0A66C2;--kd:#063F7A`), crisp vector icon, and `data-k="l"` shortcut binding in [index.html](file:///Users/pushp/Documents/Projects/visualportfolio/index.html#L513-L535).
+    2. Updated `#keysMat` layout to a balanced 4-key grid (`.keys.keys-four`) with responsive 2x2 wrapping on mobile in [styles.css](file:///Users/pushp/Documents/Projects/visualportfolio/styles.css#L863).
+    3. Updated keyboard quick connect hint to: `"quick connect: G GitHub · L LinkedIn · P Peji.ca · M Email"`.
 - [x] **Item #1 (2026-10-23)** (`div.wrap.nw-head > div.sec-head > h2`)
   - Current text: "Ideas from the journey — add yours to the wall."
   - **Requested Change**: this is really cool and we can save this as an artifact, but I don't think it fits this site.
