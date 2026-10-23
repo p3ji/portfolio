@@ -4,6 +4,14 @@
 <!-- Use the in-app Review widget to drop pins and save changes here -->
 
 ## Resolved
+- [x] **Item #2 (2026-10-23)** (`div.win > div.page:nth-of-type(2) > img`)
+  - Attributes: src: "v2/b/modularsurvey.webp", alt: "Modular Survey DDI 3.3 website home page"
+  - **Requested Change**: throughout, I think the image for modular surveys is not recent:  msurvey.peji.ca
+  - **Resolution**:
+    1. Captured the live, production UI of [msurvey.peji.ca](https://msurvey.peji.ca) featuring the full modular suite hub ("Less manual work. More room for insight", demo survey trigger, questionnaire designer, survey runtime, and statistical tooling).
+    2. Resampled and optimized the asset with Lanczos filtering into [v2/b/modularsurvey.webp](file:///Users/pushp/Documents/Projects/visualportfolio/v2/b/modularsurvey.webp) at 1200×800 (1.5:1 card aspect ratio, 54 KB WebP).
+    3. Confirmed that all references throughout the site—including the `#brand` client builds carousel, the journey cards photo galleries, and the case study modals—now consistently render the up-to-date [msurvey.peji.ca](https://msurvey.peji.ca) interface.
+
 - [x] **Item #1 (2026-10-23)** (`div.kw:nth-of-type(3) > a.key > span.cap`)
   - Current text: "M"
   - **Requested Change**: I don't think hello@peji.ca is an email. I think it is contact@peji.ca
