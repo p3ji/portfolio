@@ -429,7 +429,7 @@ p, li, figcaption, blockquote, small, dd { text-wrap: pretty; }
 /* =========================================================
    4 · WORK (the box)
    ========================================================= */
-#work, #lastlook, #process { display: none !important; }
+#work, #lastlook, #process, #notes { display: none !important; }
 .work { position: relative; padding-block: 20vh 4vh; background: var(--paper); overflow: clip; }
 .wk.wk-ghost { position: fixed; z-index: 91; margin: 0; pointer-events: none; transform: none !important; }
 .sec-head { display: grid; gap: 10px; margin-bottom: 7vh; }

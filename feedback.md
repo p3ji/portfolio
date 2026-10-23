@@ -4,6 +4,14 @@
 <!-- Use the in-app Review widget to drop pins and save changes here -->
 
 ## Resolved
+- [x] **Item #1 (2026-10-23)** (`div.wrap.nw-head > div.sec-head > h2`)
+  - Current text: "Ideas from the journey — add yours to the wall."
+  - **Requested Change**: this is really cool and we can save this as an artifact, but I don't think it fits this site.
+  - **Resolution**:
+    1. Preserved the complete, standalone source of the Notes Wall / Digital Guestbook component as an artifact in [notes_wall_component.md](file:///Users/pushp/.gemini/antigravity/brain/3c467f66-0850-42dd-81ad-266f417fb75b/notes_wall_component.md) (featuring full HTML template, dual-track marquee scrolling CSS, procedural deterministic SVG avatars, Simple Icons company matching, spam heuristics, photo canvas compression, and persistence handlers for LocalStorage/Firestore/REST API).
+    2. Set `display: none !important;` on `#notes` in [styles.css](file:///Users/pushp/Documents/Projects/visualportfolio/styles.css#L432) and inline `style="display: none;"` on `<section class="notes" id="notes">` in [index.html](file:///Users/pushp/Documents/Projects/visualportfolio/index.html#L460).
+    3. Added `torn-bot` to preceding section `<section class="life torn torn-bot" id="life">` in [index.html](file:///Users/pushp/Documents/Projects/visualportfolio/index.html#L421) ensuring a seamless torn paper edge into the `#hello` contact section.
+    4. Guarded all notes wall listeners, timers, and DOM mutations in [app.js](file:///Users/pushp/Documents/Projects/visualportfolio/app.js) with `isNotesActive` while keeping the global `esc()` helper and the project inquiry booking modal (`bkBuild()`) fully operational.
 - [x] **Item #3 (2026-10-23)** (`button.jc-ph > span.ph > img`)
   - Attributes: src: "v2/s/photo.webp"
   - **Requested Change**: use image from LinkedIn: https://www.linkedin.com/in/petershijiao/?isSelfProfile=true

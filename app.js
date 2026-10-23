@@ -2990,8 +2990,11 @@ void main() {
   }, { passive: true });
 
   /* ---------- the notes wall ---------- */
-  const NOTE_COLORS = ['#FFE98A', '#FFD1C4', '#CFE7FF', '#D9CCFF', '#C9EBD2', '#FFE0B8'];
   const esc = t => String(t == null ? '' : t).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+  const notesSec = $('#notes');
+  const isNotesActive = notesSec && notesSec.style.display !== 'none';
+  if (isNotesActive) {
+  const NOTE_COLORS = ['#FFE98A', '#FFD1C4', '#CFE7FF', '#D9CCFF', '#C9EBD2', '#FFE0B8'];
   const hashStr = str => { let h = 2166136261; for (const ch of String(str)) { h ^= ch.charCodeAt(0); h = Math.imul(h, 16777619); } return h >>> 0; };
   function avatarSVG(seed) {
     let a = hashStr(seed || 'x'); const r = () => ((a = Math.imul(a ^ (a >>> 15), 2246822507) ^ Math.imul(a ^ (a >>> 13), 3266489909), (a >>> 0) / 4294967296));
@@ -3081,6 +3084,7 @@ void main() {
   if (!(window.claude && window.claude.use) && location.protocol.startsWith('http')) {
     loadWall(); setInterval(() => { if (!document.hidden) loadWall(); }, 30000);
     document.addEventListener('visibilitychange', () => { if (!document.hidden) loadWall(); });
+  }
   }
   // the form
 
@@ -3188,6 +3192,7 @@ void main() {
     const close = () => { if (!m) return; m.classList.remove('open'); m.setAttribute('aria-hidden', 'true'); document.documentElement.style.overflow = ''; lenis && lenis.start(); if (last && last.focus) last.focus({ preventScroll: true }); };
     badge.addEventListener('click', e => { e.stopPropagation(); open(); });
   })();
+  if (isNotesActive) {
   const nwModal = $('#nwModal'), nwForm = $('#nwForm'), nwAv = $('#nwAv'), nwErr = $('#nwErr'), nwFine = $('#nwFine');
   document.body.appendChild(nwModal); // lifted out of the section so no stacking context can clip it
   let nwSeed = Math.random().toString(36).slice(2, 9), nwPhoto = '';
@@ -3301,6 +3306,7 @@ void main() {
     renderWall(); go.disabled = false; nwForm.reset(); setBrand(null); nwPhoto = ''; $('#nwCount').textContent = '0 / 200';
     window.__sfx && window.__sfx('pin'); $('#nwDoneT').textContent = 'Pinned, ' + name.split(/\s+/)[0] + '.'; nwForm.classList.add('done'); $('#nwDone').hidden = false; setTimeout(() => $('.nw-follow', nwForm).focus({ preventScroll: true }), 120);
   });
+  }
 
 
 
