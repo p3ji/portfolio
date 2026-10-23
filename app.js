@@ -2728,7 +2728,7 @@ void main() {
   /* ---------- addresses: every case study and section gets its own link and tab title ---------- */
   const SITE = 'Peter Jiao · Peji Systems';
   const CS_SLUG = { localllm: 'localllm', techstat: 'techstat', modularsurvey: 'modularsurvey', aijobsearch: 'aijobsearch', pejistudio: 'pejistudio' };
-  const SEC_PATH = { journey: ['journey', 'The journey'], work: ['work', 'Work'], life: ['about', 'About me'], hello: ['contact', 'Say hi'] };
+  const SEC_PATH = { journey: ['journey', 'The journey'], work: ['work', 'Work'], stack: ['stack', 'My stack'], life: ['about', 'About me'], hello: ['contact', 'Say hi'] };
   const ROUTED = location.protocol.startsWith('http') && /(^|\.)peji\.ca$|\.vercel\.app$|^localhost$|^127\./.test(location.hostname);
   const HOME_TITLE = SITE;
   const csTitle = w => `${CS_NAME[w.id] || w.name} · ${w.co.split(' · ')[0]} | ${SITE}`;
@@ -3645,15 +3645,8 @@ void main() {
     layoutValley(); layoutStory(); layoutJourney(); layoutBrand(); layoutStack(); layoutLL(); layoutProc(); boxScale();
   }
   let last = performance.now();
-  // fold a finished scene down to one screen, keeping what's on screen exactly where it is
-  function fold(k, el, ref, extra) {
-    if (DONE[k] || el.getBoundingClientRect().bottom > vh + 2) return;
-    const y = Y(), before = top(ref);
-    el.style.height = '100vh'; el.style.height = '100svh'; if (extra) extra();
-    DONE[k] = 1; const delta = before - top(ref);
-    if (lenis) lenis.scrollTo(y - delta, { immediate: true, force: true }); else scrollTo(0, y - delta);
-    layout();
-  }
+  // fold disabled: dynamic height collapse causes sudden 7,000px+ scroll shifts and desyncs Lenis
+  function fold(k, el, ref, extra) {}
   function frame(t) {
     const dt = Math.min(.05, (t - last) / 1000); last = t;
     if (lenis) lenis.raf(t);
