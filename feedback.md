@@ -7,6 +7,25 @@
 <!-- Use the in-app Review widget to drop pins and save changes here -->
 
 ## Resolved
+- [x] **Item #72 (2026-10-24)** (`div.wrap > div.desk:nth-of-type(2) > div.item.about` Off the Clock Narrative & Interests)
+  - **Requested Change**:
+    Update the Off the Clock desk card content to reflect technology intersections and non-nerdy interests:
+    - Thinking about technology & its intersections:
+      - Rethinking old processes and automating the manual stuff
+      - Finding solutions to problems at every level of the organization
+      - Mixing different disciplines together to generate new things and insights
+      - Connecting every challenge back to an ever growing Personal Knowledge Graph that grow with me
+    - Non-nerdy stuff:
+      - Making music on the piano
+      - Running
+      - Adding to my "to-read" list on Goodreads (with link: https://www.goodreads.com/review/list/23603132?shelf=to-read)
+  - **Resolution**:
+    1) Updated [index.html](file:///Users/pushp/Documents/Projects/visualportfolio/index.html) under `.item.about` with the new copy structured into clean bold category headings and bullet lists.
+    2) Linked the 568-node Personal Knowledge Graph counter inline and added an interactive external link for Goodreads (`target="_blank" rel="noopener"`).
+    3) Added distinct `.about a` link styling in [styles.css](file:///Users/pushp/Documents/Projects/visualportfolio/styles.css) with subtle underline and interactive hover feedback.
+    4) Bumped stylesheet cache buster in [index.html](file:///Users/pushp/Documents/Projects/visualportfolio/index.html) to `v=20261024about`.
+    5) Verified rendering on desktop and mobile viewports via automated headless Chrome screenshots.
+
 - [x] **Item #71 (2026-10-24)** (Valley View Landmark Hover Illumination Promotion to Live)
   - **Requested Change**: Promote the hover light effect to live production.
   - **Resolution**:
