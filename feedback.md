@@ -4,6 +4,13 @@
 <!-- Use the in-app Review widget to drop pins and save changes here -->
 
 ## Resolved
+- [x] **Item #62 (2026-10-24)** (`#world3`)
+  - **Requested Change**: Lake Ontario start a bit more south (the metro track is overlapping).
+  - **Resolution**:
+    1) Shifted the entire northern shoreline of Lake Ontario southwards to start at `Y = 2050` (down from `Y = 1520`), establishing a generous 500px dry land buffer below the upper Confederation Line 1 track (`Y = 1550`) and Tunney's Pasture terminus, completely eliminating any overlap.
+    2) Re-aligned HWY 401 along the north shore corridor (`Y = 1840` to `2640`) between the railway line and the lake.
+    3) Positioned the `TORONTO` label on dry land at `Y = 1740`, and centered the `LAKE ONTARIO` watermark label deep in the open water body at `Y = 2750`.
+
 - [x] **Item #61 (2026-10-24)** (Journey Cards & Gallery Updates)
   - **Requested Change**:
     1) Replace `uoft-rotman.webp` with Barry Wellman Award for Best Undergraduate Paper, Rex Lucas Award for best Qualitative Field Work, Quantitative social science paper presented at International Conference.
