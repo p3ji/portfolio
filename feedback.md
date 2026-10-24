@@ -4,6 +4,13 @@
 <!-- Use the in-app Review widget to drop pins and save changes here -->
 
 ## Resolved
+- [x] **Item #48 (2026-10-23)** (R.H. Coats Building Day/Night & Card Photo)
+  - **Requested Change**: Redo R.H. Coats Building for Day and Night scenes based on reference photo, ensuring a clean flat concrete roofline with no small building or penthouse on top.
+  - **Resolution**:
+    1. Rendered authentic 26-storey Brutalist R.H. Coats tower for Day and Night with a completely flat, flush concrete parapet band (no rooftop penthouse or extra structures) and continuous vertical fins.
+    2. Composited into desktop and mobile plates: [v2/h/plate.webp](file:///Users/pushp/Documents/Projects/visualportfolio/v2/h/plate.webp), [v2/h/plate-night2.webp](file:///Users/pushp/Documents/Projects/visualportfolio/v2/h/plate-night2.webp), [v2/h/phone-day.webp](file:///Users/pushp/Documents/Projects/visualportfolio/v2/h/phone-day.webp), and [v2/h/phone-night.webp](file:///Users/pushp/Documents/Projects/visualportfolio/v2/h/phone-night.webp).
+    3. Replaced [v2/s/stc-coats.webp](file:///Users/pushp/Documents/Projects/visualportfolio/v2/s/stc-coats.webp) with the user's high-resolution 648x831 reference photograph.
+
 - [x] **Item #47 (2026-10-23)** (`div.wrap > div.sec-head > p:nth-of-type(2)`)
   - Current text: "Based in Ottawa. When I'm not architecting data systems, I'm building 3D video games with my kids or writing on Substack."
   - **Requested Change**: Remove
