@@ -4,6 +4,11 @@
 <!-- Use the in-app Review widget to drop pins and save changes here -->
 
 ## Resolved
+- [x] **Item #47 (2026-10-23)** (`div.wrap > div.sec-head > p:nth-of-type(2)`)
+  - Current text: "Based in Ottawa. When I'm not architecting data systems, I'm building 3D video games with my kids or writing on Substack."
+  - **Requested Change**: Remove
+  - **Resolution**: Removed the subtitle paragraph from the `#life` section header in [index.html](file:///Users/pushp/Documents/Projects/visualportfolio/index.html).
+
 - [x] **Item #46 (2026-10-23)** (`div.win > div.page:nth-of-type(2) > img`)
   - Attributes: src: "v2/b/localllm.webp", alt: "Sovereign Local AI website home page"
   - **Requested Change**: Remove
