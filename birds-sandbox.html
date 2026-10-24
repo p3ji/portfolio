@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bird Animation Comparison Laboratory · Peji Visual Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-day: #F5EFEB;
+    --bg-night: #0B0E14;
+    --ink: #111827;
+    --panel-bg: rgba(255, 255, 255, 0.92);
+    --panel-border: rgba(0, 0, 0, 0.12);
+    --accent: #D97706;
+    --accent-glow: rgba(217, 119, 6, 0.25);
+  }
+  :root[data-theme="dark"] {
+    --ink: #F3F4F6;
+    --panel-bg: rgba(18, 24, 38, 0.92);
+    --panel-border: rgba(255, 255, 255, 0.12);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+    background: var(--bg-day);
+    color: var(--ink);
+    min-height: 100vh;
+    overflow-x: hidden;
+    transition: background 0.4s ease, color 0.4s ease;
+  }
+  :root[data-theme="dark"] body {
+    background: var(--bg-night);
+  }
+
+  /* Control Panel Header */
+  .lab-header {
+    position: fixed;
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 18px;
+    border-radius: 999px;
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-border);
+    box-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.4) inset;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+  .lab-title {
+    font-weight: 800;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-right: 6px;
+  }
+  .nav-pills {
+    display: flex;
+    gap: 4px;
+    background: rgba(0, 0, 0, 0.05);
+    padding: 3px;
+    border-radius: 999px;
+  }
+  :root[data-theme="dark"] .nav-pills {
+    background: rgba(255, 255, 255, 0.08);
+  }
+  .pill-btn {
+    border: none;
+    background: transparent;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--ink);
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .pill-btn:hover {
+    background: rgba(0, 0, 0, 0.06);
+  }
+  :root[data-theme="dark"] .pill-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+  .pill-btn.active {
+    background: #111827;
+    color: #fff;
+    box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.3);
+  }
+  :root[data-theme="dark"] .pill-btn.active {
+    background: #fff;
+    color: #111827;
+  }
+  .theme-toggle {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--panel-border);
+    background: transparent;
+    color: var(--ink);
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .theme-toggle:hover {
+    border-color: var(--accent);
+  }
+
+  /* Viewport Stage */
+  .stage-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  /* Valley Plate Background */
+  .valley-plate {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 30%;
+    transition: opacity 0.5s ease;
+  }
+  .valley-plate.night {
+    opacity: 0;
+  }
+  :root[data-theme="dark"] .valley-plate.day {
+    opacity: 0;
+  }
+  :root[data-theme="dark"] .valley-plate.night {
+    opacity: 1;
+  }
+
+  /* Valley Vignette Scrim */
+  .valley-scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0.15) 0%, transparent 40%, rgba(15, 23, 42, 0.35) 100%);
+    pointer-events: none;
+  }
+  :root[data-theme="dark"] .valley-scrim {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, transparent 40%, rgba(0, 0, 0, 0.6) 100%);
+  }
+
+  /* Sample Typography to match visualportfolio hero */
+  .hero-mock {
+    position: absolute;
+    left: 8vw;
+    top: 22vh;
+    z-index: 10;
+    max-width: 620px;
+    pointer-events: none;
+  }
+  .hero-mock h1 {
+    font-size: clamp(38px, 4.5vw, 68px);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+    color: #1a222e;
+    text-shadow: 0 2px 20px rgba(255, 255, 255, 0.6);
+  }
+  :root[data-theme="dark"] .hero-mock h1 {
+    color: #F8FAFC;
+    text-shadow: 0 4px 24px rgba(0, 0, 0, 0.8);
+  }
+  .hero-mock p {
+    font-size: clamp(16px, 1.6vw, 22px);
+    color: #475569;
+    font-weight: 600;
+    margin-top: 14px;
+    text-shadow: 0 1px 12px rgba(255, 255, 255, 0.5);
+  }
+  :root[data-theme="dark"] .hero-mock p {
+    color: #CBD5E1;
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.7);
+  }
+
+  /* Birds Layers */
+  .birds-view {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 8;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+  }
+  .birds-view.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* ========================================================
+     OPTION 1: Vector Sprite Flock (10-frame anatomical cycle)
+     ======================================================== */
+  .flock-sprite-layer {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+  .sprite-bird {
+    position: absolute;
+    width: 88px;
+    height: 125px;
+    background-image: url('v2/h/bird-cells.svg');
+    background-size: auto 100%;
+    will-change: transform, background-position;
+    transform-origin: center center;
+    animation: flap-cycle var(--flap-dur, 0.85s) steps(10) infinite;
+  }
+  :root[data-theme="dark"] .sprite-bird {
+    filter: invert(1) brightness(1.6) drop-shadow(0 0 4px rgba(255, 255, 255, 0.4));
+  }
+  .sprite-bird.glide {
+    animation-play-state: paused;
+    background-position: -88px 0; /* resting glide frame */
+  }
+  @keyframes flap-cycle {
+    100% { background-position: -880px 0; }
+  }
+
+  /* ========================================================
+     OPTION 2: Canvas Boids Simulation
+     ======================================================== */
+  #boidsCanvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* ========================================================
+     OPTION 3: FX Elements Video Overlay
+     ======================================================== */
+  .video-layer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  .crows-video {
+    position: absolute;
+    top: 5%;
+    left: 0;
+    width: 100%;
+    height: 65%;
+    object-fit: cover;
+    object-position: center 20%;
+    mix-blend-mode: multiply;
+    filter: contrast(1.4) brightness(0.96);
+    opacity: 0.92;
+  }
+  :root[data-theme="dark"] .crows-video {
+    mix-blend-mode: screen;
+    filter: invert(1) contrast(1.7) brightness(1.2);
+    opacity: 0.82;
+  }
+
+  /* ========================================================
+     SIDE-BY-SIDE / COMPARISON GRID MODE
+     ======================================================== */
+  .stage-container.grid-mode {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+    padding: 70px 12px 12px;
+    background: #0B0E14;
+  }
+  .stage-container.grid-mode .grid-cell {
+    position: relative;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .stage-container.grid-mode .birds-view {
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  .grid-badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    z-index: 20;
+    padding: 6px 12px;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.75);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  /* Footer description card */
+  .info-card {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    padding: 12px 24px;
+    border-radius: 16px;
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-border);
+    box-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(16px);
+    max-width: 680px;
+    width: 90%;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--ink);
+    text-align: center;
+  }
+  .info-card b {
+    color: var(--accent);
+  }
+</style>
+</head>
+<body>
+
+  <!-- Controls Header -->
+  <header class="lab-header">
+    <div class="lab-title">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 10c4-4 8-4 12 0s8 4 12 0M5 14c3-3 6-3 9 0s6 3 9 0"/></svg>
+      Birds Laboratory
+    </div>
+    <div class="nav-pills" role="tablist">
+      <button class="pill-btn active" data-mode="option1">1. Vector Sprite Flock</button>
+      <button class="pill-btn" data-mode="option2">2. Canvas Boids</button>
+      <button class="pill-btn" data-mode="option3">3. FX Elements Video</button>
+      <button class="pill-btn" data-mode="split">Compare All 3</button>
+    </div>
+    <button class="theme-toggle" id="themeBtn" aria-label="Toggle day/night mode">
+      <span class="icon">☀️</span>
+      <span class="label">Day Sunset</span>
+    </button>
+  </header>
+
+  <!-- Main Viewport Stage -->
+  <main class="stage-container" id="stageContainer">
+
+    <!-- View 1: Vector Sprite Flock -->
+    <div class="birds-view active" id="view1">
+      <img class="valley-plate day" src="v2/h/plate.webp" alt="Day Valley">
+      <img class="valley-plate night" src="v2/h/plate-night2.webp" alt="Night Valley">
+      <div class="valley-scrim"></div>
+      <div class="hero-mock">
+        <h1>Good technology<br>should make work easier.</h1>
+        <p>Option 1 · 10-Frame Anatomical Vector Sprite Flock</p>
+      </div>
+      <div class="flock-sprite-layer" id="flockSpriteLayer"></div>
+    </div>
+
+    <!-- View 2: Canvas Boids Murmuration -->
+    <div class="birds-view" id="view2">
+      <img class="valley-plate day" src="v2/h/plate.webp" alt="Day Valley">
+      <img class="valley-plate night" src="v2/h/plate-night2.webp" alt="Night Valley">
+      <div class="valley-scrim"></div>
+      <div class="hero-mock">
+        <h1>Good technology<br>should make work easier.</h1>
+        <p>Option 2 · Procedural Canvas Boids Flocking Simulation</p>
+      </div>
+      <canvas id="boidsCanvas"></canvas>
+    </div>
+
+    <!-- View 3: FX Elements Video Overlay -->
+    <div class="birds-view" id="view3">
+      <img class="valley-plate day" src="v2/h/plate.webp" alt="Day Valley">
+      <img class="valley-plate night" src="v2/h/plate-night2.webp" alt="Night Valley">
+      <div class="valley-scrim"></div>
+      <div class="hero-mock">
+        <h1>Good technology<br>should make work easier.</h1>
+        <p>Option 3 · FX Elements Crows Flock Stock Video</p>
+      </div>
+      <div class="video-layer">
+        <video class="crows-video" autoplay loop muted playsinline>
+          <source src="v2/h/crows_preview.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Explanatory Details Card -->
+  <div class="info-card" id="infoCard">
+    <b>Option 1: Vector Sprite Flock</b> — 10-frame high-detail anatomical crow wing flight cycle via SVG sprite sheet with natural V-formation trajectories, varying depths, and gliding phases. Zero network video footprint, 60fps GPU acceleration.
+  </div>
+
+  <script>
+    // Theme Toggle
+    const themeBtn = document.getElementById('themeBtn');
+    let isDark = false;
+    themeBtn.addEventListener('click', () => {
+      isDark = !isDark;
+      document.documentElement.dataset.theme = isDark ? 'dark' : 'light';
+      themeBtn.querySelector('.icon').textContent = isDark ? '🌙' : '☀️';
+      themeBtn.querySelector('.label').textContent = isDark ? 'Midnight Sky' : 'Day Sunset';
+    });
+
+    // View Switching Logic
+    const pills = document.querySelectorAll('.pill-btn');
+    const views = {
+      option1: document.getElementById('view1'),
+      option2: document.getElementById('view2'),
+      option3: document.getElementById('view3')
+    };
+    const stage = document.getElementById('stageContainer');
+    const infoCard = document.getElementById('infoCard');
+
+    const descriptions = {
+      option1: "<b>Option 1: Vector Sprite Flock</b> — 10-frame anatomical crow flight cycle from ornithological SVG sprite sheet. Flocks glide across the mountain horizon at varying depths (foreground vs. ridge silhouettes). Razor-sharp on 4K/Retina, 0 KB video weight.",
+      option2: "<b>Option 2: Canvas Boids Murmuration</b> — Real-time Craig Reynolds flocking physics (cohesion, alignment, separation) rendered on Canvas 2D with dynamic multi-joint wing flexion and responsive banking angles.",
+      option3: "<b>Option 3: FX Elements Video Overlay</b> — The exact stock clip (crows-flock-horizon-001) composited using CSS blend modes (multiply in daylight, screen at night). Realistic CG silhouettes, loops seamlessly.",
+      split: "<b>Side-by-Side Comparison</b> — All 3 options running simultaneously in synchronized viewports to compare flight feel, visual weight, and performance."
+    };
+
+    pills.forEach(p => {
+      p.addEventListener('click', () => {
+        pills.forEach(b => b.classList.remove('active'));
+        p.classList.add('active');
+        const mode = p.dataset.mode;
+        infoCard.innerHTML = descriptions[mode];
+
+        if (mode === 'split') {
+          stage.classList.add('grid-mode');
+          Object.values(views).forEach(v => {
+            v.classList.add('grid-cell');
+            v.classList.add('active');
+          });
+        } else {
+          stage.classList.remove('grid-mode');
+          Object.entries(views).forEach(([k, v]) => {
+            v.classList.remove('grid-cell');
+            v.classList.toggle('active', k === mode);
+          });
+        }
+      });
+    });
+
+    /* ========================================================
+       ENGINE 1: Vector Sprite Flock Logic
+       ======================================================== */
+    const flockContainer = document.getElementById('flockSpriteLayer');
+    const BIRD_COUNT = 10;
+    const birds1 = [];
+
+    for (let i = 0; i < BIRD_COUNT; i++) {
+      const el = document.createElement('div');
+      el.className = 'sprite-bird';
+      const scale = 0.16 + Math.random() * 0.22; // vary depth
+      const flapDur = (0.75 + Math.random() * 0.28).toFixed(2);
+      el.style.setProperty('--flap-dur', flapDur + 's');
+      el.style.animationDelay = `-${(Math.random() * 0.8).toFixed(2)}s`;
+      flockContainer.appendChild(el);
+
+      birds1.push({
+        el,
+        x: -120 - (i * 70) - Math.random() * 100, // staggered entrance from left
+        y: (window.innerHeight * 0.12) + (i * 24) + (Math.random() * 40 - 20),
+        vx: 110 + Math.random() * 35,
+        vy: (Math.random() - 0.5) * 15,
+        scale,
+        glideTime: Math.random() * 4,
+        isGliding: false
+      });
+    }
+
+    let lastT1 = performance.now();
+    function tickSpriteFlock(now) {
+      const dt = Math.min(0.05, (now - lastT1) / 1000);
+      lastT1 = now;
+      const vw = window.innerWidth;
+      const vh = window.innerHeight;
+
+      birds1.forEach((b, idx) => {
+        b.x += b.vx * dt;
+        b.y += Math.sin(now * 0.0015 + idx) * 0.6;
+
+        // Occasional gliding phase
+        b.glideTime -= dt;
+        if (b.glideTime <= 0) {
+          b.isGliding = !b.isGliding;
+          b.el.classList.toggle('glide', b.isGliding);
+          b.glideTime = b.isGliding ? (1.2 + Math.random() * 2.2) : (2.5 + Math.random() * 4.0);
+        }
+
+        // Loop across horizon
+        if (b.x > vw + 150) {
+          b.x = -150 - Math.random() * 100;
+          b.y = (vh * 0.10) + (idx * 22) + (Math.random() * 40 - 20);
+        }
+
+        const tilt = (b.vy * 0.3) + (Math.sin(now * 0.002 + idx) * 3);
+        b.el.style.transform = `translate3d(${b.x.toFixed(1)}px, ${b.y.toFixed(1)}px, 0) scale(${b.scale.toFixed(3)}) rotate(${tilt.toFixed(1)}deg)`;
+      });
+
+      requestAnimationFrame(tickSpriteFlock);
+    }
+    requestAnimationFrame(tickSpriteFlock);
+
+
+    /* ========================================================
+       ENGINE 2: Canvas Boids Simulation Logic
+       ======================================================== */
+    const canvas = document.getElementById('boidsCanvas');
+    const ctx = canvas.getContext('2d');
+    let cw = canvas.width = window.innerWidth;
+    let ch = canvas.height = window.innerHeight;
+
+    window.addEventListener('resize', () => {
+      cw = canvas.width = window.innerWidth;
+      ch = canvas.height = window.innerHeight;
+    });
+
+    const BOIDS_COUNT = 24;
+    const boids = [];
+
+    for (let i = 0; i < BOIDS_COUNT; i++) {
+      boids.push({
+        x: Math.random() * cw * 0.8,
+        y: ch * (0.08 + Math.random() * 0.28),
+        vx: 1.8 + Math.random() * 1.6,
+        vy: (Math.random() - 0.5) * 0.6,
+        size: 7 + Math.random() * 7,
+        flapPhase: Math.random() * Math.PI * 2,
+        flapSpeed: 0.18 + Math.random() * 0.08,
+        glideTimer: Math.random() * 120
+      });
+    }
+
+    function drawBoid(b, dark) {
+      ctx.save();
+      ctx.translate(b.x, b.y);
+      const angle = Math.atan2(b.vy, b.vx);
+      ctx.rotate(angle);
+
+      // Flap wing angle calculation
+      const isGlide = b.glideTimer > 60;
+      const wingFlap = isGlide ? 0.15 : Math.sin(b.flapPhase) * 0.75;
+
+      ctx.fillStyle = dark ? 'rgba(235, 240, 255, 0.9)' : 'rgba(28, 36, 48, 0.92)';
+
+      // Bird Torso
+      ctx.beginPath();
+      ctx.ellipse(0, 0, b.size * 0.7, b.size * 0.25, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Bird Beak / Head
+      ctx.beginPath();
+      ctx.moveTo(b.size * 0.6, -b.size * 0.1);
+      ctx.lineTo(b.size * 1.05, 0);
+      ctx.lineTo(b.size * 0.6, b.size * 0.1);
+      ctx.fill();
+
+      // Tail
+      ctx.beginPath();
+      ctx.moveTo(-b.size * 0.6, 0);
+      ctx.lineTo(-b.size * 1.1, -b.size * 0.2);
+      ctx.lineTo(-b.size * 1.1, b.size * 0.2);
+      ctx.closePath();
+      ctx.fill();
+
+      // Wings (Left & Right Articulated Wings)
+      ctx.beginPath();
+      ctx.moveTo(0, 0);
+      ctx.quadraticCurveTo(-b.size * 0.2, wingFlap * b.size * 1.6, -b.size * 0.6, wingFlap * b.size * 2.2);
+      ctx.quadraticCurveTo(b.size * 0.2, wingFlap * b.size * 1.4, b.size * 0.2, 0);
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.moveTo(0, 0);
+      ctx.quadraticCurveTo(-b.size * 0.2, -wingFlap * b.size * 1.6, -b.size * 0.6, -wingFlap * b.size * 2.2);
+      ctx.quadraticCurveTo(b.size * 0.2, -wingFlap * b.size * 1.4, b.size * 0.2, 0);
+      ctx.fill();
+
+      ctx.restore();
+    }
+
+    function tickBoids() {
+      ctx.clearRect(0, 0, cw, ch);
+      const dark = document.documentElement.dataset.theme === 'dark';
+
+      // Boids Flocking Logic
+      for (let i = 0; i < boids.length; i++) {
+        const b = boids[i];
+        b.flapPhase += b.flapSpeed;
+        b.glideTimer = (b.glideTimer + 1) % 180;
+
+        // Separation & Alignment with neighbors
+        let avgVX = b.vx, avgVY = b.vy, count = 1;
+        for (let j = 0; j < boids.length; j++) {
+          if (i === j) continue;
+          const other = boids[j];
+          const dist = Math.hypot(b.x - other.x, b.y - other.y);
+          if (dist < 40) {
+            // Separation
+            b.vx += (b.x - other.x) * 0.005;
+            b.vy += (b.y - other.y) * 0.005;
+          } else if (dist < 120) {
+            // Alignment
+            avgVX += other.vx;
+            avgVY += other.vy;
+            count++;
+          }
+        }
+        b.vx = b.vx * 0.95 + (avgVX / count) * 0.05;
+        b.vy = b.vy * 0.95 + (avgVY / count) * 0.05;
+
+        // General horizon eastward flight bias
+        b.vx += 0.02;
+        b.vy += (ch * 0.2 - b.y) * 0.0003;
+
+        // Speed limit
+        const spd = Math.hypot(b.vx, b.vy);
+        if (spd > 3.5) { b.vx = (b.vx / spd) * 3.5; b.vy = (b.vy / spd) * 3.5; }
+        if (spd < 1.4) { b.vx = (b.vx / spd) * 1.4; b.vy = (b.vy / spd) * 1.4; }
+
+        b.x += b.vx;
+        b.y += b.vy;
+
+        // Wrap across horizon
+        if (b.x > cw + 60) { b.x = -60; b.y = ch * (0.08 + Math.random() * 0.28); }
+        if (b.y < 30) b.vy += 0.2;
+        if (b.y > ch * 0.45) b.vy -= 0.2;
+
+        drawBoid(b, dark);
+      }
+
+      requestAnimationFrame(tickBoids);
+    }
+    requestAnimationFrame(tickBoids);
+  </script>
+</body>
+</html>

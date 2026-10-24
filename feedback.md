@@ -7,6 +7,15 @@
 <!-- Use the in-app Review widget to drop pins and save changes here -->
 
 ## Resolved
+- [x] **Item #70 (2026-10-24)** (`#skyBirds` Valley Sky Flock Animation)
+  - **Requested Change**: Replace the two flying birds with better bird animations (e.g. natural horizon flock like FX Elements crows flock).
+  - **Resolution**:
+    1) Integrated the **10-Frame Anatomical Vector Sprite Flock** ([v2/h/bird-cells.svg](file:///Users/pushp/Documents/Projects/visualportfolio/v2/h/bird-cells.svg)) into [styles.css](file:///Users/pushp/Documents/Projects/visualportfolio/styles.css) and [app.js](file:///Users/pushp/Documents/Projects/visualportfolio/app.js).
+    2) Configured CSS `steps(10)` keyframe flight cycle with aerodynamic resting glide frame (`.glide`).
+    3) Upgraded flight physics in [app.js](file:///Users/pushp/Documents/Projects/visualportfolio/app.js) to simulate an 8-bird horizon flock with multi-depth perspective scaling ($0.16\times$ to $0.34\times$), depth-correlated airspeeds, organic flapping and soaring glides, and smooth mountain horizon wrapping.
+    4) Added adaptive lighting: deep charcoal crows by day and luminous silhouetted flyers with subtle ambient glow in dark mode.
+    5) Verified across day and dark modes via automated headless Chrome tests ([valley_flock_integrated_day.png](file:///Users/pushp/.gemini/antigravity/brain/04582f5b-9217-4c4c-b542-c5c26e3bc562/preview_valley_flock_integrated_day.png) and [valley_flock_integrated_night.png](file:///Users/pushp/.gemini/antigravity/brain/04582f5b-9217-4c4c-b542-c5c26e3bc562/preview_valley_flock_integrated_night.png)).
+
 - [x] **Item #69 (2026-10-24)** (`div.jc-in > div.jc-bd:nth-of-type(3)` Stop 3 Chief · Digital Economy Card)
   - **Requested Change**:
     1) Update narrative text to say "a multidisciplinary team" without the team size number.

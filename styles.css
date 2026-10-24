@@ -2575,17 +2575,33 @@ html.theme-fade, html.theme-fade * { transition: background-color .9s ease, colo
 .pin .hint { position: absolute; right: calc(100% + 4px); top: 50%; translate: 0 -62%; display: flex; align-items: center; gap: 4px; white-space: nowrap; pointer-events: none; font: 400 19px/1 var(--serif); font-size-adjust: .46; color: #fff; text-shadow: 0 2px 12px rgba(10, 40, 60, .65); transition: opacity .5s; }
 .pin .hint svg { width: 40px; height: 22px; margin-bottom: 0; stroke: currentColor; fill: none; stroke-width: 1.6; stroke-linecap: round; }
 .pin:hover .hint, .pin.hov .hint { opacity: 0; }
-/* birds wander around the heading */
+/* birds: horizon flock with anatomical wing cycles */
 .sky-birds { position: absolute; inset: 0; z-index: 4; pointer-events: none; overflow: hidden; }
-.sky-birds .sb { position: absolute; left: 0; top: 0; will-change: transform; }
-.sky-birds svg { display: block; width: 100%; height: auto; overflow: visible; }
-.sky-birds path { fill: none; stroke: #26303B; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
-.sky-birds .w { transform-origin: 12px 7px; animation: sbflap var(--fl, .5s) ease-in-out infinite alternate; }
-.sky-birds .sb.glide .w { animation-play-state: paused; }
-@keyframes sbflap { from { transform: scaleY(1); } to { transform: scaleY(-.55); } }
+.sky-birds .sb {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 88px;
+  height: 125px;
+  background-image: url('v2/h/bird-cells.svg?v=20261024');
+  background-size: auto 100%;
+  will-change: transform, background-position;
+  transform-origin: center center;
+  animation: sb-flap var(--fl, 0.82s) steps(10) infinite;
+  filter: brightness(0.38) contrast(1.2);
+}
+.sky-birds .sb.glide {
+  animation-play-state: paused;
+  background-position: -88px 0; /* resting aerodynamic glide frame */
+}
+@keyframes sb-flap {
+  100% { background-position: -880px 0; }
+}
 .cam.flying ~ .sky-birds { opacity: 0; transition: opacity .6s; }
-:root[data-theme="dark"] .sky-birds path { stroke: #D9D9D9; }
-:root[data-theme="dark"] .sky-birds { opacity: .75; }
+:root[data-theme="dark"] .sky-birds .sb {
+  filter: invert(1) brightness(1.75) drop-shadow(0 0 3px rgba(255, 255, 255, 0.4));
+  opacity: .85;
+}
 
 /* hero: the key to the valley */
 .hero-key { display: inline-flex; align-items: center; gap: 10px; margin: 14px 0 0; padding: 9px 16px 9px 10px; border-radius: 999px; background: rgba(255, 255, 255, .16); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .28); font: 500 clamp(14px, 1.1vw, 16.5px)/1.35 var(--sans); color: #fff; text-shadow: 0 1px 8px rgba(10, 40, 60, .45); max-width: 100%; }

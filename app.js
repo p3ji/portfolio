@@ -3552,31 +3552,48 @@ void main() {
       show(d && d.count); } catch (_) {} }, 1800);
   })();
 
-  /* ---------- birds around the heading: a loose flock that wanders, flaps and glides ---------- */
+  /* ---------- birds across the horizon: an anatomical vector flock that flaps and glides ---------- */
   (() => {
-    const box = $('#skyBirds'), copy = $('#heroCopy'); if (!box || reduce) return;
-    const B = Array.from({ length: mobile ? 1 : 2 }, (_, i) => {
-      const el = document.createElement('div'); el.className = 'sb'; const sz = (mobile ? 18 : 22) + Math.random() * 14; el.style.width = sz + 'px'; el.style.setProperty('--fl', (.32 + Math.random() * .26).toFixed(2) + 's');
-      el.innerHTML = '<svg viewBox="0 0 24 12"><path class="w" d="M1 7Q6 1 12 7Q18 1 23 7"/></svg>'; box.appendChild(el);
-      return { el, x: Math.random() * vw * .6, y: vh * (.05 + Math.random() * .3), a: Math.random() * Math.PI * 2, v: 34 + Math.random() * 26, t: Math.random() * 10, g: 0 };
+    const box = $('#skyBirds'); if (!box || reduce) return;
+    const count = mobile ? 4 : 8;
+    const B = Array.from({ length: count }, (_, i) => {
+      const el = document.createElement('div'); el.className = 'sb';
+      const scale = 0.16 + Math.random() * 0.18; // multi-depth perspective
+      const flapDur = (0.74 + Math.random() * 0.26).toFixed(2);
+      el.style.setProperty('--fl', flapDur + 's');
+      el.style.animationDelay = `-${(Math.random() * 0.8).toFixed(2)}s`;
+      box.appendChild(el);
+      return {
+        el,
+        x: (vw * 0.1) + (i * (vw * 0.7 / count)) + (Math.random() * 60 - 30),
+        y: (vh * 0.08) + (i * 18) + (Math.random() * 30 - 15),
+        vx: 80 + scale * 90 + (Math.random() * 15 - 7), // closer birds fly faster in perspective
+        scale,
+        glideT: 2 + Math.random() * 3,
+        gliding: false,
+        seed: Math.random() * 10
+      };
     });
     let last = performance.now();
     (function fly(now) {
       const dt = Math.min(.05, (now - last) / 1000); last = now;
       if (Y() < vh && !box.parentElement.classList.contains('still')) {
-        const r = copy.getBoundingClientRect(), L = Math.max(0, r.left - 60), R = Math.min(vw, r.right + vw * .12), T = Math.max(20, r.top - vh * .14), Bo = Math.min(vh * .62, r.bottom + vh * .06);
-        const cx = B.reduce((s, b) => s + b.x, 0) / B.length, cy = B.reduce((s, b) => s + b.y, 0) / B.length;
-        B.forEach(b => {
-          b.t += dt; let tx = Math.cos(b.a), ty = Math.sin(b.a);
-          b.a += (Math.sin(b.t * .7 + b.v) * .9 + Math.sin(b.t * 1.9) * .4) * dt;
-          const want = (dx, dy) => { const da = Math.atan2(dy, dx) - b.a; b.a += Math.atan2(Math.sin(da), Math.cos(da)) * dt * 1.4; };
-          if (b.x < L || b.x > R || b.y < T || b.y > Bo) want((L + R) / 2 - b.x, (T + Bo) / 2 - b.y);
-          else if (Math.hypot(cx - b.x, cy - b.y) > 90) want(cx - b.x, cy - b.y);
-          if (b.g > 0) b.g -= dt; else if (Math.random() < dt * .4) b.g = 1.6 + Math.random() * 2;
-          const sp = b.v * (b.g > 0 ? .85 : 1); b.x += Math.cos(b.a) * sp * dt; b.y += Math.sin(b.a) * sp * dt * .55;
-          b.el.classList.toggle('glide', b.g > 0);
-          const flip = Math.cos(b.a) < 0 ? -1 : 1, tilt = Math.sin(b.a) * 14 * flip;
-          b.el.style.transform = `translate3d(${b.x.toFixed(1)}px, ${b.y.toFixed(1)}px, 0) scaleX(${flip}) rotate(${tilt.toFixed(1)}deg)`;
+        B.forEach((b, idx) => {
+          b.x += b.vx * dt;
+          b.y += Math.sin(now * 0.0016 + b.seed) * 0.55;
+          b.glideT -= dt;
+          if (b.glideT <= 0) {
+            b.gliding = !b.gliding;
+            b.el.classList.toggle('glide', b.gliding);
+            b.glideT = b.gliding ? (1.4 + Math.random() * 2.2) : (2.8 + Math.random() * 3.8);
+          }
+          // Wrap across mountain horizon from right to left
+          if (b.x > vw + 140) {
+            b.x = -140 - Math.random() * 90;
+            b.y = (vh * 0.06) + (idx * 20) + (Math.random() * 35 - 15);
+          }
+          const tilt = Math.sin(now * 0.002 + b.seed) * 3;
+          b.el.style.transform = `translate3d(${b.x.toFixed(1)}px, ${b.y.toFixed(1)}px, 0) scale(${b.scale.toFixed(3)}) rotate(${tilt.toFixed(1)}deg)`;
         });
       }
       requestAnimationFrame(fly);
