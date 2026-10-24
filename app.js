@@ -660,24 +660,45 @@ void main() {
       <g mask="url(#edgeM)"><g fill="#E3DED5">${bld}</g>
       <path d="${minor}" fill="none" stroke="#E2DDD3" stroke-width="12"/><path d="${minor}" fill="none" stroke="#FFFFFF" stroke-width="8"/>
       <path d="${major}" fill="none" stroke="#DCD5C9" stroke-width="22"/><path d="${major}" fill="none" stroke="#FFFFFF" stroke-width="16"/></g>`;
-    // parks and water, flat like a real map
-    [[HX - 1020, HY + 820, 300, 140], [HX + 1000, HY - 60, 280, 160], [520, 520, 360, 190], [MW - 520, 560, 340, 180], [560, MH - 420, 380, 160], [MW - 560, MH - 380, 360, 150], [HX - 1500, HY + 380, 170, 110], [HX + 1420, HY + 700, 190, 110]].forEach(([cx, cy, rx, ry], k) => {
+    // parks, natural land clearings
+    [[750, 520, 280, 150], [1650, 600, 240, 130], [2600, 480, 260, 140], [3800, 1380, 260, 150], [4650, 1300, 240, 140], [3800, 2750, 300, 160], [4600, 2900, 280, 150], [520, 520, 260, 140]].forEach(([cx, cy, rx, ry], k) => {
       h += `<path d="${blob(cx, cy, rx, ry, .1, k * 1.7)}" fill="${PARK}"/>`; });
-    h += `<path d="${blob(HX - 1000, HY - 80, 230, 120, .1, 3)}" fill="${WATER}"/>`;
-    // the river splits Delhi from Gurgaon, right down the middle
-    const river = `M${HX - 40} -300 C ${HX + 70} 500, ${HX - 70} 1300, ${HX} 2100 S ${HX + 60} 3200, ${HX - 20} ${MH + 400}`;
-    h += `<path d="${river}" fill="none" stroke="${WATER}" stroke-width="80" stroke-linecap="round"/>`;
-    // the expressway between the two cities
-    const main = `M-300 ${HY + 420} C ${MW * .25} ${HY + 360}, ${MW * .5} ${HY + 480}, ${MW * .75} ${HY + 400} S ${MW + 200} ${HY + 380}, ${MW + 400} ${HY + 420}`;
-    h += `<path d="${main}" fill="none" stroke="#EDC458" stroke-width="30" stroke-linecap="round"/><path d="${main}" fill="none" stroke="#FCDE86" stroke-width="24" stroke-linecap="round"/>`;
-    h += `<g transform="translate(${HX - 260} ${HY + 420})"><rect x="-42" y="-14" width="84" height="28" rx="6" fill="#fff" stroke="#E4B847" stroke-width="2.5"/><text y="7" text-anchor="middle" font-family="${FONT}" font-weight="800" font-size="16" fill="#8A6A1E">HWY 401</text></g>`;
-    // the route runs on a circular road of its own
+
+    // Lake Ontario: vast water body spreading westwards and southwards in the lower-left quadrant
+    const lakeShore = `M -400 1520 ` +
+      `C 300 1480, 900 1540, 1400 1580 ` +
+      `S 2000 1800, 2280 2180 ` +
+      `C 2480 2500, 2620 2950, 2560 3450 ` +
+      `S 2680 3950, 2750 ${MH + 400}`;
+    const lakeOntarioD = `${lakeShore} L -400 ${MH + 400} Z`;
+    h += `<path d="${lakeOntarioD}" fill="${WATER}"/>`;
+    h += `<path d="${lakeShore}" fill="none" stroke="${WATER_E}" stroke-width="16" stroke-linecap="round"/>`;
+    h += `<g font-family="${FONT}" font-weight="700" font-size="48" fill="#6E9FCB" opacity=".7" letter-spacing="14" text-anchor="middle"><text x="1100" y="2400">LAKE ONTARIO</text></g>`;
+
+    // Ottawa River: sweeping across the northeast above the Ottawa rail corridor and curving around the eastern terminus
+    const river = `M 2200 -300 ` +
+      `C 2600 320, 3100 500, 3700 540 ` +
+      `S 4500 620, 5050 950 ` +
+      `C 5480 1280, 5550 1950, 5320 2500 ` +
+      `S 4950 3200, 5100 ${MH + 400}`;
+    h += `<path d="${river}" fill="none" stroke="${WATER}" stroke-width="76" stroke-linecap="round" stroke-linejoin="round"/>`;
+    h += `<path d="${river}" fill="none" stroke="${WATER_E}" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" opacity=".5"/>`;
+    h += `<g font-family="${FONT}" font-weight="600" font-size="22" fill="#6E9FCB" letter-spacing="4" text-anchor="middle"><text x="4050" y="460">Ottawa River · Rivière des Outaouais</text></g>`;
+
+    // HWY 401: expressway along the northern shore of Lake Ontario connecting Toronto and Ottawa corridor
+    const main = `M -300 1380 ` +
+      `C 500 1400, 1100 1440, 1750 1560 ` +
+      `S 2600 1950, 3450 2250 ` +
+      `S 4400 2380, ${MW + 400} 2420`;
+    h += `<path d="${main}" fill="none" stroke="#EDC458" stroke-width="28" stroke-linecap="round"/><path d="${main}" fill="none" stroke="#FCDE86" stroke-width="22" stroke-linecap="round"/>`;
+    h += `<g transform="translate(1450 1450)"><rect x="-42" y="-14" width="84" height="28" rx="6" fill="#fff" stroke="#E4B847" stroke-width="2.5"/><text y="7" text-anchor="middle" font-family="${FONT}" font-weight="800" font-size="16" fill="#8A6A1E">HWY 401</text></g>`;
+
+    // the route runs on a rail road bed
     h += `<path d="${routeD}" fill="none" stroke="#DCD5C9" stroke-width="34" stroke-linejoin="round"/><path d="${routeD}" fill="none" stroke="#FFFFFF" stroke-width="27" stroke-linejoin="round"/>`;
-    // maple leaf watermark emblem in the center of the circular route
+    // maple leaf watermark emblem in the center of the route
     h += `<g transform="translate(${CX} ${CY - 20}) scale(6)" opacity=".08" fill="#C8102E"><path d="M0 -34 L4 -18 L18 -24 L12 -12 L28 -10 L20 0 L34 10 L22 18 L28 30 L14 28 L8 40 L2 38 L2 52 L-2 52 L-2 38 L-8 40 L-14 28 L-28 30 L-22 18 L-34 10 L-20 0 L-28 -10 L-12 -12 L-18 -24 L-4 -18 Z"/></g>`;
     // labels: quiet grey with a paper halo, like a real map
-    h += `<g font-family="${FONT}" font-weight="700" fill="#8C9096" stroke="${LAND}" stroke-width="10" paint-order="stroke" stroke-linejoin="round" letter-spacing="14" text-anchor="middle" font-size="46"><text x="${HX - 1000}" y="${HY + 250}">TORONTO</text><text x="${HX + 1000}" y="${HY + 250}">OTTAWA</text></g>`;
-    h += `<g font-family="${FONT}" font-weight="600" font-size="22" fill="#6E9FCB" text-anchor="middle"><text x="${HX - 1000}" y="${HY - 72}">Lake Ontario</text></g>`;
+    h += `<g font-family="${FONT}" font-weight="700" fill="#8C9096" stroke="${LAND}" stroke-width="10" paint-order="stroke" stroke-linejoin="round" letter-spacing="14" text-anchor="middle" font-size="46"><text x="1100" y="1240">TORONTO</text><text x="4250" y="1750">OTTAWA</text></g>`;
     window.__mapRoads = { main, river };
     // ---- the trail
     const d = routeD;
@@ -834,11 +855,7 @@ void main() {
           `<span class="lrt-ring"></span>` +
           `<span class="lrt-core"></span>` +
         `</span>` +
-        pinHtml +
-        `<span class="lrt-tip" role="tooltip">` +
-          `<span class="lrt-tip-badge">1</span>` +
-          `<span class="lrt-tip-txt"><b>${st.name}</b><small>${st.when}</small></span>` +
-        `</span>`;
+        pinHtml;
       m.addEventListener('click', () => { if (!dragMoved) walkTo(i); }); world3.insertBefore(m, meTip); jmarks.push(m);
       st.pois.forEach(([x, y, ic, tip, url, col]) => {
         const p = document.createElement(url ? 'a' : 'button'); p.className = 'poi' + (url ? ' link' : ''); p.style.setProperty('--c', col || st.c); p.style.left = (st.at[0] + x) + 'px'; p.style.top = (st.at[1] + y) + 'px'; p.dataset.stop = i;
