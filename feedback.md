@@ -7,6 +7,15 @@
 <!-- Use the in-app Review widget to drop pins and save changes here -->
 
 ## Resolved
+- [x] **Item #66 (2026-10-24)** (`aside.sheet.left` R.H. Coats Building / StatCan Drawer)
+  - **Requested Change**:
+    1) Remove the 3 stat buttons (`aside.sheet.left > ul.nums > li`: "$25M Federal Budget 2025 secured", "Modernized pipeline timeliness & efficiency", "15+ yrs manager data leadership").
+    2) Remove the case study CTA button (`aside.sheet.left > div.row:nth-of-type(5) > button.btn.btn-ink`: "View case study →").
+  - **Resolution**:
+    1) Updated `PLACES.mmt.n` to `[]` in [app.js](file:///Users/pushp/Documents/Projects/visualportfolio/app.js), which cleanly hides and suppresses `#s-n` (`ul.nums`).
+    2) Removed `cs: 'techstat'` and `csL: 'View case study'` from `PLACES.mmt` in [app.js](file:///Users/pushp/Documents/Projects/visualportfolio/app.js), which cleanly hides and suppresses `#s-row` (`div.row`) containing the "View case study →" CTA button.
+    3) Verified via headless Chrome test script and screenshot [rh_coats_sheet_updated.png](file:///Users/pushp/Documents/Projects/visualportfolio/rh_coats_sheet_updated.png) that the drawer renders cleanly without pills or CTA button.
+
 - [x] **Item #65 (2026-10-24)** (`figure.lb-slide:nth-of-type(2)`)
   - **Requested Change**:
     1) Don't need descriptions for the award on `uoft-awards.webp`.

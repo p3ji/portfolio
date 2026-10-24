@@ -17,7 +17,7 @@
     mmt: { c: '#C8102E', side: 'left', tag: 'Chapter 02 · 2011–2026 · Ottawa', t: 'R.H. Coats Building · StatCan', r: 'Chief → Acting Assistant Director → Enterprise Business Architecture Lead',
       h: '15 years modernizing Canada’s national statistical infrastructure.',
       st: ['Across 15+ years at <b>Statistics Canada</b>, I delivered insights through complex data analysis, led national survey modernization, a rapid country-wide COVID-19 serology study, and grew key programs related to technology measurement while improving timeliness and efficiency.', 'As Acting Assistant Director, I authored the business case that secured <b>$25M over 6 years in Federal Budget 2025</b> for the Techstat AI & Digital Technology Measurement Program, and secured <b>$500K+ in annual base funding</b> for Enterprise Business Architecture.'],
-      n: [['$25M', 'Federal Budget 2025 secured'], ['Modernized', 'pipeline timeliness & efficiency'], ['15+ yrs', 'manager data leadership']], j: 4, cs: 'techstat', csL: 'View case study' },
+      n: [], j: 4 },
     eazydiner: { c: '#1E7FC8', side: 'left', tag: 'Chapter 03 · 2026 · Sabbatical', t: '1-Year AI Journey', r: '50 Milestones · 40+ Prototypes · 562-Node Digital Brain',
       h: 'What happens when a public-sector manager spends a year building with AI.',
       st: ['During my one-year sabbatical, I built <b>40+ live prototypes</b>: including the <i>Canadian AI Jobs & Skills Report</i>, <b>Modular Survey Tools</b>, and <b>various automation workflow patterns</b>.', 'Everything is wired into a <b>562-node Obsidian Personal Knowledge Graph</b> and a multi-agent workflow orchestrating Claude Code, Antigravity, and local models.'],
