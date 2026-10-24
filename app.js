@@ -31,7 +31,7 @@
       st: [],
       fun: [
         ['Foundations', '#002A5C', [['Innis College, U of T', 'Honours B.Sc. & M.A. in Sociology. Empirical systems thinking from day one.'], ['Rotman Mini-MBA (2026)', 'Executive program in business management and AI at U of T.'], ['Vanderbilt AI Specializations', 'Agentic AI, Prompt Engineering & Claude Code certifications (2026).']]],
-        ['Public Service & AI', '#C8102E', [['15+ years at Statistics Canada', 'Analyst → Unit Head → Chief → Acting Assistant Director → EBA Lead at R.H. Coats.'], ['$25M Federal Budget 2025', 'Authored the business case funding the Techstat AI measurement program.'], ['Peji.ca & Sovereign AI Lab', '256GB M5 Ultra air-gapped local LLM architecture + rapid client builds.']]],
+        ['Public Service & AI', '#C8102E', [['15+ years at Statistics Canada', 'Analyst → Unit Head → Chief → Acting Assistant Director → EBA Lead.'], ['Continuous Learning & Technical Depth', 'Never afraid to dive into programming, data systems, and diverse subjects even as I hone my management and strategy skills through work.'], ['Peji.ca & Sovereign AI Lab', '256GB M5 Ultra air-gapped local LLM architecture + rapid client builds.']]],
         ['Off the clock', '#2E9E6B', [['Game studio with my kids', 'We co-designed Kingdoms of Wobbleton & 3D voxel worlds in Three.js.'], ['Ottawa ⇄ Toronto', 'Skating club pipelines, Gatineau Park trails, and family road trips down Hwy 401.'], ['562-Node Digital Brain', 'Obsidian PKG connecting every reflection, dataset, and agent skill.']]]
       ],
       n: [['15+ yrs', 'Statistics Canada leadership'], ['40+', 'AI systems & apps shipped']], j: 8,

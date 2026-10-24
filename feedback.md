@@ -4,6 +4,12 @@
 <!-- Use the in-app Review widget to drop pins and save changes here -->
 
 ## Resolved
+- [x] **Item #52 (2026-10-24)** (`ul.sf-pane:nth-of-type(2) > li > span` and `li:nth-of-type(2)`)
+  - **Requested Change**:
+    1) Remove "at RH coats" from StatCan career progression.
+    2) Update second bullet in Public Service & AI to focus on continuous learning, fearlessness in diving directly into programming, data systems, and diverse subjects, even while honing management and organizational strategy through work.
+  - **Resolution**: Updated `PLACES.me.fun` in [app.js](file:///Users/pushp/Documents/Projects/visualportfolio/app.js) to cleanly state `"Analyst → Unit Head → Chief → Acting Assistant Director → EBA Lead."`, and replaced the funding bullet with `"Continuous Learning & Technical Depth"`: `"Never afraid to dive into programming, data systems, and diverse subjects even as I hone my management and strategy skills through work."`.
+
 - [x] **Item #51 (2026-10-24)** (`#s-l` and `ul.sf-pane > li:nth-of-type(2) > span`)
   - **Requested Change**:
     1) `#s-l`: Change "I bridge institutional rigour with rapid agentic execution." to "I bridge organizational strategy with rapid agentic execution"
