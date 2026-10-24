@@ -75,7 +75,7 @@
     { id: 'jee', when: '2009 – 2011', place: 'Toronto · U of T', icon: 'cap', logo: 'logo-uoft', c: '#002A5C', at: [400, 1420], lift: 175, name: 'Innis College · U of T',
       title: 'Where empirical thinking met systems architecture.',
       txt: 'At the <b>University of Toronto (Innis College)</b>, I completed my Honours B.Sc. and M.A. in Sociology while working as a Media Analyst at the <b>Ontario Cabinet Office</b>. Studying how complex social systems behave—and how to measure them rigorously—laid the foundation for everything that followed.',
-      photos: [['uoft-uc', 'Innis College · U of T'], ['uoft-awards', 'Barry Wellman Award for Best Undergraduate Paper. Rex Lucas Award for best Qualitative Field Work. Quantitative social science paper presented at International Conference.']],
+      photos: [['uoft-uc', 'Innis College · U of T'], ['uoft-awards', '']],
       pois: [[-170, -120, 'check', 'Honours B.Sc. & M.A. at Innis College.']] },
     { id: 'app', when: '2011 – 2018', place: 'Ottawa · Tunney’s Pasture', icon: 'book', logo: 'logo-statcan', c: '#C8102E', at: [960, 960], lift: 150, name: 'Analyst to Unit Head',
       title: 'Entering R.H. Coats & rising from Analyst to Unit Head.',
@@ -181,7 +181,7 @@
     ['Ship to production', 'Live URL in days (1–7d Light, 8–14d Medium).', '#FFD23F'],
     ['Write the reflection', 'Every build feeds back into the digital brain.', '#9FD3FF']
   ];
-  const img = k => `v2/s/${k}.webp?v=20261024i`;
+  const img = k => `v2/s/${k}.webp?v=20261024j`;
 
   /* ---------- smooth scroll ---------- */
   const lenis = (!reduce && window.Lenis && innerWidth >= 860 && !matchMedia('(pointer: coarse)').matches) ? new Lenis({ lerp: .09, smoothWheel: true, wheelMultiplier: .9 }) : null;
@@ -893,7 +893,7 @@ void main() {
     const st = alt || STOPS[i]; lbN = st.photos.length;
     lb.style.setProperty('--g', grad(st.c));
     $('#lbWhen').textContent = `${st.when} · ${st.place}`; $('#lbTitle').textContent = st.title;
-    lbTrack.innerHTML = st.photos.map(([src, cap], n) => `<figure class="lb-slide" style="margin:0"><div class="frame" style="--rot:${[-1.6, 1.2, -.8][n % 3]}deg">${src ? `<img src="${img(src)}" alt="${cap}">` : `<div class="empty"><svg viewBox="0 0 24 24">${ICONS.camera}</svg>Photo coming soon</div>`}<figcaption>${cap}</figcaption></div></figure>`).join('');
+    lbTrack.innerHTML = st.photos.map(([src, cap], n) => `<figure class="lb-slide" style="margin:0"><div class="frame" style="--rot:${[-1.6, 1.2, -.8][n % 3]}deg">${src ? `<img src="${img(src)}" alt="${cap || ''}">` : `<div class="empty"><svg viewBox="0 0 24 24">${ICONS.camera}</svg>Photo coming soon</div>`}${cap ? `<figcaption>${cap}</figcaption>` : ''}</div></figure>`).join('');
     lb.classList.add('open'); lenis && lenis.stop(); document.documentElement.style.overflow = 'hidden';
     requestAnimationFrame(() => { lbTrack.scrollLeft = start * lbTrack.clientWidth; lbCount.textContent = `${start + 1} / ${lbN}`; $('#lbX').focus({ preventScroll: true }); });
   }
@@ -913,7 +913,7 @@ void main() {
       <div class="jc-bd"><h3>${st.title}</h3><p class="txt">${st.txt}</p><button type="button" class="jc-more" aria-expanded="false">Read more</button>
       ${st.share ? `<div class="jc-share"><a href="${LI}" target="_blank" rel="noopener"><i style="background:#C4622D"><svg viewBox="0 0 24 24">${ICONS.rocket}</svg></i><div>peji.ca<span>Independent Digital Practice & Sovereign Local AI</span></div><em>↗</em></a><a href="${IG}" target="_blank" rel="noopener"><i style="background:#13233A"><svg viewBox="0 0 24 24">${ICONS.gear}</svg></i><div>@p3ji on GitHub<span>40+ prototypes, DDI 3.3 tools & open-source builds</span></div><em>↗</em></a></div>` : ''}
       ${st.stats ? `<ul class="jc-stats">${st.stats.map(([b, t]) => `<li><b>${b}</b><span>${t}</span></li>`).join('')}</ul>` : ''}
-      ${st.photos && st.photos.length ? `<div class="jc-gal"><p>Gallery</p><div style="--n:${st.photos.length}">${st.photos.map(([src, cap], k) => `<button type="button" class="jc-ph" data-lb="${k}" aria-label="Open photo: ${cap}" style="--r:${[-3, 2, -1.5][k % 3]}deg"><span class="ph${src ? '' : ' empty'}">${src ? `<img src="${img(src)}" alt="" loading="lazy">` : `<svg viewBox="0 0 24 24">${ICONS.camera}</svg>`}</span><small>${cap}</small></button>`).join('')}</div></div>` : ''}
+      ${st.photos && st.photos.length ? `<div class="jc-gal"><p>Gallery</p><div style="--n:${st.photos.length}">${st.photos.map(([src, cap], k) => `<button type="button" class="jc-ph" data-lb="${k}" aria-label="${cap ? `Open photo: ${cap}` : 'Open photo'}" style="--r:${[-3, 2, -1.5][k % 3]}deg"><span class="ph${src ? '' : ' empty'}">${src ? `<img src="${img(src)}" alt="" loading="lazy">` : `<svg viewBox="0 0 24 24">${ICONS.camera}</svg>`}</span>${cap ? `<small>${cap}</small>` : ''}</button>`).join('')}</div></div>` : ''}
       ${st.work ? `<div class="jc-act">${CASE_OF[st.work] ? `<button type="button" class="cbtn" data-case="${CASE_OF[st.work]}">View case study<svg viewBox="0 0 24 24">${ICONS.arrowR}</svg></button>` : `<a class="cbtn" href="${st.work}" target="_blank" rel="noopener">${st.workLabel || 'View work'}<svg viewBox="0 0 24 24">${ICONS.arrowR}</svg></a>`}</div>` : ''}</div>`;
   }
   function showCard(i) {

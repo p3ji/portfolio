@@ -4,6 +4,17 @@
 <!-- Use the in-app Review widget to drop pins and save changes here -->
 
 ## Resolved
+- [x] **Item #65 (2026-10-24)** (`figure.lb-slide:nth-of-type(2)`)
+  - **Requested Change**:
+    1) Don't need descriptions for the award on `uoft-awards.webp`.
+    2) Remove the "peer reviewed" label on `uoft-awards.webp`.
+    3) Remove `<figcaption>` below the slide in the lightbox.
+  - **Resolution**:
+    1) Regenerated [v2/s/uoft-awards.webp](file:///Users/pushp/Documents/Projects/visualportfolio/v2/s/uoft-awards.webp) with descriptions removed from Barry Wellman Award and Rex Lucas Award cards, leaving clean, prominent award titles and category subtitles.
+    2) Removed the "Peer-Reviewed" badge from the conference paper banner in [v2/s/uoft-awards.webp](file:///Users/pushp/Documents/Projects/visualportfolio/v2/s/uoft-awards.webp).
+    3) Updated Stop 0 photo definition in [app.js](file:///Users/pushp/Documents/Projects/visualportfolio/app.js) to empty caption and updated lightbox slide template so `<figcaption>` is not rendered when caption is empty.
+    4) Bumped image cache buster to `v=20261024j`.
+
 - [x] **Item #64 (2026-10-24)** (`#radio` & `#np`)
   - **Requested Change**: Add user-provided audio track (`uploaded_media_1792864893592.mp3` - 3:53 ambient lo-fi piano track) to replace procedural synthesizer on the site.
   - **Resolution**:
