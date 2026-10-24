@@ -4,6 +4,14 @@
 <!-- Use the in-app Review widget to drop pins and save changes here -->
 
 ## Resolved
+- [x] **Item #42 (2026-10-23)** (`#stack` & Starting Hero Image)
+  - **Requested Change**: Return to before the library style; restore previous stable scroll behavior and ensure starting picture renders reliably.
+  - **Resolution**:
+    1. Reverted `#stack` and associated layout/engine logic to the pre-library state (`#stackTrack`, `#stackPin`, `#giftStage`, `#ring`).
+    2. Preserved all copy and metadata updates ("Peji Systems", "manager", "Analyst to Unit Head", 562 PKG nodes, LinkedIn certificates link).
+    3. Fortified hero WebGL initialization with immediate initial frame drawing and automatic CSS fallback to prevent blank canvases.
+    4. Verified live deployment at `https://portfolio.peji.ca` with Playwright (hero rendered, zero page errors, smooth section-to-section scroll).
+
 - [x] **Item #41 (2026-10-23)** (`div.world3.far > button.mk.seen:nth-of-type(3) > span.nm:nth-of-type(4)`)
   - Current text: "Statistics Canada · GSS"
   - **Requested Change**: Title should be Analyst to Unit Head, as it was not just GSS.
