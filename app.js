@@ -599,7 +599,7 @@ void main() {
   let spot, spotG; const spotC = { x: STOPS[0].at[0], y: STOPS[0].at[1] };
   let jCar = false, jpos = -1, jposT = -1, jdrag = false, jIdx = -1;
   const holeR = STOPS.map(() => 0);
-  let jTop = 0, jRange = 1, carve, casing, ghost, fogPath, holes = [], pathLen = 0, stopL = [], jmarks = [], pois = [], lastCard = -2, heading = 0, polFor = -2;
+  let jTop = 0, jRange = 1, carve, casing, ghost, railCenter, fogPath, holes = [], pathLen = 0, stopL = [], jmarks = [], pois = [], lastCard = -2, heading = 0, polFor = -2;
   const mrand = (a => () => (a = (a * 16807) % 2147483647) / 2147483647)(42);
   const blob = (cx, cy, rx, ry, amp, seed) => { let d = ''; for (let a = 0; a <= 64; a++) { const t = a / 64 * Math.PI * 2, w = 1 + amp * (Math.sin(3 * t + seed) * .6 + Math.sin(5 * t + seed * 2) * .3 + Math.sin(8 * t + seed) * .1); d += (a ? 'L' : 'M') + (cx + Math.cos(t) * rx * w).toFixed(1) + ' ' + (cy + Math.sin(t) * ry * w).toFixed(1); } return d + 'Z'; };
   const grad = c => `linear-gradient(145deg, color-mix(in srgb, ${c} 55%, #fff), ${c})`;
@@ -726,8 +726,10 @@ void main() {
     // start and finish flags
     h += `<g font-family="${FONT}" font-weight="800" font-size="22"><g transform="translate(${CX - 65} ${CY + CR + 10})"><path d="M0 0v-70" stroke="#13233A" stroke-width="4"/><path d="M0 -70h54l-10 14 10 14h-54z" fill="#FF6B4A"/><text x="8" y="-49" fill="#fff" font-size="16">2009</text></g>
       <g transform="translate(${CX + 35} ${CY + CR + 10})"><path d="M0 0v-70" stroke="#13233A" stroke-width="4"/><path d="M0 -70h70l-10 14 10 14h-70z" fill="#4285F4"/><text x="8" y="-49" fill="#fff" font-size="16">2026</text></g></g>`;
-    rtH += `<path id="ghostPath" d="${d}" fill="none" stroke="#4285F4" stroke-opacity=".8" stroke-width="3.5" stroke-dasharray="1 9" stroke-linecap="round" vector-effect="non-scaling-stroke"/>`;
-    rtH += `<path id="casing" d="${d}" fill="none" stroke="#1A5FD0" stroke-width="15" stroke-linecap="round"/><path id="carve" d="${d}" fill="none" stroke="#4285F4" stroke-width="10" stroke-linecap="round"/>`;
+    rtH += `<path id="ghostPath" d="${d}" fill="none" stroke="#DA291C" stroke-opacity=".35" stroke-width="5" stroke-dasharray="4 10" stroke-linecap="round"/>`;
+    rtH += `<path id="casing" d="${d}" fill="none" stroke="#13233A" stroke-width="20" stroke-linecap="round"/>` +
+      `<path id="carve" d="${d}" fill="none" stroke="#DA291C" stroke-width="12" stroke-linecap="round"/>` +
+      `<path id="railCenter" d="${d}" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-dasharray="8 8" stroke-linecap="round" stroke-opacity=".9"/>`;
     mapArt.setAttribute('viewBox', `0 0 ${MW} ${MH}`); mapArt.innerHTML = h;
     // the base map is drawn once into a bitmap (per theme), so moving the camera only slides an image and never repaints thousands of shapes
     (function bakeMap() {
@@ -767,15 +769,29 @@ void main() {
     layer('lmArt', lmH);
     const sp = document.createElement('div'); sp.className = 'spot2'; sp.id = 'spot'; $('#jPin').insertBefore(sp, $('#jFade'));
     world3.style.width = MW + 'px'; world3.style.height = MH + 'px';
-    spot = $('#spot'); carve = $('#carve'); casing = $('#casing'); ghost = $('#ghostPath');
+    spot = $('#spot'); carve = $('#carve'); casing = $('#casing'); ghost = $('#ghostPath'); railCenter = $('#railCenter');
     pathLen = carve.getTotalLength();
-    [carve, casing].forEach(p => { p.style.strokeDasharray = pathLen; p.style.strokeDashoffset = pathLen; });
+    [carve, casing, railCenter].forEach(p => { if (p) { p.style.strokeDasharray = pathLen; p.style.strokeDashoffset = pathLen; } });
     stopL = STOPS.map(st => { let best = 0, bd = 1e12; for (let l = 0; l <= pathLen; l += 4) { const q = carve.getPointAtLength(l), dd = (q.x - st.at[0]) ** 2 + (q.y - st.at[1]) ** 2; if (dd < bd) { bd = dd; best = l; } } return best; });
-    const pinShape = c => `<svg viewBox="0 0 54 66"><path d="M27 64C27 64 4 40 4 25a23 23 0 0 1 46 0c0 15-23 39-23 39z" fill="${c}" stroke="#fff" stroke-width="3"/></svg>`;
     STOPS.forEach((st, i) => {
       const m = document.createElement('button'); m.className = 'mk'; m.type = 'button'; m.style.setProperty('--c', st.c); m.style.left = st.at[0] + 'px'; m.style.top = st.at[1] + 'px';
       m.setAttribute('aria-label', `Go to ${st.when}: ${st.name}`);
-      m.innerHTML = `<span class="halo"></span><span class="dot"></span><span class="pinhead">${pinShape(st.c)}${st.logo ? `<img class="lg" src="${img(st.logo)}" alt="">` : `<span class="ic"><svg viewBox="0 0 24 24">${ICONS[st.icon]}</svg></span>`}</span><span class="nm">${st.name}</span>`;
+      const logoHtml = st.logo ? `<img class="lrt-img" src="${img(st.logo)}" alt="">` : `<span class="lrt-ic"><svg viewBox="0 0 24 24">${ICONS[st.icon]}</svg></span>`;
+      m.innerHTML = `<span class="lrt-node" aria-hidden="true"><span class="lrt-node-ring"></span><span class="lrt-node-core">${String(i + 1).padStart(2, '0')}</span></span>` +
+        `<div class="lrt-pylon">` +
+          `<div class="lrt-lantern" aria-hidden="true">` +
+            `<svg viewBox="0 0 32 32" class="lrt-o-svg"><circle cx="16" cy="16" r="14" fill="#DA291C"/><circle cx="16" cy="16" r="8.8" fill="none" stroke="#FFFFFF" stroke-width="3.8"/></svg>` +
+          `</div>` +
+          `<div class="lrt-sign">` +
+            `<div class="lrt-top-bar"><span class="lrt-line-badge">1</span><span class="lrt-station-lbl">STATION · GARE</span><span class="lrt-when">${st.when}</span></div>` +
+            `<div class="lrt-main">` +
+              `<div class="lrt-logo">${logoHtml}</div>` +
+              `<div class="lrt-text"><span class="lrt-sub">${st.place || 'OTTAWA'}</span><span class="lrt-title">${st.name}</span></div>` +
+            `</div>` +
+            `<div class="lrt-strip"></div>` +
+          `</div>` +
+          `<div class="lrt-post" aria-hidden="true"></div>` +
+        `</div>`;
       m.addEventListener('click', () => { if (!dragMoved) walkTo(i); }); world3.insertBefore(m, meTip); jmarks.push(m);
       st.pois.forEach(([x, y, ic, tip, url, col]) => {
         const p = document.createElement(url ? 'a' : 'button'); p.className = 'poi' + (url ? ' link' : ''); p.style.setProperty('--c', col || st.c); p.style.left = (st.at[0] + x) + 'px'; p.style.top = (st.at[1] + y) + 'px'; p.dataset.stop = i;
@@ -828,7 +844,8 @@ void main() {
   function cardHTML(i) {
     const st = STOPS[i];
     const tile = st.logo ? `<span class="tile"><img src="${img(st.logo)}" alt="${st.name} logo"></span>` : `<span class="tile"><svg viewBox="0 0 24 24">${ICONS[st.icon]}</svg></span>`;
-    return `<div class="jc-top">${tile}<p><b>${st.name}</b>${st.when} · ${st.place}</p><em>${String(i + 1).padStart(2, '0')} / ${String(N).padStart(2, '0')}</em></div>
+    return `<div class="jc-lrt-strip"><span class="jc-lrt-badge">1</span><span class="jc-lrt-line">O-TRAIN · LIGNE 1 CONFEDERATION</span><span class="jc-lrt-stat">STATION ${String(i + 1).padStart(2, '0')} / ${String(N).padStart(2, '0')}</span></div>
+      <div class="jc-top">${tile}<p><b>${st.name}</b>${st.when} · ${st.place}</p><em>${String(i + 1).padStart(2, '0')} / ${String(N).padStart(2, '0')}</em></div>
       <div class="jc-bd"><h3>${st.title}</h3><p class="txt">${st.txt}</p><button type="button" class="jc-more" aria-expanded="false">Read more</button>
       ${st.share ? `<div class="jc-share"><a href="${LI}" target="_blank" rel="noopener"><i style="background:#C4622D"><svg viewBox="0 0 24 24">${ICONS.rocket}</svg></i><div>peji.ca<span>Independent Digital Practice & Sovereign Local AI</span></div><em>↗</em></a><a href="${IG}" target="_blank" rel="noopener"><i style="background:#13233A"><svg viewBox="0 0 24 24">${ICONS.gear}</svg></i><div>@p3ji on GitHub<span>40+ prototypes, DDI 3.3 tools & open-source builds</span></div><em>↗</em></a></div>` : ''}
       ${st.stats ? `<ul class="jc-stats">${st.stats.map(([b, t]) => `<li><b>${b}</b><span>${t}</span></li>`).join('')}</ul>` : ''}
@@ -888,7 +905,7 @@ void main() {
     // phones: the route jumps straight to the next stop instead of repainting on every frame of the glide
     const carved = jCar && mobile ? (jposT < 0 ? 0 : lenAt(jposT)) : ph.pos < 0 ? stopL[0] * clamp(ph.pos + 1) : L;
     const q = mobile ? 14 : 4, off = (Math.round((pathLen - carved) / q) * q).toFixed(0);
-    if (off !== frameJourney.off) { frameJourney.off = off; carve.style.strokeDashoffset = off; casing.style.strokeDashoffset = off; }
+    if (off !== frameJourney.off) { frameJourney.off = off; carve.style.strokeDashoffset = off; casing.style.strokeDashoffset = off; if (railCenter) railCenter.style.strokeDashoffset = off; }
     const go = (1 - ph.k * .8 + ph.out * .8).toFixed(2); if (go !== frameJourney.go) { frameJourney.go = go; ghost.style.opacity = go; }
     const settled = ph.k > .95 && !ph.out && Math.abs(ph.pos - Math.round(ph.pos)) < .06;
     const active = ph.pos < -.35 || ph.out > .3 ? -1 : Math.round(ph.pos);

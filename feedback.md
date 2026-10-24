@@ -4,6 +4,22 @@
 <!-- Use the in-app Review widget to drop pins and save changes here -->
 
 ## Resolved
+- [x] **Item #60 (2026-10-24)** (Ottawa LRT O-Train Metro Station Design for Journey Map)
+  - **Requested Change**: Experiment with a new design for the journey map that shows metro stops designed to match the Ottawa LRT stops.
+  - **Resolution**:
+    1) Redesigned the 9 journey map stops as authentic Ottawa LRT (O-Train Confederation Line 1) station entrance pylons:
+       - **O-Train Lantern Box Beacon**: Signature bright red circular lantern box with the iconic white "O" lettermark at the top of each pylon, radiating a red transit glow when active.
+       - **Station Pylon Signboard**: Dark architectural charcoal sign (`#111827`) with Line 1 red square badge `[ 1 ]`, bilingual indicator `STATION · GARE`, era/years pill, circular station logo/icon roundel, clean uppercase station typography, and signature Ottawa LRT red bottom trim band (`#DA291C`).
+       - **Mounting Stanchion & Interchange Track Node**: Dark steel architectural post connecting each pylon down to an interchange station roundel node (`01` through `09`) directly on the rail line, complete with a pulsing radar wave effect on the active stop.
+    2) Modernized the route track into the Ottawa LRT Confederation Line 1 transit guideway:
+       - Deep guideway ballast casing (`#13233A`, 20px).
+       - Confederation Line 1 transit red rail bed (`#DA291C`, 12px).
+       - Dual-track white dashed centerline (`#FFFFFF`, 2.5px, dasharray `8 8`).
+       - Ghost preview track in Confederation red (`#DA291C`, dasharray `4 10`).
+    3) Updated the moving journey marker vehicle (`#meTip`) into an aerodynamic red-and-white Alstom Citadis Spirit O-Train car with glowing front headlights illuminating the rail ahead.
+    4) Added the transit kicker strip (`.jc-lrt-strip`) atop the journey stop companion card: `[ 1 ] O-TRAIN · LIGNE 1 CONFEDERATION · STATION 0X / 09`.
+    5) Optimized scaling across desktop, tablet, and mobile views (<860px), and synchronized full support for dark mode.
+
 - [x] **Item #59 (2026-10-24)** (Environment-Scoped Visual Review Tool)
   - **Requested Change**: Remove the visual reviewer tool from production (`portfolio.peji.ca`), but keep it automatically active for local development on localhost.
   - **Resolution**: Added client-side host environment checks in [index.html](file:///Users/pushp/Documents/Projects/visualportfolio/index.html) and [agent-feedback.js](file:///Users/pushp/Documents/Projects/visualportfolio/agent-feedback.js). The tool only loads when browsing on `localhost`, `127.0.0.1`, a local port, or when explicitly requested via `?review=1` query parameter, ensuring production remains 100% clean for external visitors.

@@ -333,10 +333,10 @@ p, li, figcaption, blockquote, small, dd { text-wrap: pretty; }
 .jc-share a i svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .jc-share a span { display: block; font-weight: 500; font-size: 12.5px; color: var(--ink-2); }
 .jc-share a em { margin-left: auto; font-style: normal; color: var(--ink-2); }
-.me-tip { position: absolute; left: 0; top: 0; z-index: 5; width: 48px; height: 48px; transform: translate(-50%, -50%) scale(var(--inv, 1)); pointer-events: none; opacity: 0; transition: opacity .4s; }
-.me-tip::before { content: ""; position: absolute; inset: -18px; border-radius: 50%; background: rgba(66, 133, 244, .14); border: 1px solid rgba(66, 133, 244, .3); animation: halo 2.4s ease-in-out infinite; }
-.me-tip svg { position: relative; width: 100%; height: 100%; overflow: visible; transform: rotate(var(--hd, 0deg)); filter: drop-shadow(0 6px 10px rgba(26, 95, 208, .35)); }
-.me-tip .cone { fill: rgba(66, 133, 244, .22); }
+.me-tip { position: absolute; left: 0; top: 0; z-index: 5; width: 58px; height: 58px; transform: translate(-50%, -50%) scale(var(--inv, 1)); pointer-events: none; opacity: 0; transition: opacity .4s; }
+.me-tip::before { content: ""; position: absolute; inset: -16px; border-radius: 50%; background: rgba(218, 41, 28, .12); border: 1.5px solid rgba(218, 41, 28, .35); animation: halo 2.4s ease-in-out infinite; }
+.me-tip svg { position: relative; width: 100%; height: 100%; overflow: visible; transform: rotate(var(--hd, 0deg)); filter: drop-shadow(0 8px 14px rgba(19, 35, 58, .45)); }
+.me-tip .cone { opacity: .85; }
 /* chrome over the map */
 .compass { position: absolute; z-index: 6; right: clamp(16px, 3vw, 40px); top: calc(env(safe-area-inset-top, 0px) + 88px); width: 96px; height: 96px; opacity: 0; transform: scale(.6) rotate(-90deg); transition: opacity .8s var(--ease), transform 1.2s var(--spring); }
 .compass.in { opacity: 1; transform: none; }
@@ -1803,22 +1803,305 @@ p, li, figcaption, blockquote, small, dd { text-wrap: pretty; }
 .bnav:disabled { opacity: 0; pointer-events: none; }
 .bnav.prev { left: 16px; } .bnav.next { right: 16px; }
 @media (max-width: 600px) { .bnav { width: 44px; height: 44px; margin-top: -22px; font-size: 18px; } }
-/* the map: clean checkpoint pins instead of buildings */
+/* Ottawa LRT (O-Train Confederation Line) Metro Stop Markers */
 #lmArt, .poi, .car, .boat, .ripple { display: none !important; }
 .world3 .mk.mk { opacity: 1 !important; pointer-events: auto; }
-.mk .pinhead { transform: none; opacity: 1; }
-.mk .dot { opacity: 0; }
-.mk .nm { display: block; opacity: 1; transform: none; top: 12px; font-size: 13px; box-shadow: 0 6px 14px -8px rgba(19, 35, 58, .5); }
-.mk.dim { opacity: .45 !important; }
-.mk.dim .nm { opacity: 0; }
 
-/* bigger, readable checkpoint pins */
-.mk .pinhead { width: 76px; height: 94px; }
-.mk .pinhead .lg { top: 9px; width: 56px; height: 56px; margin-left: -28px; border-width: 3px; }
-.mk .pinhead .ic { top: 19px; width: 36px; height: 36px; margin-left: -18px; }
-.mk .nm { left: calc(100% + 8px); top: 22px; padding: 9px 14px; font-size: 17px; }
-.mk.on .nm { background: var(--ink); color: #fff; }
-@media (max-width: 860px) { .mk .pinhead { width: 60px; height: 74px; } .mk .pinhead .lg { width: 44px; height: 44px; margin-left: -22px; top: 7px; } .mk .pinhead .ic { top: 15px; width: 28px; height: 28px; margin-left: -14px; } .mk .nm { font-size: 14px; top: 16px; padding: 7px 11px; } }
+.mk {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  pointer-events: auto;
+  cursor: pointer;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  will-change: transform;
+}
+.mk.dim { opacity: .45 !important; filter: grayscale(.25); }
+.mk.dim:hover { opacity: .88 !important; filter: none; }
+.mk.on { z-index: 6; }
+
+/* track interchange node on rail line */
+.lrt-node {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  width: 26px;
+  height: 26px;
+  z-index: 4;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.lrt-node-ring {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2.5px solid #FFFFFF;
+  background: rgba(218, 41, 28, .2);
+  transition: transform .3s var(--spring);
+}
+.mk.on .lrt-node-ring {
+  border-color: #FFE08A;
+  animation: lrtNodePulse 2s ease-in-out infinite;
+}
+@keyframes lrtNodePulse {
+  0% { transform: scale(1); opacity: .9; }
+  50% { transform: scale(1.6); opacity: .2; }
+  100% { transform: scale(1); opacity: .9; }
+}
+.lrt-node-core {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #DA291C;
+  color: #FFFFFF;
+  font: 900 11.5px/1 var(--sans);
+  display: grid;
+  place-items: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, .45);
+  letter-spacing: -.02em;
+}
+
+/* architectural pylon assembly */
+.lrt-pylon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 6px;
+  position: relative;
+  filter: drop-shadow(0 8px 18px rgba(10, 20, 35, .32));
+  transition: transform .3s var(--spring);
+}
+.mk:hover .lrt-pylon { transform: translateY(-4px) scale(1.03); }
+.mk.on .lrt-pylon { transform: scale(1.08); filter: drop-shadow(0 12px 24px rgba(218, 41, 28, .45)); }
+
+/* O-Train red beacon lantern box */
+.lrt-lantern {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #DA291C;
+  display: grid;
+  place-items: center;
+  margin-bottom: -5px;
+  z-index: 2;
+  border: 2px solid #FFFFFF;
+  box-shadow: 0 4px 10px rgba(218, 41, 28, .5);
+  transition: box-shadow .3s, transform .3s var(--spring);
+}
+.lrt-o-svg { width: 100%; height: 100%; overflow: visible; display: block; }
+.mk.on .lrt-lantern {
+  box-shadow: 0 0 0 4px rgba(218, 41, 28, .35), 0 0 20px #DA291C;
+  animation: lrtBeacon 1.8s ease-in-out infinite alternate;
+}
+@keyframes lrtBeacon {
+  from { transform: scale(1); }
+  to { transform: scale(1.1); filter: brightness(1.2); }
+}
+
+/* Ottawa LRT Station Pylon Signboard */
+.lrt-sign {
+  background: #111827;
+  border: 1.5px solid rgba(255, 255, 255, .16);
+  border-radius: 9px;
+  overflow: hidden;
+  width: max-content;
+  min-width: 150px;
+  max-width: 230px;
+  box-shadow: 0 10px 24px -6px rgba(10, 15, 30, .65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: border-color .3s, box-shadow .3s;
+}
+.mk.on .lrt-sign {
+  border-color: #DA291C;
+  box-shadow: 0 12px 28px -6px rgba(218, 41, 28, .5), 0 0 0 1.5px #DA291C;
+}
+
+/* Station top bar */
+.lrt-top-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px 3px;
+  background: #0A0F1D;
+  border-bottom: 1px solid rgba(255, 255, 255, .08);
+}
+.lrt-line-badge {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  background: #DA291C;
+  color: #FFFFFF;
+  font: 900 10px/1 var(--sans);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+.lrt-station-lbl {
+  font: 800 8px/1 var(--sans);
+  letter-spacing: .08em;
+  color: #94A3B8;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.lrt-when {
+  margin-left: auto;
+  font: 700 8.5px/1 var(--sans);
+  color: #CBD5E1;
+  letter-spacing: -.01em;
+  white-space: nowrap;
+}
+
+/* Station main row */
+.lrt-main {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 9px 8px;
+  background: #111827;
+}
+.lrt-logo {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #1E293B;
+  border: 2px solid rgba(255, 255, 255, .25);
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, .4);
+}
+.lrt-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.lrt-ic {
+  width: 18px;
+  height: 18px;
+  color: #F8FAFC;
+  display: grid;
+  place-items: center;
+}
+.lrt-ic svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.lrt-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  gap: 2px;
+}
+.lrt-sub {
+  font: 700 8px/1 var(--sans);
+  letter-spacing: .08em;
+  color: #94A3B8;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.lrt-title {
+  font: 800 12px/1.15 var(--sans);
+  letter-spacing: -.01em;
+  color: #FFFFFF;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Red bottom accent band */
+.lrt-strip {
+  height: 3.5px;
+  background: #DA291C;
+  width: 100%;
+  display: block;
+}
+
+/* Steel pylon mounting post */
+.lrt-post {
+  width: 5px;
+  height: 18px;
+  background: linear-gradient(180deg, #1E293B, #0F172A);
+  border-radius: 2px;
+  margin: 0 auto;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .3);
+}
+
+/* Journey Card Transit Header */
+.jc-lrt-strip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 22px;
+  background: #0B111E;
+  color: #FFFFFF;
+  font: 700 11px/1 var(--sans);
+  letter-spacing: .06em;
+  border-bottom: 2.5px solid #DA291C;
+}
+.jc-lrt-badge {
+  display: inline-grid;
+  place-items: center;
+  width: 17px;
+  height: 17px;
+  border-radius: 3px;
+  background: #DA291C;
+  color: #FFFFFF;
+  font-weight: 900;
+  font-size: 11px;
+  flex-shrink: 0;
+}
+.jc-lrt-line {
+  color: #E2E8F0;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+.jc-lrt-stat {
+  margin-left: auto;
+  color: #94A3B8;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: .08em;
+}
+
+/* Responsive adjustments */
+@media (max-width: 860px) {
+  .lrt-sign { min-width: 125px; max-width: 160px; }
+  .lrt-top-bar { padding: 3px 6px 2px; }
+  .lrt-line-badge { width: 12px; height: 12px; font-size: 8.5px; }
+  .lrt-station-lbl { font-size: 7px; }
+  .lrt-when { font-size: 7.5px; }
+  .lrt-main { padding: 5px 7px 6px; gap: 6px; }
+  .lrt-logo { width: 26px; height: 26px; }
+  .lrt-title { font-size: 10.5px; }
+  .lrt-sub { font-size: 7px; }
+  .lrt-lantern { width: 24px; height: 24px; }
+  .lrt-post { height: 14px; width: 4px; }
+  .lrt-node { width: 22px; height: 22px; }
+  .lrt-node-core { font-size: 10px; }
+  .jc-lrt-strip { padding: 6px 16px; font-size: 9.5px; }
+}
 /* after the walk: one simple way back in */
 .jtl-view { display: none; }
 .journey.over .jtl { opacity: 0; pointer-events: none; }
