@@ -4,6 +4,12 @@
 <!-- Use the in-app Review widget to drop pins and save changes here -->
 
 ## Resolved
+- [x] **Item #54 (2026-10-24)** (`button.jc-ph:nth-of-type(2) > span.ph > img` and `button.jc-ph:nth-of-type(3) > span.ph > img`)
+  - **Requested Change**: Find icons/graphics for Kingdoms of Wobbleton (`kingdoms.webp`) and the other game (`n-1.webp`).
+  - **Resolution**: Sourced and generated high-resolution 1280x720 graphics for both games:
+    1) **Kingdoms of Wobbleton**: Converted the Three.js 3D RTS game render from `portfolio/images/kingdoms.png` (featuring low-poly peasant workers, castle keep, fountain, watchtower, and gold veins) into [v2/s/kingdoms.webp](file:///Users/pushp/Documents/Projects/visualportfolio/v2/s/kingdoms.webp) and [v2/b/kingdoms.webp](file:///Users/pushp/Documents/Projects/visualportfolio/v2/b/kingdoms.webp).
+    2) **N-1 Word Craft**: Extracted the official game interface from `n-1game/` featuring the handcrafted cardboard clipboard, smiling box mascot, title banner, and rules into [v2/s/n-1.webp](file:///Users/pushp/Documents/Projects/visualportfolio/v2/s/n-1.webp), [v2/b/n-1.webp](file:///Users/pushp/Documents/Projects/visualportfolio/v2/b/n-1.webp), and updated [v2/s/life-jersey.png](file:///Users/pushp/Documents/Projects/visualportfolio/v2/s/life-jersey.png).
+
 - [x] **Item #53 (2026-10-24)** (`aside.sheet.left > div.did:nth-of-type(2) > p`)
   - **Requested Change**: Remove "in 26 story RH coats building". Update to: "Across 15+ years at Statistics Canada, I delivered insights through complex data analysis, led national survey modernization, a rapid country-wide COVID-19 serology study, and grew key programs related to technology measurement while improving timeliness and efficiency."
   - **Resolution**: Updated `PLACES.mmt.st[0]` in [app.js](file:///Users/pushp/Documents/Projects/visualportfolio/app.js) to the requested text.
