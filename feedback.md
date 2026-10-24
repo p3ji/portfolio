@@ -4,6 +4,15 @@
 <!-- Use the in-app Review widget to drop pins and save changes here -->
 
 ## Resolved
+- [x] **Item #49 (2026-10-24)** (Hero Plates Geometric Alignment & Architectural Revision)
+  - **Requested Change**:
+    1) Day and Night shots must be the exact same camera angle and framing with 100% pixel-aligned landscape, buildings, and figures.
+    2) R.H. Coats Building must match reference photo: 26-storey brutalist concrete tower with 8 bays, continuous vertical fins, ground-level pilotis colonnade, and strictly flat concrete parapet roofline.
+    3) Replace cliff cabin with contemporary Canadian modern cottage featuring a slanted mono-pitch shed roof and cantilevered cliff deck.
+    4) Peter in the meadow must preserve original downward head tilt looking at laptop screen, with natural Asian black hair.
+    5) Eliminate perspective angle discrepancy of R.H. Coats between day and night.
+  - **Resolution**: Generated pixel-aligned master hero plates (`candidate_plate_day.webp` and `candidate_plate_night.webp`), synchronized 3D perspective and vanishing lines across both scenes, deployed to [v2/h/plate.webp](file:///Users/pushp/Documents/Projects/visualportfolio/v2/h/plate.webp), [v2/h/plate-night2.webp](file:///Users/pushp/Documents/Projects/visualportfolio/v2/h/plate-night2.webp), [v2/h/phone-day.webp](file:///Users/pushp/Documents/Projects/visualportfolio/v2/h/phone-day.webp), and [v2/h/phone-night.webp](file:///Users/pushp/Documents/Projects/visualportfolio/v2/h/phone-night.webp), and bumped asset cache buster to `v=20261024d` across [index.html](file:///Users/pushp/Documents/Projects/visualportfolio/index.html), [styles.css](file:///Users/pushp/Documents/Projects/visualportfolio/styles.css), and [app.js](file:///Users/pushp/Documents/Projects/visualportfolio/app.js).
+
 - [x] **Item #48 (2026-10-23)** (Hero Background Plates Restoration)
   - **Requested Change**: Remove pasted building overlays from background plates and restore clean original artwork.
   - **Resolution**: Reverted [v2/h/plate.webp](file:///Users/pushp/Documents/Projects/visualportfolio/v2/h/plate.webp), [v2/h/plate-night2.webp](file:///Users/pushp/Documents/Projects/visualportfolio/v2/h/plate-night2.webp), [v2/h/phone-day.webp](file:///Users/pushp/Documents/Projects/visualportfolio/v2/h/phone-day.webp), [v2/h/phone-night.webp](file:///Users/pushp/Documents/Projects/visualportfolio/v2/h/phone-night.webp), and [v2/s/stc-coats.webp](file:///Users/pushp/Documents/Projects/visualportfolio/v2/s/stc-coats.webp) to clean original state.
