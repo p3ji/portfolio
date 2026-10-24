@@ -4,6 +4,12 @@
 <!-- Use the in-app Review widget to drop pins and save changes here -->
 
 ## Resolved
+- [x] **Item #57 (2026-10-24)** (`div.win > div.page:nth-of-type(2) > img` for published papers)
+  - **Requested Change**:
+    1) Users of Digital Government (`paper-diggov.webp`): set link to `https://www150.statcan.gc.ca/n1/pub/22-20-0001/222000012026001-eng.htm`
+    2) Digital Divides in Canada (`paper-divide.webp`): set link to `https://bibliotecadigital.acervo.nic.br/server/api/core/bitstreams/b2bf1957-5fe3-421a-bbab-3a8ace9ac0bc/content`
+  - **Resolution**: Updated `SITES` array in [app.js](file:///Users/pushp/Documents/Projects/visualportfolio/app.js#L2782-L2783) so both publication cards link directly to their official published papers on Statistics Canada and the UNESCO/Cetic.br digital library, and updated cache buster to `v=20261024g`.
+
 - [x] **Item #56 (2026-10-24)** (`div.win > div.page:nth-of-type(2) > img` with `src: "v2/b/patracker.webp"`)
   - **Requested Change**: Fix graphics as text flows off.
   - **Resolution**:
