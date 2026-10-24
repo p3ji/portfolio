@@ -585,16 +585,46 @@ void main() {
      ========================================================= */
   const journey = $('#journey'), jTrack = $('#jTrack'), mapview = $('#mapview'), world3 = $('#world3'), mapArt = $('#mapArt'), jcard = $('#jcard'), jcIn = $('#jcIn'), compass = $('#compass'), needle = $('#needle'), meTip = $('#meTip'), polsEl = $('#pols');
   const N = STOPS.length, MW = 4720, MH = 3900;
-  // the route is a circular grand tour connecting Toronto and Ottawa
-  const HX = MW / 2, HY = 1780;
-  const CX = MW / 2, CY = 2280, CR = 1220;
-  const routeAt = t => [CX - CR * Math.sin(t), CY + CR * Math.cos(t)];
-  const routePts = Array.from({ length: 721 }, (_, k) => routeAt(2 * Math.PI * k / 720));
-  const routeLen = [0]; for (let k = 1; k < routePts.length; k++) routeLen.push(routeLen[k - 1] + Math.hypot(routePts[k][0] - routePts[k - 1][0], routePts[k][1] - routePts[k - 1][1]));
-  const routePoint = f => { const L = f * routeLen[routeLen.length - 1]; let k = 1; while (k < routeLen.length - 1 && routeLen[k] < L) k++; const a = routePts[k - 1], b = routePts[k], u = (L - routeLen[k - 1]) / Math.max(1e-6, routeLen[k] - routeLen[k - 1]); return [Math.round(a[0] + (b[0] - a[0]) * u), Math.round(a[1] + (b[1] - a[1]) * u)]; };
-  const ROUTE_F = [.08, .18, .28, .38, .50, .62, .72, .82, .92];
+  const HX = MW / 2, HY = 1780, CX = MW / 2, CY = 2000;
+  // Ottawa O-Train Line 1 (Confederation Line) schematic geometry
+  const R_LRT = 300, d1 = R_LRT * Math.SQRT1_2, d2 = R_LRT * (1 - Math.SQRT1_2);
+  const p0 = [650, 1550], p1 = [2250, 1550], p2 = [p1[0] + d1, p1[1] + d2];
+  const diagLen = 800;
+  const p3 = [p2[0] + diagLen * Math.SQRT1_2, p2[1] + diagLen * Math.SQRT1_2];
+  const p4 = [p3[0] + d1, p3[1] + d2];
+  const p5 = [4150, p4[1]];
+
+  const len1 = p1[0] - p0[0];
+  const lenArc1 = R_LRT * (Math.PI / 4);
+  const lenDiag = diagLen;
+  const lenArc2 = R_LRT * (Math.PI / 4);
+  const len2 = p5[0] - p4[0];
+  const routeTotal = len1 + lenArc1 + lenDiag + lenArc2 + len2;
+
+  const routePoint = f => {
+    const L = Math.max(0, Math.min(routeTotal, f * routeTotal));
+    if (L <= len1) return [Math.round(p0[0] + L), p0[1]];
+    let rem = L - len1;
+    if (rem <= lenArc1) {
+      const th = rem / R_LRT;
+      return [Math.round(p1[0] + R_LRT * Math.sin(th)), Math.round(p1[1] + R_LRT * (1 - Math.cos(th)))];
+    }
+    rem -= lenArc1;
+    if (rem <= lenDiag) {
+      return [Math.round(p2[0] + rem * Math.SQRT1_2), Math.round(p2[1] + rem * Math.SQRT1_2)];
+    }
+    rem -= lenDiag;
+    if (rem <= lenArc2) {
+      const th = Math.PI / 4 - rem / R_LRT;
+      return [Math.round(p4[0] - R_LRT * Math.sin(th)), Math.round(p4[1] - R_LRT * (1 - Math.cos(th)))];
+    }
+    rem -= lenArc2;
+    return [Math.round(p4[0] + rem), Math.round(p4[1])];
+  };
+
+  const ROUTE_F = [0.06, 0.17, 0.28, 0.39, 0.50, 0.61, 0.72, 0.83, 0.94];
   STOPS.forEach((st, i) => { st.at = routePoint(ROUTE_F[i]); });
-  const routeD = 'M' + routePts.map(p => p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join('L');
+  const routeD = `M ${p0[0]} ${p0[1]} L ${p1[0]} ${p1[1]} A ${R_LRT} ${R_LRT} 0 0 1 ${p2[0].toFixed(1)} ${p2[1].toFixed(1)} L ${p3[0].toFixed(1)} ${p3[1].toFixed(1)} A ${R_LRT} ${R_LRT} 0 0 0 ${p4[0].toFixed(1)} ${p4[1].toFixed(1)} L ${p5[0]} ${p4[1].toFixed(1)}`;
   const jHead = $('#jHead'), jFade = $('#jFade');
   let spot, spotG; const spotC = { x: STOPS[0].at[0], y: STOPS[0].at[1] };
   let jCar = false, jpos = -1, jposT = -1, jdrag = false, jIdx = -1;
@@ -723,13 +753,24 @@ void main() {
     };
     let lmH = '', rtH = '';
     STOPS.forEach((st, i) => { rtH += `<circle class="ripple" id="rip${i}" cx="${st.at[0]}" cy="${st.at[1] - 60}" r="90" fill="none" stroke="${st.c}" stroke-width="6"/>`; lmH += `<g class="lm" id="lm${i}">${LM[st.id](st.at[0], st.at[1] - 40)}</g>`; });
-    // start and finish flags
-    h += `<g font-family="${FONT}" font-weight="800" font-size="22"><g transform="translate(${CX - 65} ${CY + CR + 10})"><path d="M0 0v-70" stroke="#13233A" stroke-width="4"/><path d="M0 -70h54l-10 14 10 14h-54z" fill="#FF6B4A"/><text x="8" y="-49" fill="#fff" font-size="16">2009</text></g>
-      <g transform="translate(${CX + 35} ${CY + CR + 10})"><path d="M0 0v-70" stroke="#13233A" stroke-width="4"/><path d="M0 -70h70l-10 14 10 14h-70z" fill="#4285F4"/><text x="8" y="-49" fill="#fff" font-size="16">2026</text></g></g>`;
-    rtH += `<path id="ghostPath" d="${d}" fill="none" stroke="#DA291C" stroke-opacity=".35" stroke-width="5" stroke-dasharray="4 10" stroke-linecap="round"/>`;
-    rtH += `<path id="casing" d="${d}" fill="none" stroke="#13233A" stroke-width="20" stroke-linecap="round"/>` +
-      `<path id="carve" d="${d}" fill="none" stroke="#DA291C" stroke-width="12" stroke-linecap="round"/>` +
-      `<path id="railCenter" d="${d}" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-dasharray="8 8" stroke-linecap="round" stroke-opacity=".9"/>`;
+    // O-Train Line 1 Start & End terminal badges
+    h += `<g font-family="${FONT}" font-weight="900" text-anchor="middle" dominant-baseline="central">
+      <!-- Tunney's Pasture Start -->
+      <g transform="translate(${p0[0] - 44} ${p0[1]})">
+        <circle r="22" fill="#CF3339" stroke="#FFFFFF" stroke-width="3"/>
+        <text y="1" fill="#FFFFFF" font-size="24">1</text>
+        <text x="-32" y="1" text-anchor="end" font-size="16" font-weight="800" fill="#111827">Tunney’s Pasture</text>
+      </g>
+      <!-- Blair Finish -->
+      <g transform="translate(${p5[0] + 44} ${p4[1]})">
+        <circle r="22" fill="#CF3339" stroke="#FFFFFF" stroke-width="3"/>
+        <text y="1" fill="#FFFFFF" font-size="24">1</text>
+        <text x="32" y="1" text-anchor="start" font-size="16" font-weight="800" fill="#111827">Blair</text>
+      </g>
+    </g>`;
+    rtH += `<path id="ghostPath" d="${d}" fill="none" stroke="#CF3339" stroke-opacity=".25" stroke-width="6" stroke-dasharray="4 8" stroke-linecap="round"/>`;
+    rtH += `<path id="casing" d="${d}" fill="none" stroke="#111827" stroke-width="16" stroke-linecap="round"/>` +
+      `<path id="carve" d="${d}" fill="none" stroke="#CF3339" stroke-width="10" stroke-linecap="round"/>`;
     mapArt.setAttribute('viewBox', `0 0 ${MW} ${MH}`); mapArt.innerHTML = h;
     // the base map is drawn once into a bitmap (per theme), so moving the camera only slides an image and never repaints thousands of shapes
     (function bakeMap() {
@@ -769,29 +810,22 @@ void main() {
     layer('lmArt', lmH);
     const sp = document.createElement('div'); sp.className = 'spot2'; sp.id = 'spot'; $('#jPin').insertBefore(sp, $('#jFade'));
     world3.style.width = MW + 'px'; world3.style.height = MH + 'px';
-    spot = $('#spot'); carve = $('#carve'); casing = $('#casing'); ghost = $('#ghostPath'); railCenter = $('#railCenter');
+    spot = $('#spot'); carve = $('#carve'); casing = $('#casing'); ghost = $('#ghostPath');
     pathLen = carve.getTotalLength();
-    [carve, casing, railCenter].forEach(p => { if (p) { p.style.strokeDasharray = pathLen; p.style.strokeDashoffset = pathLen; } });
+    [carve, casing].forEach(p => { if (p) { p.style.strokeDasharray = pathLen; p.style.strokeDashoffset = pathLen; } });
     stopL = STOPS.map(st => { let best = 0, bd = 1e12; for (let l = 0; l <= pathLen; l += 4) { const q = carve.getPointAtLength(l), dd = (q.x - st.at[0]) ** 2 + (q.y - st.at[1]) ** 2; if (dd < bd) { bd = dd; best = l; } } return best; });
     STOPS.forEach((st, i) => {
-      const m = document.createElement('button'); m.className = 'mk'; m.type = 'button'; m.style.setProperty('--c', st.c); m.style.left = st.at[0] + 'px'; m.style.top = st.at[1] + 'px';
-      m.setAttribute('aria-label', `Go to ${st.when}: ${st.name}`);
-      const logoHtml = st.logo ? `<img class="lrt-img" src="${img(st.logo)}" alt="">` : `<span class="lrt-ic"><svg viewBox="0 0 24 24">${ICONS[st.icon]}</svg></span>`;
-      m.innerHTML = `<span class="lrt-node" aria-hidden="true"><span class="lrt-node-ring"></span><span class="lrt-node-core">${String(i + 1).padStart(2, '0')}</span></span>` +
-        `<div class="lrt-pylon">` +
-          `<div class="lrt-lantern" aria-hidden="true">` +
-            `<svg viewBox="0 0 32 32" class="lrt-o-svg"><circle cx="16" cy="16" r="14" fill="#DA291C"/><circle cx="16" cy="16" r="8.8" fill="none" stroke="#FFFFFF" stroke-width="3.8"/></svg>` +
-          `</div>` +
-          `<div class="lrt-sign">` +
-            `<div class="lrt-top-bar"><span class="lrt-line-badge">1</span><span class="lrt-station-lbl">STATION · GARE</span><span class="lrt-when">${st.when}</span></div>` +
-            `<div class="lrt-main">` +
-              `<div class="lrt-logo">${logoHtml}</div>` +
-              `<div class="lrt-text"><span class="lrt-sub">${st.place || 'OTTAWA'}</span><span class="lrt-title">${st.name}</span></div>` +
-            `</div>` +
-            `<div class="lrt-strip"></div>` +
-          `</div>` +
-          `<div class="lrt-post" aria-hidden="true"></div>` +
-        `</div>`;
+      const m = document.createElement('button'); m.className = 'mk'; m.type = 'button'; m.style.setProperty('--c', '#CF3339'); m.style.left = st.at[0] + 'px'; m.style.top = st.at[1] + 'px';
+      m.setAttribute('aria-label', `Station ${i + 1}: ${st.name} (${st.when})`);
+      m.innerHTML = `<span class="lrt-node" aria-hidden="true">` +
+          `<span class="lrt-halo"></span>` +
+          `<span class="lrt-ring"></span>` +
+          `<span class="lrt-core"></span>` +
+        `</span>` +
+        `<span class="lrt-tip" role="tooltip">` +
+          `<span class="lrt-tip-badge">1</span>` +
+          `<span class="lrt-tip-txt"><b>${st.name}</b><small>${st.when}</small></span>` +
+        `</span>`;
       m.addEventListener('click', () => { if (!dragMoved) walkTo(i); }); world3.insertBefore(m, meTip); jmarks.push(m);
       st.pois.forEach(([x, y, ic, tip, url, col]) => {
         const p = document.createElement(url ? 'a' : 'button'); p.className = 'poi' + (url ? ' link' : ''); p.style.setProperty('--c', col || st.c); p.style.left = (st.at[0] + x) + 'px'; p.style.top = (st.at[1] + y) + 'px'; p.dataset.stop = i;
