@@ -181,7 +181,7 @@
     ['Ship to production', 'Live URL in days (1–7d Light, 8–14d Medium).', '#FFD23F'],
     ['Write the reflection', 'Every build feeds back into the digital brain.', '#9FD3FF']
   ];
-  const img = k => `v2/s/${k}.webp?v=20261024j`;
+  const img = k => `v2/s/${k}.webp?v=20261024k`;
 
   /* ---------- smooth scroll ---------- */
   const lenis = (!reduce && window.Lenis && innerWidth >= 860 && !matchMedia('(pointer: coarse)').matches) ? new Lenis({ lerp: .09, smoothWheel: true, wheelMultiplier: .9 }) : null;

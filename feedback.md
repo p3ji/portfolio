@@ -7,6 +7,25 @@
 <!-- Use the in-app Review widget to drop pins and save changes here -->
 
 ## Resolved
+- [x] **Item #68 (2026-10-24)** (`button.jc-ph > span.ph > img` Stop 2 COVID-19 Antibody Study Photo)
+  - **Requested Change**: Replace `stc-covid.webp` with CBC News image: `https://i.cbc.ca/ais/1.5868357,1625677406000/full/max/0/default.jpg?im=Crop%2Crect%3D%280%2C253%2C2309%2C1298%29%3BResize%3D860`
+  - **Resolution**:
+    1) Downloaded high-resolution CBC News test kit asset and encoded as optimized WebP (1280x719) at [v2/s/stc-covid.webp](file:///Users/pushp/Documents/Projects/visualportfolio/v2/s/stc-covid.webp).
+    2) Bumped image cache-busting token in [app.js](file:///Users/pushp/Documents/Projects/visualportfolio/app.js) to `v=20261024k`.
+    3) Verified via headless Chrome on Stop 2 (`iitd`) that both the journey card gallery thumbnail and modal lightbox load and render the new photo with crisp natural resolution (1280x719).
+
+- [x] **Item #67 (2026-10-24)** (`div.gift-stage:nth-of-type(2) > div.gift:nth-of-type(4) > svg`)
+  - **Requested Change**: Find different assets or build one for the library shelf that opens to access all skill icons. Search GitHub, Figma, etc. for assets and recommend top 3.
+  - **Component & File Locations**:
+    - HTML markup: [`#giftStage > #gift > svg`](file:///Users/pushp/Documents/Projects/visualportfolio/index.html#L232-L393) in [index.html](file:///Users/pushp/Documents/Projects/visualportfolio/index.html).
+    - Unwrapping & physics animation: `frameStack()` and `layoutStack()` in [app.js](file:///Users/pushp/Documents/Projects/visualportfolio/app.js#L2972-L3056).
+    - Styling & sizing: `.gift-stage`, `.gift`, `.gift svg` in [styles.css](file:///Users/pushp/Documents/Projects/visualportfolio/styles.css#L631-L640).
+  - **Evaluation & Top 3 Recommendations**:
+    1. **Antique Glass-Mullion Library Cabinet (French Doors with Brass Latches)**: Replaces the awkward lifting top lid with twin hinged glass doors (`#doorLeft`, `#doorRight`) that swing outward in 3D perspective (`rotateY(±110deg)`), flooding warm archival light as the 17 icons ascend. Pure vector SVG, zero network lag, razor-sharp on Retina.
+    2. **Vintage Library Card Catalog Chest (Dewey Decimal Brass Drawers)**: Classic multi-drawer walnut card catalog with brass label plates ("Agentic AI", "Data Pipelines", "Sovereign LLMs"). Drawers slide forward in 3D parallax, and glowing catalog cards/skill icons lift upward.
+    3. **Secret Revolving Study Bookcase (Hidden Tech Core Passage)**: A traditional study bookcase where pulling a golden secret book tilts the shelf, rotating 180° around a central axis to reveal an illuminated sovereign compute rack / holographic tech core from which the tools beam up.
+  - **Status**: Researched across GitHub, Figma Community, CodePen, and CC0 asset libraries; top 3 candidate architectures presented for user selection before implementing SVG/animation changes.
+
 - [x] **Item #66 (2026-10-24)** (`aside.sheet.left` R.H. Coats Building / StatCan Drawer)
   - **Requested Change**:
     1) Remove the 3 stat buttons (`aside.sheet.left > ul.nums > li`: "$25M Federal Budget 2025 secured", "Modernized pipeline timeliness & efficiency", "15+ yrs manager data leadership").
