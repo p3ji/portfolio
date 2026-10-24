@@ -4,6 +4,11 @@
 <!-- Use the in-app Review widget to drop pins and save changes here -->
 
 ## Resolved
+- [x] **Item #44 (2026-10-23)** (`div.wrap > div.desk:nth-of-type(2) > p.desk-hint`)
+  - Current text: "it’s my board, but go ahead, move things around ;)"
+  - **Requested Change**: "original design by James Chugh"
+  - **Resolution**: Updated the desk credit label `.desk-hint` in [index.html](file:///Users/pushp/Documents/Projects/visualportfolio/index.html) to `"original design by James Chugh"`.
+
 - [x] **Item #43 (2026-10-23)** (`header.bar > nav.nav > a.cta:nth-of-type(7)`)
   - Current text: "GitHub ↗"
   - **Requested Change**: Remove this.
