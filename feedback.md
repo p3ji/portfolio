@@ -4,6 +4,13 @@
 <!-- Use the in-app Review widget to drop pins and save changes here -->
 
 ## Resolved
+- [x] **Item #49 (2026-10-23)** (Peji Systems Modern Cottage Day & Night)
+  - **Requested Change**: Change the cliff cabin to a more modern cottage for both Day and Night scenes.
+  - **Resolution**:
+    1. Rendered a contemporary Canadian minimalist cottage/architectural cabin with natural cedar slats, dark charcoal steel structure, slanted mono-pitch shed roof, and cantilevered cliff deck.
+    2. In Day mode, warm golden-hour light illuminates the cedar cladding and reflects off the panoramic glass. In Night mode, panoramic floor-to-ceiling glass walls glow warmly with amber/gold interior studio light alongside subtle soffit downlights.
+    3. Composited seamlessly into [v2/h/plate.webp](file:///Users/pushp/Documents/Projects/visualportfolio/v2/h/plate.webp), [v2/h/plate-night2.webp](file:///Users/pushp/Documents/Projects/visualportfolio/v2/h/plate-night2.webp), [v2/h/phone-day.webp](file:///Users/pushp/Documents/Projects/visualportfolio/v2/h/phone-day.webp), and [v2/h/phone-night.webp](file:///Users/pushp/Documents/Projects/visualportfolio/v2/h/phone-night.webp).
+
 - [x] **Item #48 (2026-10-23)** (R.H. Coats Building Day/Night & Card Photo)
   - **Requested Change**: Redo R.H. Coats Building for Day and Night scenes based on reference photo, ensuring a clean flat concrete roofline with no small building or penthouse on top.
   - **Resolution**:
