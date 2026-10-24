@@ -650,6 +650,8 @@ p, li, figcaption, blockquote, small, dd { text-wrap: pretty; }
 .tool { position: absolute; left: 0; top: 0; width: 94px; height: 100px; margin: -50px 0 0 -47px; box-sizing: border-box; padding: 10px 6px 8px; align-content: start; display: grid; justify-items: center; gap: 9px; opacity: 0; will-change: transform; transition: opacity .3s, filter .3s; }
 .tool .ti { width: 54px; height: 54px; border-radius: 15px; background: var(--bg); display: grid; place-items: center; box-shadow: inset 0 1px 0 rgba(255, 255, 255, .3), inset 0 0 0 1px rgba(19, 35, 58, .07), 0 1px 2px rgba(19, 35, 58, .08), 0 12px 24px -12px rgba(19, 35, 58, .45); transition: transform .5s var(--spring), box-shadow .4s; }
 .tool .ti svg { width: 29px; height: 29px; overflow: visible; }
+.tool .ti svg.wide-ic { width: 38px; height: 38px; }
+.tt-i svg.wide-ic { width: 28px; height: 28px; }
 .tool .tn { display: block; font: 600 11.5px/1 var(--sans); color: var(--ink-2); white-space: nowrap; letter-spacing: -.01em; transition: color .3s; }
 .tool.on .tn { color: var(--ink); }
 .shelf { position: absolute; z-index: 0; border-radius: 32px; opacity: 0; pointer-events: none; background: linear-gradient(180deg, rgba(255, 255, 255, .72), rgba(255, 255, 255, .42)); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); box-shadow: inset 0 1px 0 #fff, 0 0 0 1px rgba(19, 35, 58, .05), 0 30px 60px -30px rgba(90, 60, 20, .35); }
@@ -1653,6 +1655,7 @@ p, li, figcaption, blockquote, small, dd { text-wrap: pretty; }
   .tool { width: 66px; height: 76px; margin: -38px 0 0 -33px; padding: 8px 3px 7px; gap: 6px; border-radius: 16px; }
   .tool .ti { width: 40px; height: 40px; border-radius: 11px; }
   .tool .ti svg { width: 22px; height: 22px; }
+  .tool .ti svg.wide-ic { width: 30px; height: 30px; }
   .tool .tn { font-size: 9px; }
   .shelf { border-radius: 24px; }
   .tool-tip { width: 220px; padding: 12px 14px 14px; }

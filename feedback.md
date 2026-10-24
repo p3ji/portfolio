@@ -7,6 +7,34 @@
 <!-- Use the in-app Review widget to drop pins and save changes here -->
 
 ## Resolved
+- [x] **Item #74 (2026-10-24)** (`#stack` My Stack Skills & Tool Constellation)
+  - **Requested Change**:
+    1) Add 5 icons to the stack section: **SAS**, **Python**, **R**, **Stata**, **Hermes**.
+    2) Remove 2 icons: **Gmail**, **Microsoft Teams**.
+    3) Ensure icons do not overlap and animate out cleanly as before.
+  - **Resolution**:
+    1) **Vector Icon Integration & Theming**:
+       - **Hermes**: Integrated Nous Research stylized classical "H" vector emblem with warm golden gradient (`#FFE082` → `#D97706`) on obsidian-violet plate (`#161324` → `#2B1D3F`).
+       - **Python**: Integrated official dual-snake vector with Python blue (`#5A9FD4` → `#306998`) and yellow (`#FFE873` → `#FFD43B`) gradients on deep navy plate (`#1F425F` → `#14293D`).
+       - **R**: Integrated official R Foundation ellipse and white bold lettermark on R-blue gradient plate (`#276DC3` → `#165CAA`).
+       - **Stata**: Integrated official geometric white lettermark with responsive SVG scaling (`.wide-ic`) on deep teal plate (`#1D5F6D` → `#0E3E47`).
+       - **SAS**: Integrated official statistical ribbon swirl on SAS corporate blue gradient plate (`#007CC2` → `#004D7A`).
+    2) **Domain-Grouped Architecture & Roles**:
+       - Structured the 17-tool stack into coherent functional groupings:
+         - *Frontier AI & Sovereign Agents*: Claude (`Orchestrate`), ChatGPT (`Research`), Antigravity (`Agentic IDE`), Hermes (`Sovereign Agent`), Hugging Face (`Open Models`).
+         - *Statistics & Data Engines*: Python (`Data & AI`), R (`Reproducible Stats`), Stata (`Causal Inference`), SAS (`Health Microdata`).
+         - *Backend & Vector Stores*: Supabase (`Backend`), Qdrant (`Vector DB`).
+         - *Edge & Deployment*: Cloudflare (`Edge & DNS`), Vercel (`Ship`), Netlify (`Deploy`).
+         - *Creative & Multimodal Systems*: Figma (`Design`), Canva (`DDI 3.3`), ElevenLabs (`Audio`).
+    3) **Responsive Centered Grid Physics**:
+       - Desktop: 2 rows (Row 0: 9 tools, Row 1: 8 tools), both horizontally centered with 0 collisions.
+       - Mobile: 4 rows (or 3 on short screens) with dynamic scaling (`TS`) and 0 collisions.
+       - Confetti and emergence pacing smoothly calibrated across all 17 tools.
+    4) **Automated Verification**:
+       - Desktop live CDP test: exactly 17 tools, 0 overlaps (`collisions: 0`).
+       - Mobile live CDP test: exactly 17 tools, 0 overlaps (`collisions: 0`).
+       - Tooltip verification: verified title, role badge, and description for Hermes, Python, R, Stata, SAS.
+
 - [x] **Item #73 (2026-10-24)** (`div.desk:nth-of-type(2) > div.item.vinyl:nth-of-type(2) > div.vn-sleeve` Vinyl Record Label & Music Integration)
   - **Requested Change**:
     Change text from "Substack Essays & Notes" to:
