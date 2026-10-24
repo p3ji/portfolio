@@ -4,6 +4,11 @@
 <!-- Use the in-app Review widget to drop pins and save changes here -->
 
 ## Resolved
+- [x] **Item #43 (2026-10-23)** (`header.bar > nav.nav > a.cta:nth-of-type(7)`)
+  - Current text: "GitHub ↗"
+  - **Requested Change**: Remove this.
+  - **Resolution**: Removed the GitHub CTA link and its preceding separator line from the top navigation bar in [index.html](file:///Users/pushp/Documents/Projects/visualportfolio/index.html), keeping the navigation bar streamlined to core section anchors (`Valley`, `Journey`, `Work`, `About`, `Contact`).
+
 - [x] **Item #42 (2026-10-23)** (`#stack` & Starting Hero Image)
   - **Requested Change**: Return to before the library style; restore previous stable scroll behavior and ensure starting picture renders reliably.
   - **Resolution**:
