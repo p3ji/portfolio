@@ -815,13 +815,26 @@ void main() {
     [carve, casing].forEach(p => { if (p) { p.style.strokeDasharray = pathLen; p.style.strokeDashoffset = pathLen; } });
     stopL = STOPS.map(st => { let best = 0, bd = 1e12; for (let l = 0; l <= pathLen; l += 4) { const q = carve.getPointAtLength(l), dd = (q.x - st.at[0]) ** 2 + (q.y - st.at[1]) ** 2; if (dd < bd) { bd = dd; best = l; } } return best; });
     STOPS.forEach((st, i) => {
-      const m = document.createElement('button'); m.className = 'mk'; m.type = 'button'; m.style.setProperty('--c', '#CF3339'); m.style.left = st.at[0] + 'px'; m.style.top = st.at[1] + 'px';
+      const isLandmark = [0, 1, 5, 7, 8].includes(i);
+      const m = document.createElement('button');
+      m.className = 'mk' + (isLandmark ? ' mk-landmark' : '');
+      m.type = 'button';
+      m.style.setProperty('--c', st.c || '#CF3339');
+      m.style.left = st.at[0] + 'px';
+      m.style.top = st.at[1] + 'px';
       m.setAttribute('aria-label', `Station ${i + 1}: ${st.name} (${st.when})`);
+      const pinHtml = isLandmark ? (
+        `<span class="lrt-pin" aria-hidden="true">` +
+          `<svg viewBox="0 0 54 66" class="lrt-pin-svg"><path d="M27 64C27 64 4 40 4 25a23 23 0 0 1 46 0c0 15-23 39-23 39z" fill="${st.c}" stroke="#FFFFFF" stroke-width="3.5" stroke-linejoin="round"/></svg>` +
+          `<span class="lrt-pin-logo"><img src="${img(st.logo)}" alt=""></span>` +
+        `</span>`
+      ) : '';
       m.innerHTML = `<span class="lrt-node" aria-hidden="true">` +
           `<span class="lrt-halo"></span>` +
           `<span class="lrt-ring"></span>` +
           `<span class="lrt-core"></span>` +
         `</span>` +
+        pinHtml +
         `<span class="lrt-tip" role="tooltip">` +
           `<span class="lrt-tip-badge">1</span>` +
           `<span class="lrt-tip-txt"><b>${st.name}</b><small>${st.when}</small></span>` +
