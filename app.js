@@ -3541,10 +3541,11 @@ void main() {
     const TARGET_VOL = 0.65;
     function initAudio() {
       if (audio) return;
-      audio = new Audio('v2/music/song.mp3?v=20261024i');
+      audio = new Audio('/v2/music/song.mp3?v=20261024i');
       audio.loop = true;
-      audio.preload = 'metadata';
+      audio.preload = 'auto';
       audio.volume = 0;
+      audio.addEventListener('error', () => { console.warn('Audio playback encountered an error'); });
       window._bgAudio = audio;
     }
     function fadeIn() {
