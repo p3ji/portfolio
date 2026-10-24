@@ -4,6 +4,14 @@
 <!-- Use the in-app Review widget to drop pins and save changes here -->
 
 ## Resolved
+- [x] **Item #55 (2026-10-24)** (`div.jc-in > div.jc-bd:nth-of-type(2) > h3` and `button.jc-ph:nth-of-type(2) > span.ph > img`)
+  - **Requested Change**:
+    1) Update headline in Creator card: "Peji Independent Digital Practice & Seeking new challenges to make an impact."
+    2) Verify icons/graphics for Kingdoms of Wobbleton (`kingdoms.webp`) and N-1 Word Craft (`n-1.webp`) and prevent browser/Cloudflare caching of stale 404 fallbacks.
+  - **Resolution**:
+    1) Updated `STOPS['creator'].title` in [app.js](file:///Users/pushp/Documents/Projects/visualportfolio/app.js) to `"Peji Independent Digital Practice & Seeking new challenges to make an impact."`.
+    2) Added cache-busting token `?v=20261024e` to dynamic image helper `img()` in [app.js](file:///Users/pushp/Documents/Projects/visualportfolio/app.js) and script/stylesheet tags in [index.html](file:///Users/pushp/Documents/Projects/visualportfolio/index.html) so all game thumbnails and gallery images force fresh browser loads of authentic assets.
+
 - [x] **Item #54 (2026-10-24)** (`button.jc-ph:nth-of-type(2) > span.ph > img` and `button.jc-ph:nth-of-type(3) > span.ph > img`)
   - **Requested Change**: Find icons/graphics for Kingdoms of Wobbleton (`kingdoms.webp`) and the other game (`n-1.webp`).
   - **Resolution**: Sourced and generated high-resolution 1280x720 graphics for both games:

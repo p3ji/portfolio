@@ -125,7 +125,7 @@
       photos: [['aijobsearch', 'AI Job Search Canada']],
       pois: [[160, 100, 'rocket', 'Stream A + B ideation powered by a 562-node graph.']] },
     { id: 'creator', when: 'Now', place: 'peji.ca · Ottawa', icon: 'camera', logo: 'logo-peji', c: '#C4622D', at: [4940, 1260], lift: 150, name: 'Peji.ca & Sovereign AI',
-      title: 'Peji Independent Digital Practice & 256GB Air-Gapped Local AI.',
+      title: 'Peji Independent Digital Practice & Seeking new challenges to make an impact.',
       txt: 'Founded <b>peji.ca</b> to help organizations build custom web apps, automations, and <b>Sovereign Local AI</b> on a 256GB M5 Ultra Mac Studio with OS-level zero-cloud-leakage guarantees.',
       share: true,
       stats: [['256GB', 'M5 Ultra unified memory'], ['0 bytes', 'cloud PII leakage']],
@@ -179,7 +179,7 @@
     ['Ship to production', 'Live URL in days (1–7d Light, 8–14d Medium).', '#FFD23F'],
     ['Write the reflection', 'Every build feeds back into the digital brain.', '#9FD3FF']
   ];
-  const img = k => `v2/s/${k}.webp`;
+  const img = k => `v2/s/${k}.webp?v=20261024e`;
 
   /* ---------- smooth scroll ---------- */
   const lenis = (!reduce && window.Lenis && innerWidth >= 860 && !matchMedia('(pointer: coarse)').matches) ? new Lenis({ lerp: .09, smoothWheel: true, wheelMultiplier: .9 }) : null;
