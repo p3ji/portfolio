@@ -3532,70 +3532,51 @@ void main() {
     })(last);
   })();
 
-  /* ---------- music on the hill: soft generative lo-fi, made live in the browser ---------- */
+  /* ---------- music on the hill: background song playback with smooth fade ---------- */
   (() => {
     const radio = $('#radio'), pinR = $('#radioPin'), np = $('#np'), lbl = $('.rpl', pinR);
     document.body.appendChild(np); // out of the top bar's layer, so it can sit above an open case study
     if (!radio || !pinR) return;
-    let played = false, ac = null, out = null, bus = null, drums = null, on = false, timer = 0, nextBeat = 0, beat = 0, stopT = 0, crackle = null, noise = null;
-    const BPM = 78, SPB = 60 / BPM, SW = .6;
-    const CH = [[50, 53, 57, 60, 64], [43, 53, 57, 59, 64], [48, 52, 55, 59, 62], [45, 52, 55, 60, 64]], ROOT = [38, 31, 36, 33];
-    const PENT = [69, 72, 74, 76, 79, 81, 84];
-    const hz = m => 440 * Math.pow(2, (m - 69) / 12);
-    function build() {
-      const AC = window.AudioContext || window.webkitAudioContext; try { ac = new AC({ latencyHint: 'playback' }); } catch (_) { ac = new AC(); }
-      out = ac.createGain(); out.gain.value = 0;
-      const tape = ac.createBiquadFilter(); tape.type = 'lowpass'; tape.frequency.value = 3400; tape.Q.value = .3;
-      const verb = ac.createConvolver(), len = ac.sampleRate * 1.6, ir = ac.createBuffer(2, len, ac.sampleRate);
-      for (let c = 0; c < 2; c++) { const d = ir.getChannelData(c); for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 3); }
-      verb.buffer = ir; const wet = ac.createGain(); wet.gain.value = .28;
-      bus = ac.createGain(); bus.connect(tape); bus.connect(verb); verb.connect(wet); wet.connect(tape);
-      drums = ac.createGain(); drums.gain.value = .9; drums.connect(tape);
-      tape.connect(out); out.connect(ac.destination);
-      noise = ac.createBuffer(1, ac.sampleRate, ac.sampleRate); const nd = noise.getChannelData(0); for (let i = 0; i < nd.length; i++) nd[i] = Math.random() * 2 - 1;
+    let played = false, on = false, audio = null, fadeTimer = null;
+    const TARGET_VOL = 0.65;
+    function initAudio() {
+      if (audio) return;
+      audio = new Audio('v2/music/song.mp3?v=20261024i');
+      audio.loop = true;
+      audio.preload = 'metadata';
+      audio.volume = 0;
+      window._bgAudio = audio;
     }
-    // a soft electric piano: sine with a touch of FM and a slow warble
-    function keys(m, t, dur, vol) {
-      const o = ac.createOscillator(), mo = ac.createOscillator(), mg = ac.createGain(), g = ac.createGain(), trem = ac.createOscillator(), tg = ac.createGain();
-      o.frequency.value = hz(m); mo.frequency.value = hz(m) * 2; mg.gain.value = hz(m) * .35; mo.connect(mg); mg.connect(o.frequency);
-      trem.frequency.value = 4.2; tg.gain.value = vol * .18; trem.connect(tg); tg.connect(g.gain);
-      g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(vol, t + .012); g.gain.exponentialRampToValueAtTime(vol * .45, t + .9); g.gain.linearRampToValueAtTime(0, t + dur);
-      o.connect(g); g.connect(bus); [o, mo, trem].forEach(x => { x.start(t); x.stop(t + dur + .05); });
+    function fadeIn() {
+      initAudio();
+      clearInterval(fadeTimer);
+      audio.play().catch(() => {});
+      fadeTimer = setInterval(() => {
+        if (audio.volume < TARGET_VOL - 0.04) {
+          audio.volume = Math.min(TARGET_VOL, Math.round((audio.volume + 0.04) * 100) / 100);
+        } else {
+          audio.volume = TARGET_VOL;
+          clearInterval(fadeTimer);
+        }
+      }, 40);
     }
-    function bass(m, t, dur) { const o = ac.createOscillator(), g = ac.createGain(), f = ac.createBiquadFilter(); o.type = 'triangle'; o.frequency.value = hz(m); f.type = 'lowpass'; f.frequency.value = 420;
-      g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(.2, t + .02); g.gain.exponentialRampToValueAtTime(.08, t + dur * .8); g.gain.linearRampToValueAtTime(0, t + dur); o.connect(f); f.connect(g); g.connect(bus); o.start(t); o.stop(t + dur + .05); }
-    function bell(m, t) { const o = ac.createOscillator(), g = ac.createGain(); o.frequency.value = hz(m); g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(.04, t + .01); g.gain.exponentialRampToValueAtTime(.0008, t + 2.4); o.connect(g); g.connect(bus); o.start(t); o.stop(t + 2.5); }
-    function kick(t) { const o = ac.createOscillator(), g = ac.createGain(); o.frequency.setValueAtTime(110, t); o.frequency.exponentialRampToValueAtTime(42, t + .14); g.gain.setValueAtTime(.55, t); g.gain.exponentialRampToValueAtTime(.001, t + .38); o.connect(g); g.connect(drums); o.start(t); o.stop(t + .4); }
-    function hit(t, { f = 1800, type = 'bandpass', q = .8, vol = .2, dec = .18 } = {}) { const n = ac.createBufferSource(), fl = ac.createBiquadFilter(), g = ac.createGain(); n.buffer = noise; fl.type = type; fl.frequency.value = f; fl.Q.value = q;
-      g.gain.setValueAtTime(vol, t); g.gain.exponentialRampToValueAtTime(.001, t + dec); n.connect(fl); fl.connect(g); g.connect(drums); n.start(t, Math.random() * .5); n.stop(t + dec + .02); }
-    function snare(t) { hit(t, { f: 1700, q: .7, vol: .22, dec: .22 }); const o = ac.createOscillator(), g = ac.createGain(); o.frequency.value = 185; g.gain.setValueAtTime(.08, t); g.gain.exponentialRampToValueAtTime(.001, t + .1); o.connect(g); g.connect(drums); o.start(t); o.stop(t + .12); }
-    function schedule() {
-      if (nextBeat < ac.currentTime + .05) nextBeat = ac.currentTime + .08;
-      while (nextBeat < ac.currentTime + 2.5) {
-        const t = nextBeat, bi = beat % 4, bar = Math.floor(beat / 4), c = bar % 4, ch = CH[c];
-        if (bi === 0) { ch.forEach((m, i) => keys(m, t + i * .012, SPB * 3.6, .05)); bass(ROOT[c], t, SPB * 1.4); }
-        if (bi === 2) { if (Math.random() < .7) ch.slice(1).forEach((m, i) => keys(m, t + SPB * SW + i * .01, SPB * 1.2, .032)); bass(ROOT[c] + 7, t + SPB * SW, SPB * .9); }
-        if (bi === 0 || (bi === 2 && Math.random() < .5)) kick(t); if (bi === 1 && Math.random() < .35) kick(t + SPB * SW);
-        if (bi === 1 || bi === 3) snare(t + .012);
-        hit(t, { f: 7800, type: 'highpass', q: .4, vol: .07, dec: .05 }); hit(t + SPB * SW, { f: 7800, type: 'highpass', q: .4, vol: Math.random() < .5 ? .035 : .055, dec: .04 });
-        if (Math.random() < .3) bell(PENT[Math.floor(Math.random() * PENT.length)], t + (Math.random() < .5 ? 0 : SPB * SW));
-        nextBeat += SPB; beat++;
-      }
+    function fadeOut() {
+      if (!audio) return;
+      clearInterval(fadeTimer);
+      fadeTimer = setInterval(() => {
+        if (audio.volume > 0.04) {
+          audio.volume = Math.max(0, Math.round((audio.volume - 0.04) * 100) / 100);
+        } else {
+          audio.volume = 0;
+          audio.pause();
+          clearInterval(fadeTimer);
+        }
+      }, 40);
     }
-    function start() {
-      if (!ac) build(); if (ac.state === 'suspended') ac.resume();
-      clearTimeout(stopT); on = true; played = true; nextBeat = Math.max(nextBeat, ac.currentTime + .1);
-      const now = ac.currentTime; out.gain.cancelScheduledValues(now); out.gain.setValueAtTime(out.gain.value, now); out.gain.linearRampToValueAtTime(.6, now + 2);
-      schedule(); clearInterval(timer); timer = setInterval(schedule, 300);
-      ui();
-    }
-    function stop() {
-      on = false; const now = ac.currentTime; out.gain.cancelScheduledValues(now); out.gain.setValueAtTime(out.gain.value, now); out.gain.linearRampToValueAtTime(0, now + 1.4);
-      stopT = setTimeout(() => { clearInterval(timer); ac.suspend(); nextBeat = 0; }, 1500);
-      ui();
-    }
+    function start() { on = true; played = true; fadeIn(); ui(); }
+    function stop() { on = false; fadeOut(); ui(); }
     function ui() {
-      radio.classList.toggle('on', on); pinR.classList.toggle('on', on); pinR.setAttribute('aria-pressed', on); lbl.textContent = on ? 'Now playing' : 'Play some music';
+      radio.classList.toggle('on', on); pinR.classList.toggle('on', on); pinR.setAttribute('aria-pressed', on); lbl.textContent = on ? 'Now playing' : (played ? 'Resume music' : 'Play some music');
       np.hidden = false; np.classList.toggle('paused', !on); const tx = on ? 'Pause' : played ? 'Play' : 'Play music'; np.setAttribute('aria-label', on ? 'Pause music' : 'Play music'); np.title = tx; $('.np-t', np).textContent = tx;
     }
     const toggle = e => { e && e.stopPropagation(); on ? stop() : start(); };

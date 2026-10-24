@@ -4,6 +4,16 @@
 <!-- Use the in-app Review widget to drop pins and save changes here -->
 
 ## Resolved
+- [x] **Item #64 (2026-10-24)** (`#radio` & `#np`)
+  - **Requested Change**: Add user-provided audio track (`uploaded_media_1792864893592.mp3` - 3:53 ambient lo-fi piano track) to replace procedural synthesizer on the site.
+  - **Resolution**:
+    1) Copied audio file to [v2/music/song.mp3](file:///Users/pushp/Documents/Projects/visualportfolio/v2/music/song.mp3) with cache buster `?v=20261024i`.
+    2) Replaced the procedural Web Audio synthesizer in [app.js](file:///Users/pushp/Documents/Projects/visualportfolio/app.js) with an HTML5 Audio player engine featuring:
+       - Lazy initialization on first user interaction (avoiding 5.5MB initial network footprint).
+       - Seamless looping (`loop = true`).
+       - Smooth volume fade-in ramp (0 to 0.65) and fade-out ramp (0.65 to 0) on play/pause.
+       - Full UI state synchronization across `#radio` (gramophone on hill), `#radioPin` (floating hill pin), and `#np` (floating top-right player button).
+
 - [x] **Item #63 (2026-10-24)** (`#world3`)
   - **Requested Change**: Don't need this strange leaf thing (referencing uploaded screenshot of background maple leaf watermark).
   - **Resolution**: Removed the red maple leaf watermark emblem `<g transform="translate(${CX} ${CY - 20}) scale(6)" opacity=".08" fill="#C8102E">` from the map SVG in [app.js](file:///Users/pushp/Documents/Projects/visualportfolio/app.js).
