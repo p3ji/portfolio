@@ -4,19 +4,9 @@
 <!-- Use the in-app Review widget to drop pins and save changes here -->
 
 ## Resolved
-- [x] **Item #49 (2026-10-23)** (Peji Systems Modern Cottage Day & Night)
-  - **Requested Change**: Change the cliff cabin to a more modern cottage for both Day and Night scenes.
-  - **Resolution**:
-    1. Rendered a contemporary Canadian minimalist cottage/architectural cabin with natural cedar slats, dark charcoal steel structure, slanted mono-pitch shed roof, and cantilevered cliff deck.
-    2. In Day mode, warm golden-hour light illuminates the cedar cladding and reflects off the panoramic glass. In Night mode, panoramic floor-to-ceiling glass walls glow warmly with amber/gold interior studio light alongside subtle soffit downlights.
-    3. Composited seamlessly into [v2/h/plate.webp](file:///Users/pushp/Documents/Projects/visualportfolio/v2/h/plate.webp), [v2/h/plate-night2.webp](file:///Users/pushp/Documents/Projects/visualportfolio/v2/h/plate-night2.webp), [v2/h/phone-day.webp](file:///Users/pushp/Documents/Projects/visualportfolio/v2/h/phone-day.webp), and [v2/h/phone-night.webp](file:///Users/pushp/Documents/Projects/visualportfolio/v2/h/phone-night.webp).
-
-- [x] **Item #48 (2026-10-23)** (R.H. Coats Building Day/Night & Card Photo)
-  - **Requested Change**: Redo R.H. Coats Building for Day and Night scenes based on reference photo, ensuring a clean flat concrete roofline with no small building or penthouse on top.
-  - **Resolution**:
-    1. Rendered authentic 26-storey Brutalist R.H. Coats tower for Day and Night with a completely flat, flush concrete parapet band (no rooftop penthouse or extra structures) and continuous vertical fins.
-    2. Composited into desktop and mobile plates: [v2/h/plate.webp](file:///Users/pushp/Documents/Projects/visualportfolio/v2/h/plate.webp), [v2/h/plate-night2.webp](file:///Users/pushp/Documents/Projects/visualportfolio/v2/h/plate-night2.webp), [v2/h/phone-day.webp](file:///Users/pushp/Documents/Projects/visualportfolio/v2/h/phone-day.webp), and [v2/h/phone-night.webp](file:///Users/pushp/Documents/Projects/visualportfolio/v2/h/phone-night.webp).
-    3. Replaced [v2/s/stc-coats.webp](file:///Users/pushp/Documents/Projects/visualportfolio/v2/s/stc-coats.webp) with the user's high-resolution 648x831 reference photograph.
+- [x] **Item #48 (2026-10-23)** (Hero Background Plates Restoration)
+  - **Requested Change**: Remove pasted building overlays from background plates and restore clean original artwork.
+  - **Resolution**: Reverted [v2/h/plate.webp](file:///Users/pushp/Documents/Projects/visualportfolio/v2/h/plate.webp), [v2/h/plate-night2.webp](file:///Users/pushp/Documents/Projects/visualportfolio/v2/h/plate-night2.webp), [v2/h/phone-day.webp](file:///Users/pushp/Documents/Projects/visualportfolio/v2/h/phone-day.webp), [v2/h/phone-night.webp](file:///Users/pushp/Documents/Projects/visualportfolio/v2/h/phone-night.webp), and [v2/s/stc-coats.webp](file:///Users/pushp/Documents/Projects/visualportfolio/v2/s/stc-coats.webp) to clean original state.
 
 - [x] **Item #47 (2026-10-23)** (`div.wrap > div.sec-head > p:nth-of-type(2)`)
   - Current text: "Based in Ottawa. When I'm not architecting data systems, I'm building 3D video games with my kids or writing on Substack."
