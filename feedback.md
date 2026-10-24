@@ -4,6 +4,12 @@
 <!-- Use the in-app Review widget to drop pins and save changes here -->
 
 ## Resolved
+- [x] **Item #51 (2026-10-24)** (`#s-l` and `ul.sf-pane > li:nth-of-type(2) > span`)
+  - **Requested Change**:
+    1) `#s-l`: Change "I bridge institutional rigour with rapid agentic execution." to "I bridge organizational strategy with rapid agentic execution"
+    2) `ul.sf-pane > li:nth-of-type(2) > span`: Remove hallucinated "Management Presence & Strategic Storytelling at U of T."
+  - **Resolution**: Updated `PLACES.me.h` in [app.js](file:///Users/pushp/Documents/Projects/visualportfolio/app.js) to `"I bridge organizational strategy with rapid agentic execution."`, and replaced the hallucinated Rotman description in `PLACES.me.fun` with verified factual text: `"Executive program in business management and AI at U of T."` (grounded in `Career Hub.md` and candidate profiles).
+
 - [x] **Item #50 (2026-10-24)** (`aside.sheet.on > div.did:nth-of-type(2) > p` and `p:nth-of-type(2)`)
   - **Requested Change**:
     1) Update Ontario Cabinet Office role: "Media analyst at cabinet office."

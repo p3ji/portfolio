@@ -27,10 +27,10 @@
       st: ['Through <b>peji.ca</b>, I work with small business and non-profits.', 'For sensitive files, I architected a <b>Sovereign Local AI Lab</b> on a 256GB M5 Ultra Mac Studio with OS-level zero-cloud-leakage enforcement so sensitive PII never leaves the premises.'],
       n: [['256GB', 'M5 Ultra unified memory'], ['0 bytes', 'cloud PII leakage'], ['3 tiers', 'Light · Medium · Large']], j: 8 },
     me: { c: '#F2B705', side: 'right', tag: 'About me', t: 'Hey, I’m Peter', r: 'Ottawa · Data Manager · AI Builder · Founder, Peji.ca',
-      h: 'I bridge institutional rigour with rapid agentic execution.',
+      h: 'I bridge organizational strategy with rapid agentic execution.',
       st: [],
       fun: [
-        ['Foundations', '#002A5C', [['Innis College, U of T', 'Honours B.Sc. & M.A. in Sociology. Empirical systems thinking from day one.'], ['Rotman Mini-MBA (2026)', 'Rotman School of Management at U of T.'], ['Vanderbilt AI Specializations', 'Agentic AI, Prompt Engineering & Claude Code certifications (2026).']]],
+        ['Foundations', '#002A5C', [['Innis College, U of T', 'Honours B.Sc. & M.A. in Sociology. Empirical systems thinking from day one.'], ['Rotman Mini-MBA (2026)', 'Executive program in business management and AI at U of T.'], ['Vanderbilt AI Specializations', 'Agentic AI, Prompt Engineering & Claude Code certifications (2026).']]],
         ['Public Service & AI', '#C8102E', [['15+ years at Statistics Canada', 'Analyst → Unit Head → Chief → Acting Assistant Director → EBA Lead at R.H. Coats.'], ['$25M Federal Budget 2025', 'Authored the business case funding the Techstat AI measurement program.'], ['Peji.ca & Sovereign AI Lab', '256GB M5 Ultra air-gapped local LLM architecture + rapid client builds.']]],
         ['Off the clock', '#2E9E6B', [['Game studio with my kids', 'We co-designed Kingdoms of Wobbleton & 3D voxel worlds in Three.js.'], ['Ottawa ⇄ Toronto', 'Skating club pipelines, Gatineau Park trails, and family road trips down Hwy 401.'], ['562-Node Digital Brain', 'Obsidian PKG connecting every reflection, dataset, and agent skill.']]]
       ],
