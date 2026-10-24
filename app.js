@@ -697,8 +697,6 @@ void main() {
 
     // the route runs on a rail road bed
     h += `<path d="${routeD}" fill="none" stroke="#DCD5C9" stroke-width="34" stroke-linejoin="round"/><path d="${routeD}" fill="none" stroke="#FFFFFF" stroke-width="27" stroke-linejoin="round"/>`;
-    // maple leaf watermark emblem in the center of the route
-    h += `<g transform="translate(${CX} ${CY - 20}) scale(6)" opacity=".08" fill="#C8102E"><path d="M0 -34 L4 -18 L18 -24 L12 -12 L28 -10 L20 0 L34 10 L22 18 L28 30 L14 28 L8 40 L2 38 L2 52 L-2 52 L-2 38 L-8 40 L-14 28 L-28 30 L-22 18 L-34 10 L-20 0 L-28 -10 L-12 -12 L-18 -24 L-4 -18 Z"/></g>`;
     // labels: quiet grey with a paper halo, like a real map
     h += `<g font-family="${FONT}" font-weight="700" fill="#8C9096" stroke="${LAND}" stroke-width="10" paint-order="stroke" stroke-linejoin="round" letter-spacing="14" text-anchor="middle" font-size="46"><text x="1100" y="1740">TORONTO</text><text x="4250" y="1750">OTTAWA</text></g>`;
     window.__mapRoads = { main, river };

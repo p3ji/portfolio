@@ -4,6 +4,10 @@
 <!-- Use the in-app Review widget to drop pins and save changes here -->
 
 ## Resolved
+- [x] **Item #63 (2026-10-24)** (`#world3`)
+  - **Requested Change**: Don't need this strange leaf thing (referencing uploaded screenshot of background maple leaf watermark).
+  - **Resolution**: Removed the red maple leaf watermark emblem `<g transform="translate(${CX} ${CY - 20}) scale(6)" opacity=".08" fill="#C8102E">` from the map SVG in [app.js](file:///Users/pushp/Documents/Projects/visualportfolio/app.js).
+
 - [x] **Item #62 (2026-10-24)** (`#world3`)
   - **Requested Change**: Lake Ontario start a bit more south (the metro track is overlapping).
   - **Resolution**:
