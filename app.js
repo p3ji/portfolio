@@ -179,7 +179,7 @@
     ['Ship to production', 'Live URL in days (1–7d Light, 8–14d Medium).', '#FFD23F'],
     ['Write the reflection', 'Every build feeds back into the digital brain.', '#9FD3FF']
   ];
-  const img = k => `v2/s/${k}.webp?v=20261024g`;
+  const img = k => `v2/s/${k}.webp?v=20261024h`;
 
   /* ---------- smooth scroll ---------- */
   const lenis = (!reduce && window.Lenis && innerWidth >= 860 && !matchMedia('(pointer: coarse)').matches) ? new Lenis({ lerp: .09, smoothWheel: true, wheelMultiplier: .9 }) : null;
@@ -2781,10 +2781,10 @@ void main() {
     { name: 'Modular Survey Tools', url: 'msurvey.peji.ca', href: 'https://msurvey.peji.ca/', img: 'modularsurvey', kind: 'Tier 03 · DDI Lifecycle', dy: -12, r: -1.4, st: '<span class="stk pill" style="right:-18px;top:-18px;transform:rotate(6deg)">suite ↗</span>' },
     { name: 'Users of Digital Government', url: 'statcan.gc.ca', href: 'https://www150.statcan.gc.ca/n1/pub/22-20-0001/222000012026001-eng.htm', img: 'paper-diggov', kind: 'Published Paper · 2026', dy: 16, r: 1.2, st: '<span class="stk round" style="--sc:#E5E7EB;left:-24px;top:-26px;transform:rotate(-8deg)">published<br>2026</span>' },
     { name: 'Digital Divides in Canada', url: 'cetic.br', href: 'https://bibliotecadigital.acervo.nic.br/server/api/core/bitstreams/b2bf1957-5fe3-421a-bbab-3a8ace9ac0bc/content', img: 'paper-divide', kind: 'Published Study · 2019', dy: -16, r: -1.3, st: '<span class="stk pill" style="right:-18px;top:-18px;transform:rotate(-6deg)">research ↗</span>' },
-    { name: 'Canadian AI Jobs Report', url: 'github.com/p3ji', href: 'https://github.com/p3ji', img: 'aijobsearch', kind: 'Labour Intelligence · AI', dy: 22, r: 1.3, st: '<span class="stk tape" style="left:35%;top:-14px"></span>' }
+    { name: 'Canadian AI Jobs Report', url: 'occupation-ai.vercel.app', href: 'https://occupation-ai.vercel.app', img: 'aijobsearch', kind: 'Labour Intelligence · AI', dy: 22, r: 1.3, st: '<span class="stk tape" style="left:35%;top:-14px"></span>' }
   ];
   const brandSec = $('#brand'), brandRow = $('#brandRow'), brandProg = $('#brandProg');
-  brandRow.innerHTML = SITES.map(x => `<a class="site" href="${x.href}" target="_blank" rel="noopener" style="--dy:${x.dy}px;--r:${x.r}deg">${x.st}<div class="win"><div class="chrome"><i></i><i></i><i></i><span>${x.url}</span></div><div class="page"><img src="v2/b/${x.img}.webp?v=20261024g" alt="${x.name} website home page" loading="lazy"></div></div><div class="cap"><b>${x.name}</b><span>${x.kind} · visit ↗</span></div></a>`).join('');
+  brandRow.innerHTML = SITES.map(x => `<a class="site" href="${x.href}" target="_blank" rel="noopener" style="--dy:${x.dy}px;--r:${x.r}deg">${x.st}<div class="win"><div class="chrome"><i></i><i></i><i></i><span>${x.url}</span></div><div class="page"><img src="v2/b/${x.img}.webp?v=20261024h" alt="${x.name} website home page" loading="lazy"></div></div><div class="cap"><b>${x.name}</b><span>${x.kind} · visit ↗</span></div></a>`).join('');
   let bTop = 0, bRange = 1, bShift = 0;
   let bManual = false;
   function layoutBrand() {

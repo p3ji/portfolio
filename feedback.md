@@ -4,6 +4,10 @@
 <!-- Use the in-app Review widget to drop pins and save changes here -->
 
 ## Resolved
+- [x] **Item #58 (2026-10-24)** (`div.win > div.page:nth-of-type(2) > img` with `src: "v2/b/aijobsearch.webp"`)
+  - **Requested Change**: Link Canadian AI Jobs Report card to `https://occupation-ai.vercel.app`.
+  - **Resolution**: Updated `href` and `url` for the Canadian AI Jobs Report in `SITES` in [app.js](file:///Users/pushp/Documents/Projects/visualportfolio/app.js#L2784) to `https://occupation-ai.vercel.app`, and bumped asset cache buster to `v=20261024h`.
+
 - [x] **Item #57 (2026-10-24)** (`div.win > div.page:nth-of-type(2) > img` for published papers)
   - **Requested Change**:
     1) Users of Digital Government (`paper-diggov.webp`): set link to `https://www150.statcan.gc.ca/n1/pub/22-20-0001/222000012026001-eng.htm`
