@@ -40,19 +40,20 @@
     3) Verified via headless Chrome on Stop 2 (`iitd`) that both the journey card gallery thumbnail and modal lightbox load and render the new photo with crisp natural resolution (1280x719).
 
 - [x] **Item #67 (2026-10-24)** (`div.gift-stage:nth-of-type(2) > div.gift:nth-of-type(4) > svg`)
-  - **Requested Change**: Find different assets or build one for the library shelf that opens to access all skill icons. User selected **Option 1 (French Glass Door Cabinet)** and requested to improve its drawing to match the visual style of the website.
+  - **Requested Change**: Add the refined Option 1 (Antique Glass-Mullion French Door Library Cabinet) directly to the site, ensuring the skill icons emerge in their non-overlapping grid layout exactly as before.
   - **Component & File Locations**:
-    - HTML markup: [`#giftStage > #gift > svg`](file:///Users/pushp/Documents/Projects/visualportfolio/index.html#L232-L393) in [index.html](file:///Users/pushp/Documents/Projects/visualportfolio/index.html).
-    - Unwrapping & physics animation: `frameStack()` and `layoutStack()` in [app.js](file:///Users/pushp/Documents/Projects/visualportfolio/app.js#L2972-L3056).
-    - Styling & sizing: `.gift-stage`, `.gift`, `.gift svg` in [styles.css](file:///Users/pushp/Documents/Projects/visualportfolio/styles.css#L631-L640).
-    - Interactive Standalone Prototype: [`option1_french_door_cabinet.html`](file:///Users/pushp/.gemini/antigravity/brain/b1d2056f-d154-422c-8881-0b94ba72ff97/option1_french_door_cabinet.html).
-  - **Style Refinements Applied**:
-    1. **Exact 300x300 Coordinate Space & Perspective**: Replaced the previous flat frontal box with the portfolio's authentic 3D dimetric bookcase frame (`viewBox="0 0 300 300"`, showing top ceiling depth, right wall perspective depth, and navy ink ground shadow `fill="#13233A"`).
-    2. **Permanent Carved Cornice Pediment**: The arched pediment crest, gold finial, and "PEJI LAB" brass nameplate remain permanently anchored at the top rather than lifting off as a lid.
-    3. **3-Tier French Mullion Doors**: Designed twin mahogany-framed glass doors (`#doorL`, `#doorR`) with 3 vertical glazing panes that align with the 3 interior shelves (monographs, brass globe, succulent bonsai, rolled scrolls, micro-terminal).
-    4. **Antique Cremone Bolt Hardware**: Added a detailed vertical brass locking rod and central oval turn-latch that smoothly rotates 90° upon unlocking before the doors swing outward (`rotateY(±118deg)`).
-    5. **Design System & Palette Harmonization**: Styled with the site's semantic `--paper`, `--ink`, `--sun`, `--coral` tokens, and added a live Day/Night theme toggle matching the portfolio's `#themeBtn`.
-    6. **Verified Visual States**: Captured day closed ([option1_style_matched_closed.png](file:///Users/pushp/.gemini/antigravity/brain/b1d2056f-d154-422c-8881-0b94ba72ff97/option1_style_matched_closed.png)), day open ([option1_style_matched_open.png](file:///Users/pushp/.gemini/antigravity/brain/b1d2056f-d154-422c-8881-0b94ba72ff97/option1_style_matched_open.png)), night closed ([option1_style_matched_night_closed.png](file:///Users/pushp/.gemini/antigravity/brain/b1d2056f-d154-422c-8881-0b94ba72ff97/option1_style_matched_night_closed.png)), and night open ([option1_style_matched_night_open.png](file:///Users/pushp/.gemini/antigravity/brain/b1d2056f-d154-422c-8881-0b94ba72ff97/option1_style_matched_night_open.png)).
+    - HTML markup: [`#giftStage > #gift`](file:///Users/pushp/Documents/Projects/visualportfolio/index.html#L236-L450) in [index.html](file:///Users/pushp/Documents/Projects/visualportfolio/index.html).
+    - Unwrapping & physics animation: `frameStack()` and `layoutStack()` in [app.js](file:///Users/pushp/Documents/Projects/visualportfolio/app.js#L2971-L3055).
+    - Styling & sizing: `.gift`, `.doors-viewport`, `.door-unit`, `.glass-fill` in [styles.css](file:///Users/pushp/Documents/Projects/visualportfolio/styles.css#L633-L644).
+  - **Resolution & Integration**:
+    1. **Integrated 3D French Glass Doors**: Placed responsive percentage-anchored doors viewport (`left: 16%`, `top: 46.333%`, `width: 48.667%`, `height: 45.667%`) over the front opening in [index.html](file:///Users/pushp/Documents/Projects/visualportfolio/index.html) with twin mahogany-framed glass doors (`#doorL`, `#doorR`), 3 vertical mullion glazing tiers, and antique cremone bolt latch hardware.
+    2. **Anchored Stately Crown**: Anchored the carved cornice pediment with the "PEJI LAB" gold plaque permanently to the top of the cabinet, replacing the old floating lid animation.
+    3. **Door & Latch Unwrapping Physics**: In `frameStack()` in [app.js](file:///Users/pushp/Documents/Projects/visualportfolio/app.js), the cremone bolt latch rotates 90° upon unlocking (`q: 0.08` to `0.17`) and the twin doors swing smoothly open to `±118deg` (`q: 0.16` to `0.28`).
+    4. **Verified Non-Overlapping Tool Constellation**: All 14 tools emerge cleanly from the cabinet aperture (`MOUTH`) along their bezier curves into the exact calculated, responsive grid layout (`toolPos(i)`).
+    5. **Automated Testing & Validation**:
+       - Live desktop test ([live_site_cabinet_open.png](file:///Users/pushp/.gemini/antigravity/brain/b1d2056f-d154-422c-8881-0b94ba72ff97/live_site_cabinet_open.png)): 0 console errors, 0 tool overlaps (`overlaps: 0`).
+       - Live mobile test ([live_site_cabinet_mobile.png](file:///Users/pushp/.gemini/antigravity/brain/b1d2056f-d154-422c-8881-0b94ba72ff97/live_site_cabinet_mobile.png)): 0 tool overlaps (`overlaps: 0`), clean scale down to 220px.
+       - Live closed state ([live_site_cabinet_closed.png](file:///Users/pushp/.gemini/antigravity/brain/b1d2056f-d154-422c-8881-0b94ba72ff97/live_site_cabinet_closed.png)): doors flush at 0°, cremone latch vertical at 0°.
 
 - [x] **Item #66 (2026-10-24)** (`aside.sheet.left` R.H. Coats Building / StatCan Drawer)
   - **Requested Change**:

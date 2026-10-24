@@ -376,8 +376,8 @@
             <!-- Interior soft shadow overlay -->
             <rect x="48" y="140" width="146" height="136" fill="url(#bcBack)" opacity=".04"/>
 
-            <!-- BOOKCASE CROWN / LID (g id="lid") -->
-            <g id="lid">
+            <!-- PERMANENT STATELY CROWN PEDIMENT -->
+            <g id="crown">
               <path d="M32 108 L92 82 L266 82 L208 108 Z" fill="url(#bcTop)"/>
               <path d="M208 108 L266 82 L266 114 L208 136 Z" fill="#26160B"/>
               <rect x="32" y="108" width="178" height="26" rx="2" fill="url(#bcCornice)"/>
@@ -390,7 +390,67 @@
               <circle cx="140" cy="121.5" r="1" fill="#5C4015"/>
               <text x="121" y="124.5" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-size="7.5" font-weight="800" fill="#2E1C10" letter-spacing="1">PEJI LAB</text>
             </g>
+
+            <!-- Outer Brass Barrel Hinges (anchored to outer frame posts) -->
+            <rect x="39" y="146" width="3" height="10" rx="1" fill="#D4AF37" stroke="#8C6627" stroke-width=".5"/>
+            <rect x="39" y="260" width="3" height="10" rx="1" fill="#D4AF37" stroke="#8C6627" stroke-width=".5"/>
+            <rect x="200" y="146" width="3" height="10" rx="1" fill="#D4AF37" stroke="#8C6627" stroke-width=".5"/>
+            <rect x="200" y="260" width="3" height="10" rx="1" fill="#D4AF37" stroke="#8C6627" stroke-width=".5"/>
           </svg>
+
+          <!-- 3D FRENCH GLASS DOORS OVERLAY -->
+          <div class="doors-viewport" id="doorsLayer" aria-hidden="true">
+            <!-- LEFT DOOR (Hinged at Left x=0) -->
+            <div id="doorL" class="door-unit left">
+              <svg viewBox="0 0 73 137" preserveAspectRatio="none">
+                <!-- Outer Door Wood Frame -->
+                <rect x="1" y="1" width="71" height="135" rx="1.5" fill="url(#bcCornice)" stroke="#1F1108" stroke-width="1.6"/>
+                <!-- 3 Glass Panes with Fine Wooden Mullions -->
+                <rect x="6" y="6" width="60" height="39" rx="1" class="glass-fill" stroke="#2B160A" stroke-width="1.2"/>
+                <path d="M6 6 L35 6 L12 45 L6 45 Z" fill="#fff" fill-opacity="0.14"/>
+                <rect x="6" y="49" width="60" height="39" rx="1" class="glass-fill" stroke="#2B160A" stroke-width="1.2"/>
+                <path d="M22 49 L50 49 L18 88 L6 88 Z" fill="#fff" fill-opacity="0.1"/>
+                <rect x="6" y="92" width="60" height="39" rx="1" class="glass-fill" stroke="#2B160A" stroke-width="1.2"/>
+                <path d="M35 92 L64 92 L28 131 L12 131 Z" fill="#fff" fill-opacity="0.08"/>
+                <!-- Inner Door Bevel Lip on Right edge -->
+                <rect x="69" y="1" width="3" height="135" fill="url(#bcWood)" stroke="#1F1108" stroke-width=".6"/>
+                <!-- Antique Cremone Bolt Vertical Brass Rod & Central Knob -->
+                <g transform="translate(67, 0)">
+                  <line x1="0" y1="4" x2="0" y2="133" stroke="#D4AF37" stroke-width="1.4"/>
+                  <line x1="0" y1="4" x2="0" y2="133" stroke="#FFF0A0" stroke-width=".6" stroke-opacity=".7"/>
+                  <rect x="-2" y="12" width="4" height="6" rx="1" fill="#99701C"/>
+                  <rect x="-2" y="119" width="4" height="6" rx="1" fill="#99701C"/>
+                  <g id="cremoneHandle" style="transform-origin: 0px 68px;">
+                    <circle cx="0" cy="68" r="4.5" fill="#C79B52" stroke="#684A12" stroke-width=".8"/>
+                    <ellipse cx="0" cy="68" rx="2.2" ry="7.5" fill="#F4DDA6" stroke="#8C6627" stroke-width=".8"/>
+                    <circle cx="0" cy="68" r="1.2" fill="#422E09"/>
+                  </g>
+                </g>
+              </svg>
+            </div>
+            <!-- RIGHT DOOR (Hinged at Right x=73) -->
+            <div id="doorR" class="door-unit right">
+              <svg viewBox="0 0 73 137" preserveAspectRatio="none">
+                <!-- Outer Door Wood Frame -->
+                <rect x="1" y="1" width="71" height="135" rx="1.5" fill="url(#bcCornice)" stroke="#1F1108" stroke-width="1.6"/>
+                <!-- 3 Glass Panes with Fine Wooden Mullions -->
+                <rect x="7" y="6" width="60" height="39" rx="1" class="glass-fill" stroke="#2B160A" stroke-width="1.2"/>
+                <path d="M25 6 L55 6 L35 45 L15 45 Z" fill="#fff" fill-opacity="0.12"/>
+                <rect x="7" y="49" width="60" height="39" rx="1" class="glass-fill" stroke="#2B160A" stroke-width="1.2"/>
+                <path d="M35 49 L62 49 L42 88 L20 88 Z" fill="#fff" fill-opacity="0.1"/>
+                <rect x="7" y="92" width="60" height="39" rx="1" class="glass-fill" stroke="#2B160A" stroke-width="1.2"/>
+                <path d="M40 92 L67 92 L48 131 L26 131 Z" fill="#fff" fill-opacity="0.08"/>
+                <!-- Inner Door Bevel Lip on Left edge -->
+                <rect x="1" y="1" width="3" height="135" fill="url(#bcWood)" stroke="#1F1108" stroke-width=".6"/>
+                <!-- Complementary Brass Strike Plate on Left edge -->
+                <g transform="translate(4, 68)">
+                  <rect x="-2" y="-12" width="4" height="24" rx="1.5" fill="#99701C" stroke="#4A3408" stroke-width=".6"/>
+                  <circle cx="0" cy="-6" r="1" fill="#2E1E03"/>
+                  <circle cx="0" cy="6" r="1" fill="#2E1E03"/>
+                </g>
+              </svg>
+            </div>
+          </div>
         </div>
         <p class="gift-cap" id="giftCap">My toolkit. <span id="giftCapV">Hover</span> a tool to see how I use it.</p>
         <div class="ring" id="ring"></div>

@@ -2968,7 +2968,7 @@ void main() {
     { n: 'Gmail', bg: '#FFFFFF', how: 'Direct inbox at contact@peji.ca for client builds, sovereign AI deployments, and executive roles.', icon: '<svg viewBox="0 0 24 24"><path fill="#4285F4" d="M2 6.5v11A1.5 1.5 0 0 0 3.5 19H6V10l-4-3.5z"/><path fill="#34A853" d="M18 19h2.5a1.5 1.5 0 0 0 1.5-1.5v-11L18 10z"/><path fill="#FBBC04" d="M18 5.5V10l4-3.5V5.2c0-1.3-1.5-2-2.5-1.2z"/><path fill="#EA4335" d="M6 10V5.5l6 4.5 6-4.5V10l-6 4.5z"/><path fill="#C5221F" d="M2 5.2v1.3L6 10V5.5L4.5 4C3.5 3.2 2 3.9 2 5.2z"/></svg>' },
     { n: 'ElevenLabs', bg: '#0B0B0B', how: 'Voice synthesis & interactive audio for game prototypes and multimodal demos.', icon: '<svg viewBox="0 0 24 24"><path fill="#fff" d="M4.6035 0v24h4.9317V0zm9.8613 0v24h4.9317V0z"/></svg>' }
   ];
-  const giftStageEl = $('#giftStage'), beam = $('#beam'), stackTrack = $('#stackTrack'), stackHead = $('#stackHead'), gift = $('#gift'), lidG = $('#lid'), gGlow = $('#gGlowEl'), burst = $('#burst'), ring = $('#ring'), toolTip = $('#toolTip'), giftCap = $('#giftCap'), confetti = $('#confetti');
+  const giftStageEl = $('#giftStage'), beam = $('#beam'), stackTrack = $('#stackTrack'), stackHead = $('#stackHead'), gift = $('#gift'), doorL = $('#doorL'), doorR = $('#doorR'), cremoneHandle = $('#cremoneHandle'), gGlow = $('#gGlowEl'), burst = $('#burst'), ring = $('#ring'), toolTip = $('#toolTip'), giftCap = $('#giftCap'), confetti = $('#confetti');
   let stTop = 0, stRange = 1, RX = 420, RY = 250, tipFor = -1;
   if (!hoverable) $('#giftCapV').textContent = 'Tap';
   // two rows of an arc that rises out of the box: a wide back row and a tighter front row
@@ -3035,11 +3035,15 @@ void main() {
     if (giftTap && giftGo) { if (!giftGo.t) giftGo = { t: performance.now() }; const u = reduce ? 1 : Math.min(1, (performance.now() - giftGo.t) / 7000); giftQ = u < 1 ? .5 - .5 * Math.cos(Math.PI * u) : 1; }
     if (giftTap && !giftGo) { const gb = gift.getBoundingClientRect(), pb = giftBtn.parentElement.getBoundingClientRect(); if (gb.height) giftBtn.style.top = (gb.bottom - pb.top + 18).toFixed(0) + 'px'; }
     const q = giftTap ? giftQ : clamp((y - stTop) / stRange), now = performance.now() / 1000;
-    const rise = ss(range(q, 0, .05)), shake = range(q, .03, .17), open = ss(range(q, .16, .25)), drop = ss(range(q, .14, .28));
+    const rise = ss(range(q, 0, .05)), shake = range(q, .03, .17), open = ss(range(q, .16, .28)), drop = ss(range(q, .14, .28));
     giftStageEl.style.transform = `translate3d(0, ${(-(1 - drop) * GIFT_LIFT).toFixed(1)}px, 0)`;
     const amp = reduce ? 0 : shake * (1 - open) * 3.5, rot = Math.sin(now * 23) * amp, hop = Math.abs(Math.sin(now * 11.5)) * amp * 1.4;
     gift.style.transform = `translate3d(0, ${((1 - rise) * vh * .08 - hop).toFixed(1)}px, 0) rotate(${rot.toFixed(2)}deg) scale(${(.9 + .1 * rise).toFixed(3)})`;
-    lidG.style.transform = `translate(${(open * 90).toFixed(1)}px, ${(-open * 150 + Math.sin(open * Math.PI) * -40 + ss(range(q, .25, .38)) * 110).toFixed(1)}px) rotate(${(open * 28).toFixed(1)}deg)`;
+    const latchRot = Math.min(90, range(q, .08, .17) * 90);
+    if (cremoneHandle) cremoneHandle.style.transform = `rotate(${latchRot.toFixed(1)}deg)`;
+    const doorSwing = open * 118;
+    if (doorL) doorL.style.transform = `rotateY(${(-doorSwing).toFixed(1)}deg)`;
+    if (doorR) doorR.style.transform = `rotateY(${(doorSwing).toFixed(1)}deg)`;
     gGlow.setAttribute('opacity', open.toFixed(3)); burst.style.opacity = (open * .95).toFixed(3); burst.style.scale = (.55 + .45 * open).toFixed(3);
     $('#giftStage').classList.toggle('open', open > .6); beam.style.opacity = (open * .8).toFixed(3);
     const hk = 0; stackHead.style.opacity = (1 - hk).toFixed(3); stackHead.style.transform = `translate3d(0, ${(-hk * 40).toFixed(1)}px, 0)`;
