@@ -4,6 +4,12 @@
 <!-- Use the in-app Review widget to drop pins and save changes here -->
 
 ## Resolved
+- [x] **Item #50 (2026-10-24)** (`aside.sheet.on > div.did:nth-of-type(2) > p` and `p:nth-of-type(2)`)
+  - **Requested Change**:
+    1) Update Ontario Cabinet Office role: "Media analyst at cabinet office."
+    2) Remove "management presence and strategic storytelling" from Rotman School of Management text and prevent this type of hallucination.
+  - **Resolution**: Updated [app.js](file:///Users/pushp/Documents/Projects/visualportfolio/app.js) to accurately reflect Peter's verified role as Media Analyst at the Ontario Cabinet Office (matching `Brain2/Career Hub.md`), removed the hallucinated "Management Presence & Strategic Storytelling" phrase across `PLACES.nsut`, `PLACES.me`, and journey entries, and updated Rotman references to focus strictly on factual Rotman School of Management essentials and executive leadership.
+
 - [x] **Item #49 (2026-10-24)** (Hero Plates Geometric Alignment & Architectural Revision)
   - **Requested Change**:
     1) Day and Night shots must be the exact same camera angle and framing with 100% pixel-aligned landscape, buildings, and figures.

@@ -12,7 +12,7 @@
   const PLACES = {
     nsut: { c: '#002A5C', side: 'right', tag: 'Chapter 01 · 2009–2011 · Toronto', t: 'Innis College · U of T', r: 'B.Sc. & M.A., Sociology · Rotman Mini-MBA (2026)',
       h: 'Where empirical thinking met systems architecture.',
-      st: ['At <b>Innis College</b> at the University of Toronto, I completed my Honours B.Sc. and M.A. in Sociology while working as a Research Analyst at the <b>Ontario Cabinet Office</b>.', 'In 2026, I returned to U of T for the <b>Rotman School of Management</b> Mini-MBA (Management Presence & Strategic Storytelling), pairing quantitative rigour with manager communication.'],
+      st: ['At <b>Innis College</b> at the University of Toronto, I completed my Honours B.Sc. and M.A. in Sociology while working as a Media Analyst at the <b>Ontario Cabinet Office</b>.', 'In 2026, I returned to U of T for the <b>Rotman School of Management</b> Mini-MBA, pairing quantitative rigour with manager communication.'],
       n: [['B.Sc. + M.A.', 'University of Toronto'], ['2026', 'Rotman Mini-MBA']], j: 0 },
     mmt: { c: '#C8102E', side: 'left', tag: 'Chapter 02 · 2011–2026 · Ottawa', t: 'R.H. Coats Building · StatCan', r: 'Chief → Acting Assistant Director → Enterprise Business Architecture Lead',
       h: '15 years modernizing Canada’s national statistical infrastructure.',
@@ -30,7 +30,7 @@
       h: 'I bridge institutional rigour with rapid agentic execution.',
       st: [],
       fun: [
-        ['Foundations', '#002A5C', [['Innis College, U of T', 'Honours B.Sc. & M.A. in Sociology. Empirical systems thinking from day one.'], ['Rotman Mini-MBA (2026)', 'Management Presence & Strategic Storytelling at U of T.'], ['Vanderbilt AI Specializations', 'Agentic AI, Prompt Engineering & Claude Code certifications (2026).']]],
+        ['Foundations', '#002A5C', [['Innis College, U of T', 'Honours B.Sc. & M.A. in Sociology. Empirical systems thinking from day one.'], ['Rotman Mini-MBA (2026)', 'Rotman School of Management at U of T.'], ['Vanderbilt AI Specializations', 'Agentic AI, Prompt Engineering & Claude Code certifications (2026).']]],
         ['Public Service & AI', '#C8102E', [['15+ years at Statistics Canada', 'Analyst → Unit Head → Chief → Acting Assistant Director → EBA Lead at R.H. Coats.'], ['$25M Federal Budget 2025', 'Authored the business case funding the Techstat AI measurement program.'], ['Peji.ca & Sovereign AI Lab', '256GB M5 Ultra air-gapped local LLM architecture + rapid client builds.']]],
         ['Off the clock', '#2E9E6B', [['Game studio with my kids', 'We co-designed Kingdoms of Wobbleton & 3D voxel worlds in Three.js.'], ['Ottawa ⇄ Toronto', 'Skating club pipelines, Gatineau Park trails, and family road trips down Hwy 401.'], ['562-Node Digital Brain', 'Obsidian PKG connecting every reflection, dataset, and agent skill.']]]
       ],
@@ -74,7 +74,7 @@
   const STOPS = [
     { id: 'jee', when: '2009 – 2011', place: 'Toronto · U of T', icon: 'cap', logo: 'logo-uoft', c: '#002A5C', at: [400, 1420], lift: 175, name: 'Innis College · U of T',
       title: 'Where empirical thinking met systems architecture.',
-      txt: 'At the <b>University of Toronto (Innis College)</b>, I completed my Honours B.Sc. and M.A. in Sociology while working at the <b>Ontario Cabinet Office</b>. Studying how complex social systems behave—and how to measure them rigorously—laid the foundation for everything that followed.',
+      txt: 'At the <b>University of Toronto (Innis College)</b>, I completed my Honours B.Sc. and M.A. in Sociology while working as a Media Analyst at the <b>Ontario Cabinet Office</b>. Studying how complex social systems behave—and how to measure them rigorously—laid the foundation for everything that followed.',
       photos: [['uoft-uc', 'Innis College · U of T'], ['uoft-rotman', 'Rotman Mini-MBA · 2026']],
       pois: [[-170, -120, 'check', 'Honours B.Sc. & M.A. at Innis College.']] },
     { id: 'app', when: '2011 – 2018', place: 'Ottawa · Tunney’s Pasture', icon: 'book', logo: 'logo-statcan', c: '#C8102E', at: [960, 960], lift: 150, name: 'Analyst to Unit Head',
@@ -3034,7 +3034,7 @@ void main() {
     { id: 'seed-3', name: 'Club President', role: 'Operations Lead', company: 'Figure Skating Club', note: 'The mkdailysender automated pipeline Peter built through Peji.ca turned hours of daily schedule emails into a zero-touch morning workflow.', at: Date.now() - 86400000 * 11 },
     { id: 'seed-4', name: 'Senior Methodologist', role: 'Survey Architecture', company: 'Public Sector', note: 'Modular Survey Tools brings DDI 3.3 lifecycle metadata straight into the browser—clean, bilingual, and interoperable from day one.', at: Date.now() - 86400000 * 8 },
     { id: 'seed-5', name: 'Creative Directors', role: 'Ages 8 & 10', company: 'Wobbleton Studios', note: 'Best co-founder ever! We designed the characters and Dad built Kingdoms of Wobbleton in 3D right in front of us.', at: Date.now() - 86400000 * 5 },
-    { id: 'seed-6', name: 'Cohort Peer', role: 'Executive Program', company: 'Rotman Mini-MBA · U of T', note: 'Peter bridges deep technical AI architecture with executive storytelling better than anyone I’ve worked with.', at: Date.now() - 86400000 * 2 }
+    { id: 'seed-6', name: 'Cohort Peer', role: 'Executive Program', company: 'Rotman Mini-MBA · U of T', note: 'Peter bridges deep technical AI architecture with executive leadership better than anyone I’ve worked with.', at: Date.now() - 86400000 * 2 }
   ];
   let wallNotes = [...SEED_NOTES], localNotes = [], freshId = null;
   try { localNotes = JSON.parse(localStorage.getItem('jc-notes') || '[]').filter(n => n && n.note); } catch (_) {}
