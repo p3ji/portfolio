@@ -7,6 +7,15 @@
 <!-- Use the in-app Review widget to drop pins and save changes here -->
 
 ## Resolved
+- [x] **Item #69 (2026-10-24)** (`div.jc-in > div.jc-bd:nth-of-type(3)` Stop 3 Chief · Digital Economy Card)
+  - **Requested Change**:
+    1) Update narrative text to say "a multidisciplinary team" without the team size number.
+    2) Remove the two stats buttons ("Modernized" and "15").
+  - **Resolution**:
+    1) Updated `STOPS[2].txt` (`ht`) in [app.js](file:///Users/pushp/Documents/Projects/visualportfolio/app.js) to: `"As <b>Chief, Digital Economy & Society</b> at the R.H. Coats Building, I led a multidisciplinary team, represented Canada at <b>OECD working parties</b>, and spearheaded <b>various initiatives that improved timeliness and efficiency</b>."`
+    2) Removed `stats: [['Modernized', 'pipeline timeliness & efficiency'], ['15', 'analysts & methodologists led']]` from `STOPS[2]` in [app.js](file:///Users/pushp/Documents/Projects/visualportfolio/app.js), completely suppressing the `.jc-stats` pill container.
+    3) Verified via headless Chrome on Stop 3 that the narrative cleanly displays "a multidisciplinary team" and `hasStats: false` (`statsCount: 0`).
+
 - [x] **Item #68 (2026-10-24)** (`button.jc-ph > span.ph > img` Stop 2 COVID-19 Antibody Study Photo)
   - **Requested Change**: Replace `stc-covid.webp` with CBC News image: `https://i.cbc.ca/ais/1.5868357,1625677406000/full/max/0/default.jpg?im=Crop%2Crect%3D%280%2C253%2C2309%2C1298%29%3BResize%3D860`
   - **Resolution**:
