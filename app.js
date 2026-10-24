@@ -101,6 +101,7 @@
       stats: [['$25M', 'Federal Budget 2025 secured'], ['$500K+', 'annual EBA base funding']],
       work: 'https://budget.canada.ca',
       workLabel: 'Explore Federal Budget 2025 (Techstat Allocation)',
+      photos: [['stc-techstat', '$25M Federal Budget 2025 · Techstat AI']],
       pois: [[150, 100, 'ticket', '$25M over 6 years for national AI measurement.', 'https://budget.canada.ca', '#D97706']] },
     { id: 'mmt', when: 'June 2026', place: 'Ottawa · Sabbatical', logo: 'logo-aijourney', c: '#7B5CD6', at: [3260, 1000], lift: 238, name: 'One-Year AI Journey',
       title: 'Trading the manager briefing deck for the terminal.',
@@ -118,9 +119,9 @@
       pois: [[160, 100, 'key', 'msurvey.peji.ca: DDI 3.3 survey suite in the browser.', 'https://msurvey.peji.ca', '#1667A8']] },
     { id: 'lastlook', when: 'Fall 2026', place: 'Toronto & Ottawa', logo: 'logo-rotman', c: '#002A5C', at: [4380, 940], lift: 190, name: 'Rotman & 562-Node PKG',
       title: 'Rotman Mini-MBA, Vanderbilt AI & a 562-Node Digital Brain.',
-      txt: 'Completed the <b>U of T Rotman Mini-MBA</b> and <b>Vanderbilt AI Specializations</b> while architecting a <b>562-node Obsidian Personal Knowledge Graph</b>, <b>AI Job Search Canada</b>, and automated workflows.',
+      txt: 'Completed the <b>U of T Rotman Mini-MBA</b> and <b>Vanderbilt AI Specializations</b> while architecting a <b>562-node Obsidian Personal Knowledge Graph</b> and <b>AI Job Search Canada</b>.',
       certUrl: 'https://www.linkedin.com/in/petershijiao/details/certifications/',
-      stats: [['562', 'Obsidian PKG nodes'], ['40+', 'AI prototypes & workflows']],
+      stats: [['562', 'Obsidian PKG nodes'], ['2', 'AI market intelligence apps']],
       photos: [['aijobsearch', 'AI Job Search Canada']],
       pois: [[160, 100, 'rocket', 'Stream A + B ideation powered by a 562-node graph.']] },
     { id: 'creator', when: 'Now', place: 'peji.ca · Ottawa', icon: 'camera', logo: 'logo-peji', c: '#C4622D', at: [4940, 1260], lift: 150, name: 'Peji.ca & Sovereign AI',
@@ -170,7 +171,7 @@
       shots: ['peji', 'kingdoms', 'n-1', 'localllm'] }
   ];
   const PROC = [
-    ['Query the PKG', '562 Obsidian nodes connect domain & prior art.', '#FFD23F'],
+    ['Query the PKG', '287 Obsidian nodes connect domain & prior art.', '#FFD23F'],
     ['Frame the problem', '15 yrs of StatCan & EBA systems analysis.', '#9FD3FF'],
     ['Air-gap or cloud', 'Route PII to 256GB M5 Ultra; public to frontier.', '#FFB4A0'],
     ['Prototype in hours', 'Multi-agent loops in Claude Code & Antigravity.', '#D9CCFF'],
@@ -227,7 +228,7 @@
   const gain = (e, d) => 1 + e * (.08 + d * .35);
   (function initGL() {
     if (matchMedia('(max-width: 859px)').matches) { addEventListener('resize', () => { if (!gl && innerWidth >= 860) initGL(); }); }
-    let g; try { g = glc.getContext('webgl2', { antialias: false, alpha: false, powerPreference: 'high-performance' }); } catch (_) {}
+    let g; try { g = glc.getContext('webgl2', { antialias: false, alpha: false, preserveDrawingBuffer: true, powerPreference: 'high-performance' }); } catch (_) {}
     if (!g) return;
     const sh = (t, src) => { const o = g.createShader(t); g.shaderSource(o, src); g.compileShader(o); if (!g.getShaderParameter(o, g.COMPILE_STATUS)) throw new Error(g.getShaderInfoLog(o)); return o; };
     try {
@@ -264,7 +265,7 @@ void main() {
       g.bindBuffer(g.ARRAY_BUFFER, g.createBuffer()); g.bufferData(g.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), g.STATIC_DRAW);
       const a = g.getAttribLocation(pr, 'p'); g.enableVertexAttribArray(a); g.vertexAttribPointer(a, 2, g.FLOAT, false, 0, 0);
       glU = {}; ['uTex', 'uTexN', 'uDep', 'uRes', 'uSize', 'uOff', 'uCam', 'uE', 'uDpr', 'uFocus', 'uNight', 'uSpot'].forEach(n => glU[n] = g.getUniformLocation(pr, n));
-      const load = (src, unit, mips) => fetch(src).then(r => r.blob()).then(b => createImageBitmap(b, { imageOrientation: 'none', premultiplyAlpha: 'none' })).then(bm => {
+      const load = (src, unit, mips) => fetch(src).then(r => r.blob()).then(b => (window.createImageBitmap ? createImageBitmap(b) : Promise.reject('no createImageBitmap'))).then(bm => {
         const t = g.createTexture(); g.activeTexture(g.TEXTURE0 + unit); g.bindTexture(g.TEXTURE_2D, t);
         g.texImage2D(g.TEXTURE_2D, 0, g.RGBA, g.RGBA, g.UNSIGNED_BYTE, bm);
         g.texParameteri(g.TEXTURE_2D, g.TEXTURE_WRAP_S, g.CLAMP_TO_EDGE); g.texParameteri(g.TEXTURE_2D, g.TEXTURE_WRAP_T, g.CLAMP_TO_EDGE);
@@ -276,11 +277,18 @@ void main() {
       });
       g.uniform1i(glU.uTex, 0); g.uniform1i(glU.uDep, 1); g.uniform1i(glU.uTexN, 2);
       gl = g;
-      Promise.all([load('v2/h/plate.webp', 0, true), load('v2/h/depth2.png', 1, false)]).then(() => { glReady = true; scene.classList.add('gl'); sizeGL(); glc.classList.add('on');
+      Promise.all([load('v2/h/plate.webp', 0, true), load('v2/h/depth2.png', 1, false)]).then(() => {
+        glReady = true; scene.classList.add('gl'); sizeGL(); glc.classList.add('on');
+        if (!mobile) drawGL(0, 0, 0, .016);
         // the night painting loads once it is wanted (or a few seconds after the day one)
         const wantN = () => { if (nightLoad) return; nightLoad = load('v2/h/plate-night2.webp', 2, true).then(() => { nightReady = true; glc.classList.add('nt'); }).catch(() => {}); };
-        if (document.documentElement.dataset.theme === 'dark') wantN(); else setTimeout(wantN, 1500); addEventListener('themechange', () => { wantN(); if (glReady && !mobile) { glKey = ''; drawGL(lastDraw[0], lastDraw[1], lastDraw[2], .016); } }); })
-        .catch(() => { gl = null; });
+        if (document.documentElement.dataset.theme === 'dark') wantN(); else setTimeout(wantN, 1500); addEventListener('themechange', () => { wantN(); if (glReady && !mobile) { glKey = ''; drawGL(lastDraw[0], lastDraw[1], lastDraw[2], .016); } });
+      }).catch(err => {
+        console.warn('plate shader fallback to image:', err);
+        gl = null; glReady = false;
+        scene.classList.remove('gl');
+        glc.classList.remove('on');
+      });
     } catch (err) { console.warn('plate shader', err); gl = null; }
   })();
   function sizeGL() {
@@ -824,7 +832,7 @@ void main() {
       <div class="jc-bd"><h3>${st.title}</h3><p class="txt">${st.txt}</p><button type="button" class="jc-more" aria-expanded="false">Read more</button>
       ${st.share ? `<div class="jc-share"><a href="${LI}" target="_blank" rel="noopener"><i style="background:#C4622D"><svg viewBox="0 0 24 24">${ICONS.rocket}</svg></i><div>peji.ca<span>Independent Digital Practice & Sovereign Local AI</span></div><em>↗</em></a><a href="${IG}" target="_blank" rel="noopener"><i style="background:#13233A"><svg viewBox="0 0 24 24">${ICONS.gear}</svg></i><div>@p3ji on GitHub<span>40+ prototypes, DDI 3.3 tools & open-source builds</span></div><em>↗</em></a></div>` : ''}
       ${st.stats ? `<ul class="jc-stats">${st.stats.map(([b, t]) => `<li><b>${b}</b><span>${t}</span></li>`).join('')}</ul>` : ''}
-      ${st.photos && st.photos.length ? `<div class="jc-gal"><p>${st.certUrl ? `<a href="${st.certUrl}" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:2px">Verified Certificates (LinkedIn) ↗</a>` : 'Gallery'}</p><div style="--n:${st.photos.length}">${st.photos.map(([src, cap], k) => `<button type="button" class="jc-ph" data-lb="${k}" aria-label="Open photo: ${cap}" style="--r:${[-3, 2, -1.5][k % 3]}deg"><span class="ph${src ? '' : ' empty'}">${src ? `<img src="${img(src)}" alt="" loading="lazy">` : `<svg viewBox="0 0 24 24">${ICONS.camera}</svg>`}</span><small>${cap}</small></button>`).join('')}</div></div>` : ''}
+      ${st.photos && st.photos.length ? `<div class="jc-gal"><p>Gallery</p><div style="--n:${st.photos.length}">${st.photos.map(([src, cap], k) => `<button type="button" class="jc-ph" data-lb="${k}" aria-label="Open photo: ${cap}" style="--r:${[-3, 2, -1.5][k % 3]}deg"><span class="ph${src ? '' : ' empty'}">${src ? `<img src="${img(src)}" alt="" loading="lazy">` : `<svg viewBox="0 0 24 24">${ICONS.camera}</svg>`}</span><small>${cap}</small></button>`).join('')}</div></div>` : ''}
       ${st.work ? `<div class="jc-act">${CASE_OF[st.work] ? `<button type="button" class="cbtn" data-case="${CASE_OF[st.work]}">View case study<svg viewBox="0 0 24 24">${ICONS.arrowR}</svg></button>` : `<a class="cbtn" href="${st.work}" target="_blank" rel="noopener">${st.workLabel || 'View work'}<svg viewBox="0 0 24 24">${ICONS.arrowR}</svg></a>`}</div>` : ''}</div>`;
   }
   function showCard(i) {
@@ -2728,7 +2736,7 @@ void main() {
   /* ---------- addresses: every case study and section gets its own link and tab title ---------- */
   const SITE = 'Peter Jiao · Peji Systems';
   const CS_SLUG = { localllm: 'localllm', techstat: 'techstat', modularsurvey: 'modularsurvey', aijobsearch: 'aijobsearch', pejistudio: 'pejistudio' };
-  const SEC_PATH = { journey: ['journey', 'The journey'], work: ['work', 'Work'], stack: ['stack', 'My stack'], life: ['about', 'About me'], hello: ['contact', 'Say hi'] };
+  const SEC_PATH = { journey: ['journey', 'The journey'], work: ['work', 'Work'], life: ['about', 'About me'], hello: ['contact', 'Say hi'] };
   const ROUTED = location.protocol.startsWith('http') && /(^|\.)peji\.ca$|\.vercel\.app$|^localhost$|^127\./.test(location.hostname);
   const HOME_TITLE = SITE;
   const csTitle = w => `${CS_NAME[w.id] || w.name} · ${w.co.split(' · ')[0]} | ${SITE}`;
@@ -2767,6 +2775,7 @@ void main() {
      ========================================================= */
   const SITES = [
     { name: 'Peji Digital Practice', url: 'peji.ca', href: 'https://peji.ca/', img: 'peji', kind: 'Consulting · 3 Tiers', dy: 14, r: 1.2, st: '<span class="stk pill" style="left:-16px;top:-18px;transform:rotate(-6deg)">peji.ca ↗</span>' },
+    { name: 'Sovereign Local AI', url: 'peji.ca/localllm', href: 'https://peji.ca/localllm/', img: 'localllm', kind: 'Air-Gap AI · M5 Ultra', dy: -18, r: -1.5, st: '<span class="stk tape" style="left:40%;top:-14px"></span>' },
     { name: 'Ottawa Optical Booking', url: 'demobooking.peji.ca', href: 'https://demobooking.peji.ca/', img: 'demobooking', kind: 'Tier 01 · Light Build', dy: 20, r: 1.5, st: '<span class="stk round" style="--sc:#EAD8C3;right:-18px;top:-22px;transform:rotate(7deg)">demo<br>app ↗</span>' },
     { name: 'Skating Club ETL Pipeline', url: 'peji.ca', href: 'https://peji.ca/', img: 'mkdaily', kind: 'Tier 02 · Daily Pipeline', dy: -14, r: -1.2, st: '<span class="stk tape" style="right:20%;top:-14px;transform:rotate(5deg);background:rgba(56,189,248,.85)"></span>' },
     { name: 'PA Volunteer Tracker', url: 'pa.peji.ca', href: 'https://pa.peji.ca/', img: 'patracker', kind: 'Tier 03 · Custom App', dy: 24, r: 1.4, st: '<span class="stk pill" style="left:-16px;top:-18px;transform:rotate(-5deg)">live app ↗</span>' },
@@ -2809,208 +2818,110 @@ void main() {
      5 · HOW I WORK
      ========================================================= */
   /* =========================================================
-     5 · MY STACK (The Library Bookcase)
+     5 · MY STACK (a gift that opens on scroll)
      ========================================================= */
-  const SHELVES = [
-    {
-      section: 'Section 01',
-      title: 'Statistical & Empirical Analysis',
-      desc: 'National survey pipelines, microdata imputation, econometric panel regressions, and BI dashboards.',
-      books: [
-        {
-          n: 'Power BI',
-          role: 'BI & Reporting',
-          bg: '#F2C811',
-          desc: 'Enterprise dashboards, executive KPI models, and semantic layers for public sector analytics.',
-          icon: '<svg viewBox="0 0 24 24"><rect x="3" y="12" width="4" height="9" rx="1" fill="#fff" opacity=".7"/><rect x="10" y="7" width="4" height="14" rx="1" fill="#fff" opacity=".85"/><rect x="17" y="3" width="4" height="18" rx="1" fill="#fff"/></svg>'
-        },
-        {
-          n: 'SAS',
-          role: 'Econometrics',
-          bg: '#005A9C',
-          desc: 'Macroeconomic time-series modeling, large-scale survey microdata imputation, and national accounts validation.',
-          icon: '<svg viewBox="0 0 24 24"><path fill="#fff" d="M20.5 7.8c-.8-1.9-2.5-3.3-4.5-3.8-3.3-.8-6.7.7-8.3 3.6-1.5 2.8-1 6.3 1.2 8.5 2.1 2.1 5.3 2.7 8 1.5 1.5-.7 2.7-2 3.3-3.6h-3.4c-.4.9-1.1 1.6-2.1 1.9-1.8.5-3.7-.4-4.5-2.1-.8-1.7-.3-3.7 1.2-4.8 1.4-1.1 3.4-1.2 4.9-.3l4.2-2.9z"/></svg>'
-        },
-        {
-          n: 'Python',
-          role: 'Data & Agentic Code',
-          bg: '#3776AB',
-          desc: 'Pandas, NumPy, Scikit-learn, LangGraph, DSPy, and custom FastAPI microservices for automated pipelines.',
-          icon: '<svg viewBox="0 0 24 24"><path fill="#fff" d="M11.9 2C8.6 2 6.6 3.4 6.6 5.8v2.2h5.5v.8H4.4C2.5 8.8 1 10.3 1 12.2c0 2 1.5 3.5 3.4 3.5h1.9v-2.7c0-2 1.6-3.6 3.6-3.6h5.5c1.6 0 3-1.3 3-3V5.8C18.4 3.4 15.2 2 11.9 2zm-3.1 2.5a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8zM12.1 22c3.3 0 5.3-1.4 5.3-3.8v-2.2H11.9v-.8h7.7c1.9 0 3.4-1.5 3.4-3.4 0-2-1.5-3.5-3.4-3.5h-1.9v2.7c0 2-1.6 3.6-3.6 3.6H8.6c-1.6 0-3 1.3-3 3v2.8c0 2.4 3.2 3.8 6.5 3.8zm3.1-2.5a.9.9 0 1 1 0-1.8.9.9 0 0 1 0 1.8z"/></svg>'
-        },
-        {
-          n: 'R',
-          role: 'Statistical Inference',
-          bg: '#276DC3',
-          desc: 'Tidyverse, ggplot2, survey sampling weights, regression diagnostics, and reproducible Quarto empirical reports.',
-          icon: '<svg viewBox="0 0 24 24"><path fill="#fff" d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm1 14.8h-2.5v-3.7h-1.8v3.7H6.3V7.2h5.2c2.4 0 4.1 1.4 4.1 3.5 0 1.5-.8 2.6-2 3.1l2.4 3zm-2.5-5.9c1 0 1.8-.5 1.8-1.5s-.8-1.5-1.8-1.5h-2.7v3h2.7z"/></svg>'
-        },
-        {
-          n: 'Stata',
-          role: 'Panel Data',
-          bg: '#1A446C',
-          desc: 'Panel regressions, difference-in-differences, instrumental variables, and microeconomic policy impact simulations.',
-          icon: '<svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3" fill="none" stroke="#fff" stroke-width="2"/><path fill="#fff" d="M7 8h10v2.2H13.2v5.6h-2.4v-5.6H7V8z"/></svg>'
-        },
-        {
-          n: 'SPSS',
-          role: 'Survey Crosstabs',
-          bg: '#C8102E',
-          desc: 'Complex multi-stage sample designs, cross-tabulations, factor analysis, and public opinion methodology.',
-          icon: '<svg viewBox="0 0 24 24"><path fill="#fff" d="M6 8.5c0-.8.7-1.5 1.5-1.5h4c1.4 0 2.5 1.1 2.5 2.5 0 .9-.5 1.7-1.2 2.1 1 .4 1.7 1.4 1.7 2.5 0 1.6-1.3 2.9-2.9 2.9H7.5C6.7 17 6 16.3 6 15.5v-7zm2.2.7v2.2h3.2c.6 0 1.1-.5 1.1-1.1s-.5-1.1-1.1-1.1H8.2zm0 4.4v2.2h3.5c.7 0 1.3-.6 1.3-1.3s-.6-1.3-1.3-1.3H8.2z"/><path fill="#fff" d="M16.5 14.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/></svg>'
-        }
-      ]
-    },
-    {
-      section: 'Section 02',
-      title: 'Frontier AI & Agentic Harnesses',
-      desc: 'Orchestrating autonomous coding agents, multi-agent MCP loops, local-privacy LLMs, and vector retrieval.',
-      books: [
-        {
-          n: 'Claude',
-          role: 'Orchestration',
-          bg: '#D97757',
-          desc: 'Claude Code & Opus: primary agentic architecture partner for multi-file engineering, policy RAG, and tests.',
-          icon: '<svg viewBox="0 0 24 24"><path fill="#fff" d="m4.7144 15.9555 4.7174-2.6471.079-.2307-.079-.1275h-.2307l-.7893-.0486-2.6956-.0729-2.3375-.0971-2.2646-.1214-.5707-.1215-.5343-.7042.0546-.3522.4797-.3218.686.0608 1.5179.1032 2.2767.1578 1.6514.0972 2.4468.255h.3886l.0546-.1579-.1336-.0971-.1032-.0972L6.973 9.8356l-2.55-1.6879-1.3356-.9714-.7225-.4918-.3643-.4614-.1578-1.0078.6557-.7225.8803.0607.2246.0607.8925.686 1.9064 1.4754 2.4893 1.8336.3643.3035.1457-.1032.0182-.0728-.164-.2733-1.3539-2.4467-1.445-2.4893-.6435-1.032-.17-.6194c-.0607-.255-.1032-.4674-.1032-.7285L6.287.1335 6.6997 0l.9957.1336.419.3642.6192 1.4147 1.0018 2.2282 1.5543 3.0296.4553.8985.2429.8318.091.255h.1579v-.1457l.1275-1.706.2368-2.0947.2307-2.6957.0789-.7589.3764-.9107.7468-.4918.5828.2793.4797.686-.0668.4433-.2853 1.8517-.5586 2.9021-.3643 1.9429h.2125l.2429-.2429.9835-1.3053 1.6514-2.0643.7286-.8196.85-.9046.5464-.4311h1.0321l.759 1.1293-.34 1.1657-1.0625 1.3478-.8804 1.1414-1.2628 1.7-.7893 1.36.0729.1093.1882-.0183 2.8535-.607 1.5421-.2794 1.8396-.3157.8318.3886.091.3946-.3278.8075-1.967.4857-2.3072.4614-3.4364.8136-.0425.0304.0486.0607 1.5482.1457.6618.0364h1.621l3.0175.2247.7892.522.4736.6376-.079.4857-1.2142.6193-1.6393-.3886-3.825-.9107-1.3113-.3279h-.1822v.1093l1.0929 1.0686 2.0035 1.8092 2.5075 2.3314.1275.5768-.3218.4554-.34-.0486-2.2039-1.6575-.85-.7468-1.9246-1.621h-.1275v.17l.4432.6496 2.3436 3.5214.1214 1.0807-.17.3521-.6071.2125-.6679-.1214-1.3721-1.9246L14.38 17.959l-1.1414-1.9428-.1397.079-.674 7.2552-.3156.3703-.7286.2793-.6071-.4614-.3218-.7468.3218-1.4753.3886-1.9246.3157-1.53.2853-1.9004.17-.6314-.0121-.0425-.1397.0182-1.4328 1.9672-2.1796 2.9446-1.7243 1.8456-.4128.164-.7164-.3704.0667-.6618.4008-.5889 2.386-3.0357 1.4389-1.882.929-1.0868-.0062-.1579h-.0546l-6.3385 4.1164-1.1293.1457-.4857-.4554.0608-.7467.2307-.2429 1.9064-1.3114Z"/></svg>'
-        },
-        {
-          n: 'Antigravity',
-          role: 'Agentic IDE',
-          bg: '#FFFFFF',
-          desc: 'Multi-agent orchestration and MCP tool execution—including on-device local-privacy-llm air-gap hooks.',
-          icon: '<svg viewBox="0 0 24 24"><defs><linearGradient id="agG2" x1="0" x2="1"><stop offset="0" stop-color="#4285F4"/><stop offset=".38" stop-color="#EA4335"/><stop offset=".68" stop-color="#FBBC05"/><stop offset="1" stop-color="#34A853"/></linearGradient></defs><path d="M4 19.5C6 12 8 4.5 12 4.5s6 7.5 8 15" fill="none" stroke="url(#agG2)" stroke-width="3.4" stroke-linecap="round"/></svg>'
-        },
-        {
-          n: 'ChatGPT',
-          role: 'Evaluation',
-          bg: '#0B0B0B',
-          desc: 'Comparative model evaluation, synthetic benchmark generation, and counterfactual validation.',
-          icon: '<svg viewBox="0 0 24 24"><path fill="#fff" d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z"/></svg>'
-        },
-        {
-          n: 'Hugging Face',
-          role: 'Open Models',
-          bg: 'linear-gradient(145deg, #FFD21E, #E69D00)',
-          desc: 'Open-weight model discovery, GGUF quantizations, and evaluation benchmarks for sovereign AI deployments.',
-          icon: '<svg viewBox="0 0 24 24"><path fill="#fff" d="M12.025 1.13c-5.77 0-10.449 4.647-10.449 10.378 0 1.112.178 2.181.503 3.185.064-.222.203-.444.416-.577a.96.96 0 0 1 .524-.15c.293 0 .584.124.84.284.278.173.48.408.71.694.226.282.458.611.684.951v-.014c.017-.324.106-.622.264-.874s.403-.487.762-.543c.3-.047.596.06.787.203s.31.313.4.467c.15.257.212.468.233.542.01.026.653 1.552 1.657 2.54.616.605 1.01 1.223 1.082 1.912.055.537-.096 1.059-.38 1.572.637.121 1.294.187 1.967.187.657 0 1.298-.063 1.921-.178-.287-.517-.44-1.041-.384-1.581.07-.69.465-1.307 1.081-1.913 1.004-.987 1.647-2.513 1.657-2.539.021-.074.083-.285.233-.542.09-.154.208-.323.4-.467a1.08 1.08 0 0 1 .787-.203c.359.056.604.29.762.543s.247.55.265.874v.015c.225-.34.457-.67.683-.952.23-.286.432-.52.71-.694.257-.16.547-.284.84-.285a.97.97 0 0 1 .524.151c.228.143.373.388.43.625l.006.04a10.3 10.3 0 0 0 .534-3.273c0-5.731-4.678-10.378-10.449-10.378M8.327 6.583a1.5 1.5 0 0 1 .713.174 1.487 1.487 0 0 1 .617 2.013c-.183.343-.762-.214-1.102-.094-.38.134-.532.914-.917.71a1.487 1.487 0 0 1 .69-2.803m7.486 0a1.487 1.487 0 0 1 .689 2.803c-.385.204-.536-.576-.916-.71-.34-.12-.92.437-1.103.094a1.487 1.487 0 0 1 .617-2.013 1.5 1.5 0 0 1 .713-.174m-10.68 1.55a.96.96 0 1 1 0 1.921.96.96 0 0 1 0-1.92m13.838 0a.96.96 0 1 1 0 1.92.96.96 0 0 1 0-1.92M8.489 11.458c.588.01 1.965 1.157 3.572 1.164 1.607-.007 2.984-1.155 3.572-1.164.196-.003.305.12.305.454 0 .886-.424 2.328-1.563 3.202-.22-.756-1.396-1.366-1.63-1.32q-.011.001-.02.006l-.044.026-.01.008-.03.024q-.018.017-.035.036l-.032.04a1 1 0 0 0-.058.09l-.014.025q-.049.088-.11.19a1 1 0 0 1-.083.116 1.2 1.2 0 0 1-.173.18q-.035.029-.075.058a1.3 1.3 0 0 1-.251-.243 1 1 0 0 1-.076-.107c-.124-.193-.177-.363-.337-.444-.034-.016-.104-.008-.2.022q-.094.03-.216.087-.06.028-.125.063l-.13.074q-.067.04-.136.086a3 3 0 0 0-.135.096 3 3 0 0 0-.26.219 2 2 0 0 0-.12.121 2 2 0 0 0-.106.128l-.002.002a2 2 0 0 0-.09.132l-.001.001a1.2 1.2 0 0 0-.105.212q-.013.036-.024.073c-1.139-.875-1.563-2.317-1.563-3.203 0-.334.109-.457.305-.454m.836 10.354c.824-1.19.766-2.082-.365-3.194-1.13-1.112-1.789-2.738-1.789-2.738s-.246-.945-.806-.858-.97 1.499.202 2.362c1.173.864-.233 1.45-.685.64-.45-.812-1.683-2.896-2.322-3.295s-1.089-.175-.938.647 2.822 2.813 2.562 3.244-1.176-.506-1.176-.506-2.866-2.567-3.49-1.898.473 1.23 2.037 2.16c1.564.932 1.686 1.178 1.464 1.53s-3.675-2.511-4-1.297c-.323 1.214 3.524 1.567 3.287 2.405-.238.839-2.71-1.587-3.216-.642-.506.946 3.49 2.056 3.522 2.064 1.29.33 4.568 1.028 5.713-.624m5.349 0c-.824-1.19-.766-2.082.365-3.194 1.13-1.112 1.789-2.738 1.789-2.738s.246-.945.806-.858.97 1.499-.202 2.362c-1.173.864.233 1.45.685.64.451-.812 1.683-2.896 2.322-3.295s1.089-.175.938.647-2.822 2.813-2.562 3.244 1.176-.506 1.176-.506 2.866-2.567 3.49-1.898-.473 1.23-2.037 2.16c-1.564.932-1.686 1.178-1.464 1.53s3.675-2.511 4-1.297c.323 1.214-3.524 1.567-3.287 2.405.238.839 2.71-1.587 3.216-.642.506.946-3.49 2.056-3.522 2.064-1.29.33-4.568 1.028-5.713-.624"/></svg>'
-        },
-        {
-          n: 'Qdrant',
-          role: 'Vector DB',
-          bg: 'linear-gradient(145deg, #DC244C, #8F0B29)',
-          desc: 'Rust-native vector database powering semantic search, high-dimensional embeddings, and RAG retrieval.',
-          icon: '<svg viewBox="0 0 24 24"><path fill="#fff" d="m12 16.5 3.897-2.25v-4.5L12 7.5 8.103 9.75v4.5zM1.607 18 12 24l3.897-2.25v-4.5L12 19.5l-6.495-3.75v-7.5L12 4.5l6.495 3.75v15L22.393 21V6L12 0 1.607 6Z"/></svg>'
-        },
-        {
-          n: 'ElevenLabs',
-          role: 'Voice AI',
-          bg: '#0B0B0B',
-          desc: 'Voice synthesis and interactive audio for multimodal applications and real-time accessibility.',
-          icon: '<svg viewBox="0 0 24 24"><path fill="#fff" d="M4.6035 0v24h4.9317V0zm9.8613 0v24h4.9317V0z"/></svg>'
-        }
-      ]
-    },
-    {
-      section: 'Section 03',
-      title: 'Cloud, Data & Edge Infrastructure',
-      desc: 'High-availability global edge networking, Postgres vector storage, and zero-downtime deployment pipelines.',
-      books: [
-        {
-          n: 'Cloudflare',
-          role: 'Edge & DNS',
-          bg: 'linear-gradient(145deg, #F6821F, #C85A05)',
-          desc: 'Edge networking, DNS routing, Workers, and Zero Trust security for Peji Systems client platforms.',
-          icon: '<svg viewBox="0 0 24 24"><path fill="#fff" d="M16.5088 16.8447c.1475-.5068.0908-.9707-.1553-1.3154-.2246-.3164-.6045-.499-1.0615-.5205l-8.6592-.1123a.1559.1559 0 0 1-.1333-.0713c-.0283-.042-.0351-.0986-.021-.1553.0278-.084.1123-.1484.2036-.1562l8.7359-.1123c1.0351-.0489 2.1601-.8868 2.5537-1.9136l.499-1.3013c.0215-.0561.0293-.1128.0147-.168-.5625-2.5463-2.835-4.4453-5.5499-4.4453-2.5039 0-4.6284 1.6177-5.3876 3.8614-.4927-.3658-1.1187-.5625-1.794-.499-1.2026.119-2.1665 1.083-2.2861 2.2856-.0283.31-.0069.6128.0635.894C1.5683 13.171 0 14.7754 0 16.752c0 .1748.0142.3515.0352.5273.0141.083.0844.1475.1689.1475h15.9814c.0909 0 .1758-.0645.2032-.1553l.12-.4268zm2.7568-5.5634c-.0771 0-.1611 0-.2383.0112-.0566 0-.1054.0415-.127.0976l-.3378 1.1744c-.1475.5068-.0918.9707.1543 1.3164.2256.3164.6055.498 1.0625.5195l1.8437.1133c.0557 0 .1055.0263.1329.0703.0283.043.0351.1074.0214.1562-.0283.084-.1132.1485-.204.1553l-1.921.1123c-1.041.0488-2.1582.8867-2.5527 1.914l-.1406.3585c-.0283.0713.0215.1416.0986.1416h6.5977c.0771 0 .1474-.0489.169-.126.1122-.4082.1757-.837.1757-1.2803 0-2.6025-2.125-4.727-4.7344-4.727"/></svg>'
-        },
-        {
-          n: 'Supabase',
-          role: 'Postgres & Vectors',
-          bg: '#1C1C1C',
-          desc: 'Postgres, pgvector embeddings, and row-level security behind sovereign web applications.',
-          icon: '<svg viewBox="0 0 24 24"><path fill="#3ECF8E" d="M11.9 1.036c-.015-.986-1.26-1.41-1.874-.637L.764 12.05C-.33 13.427.65 15.455 2.409 15.455h9.579l.113 7.51c.014.985 1.259 1.408 1.873.636l9.262-11.653c1.093-1.375.113-3.403-1.645-3.403h-9.642z"/></svg>'
-        },
-        {
-          n: 'Vercel',
-          role: 'Edge Deploy',
-          bg: '#0B0B0B',
-          desc: 'Instant edge deployments for Peji Systems client platforms, interactive calculators, and prototypes.',
-          icon: '<svg viewBox="0 0 24 24"><path fill="#fff" transform="translate(3.6 4) scale(.7)" d="m12 1.608 12 20.784H0Z"/></svg>'
-        },
-        {
-          n: 'Netlify',
-          role: 'CI/CD & Previews',
-          bg: 'linear-gradient(145deg, #00C7B7, #007A70)',
-          desc: 'Continuous automated deployments, webhooks, and preview environments for interactive prototypes.',
-          icon: '<svg viewBox="0 0 24 24"><path fill="#fff" d="M6.49 19.04h-.23L5.13 17.9v-.23l1.73-1.71h1.2l.15.15v1.2L6.5 19.04ZM5.13 6.31V6.1l1.13-1.13h.23L8.2 6.68v1.2l-.15.15h-1.2L5.13 6.31Zm9.96 9.09h-1.65l-.14-.13v-3.83c0-.68-.27-1.2-1.1-1.23-.42 0-.9 0-1.43.02l-.07.08v4.96l-.14.14H8.9l-.13-.14V8.73l.13-.14h3.7a2.6 2.6 0 0 1 2.61 2.6v4.08l-.13.14Zm-8.37-2.44H.14L0 12.82v-1.64l.14-.14h6.58l.14.14v1.64l-.14.14Zm17.14 0h-6.58l-.14-.14v-1.64l.14-.14h6.58l.14.14v1.64l-.14.14ZM11.05 6.55V1.64l.14-.14h1.65l.14.14v4.9l-.14.14h-1.65l-.14-.13Zm0 15.81v-4.9l.14-.14h1.65l.14.13v4.91l-.14.14h-1.65l-.14-.14Z"/></svg>'
-        }
-      ]
-    },
-    {
-      section: 'Section 04',
-      title: 'Product Design & Operations',
-      desc: 'System architecture diagrams, DDI 3.3 metadata specifications, bilingual questionnaires, and executive briefings.',
-      books: [
-        {
-          n: 'Figma',
-          role: 'System Design',
-          bg: '#1E1E1E',
-          desc: 'System diagrams, Capability Atlas layouts, and rapid UI wireframing before jumping into code.',
-          icon: '<svg viewBox="0 0 24 24"><path fill="#F24E1E" d="M8.5 2H12v6.67H8.5a3.33 3.33 0 0 1 0-6.67z"/><path fill="#FF7262" d="M12 2h3.5a3.33 3.33 0 0 1 0 6.67H12z"/><path fill="#A259FF" d="M8.5 8.67H12v6.66H8.5a3.33 3.33 0 0 1 0-6.66z"/><circle fill="#1ABCFE" cx="15.5" cy="12" r="3.33"/><path fill="#0ACF83" d="M8.5 15.33H12v3.34a3.33 3.33 0 1 1-3.5-3.34z"/></svg>'
-        },
-        {
-          n: 'Canva',
-          role: 'Visual Comms',
-          bg: 'linear-gradient(135deg, #00C4CC, #7D2AE8)',
-          desc: 'DDI 3.3 metadata schemas, bilingual questionnaire specs, and manager storytelling decks.',
-          icon: '<svg viewBox="0 0 24 24"><path fill="#fff" d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zM6.962 7.68c.754 0 1.337.549 1.405 1.2.069.583-.171 1.097-.822 1.406-.343.171-.48.172-.549.069-.034-.069 0-.137.069-.206.617-.514.617-.926.548-1.508-.034-.378-.308-.618-.583-.618-1.2 0-2.914 2.674-2.674 4.629.103.754.549 1.646 1.509 1.646.308 0 .65-.103.96-.24.5-.264.799-.47 1.097-.8-.073-.885.704-2.046 1.851-2.046.515 0 .926.205.96.583.068.514-.377.582-.514.582s-.378-.034-.378-.17c-.034-.138.309-.07.275-.378-.035-.206-.24-.274-.446-.274-.72 0-1.131.994-1.029 1.611.035.275.172.549.447.549.205 0 .514-.31.617-.755.068-.308.343-.514.583-.514.102 0 .17.034.205.171v.138c-.034.137-.137.548-.102.651 0 .069.034.171.17.171.092 0 .436-.18.777-.459.117-.59.253-1.298.253-1.357.034-.24.137-.48.617-.48.103 0 .171.034.205.171v.138l-.136.617c.445-.583 1.097-.994 1.508-.994.172 0 .309.102.309.274 0 .103 0 .274-.069.446-.137.377-.309.96-.412 1.474 0 .137.035.274.207.274.171 0 .685-.206 1.096-.754l.007-.004c-.002-.068-.007-.134-.007-.202 0-.411.035-.754.104-.994.068-.274.411-.514.617-.514.103 0 .205.069.205.171 0 .035 0 .103-.034.137-.137.446-.24.857-.24 1.269 0 .24.034.582.102.788 0 .034.035.069.07.069.068 0 .548-.445.89-1.028-.308-.206-.48-.549-.48-.96 0-.72.446-1.097.858-1.097.343 0 .617.24.617.72 0 .308-.103.65-.274.96h.102a.77.77 0 0 0 .584-.24.293.293 0 0 1 .134-.117c.335-.425.83-.74 1.41-.74.48 0 .924.205.959.582.068.515-.378.618-.515.618l-.002-.002c-.138 0-.377-.035-.377-.172 0-.137.309-.068.274-.376-.034-.206-.24-.275-.446-.275-.686 0-1.13.891-1.028 1.611.034.275.171.583.445.583.206 0 .515-.308.652-.754.068-.274.343-.514.583-.514.103 0 .17.034.205.171 0 .069 0 .206-.137.652-.17.308-.171.48-.137.617.034.274.171.48.309.583.034.034.068.102.068.102 0 .069-.034.138-.137.138-.034 0-.068 0-.103-.035-.514-.205-.72-.548-.789-.891-.205.24-.445.377-.72.377-.445 0-.89-.411-.96-.926a1.609 1.609 0 0 1 .075-.649c-.203.13-.422.203-.623.203h-.17c-.447.652-.927 1.098-1.27 1.303a.896.896 0 0 1-.377.104c-.068 0-.171-.035-.205-.104-.095-.152-.156-.392-.193-.667-.481.527-1.145.805-1.453.805-.343 0-.548-.206-.582-.55v-.376c.102-.754.377-1.2.377-1.337a.074.074 0 0 0-.069-.07c-.24 0-1.028.824-1.166 1.373l-.103.445c-.068.309-.377.515-.582.515-.103 0-.172-.035-.206-.172v-.137l.046-.233c-.435.31-.87.508-1.075.508-.308 0-.48-.172-.514-.412-.206.274-.445.412-.754.412-.352 0-.696-.24-.862-.593-.244.275-.523.553-.852.764-.48.309-1.028.549-1.68.549-.582 0-1.097-.309-1.371-.583-.412-.377-.651-.96-.686-1.509-.205-1.68.823-3.84 2.4-4.8.378-.205.755-.343 1.132-.343zm9.77 3.291c-.104 0-.172.172-.172.343 0 .274.137.583.309.755a1.74 1.74 0 0 0 .102-.583c0-.343-.137-.515-.24-.515z"/></svg>'
-        },
-        {
-          n: 'Microsoft Teams',
-          role: 'Leadership',
-          bg: 'linear-gradient(160deg, #7B83EB, #4B53BC)',
-          desc: 'Briefing senior managers, Treasury Board submissions, and OECD working party collaborations.',
-          icon: '<svg viewBox="0 0 24 24"><path fill="#fff" d="M20.625 8.127q-.55 0-1.025-.205-.475-.205-.832-.563-.358-.357-.563-.832Q18 6.053 18 5.502q0-.54.205-1.02t.563-.837q.357-.358.832-.563.474-.205 1.025-.205.54 0 1.02.205t.837.563q.358.357.563.837.205.48.205 1.02 0 .55-.205 1.025-.205.475-.563.832-.357.358-.837.563-.48.205-1.02.205zm0-3.75q-.469 0-.797.328-.328.328-.328.797 0 .469.328.797.328.328.797.328.469 0 .797-.328.328-.328.328-.797 0-.469-.328-.797-.328-.328-.797-.328zM24 10.002v5.578q0 .774-.293 1.46-.293.685-.803 1.194-.51.51-1.195.803-.686.293-1.459.293-.445 0-.908-.105-.463-.106-.85-.329-.293.95-.855 1.729-.563.78-1.319 1.336-.756.557-1.67.861-.914.305-1.898.305-1.148 0-2.162-.398-1.014-.399-1.805-1.102-.79-.703-1.312-1.664t-.674-2.086h-5.8q-.411 0-.704-.293T0 16.881V6.873q0-.41.293-.703t.703-.293h8.59q-.34-.715-.34-1.5 0-.727.275-1.365.276-.639.75-1.114.475-.474 1.114-.75.638-.275 1.365-.275t1.365.275q.639.276 1.114.75.474.475.75 1.114.275.638.275 1.365t-.275 1.365q-.276.639-.75 1.113-.475.475-1.114.75-.638.276-1.365.276-.188 0-.375-.024-.188-.023-.375-.058v1.078h10.875q.469 0 .797.328.328.328.328.797zM12.75 2.373q-.41 0-.78.158-.368.158-.638.434-.27.275-.428.639-.158.363-.158.773 0 .41.158.78.159.368.428.638.27.27.639.428.369.158.779.158.41 0 .773-.158.364-.159.64-.428.274-.27.433-.639.158-.369.158-.779 0-.41-.158-.773-.159-.364-.434-.64-.275-.275-.639-.433-.363-.158-.773-.158zM6.937 9.814h2.25V7.94H2.814v1.875h2.25v6h1.875zm10.313 7.313v-6.75H12v6.504q0 .41-.293.703t-.703.293H8.309q.152.809.556 1.5.405.691.985 1.19.58.497 1.318.779.738.281 1.582.281.926 0 1.746-.352.82-.351 1.436-.966.615-.616.966-1.43.352-.815.352-1.752zm5.25-1.547v-5.203h-3.75v6.855q.305.305.691.452.387.146.809.146.469 0 .879-.176.41-.175.715-.48.304-.305.48-.715t.176-.879Z"/></svg>'
-        },
-        {
-          n: 'Gmail',
-          role: 'Inquiries',
-          bg: '#FFFFFF',
-          desc: 'Direct communication at contact@peji.ca for client platform builds, sovereign AI, and manager roles.',
-          icon: '<svg viewBox="0 0 24 24"><path fill="#4285F4" d="M2 6.5v11A1.5 1.5 0 0 0 3.5 19H6V10l-4-3.5z"/><path fill="#34A853" d="M18 19h2.5a1.5 1.5 0 0 0 1.5-1.5v-11L18 10z"/><path fill="#FBBC04" d="M18 5.5V10l4-3.5V5.2c0-1.3-1.5-2-2.5-1.2z"/><path fill="#EA4335" d="M6 10V5.5l6 4.5 6-4.5V10l-6 4.5z"/><path fill="#C5221F" d="M2 5.2v1.3L6 10V5.5L4.5 4C3.5 3.2 2 3.9 2 5.2z"/></svg>'
-        }
-      ]
-    }
+  const TOOL_ROLE = { Claude: 'Orchestrate', Vercel: 'Ship', Antigravity: 'Agentic IDE', Supabase: 'Backend', Figma: 'Design', Cloudflare: 'Edge & DNS', 'Hugging Face': 'Open Models', Netlify: 'Deploy', Qdrant: 'Vector DB', 'Microsoft Teams': 'Executive', Canva: 'DDI 3.3', ChatGPT: 'Research', Gmail: 'Peji.ca', ElevenLabs: 'Audio' };
+  const TOOLS = [
+    { n: 'Claude', bg: '#D97757', how: 'Claude Code & Opus: my primary agentic architecture partner for multi-file engineering, policy RAG, and tests.', icon: '<svg viewBox="0 0 24 24"><path fill="#fff" d="m4.7144 15.9555 4.7174-2.6471.079-.2307-.079-.1275h-.2307l-.7893-.0486-2.6956-.0729-2.3375-.0971-2.2646-.1214-.5707-.1215-.5343-.7042.0546-.3522.4797-.3218.686.0608 1.5179.1032 2.2767.1578 1.6514.0972 2.4468.255h.3886l.0546-.1579-.1336-.0971-.1032-.0972L6.973 9.8356l-2.55-1.6879-1.3356-.9714-.7225-.4918-.3643-.4614-.1578-1.0078.6557-.7225.8803.0607.2246.0607.8925.686 1.9064 1.4754 2.4893 1.8336.3643.3035.1457-.1032.0182-.0728-.164-.2733-1.3539-2.4467-1.445-2.4893-.6435-1.032-.17-.6194c-.0607-.255-.1032-.4674-.1032-.7285L6.287.1335 6.6997 0l.9957.1336.419.3642.6192 1.4147 1.0018 2.2282 1.5543 3.0296.4553.8985.2429.8318.091.255h.1579v-.1457l.1275-1.706.2368-2.0947.2307-2.6957.0789-.7589.3764-.9107.7468-.4918.5828.2793.4797.686-.0668.4433-.2853 1.8517-.5586 2.9021-.3643 1.9429h.2125l.2429-.2429.9835-1.3053 1.6514-2.0643.7286-.8196.85-.9046.5464-.4311h1.0321l.759 1.1293-.34 1.1657-1.0625 1.3478-.8804 1.1414-1.2628 1.7-.7893 1.36.0729.1093.1882-.0183 2.8535-.607 1.5421-.2794 1.8396-.3157.8318.3886.091.3946-.3278.8075-1.967.4857-2.3072.4614-3.4364.8136-.0425.0304.0486.0607 1.5482.1457.6618.0364h1.621l3.0175.2247.7892.522.4736.6376-.079.4857-1.2142.6193-1.6393-.3886-3.825-.9107-1.3113-.3279h-.1822v.1093l1.0929 1.0686 2.0035 1.8092 2.5075 2.3314.1275.5768-.3218.4554-.34-.0486-2.2039-1.6575-.85-.7468-1.9246-1.621h-.1275v.17l.4432.6496 2.3436 3.5214.1214 1.0807-.17.3521-.6071.2125-.6679-.1214-1.3721-1.9246L14.38 17.959l-1.1414-1.9428-.1397.079-.674 7.2552-.3156.3703-.7286.2793-.6071-.4614-.3218-.7468.3218-1.4753.3886-1.9246.3157-1.53.2853-1.9004.17-.6314-.0121-.0425-.1397.0182-1.4328 1.9672-2.1796 2.9446-1.7243 1.8456-.4128.164-.7164-.3704.0667-.6618.4008-.5889 2.386-3.0357 1.4389-1.882.929-1.0868-.0062-.1579h-.0546l-6.3385 4.1164-1.1293.1457-.4857-.4554.0608-.7467.2307-.2429 1.9064-1.3114Z"/></svg>' },
+    { n: 'Vercel', bg: '#0B0B0B', how: 'Instant edge deployments for Peji.ca client apps, interactive calculators, and sabbatical prototypes.', icon: '<svg viewBox="0 0 24 24"><path fill="#fff" transform="translate(3.6 4) scale(.7)" d="m12 1.608 12 20.784H0Z"/></svg>' },
+    { n: 'Antigravity', bg: '#FFFFFF', how: 'Multi-agent orchestration & MCP tool execution—including my local-privacy-llm air-gap hooks.', icon: '<svg viewBox="0 0 24 24"><defs><linearGradient id="agG" x1="0" x2="1"><stop offset="0" stop-color="#4285F4"/><stop offset=".38" stop-color="#EA4335"/><stop offset=".68" stop-color="#FBBC05"/><stop offset="1" stop-color="#34A853"/></linearGradient></defs><path d="M4 19.5C6 12 8 4.5 12 4.5s6 7.5 8 15" fill="none" stroke="url(#agG)" stroke-width="3.4" stroke-linecap="round"/></svg>' },
+    { n: 'Supabase', bg: '#1C1C1C', how: 'Postgres, pgvector embeddings, and row-level security behind my full-stack web apps.', icon: '<svg viewBox="0 0 24 24"><path fill="#3ECF8E" d="M11.9 1.036c-.015-.986-1.26-1.41-1.874-.637L.764 12.05C-.33 13.427.65 15.455 2.409 15.455h9.579l.113 7.51c.014.985 1.259 1.408 1.873.636l9.262-11.653c1.093-1.375.113-3.403-1.645-3.403h-9.642z"/></svg>' },
+    { n: 'Figma', bg: '#1E1E1E', how: 'System diagrams, Capability Atlas layouts, and rapid UI wireframing before jumping into code.', icon: '<svg viewBox="0 0 24 24"><path fill="#F24E1E" d="M8.5 2H12v6.67H8.5a3.33 3.33 0 0 1 0-6.67z"/><path fill="#FF7262" d="M12 2h3.5a3.33 3.33 0 0 1 0 6.67H12z"/><path fill="#A259FF" d="M8.5 8.67H12v6.66H8.5a3.33 3.33 0 0 1 0-6.66z"/><circle fill="#1ABCFE" cx="15.5" cy="12" r="3.33"/><path fill="#0ACF83" d="M8.5 15.33H12v3.34a3.33 3.33 0 1 1-3.5-3.34z"/></svg>' },
+    { n: 'Cloudflare', bg: 'linear-gradient(145deg, #F6821F, #C85A05)', how: 'Edge networking, DNS routing, Workers, and Zero Trust security for Peji Systems client platforms.', icon: '<svg viewBox="0 0 24 24"><path fill="#fff" d="M16.5088 16.8447c.1475-.5068.0908-.9707-.1553-1.3154-.2246-.3164-.6045-.499-1.0615-.5205l-8.6592-.1123a.1559.1559 0 0 1-.1333-.0713c-.0283-.042-.0351-.0986-.021-.1553.0278-.084.1123-.1484.2036-.1562l8.7359-.1123c1.0351-.0489 2.1601-.8868 2.5537-1.9136l.499-1.3013c.0215-.0561.0293-.1128.0147-.168-.5625-2.5463-2.835-4.4453-5.5499-4.4453-2.5039 0-4.6284 1.6177-5.3876 3.8614-.4927-.3658-1.1187-.5625-1.794-.499-1.2026.119-2.1665 1.083-2.2861 2.2856-.0283.31-.0069.6128.0635.894C1.5683 13.171 0 14.7754 0 16.752c0 .1748.0142.3515.0352.5273.0141.083.0844.1475.1689.1475h15.9814c.0909 0 .1758-.0645.2032-.1553l.12-.4268zm2.7568-5.5634c-.0771 0-.1611 0-.2383.0112-.0566 0-.1054.0415-.127.0976l-.3378 1.1744c-.1475.5068-.0918.9707.1543 1.3164.2256.3164.6055.498 1.0625.5195l1.8437.1133c.0557 0 .1055.0263.1329.0703.0283.043.0351.1074.0214.1562-.0283.084-.1132.1485-.204.1553l-1.921.1123c-1.041.0488-2.1582.8867-2.5527 1.914l-.1406.3585c-.0283.0713.0215.1416.0986.1416h6.5977c.0771 0 .1474-.0489.169-.126.1122-.4082.1757-.837.1757-1.2803 0-2.6025-2.125-4.727-4.7344-4.727"/></svg>' },
+    { n: 'Hugging Face', bg: 'linear-gradient(145deg, #FFD21E, #E69D00)', how: 'Open-weight model discovery, GGUF quantizations, and evaluation benchmarks for sovereign AI deployments.', icon: '<svg viewBox="0 0 24 24"><path fill="#fff" d="M12.025 1.13c-5.77 0-10.449 4.647-10.449 10.378 0 1.112.178 2.181.503 3.185.064-.222.203-.444.416-.577a.96.96 0 0 1 .524-.15c.293 0 .584.124.84.284.278.173.48.408.71.694.226.282.458.611.684.951v-.014c.017-.324.106-.622.264-.874s.403-.487.762-.543c.3-.047.596.06.787.203s.31.313.4.467c.15.257.212.468.233.542.01.026.653 1.552 1.657 2.54.616.605 1.01 1.223 1.082 1.912.055.537-.096 1.059-.38 1.572.637.121 1.294.187 1.967.187.657 0 1.298-.063 1.921-.178-.287-.517-.44-1.041-.384-1.581.07-.69.465-1.307 1.081-1.913 1.004-.987 1.647-2.513 1.657-2.539.021-.074.083-.285.233-.542.09-.154.208-.323.4-.467a1.08 1.08 0 0 1 .787-.203c.359.056.604.29.762.543s.247.55.265.874v.015c.225-.34.457-.67.683-.952.23-.286.432-.52.71-.694.257-.16.547-.284.84-.285a.97.97 0 0 1 .524.151c.228.143.373.388.43.625l.006.04a10.3 10.3 0 0 0 .534-3.273c0-5.731-4.678-10.378-10.449-10.378M8.327 6.583a1.5 1.5 0 0 1 .713.174 1.487 1.487 0 0 1 .617 2.013c-.183.343-.762-.214-1.102-.094-.38.134-.532.914-.917.71a1.487 1.487 0 0 1 .69-2.803m7.486 0a1.487 1.487 0 0 1 .689 2.803c-.385.204-.536-.576-.916-.71-.34-.12-.92.437-1.103.094a1.487 1.487 0 0 1 .617-2.013 1.5 1.5 0 0 1 .713-.174m-10.68 1.55a.96.96 0 1 1 0 1.921.96.96 0 0 1 0-1.92m13.838 0a.96.96 0 1 1 0 1.92.96.96 0 0 1 0-1.92M8.489 11.458c.588.01 1.965 1.157 3.572 1.164 1.607-.007 2.984-1.155 3.572-1.164.196-.003.305.12.305.454 0 .886-.424 2.328-1.563 3.202-.22-.756-1.396-1.366-1.63-1.32q-.011.001-.02.006l-.044.026-.01.008-.03.024q-.018.017-.035.036l-.032.04a1 1 0 0 0-.058.09l-.014.025q-.049.088-.11.19a1 1 0 0 1-.083.116 1.2 1.2 0 0 1-.173.18q-.035.029-.075.058a1.3 1.3 0 0 1-.251-.243 1 1 0 0 1-.076-.107c-.124-.193-.177-.363-.337-.444-.034-.016-.104-.008-.2.022q-.094.03-.216.087-.06.028-.125.063l-.13.074q-.067.04-.136.086a3 3 0 0 0-.135.096 3 3 0 0 0-.26.219 2 2 0 0 0-.12.121 2 2 0 0 0-.106.128l-.002.002a2 2 0 0 0-.09.132l-.001.001a1.2 1.2 0 0 0-.105.212q-.013.036-.024.073c-1.139-.875-1.563-2.317-1.563-3.203 0-.334.109-.457.305-.454m.836 10.354c.824-1.19.766-2.082-.365-3.194-1.13-1.112-1.789-2.738-1.789-2.738s-.246-.945-.806-.858-.97 1.499.202 2.362c1.173.864-.233 1.45-.685.64-.45-.812-1.683-2.896-2.322-3.295s-1.089-.175-.938.647 2.822 2.813 2.562 3.244-1.176-.506-1.176-.506-2.866-2.567-3.49-1.898.473 1.23 2.037 2.16c1.564.932 1.686 1.178 1.464 1.53s-3.675-2.511-4-1.297c-.323 1.214 3.524 1.567 3.287 2.405-.238.839-2.71-1.587-3.216-.642-.506.946 3.49 2.056 3.522 2.064 1.29.33 4.568 1.028 5.713-.624m5.349 0c-.824-1.19-.766-2.082.365-3.194 1.13-1.112 1.789-2.738 1.789-2.738s.246-.945.806-.858.97 1.499-.202 2.362c-1.173.864.233 1.45.685.64.451-.812 1.683-2.896 2.322-3.295s1.089-.175.938.647-2.822 2.813-2.562 3.244 1.176-.506 1.176-.506 2.866-2.567 3.49-1.898-.473 1.23-2.037 2.16c-1.564.932-1.686 1.178-1.464 1.53s3.675-2.511 4-1.297c.323 1.214-3.524 1.567-3.287 2.405.238.839 2.71-1.587 3.216-.642.506.946-3.49 2.056-3.522 2.064-1.29.33-4.568 1.028-5.713-.624"/></svg>' },
+    { n: 'Netlify', bg: 'linear-gradient(145deg, #00C7B7, #007A70)', how: 'Continuous automated deployments, webhooks, and preview environments for interactive prototypes.', icon: '<svg viewBox="0 0 24 24"><path fill="#fff" d="M6.49 19.04h-.23L5.13 17.9v-.23l1.73-1.71h1.2l.15.15v1.2L6.5 19.04ZM5.13 6.31V6.1l1.13-1.13h.23L8.2 6.68v1.2l-.15.15h-1.2L5.13 6.31Zm9.96 9.09h-1.65l-.14-.13v-3.83c0-.68-.27-1.2-1.1-1.23-.42 0-.9 0-1.43.02l-.07.08v4.96l-.14.14H8.9l-.13-.14V8.73l.13-.14h3.7a2.6 2.6 0 0 1 2.61 2.6v4.08l-.13.14Zm-8.37-2.44H.14L0 12.82v-1.64l.14-.14h6.58l.14.14v1.64l-.14.14Zm17.14 0h-6.58l-.14-.14v-1.64l.14-.14h6.58l.14.14v1.64l-.14.14ZM11.05 6.55V1.64l.14-.14h1.65l.14.14v4.9l-.14.14h-1.65l-.14-.13Zm0 15.81v-4.9l.14-.14h1.65l.14.13v4.91l-.14.14h-1.65l-.14-.14Z"/></svg>' },
+    { n: 'Qdrant', bg: 'linear-gradient(145deg, #DC244C, #8F0B29)', how: 'Rust-native vector database powering semantic search, high-dimensional embeddings, and RAG retrieval.', icon: '<svg viewBox="0 0 24 24"><path fill="#fff" d="m12 16.5 3.897-2.25v-4.5L12 7.5 8.103 9.75v4.5zM1.607 18 12 24l3.897-2.25v-4.5L12 19.5l-6.495-3.75v-7.5L12 4.5l6.495 3.75v15L22.393 21V6L12 0 1.607 6Z"/></svg>' },
+    { n: 'Microsoft Teams', bg: 'linear-gradient(160deg, #7B83EB, #4B53BC)', how: 'Briefing senior executives, Treasury Board submissions, and OECD working party collaborations.', icon: '<svg viewBox="0 0 24 24"><path fill="#fff" d="M20.625 8.127q-.55 0-1.025-.205-.475-.205-.832-.563-.358-.357-.563-.832Q18 6.053 18 5.502q0-.54.205-1.02t.563-.837q.357-.358.832-.563.474-.205 1.025-.205.54 0 1.02.205t.837.563q.358.357.563.837.205.48.205 1.02 0 .55-.205 1.025-.205.475-.563.832-.357.358-.837.563-.48.205-1.02.205zm0-3.75q-.469 0-.797.328-.328.328-.328.797 0 .469.328.797.328.328.797.328.469 0 .797-.328.328-.328.328-.797 0-.469-.328-.797-.328-.328-.797-.328zM24 10.002v5.578q0 .774-.293 1.46-.293.685-.803 1.194-.51.51-1.195.803-.686.293-1.459.293-.445 0-.908-.105-.463-.106-.85-.329-.293.95-.855 1.729-.563.78-1.319 1.336-.756.557-1.67.861-.914.305-1.898.305-1.148 0-2.162-.398-1.014-.399-1.805-1.102-.79-.703-1.312-1.664t-.674-2.086h-5.8q-.411 0-.704-.293T0 16.881V6.873q0-.41.293-.703t.703-.293h8.59q-.34-.715-.34-1.5 0-.727.275-1.365.276-.639.75-1.114.475-.474 1.114-.75.638-.275 1.365-.275t1.365.275q.639.276 1.114.75.474.475.75 1.114.275.638.275 1.365t-.275 1.365q-.276.639-.75 1.113-.475.475-1.114.75-.638.276-1.365.276-.188 0-.375-.024-.188-.023-.375-.058v1.078h10.875q.469 0 .797.328.328.328.328.797zM12.75 2.373q-.41 0-.78.158-.368.158-.638.434-.27.275-.428.639-.158.363-.158.773 0 .41.158.78.159.368.428.638.27.27.639.428.369.158.779.158.41 0 .773-.158.364-.159.64-.428.274-.27.433-.639.158-.369.158-.779 0-.41-.158-.773-.159-.364-.434-.64-.275-.275-.639-.433-.363-.158-.773-.158zM6.937 9.814h2.25V7.94H2.814v1.875h2.25v6h1.875zm10.313 7.313v-6.75H12v6.504q0 .41-.293.703t-.703.293H8.309q.152.809.556 1.5.405.691.985 1.19.58.497 1.318.779.738.281 1.582.281.926 0 1.746-.352.82-.351 1.436-.966.615-.616.966-1.43.352-.815.352-1.752zm5.25-1.547v-5.203h-3.75v6.855q.305.305.691.452.387.146.809.146.469 0 .879-.176.41-.175.715-.48.304-.305.48-.715t.176-.879Z"/></svg>' },
+    { n: 'Canva', bg: 'linear-gradient(135deg, #00C4CC, #7D2AE8)', how: 'DDI 3.3 metadata schemas, bilingual questionnaire specs, and executive storytelling decks.', icon: '<svg viewBox="0 0 24 24"><path fill="#fff" d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zM6.962 7.68c.754 0 1.337.549 1.405 1.2.069.583-.171 1.097-.822 1.406-.343.171-.48.172-.549.069-.034-.069 0-.137.069-.206.617-.514.617-.926.548-1.508-.034-.378-.308-.618-.583-.618-1.2 0-2.914 2.674-2.674 4.629.103.754.549 1.646 1.509 1.646.308 0 .65-.103.96-.24.5-.264.799-.47 1.097-.8-.073-.885.704-2.046 1.851-2.046.515 0 .926.205.96.583.068.514-.377.582-.514.582s-.378-.034-.378-.17c-.034-.138.309-.07.275-.378-.035-.206-.24-.274-.446-.274-.72 0-1.131.994-1.029 1.611.035.275.172.549.447.549.205 0 .514-.31.617-.755.068-.308.343-.514.583-.514.102 0 .17.034.205.171v.138c-.034.137-.137.548-.102.651 0 .069.034.171.17.171.092 0 .436-.18.777-.459.117-.59.253-1.298.253-1.357.034-.24.137-.48.617-.48.103 0 .171.034.205.171v.138l-.136.617c.445-.583 1.097-.994 1.508-.994.172 0 .309.102.309.274 0 .103 0 .274-.069.446-.137.377-.309.96-.412 1.474 0 .137.035.274.207.274.171 0 .685-.206 1.096-.754l.007-.004c-.002-.068-.007-.134-.007-.202 0-.411.035-.754.104-.994.068-.274.411-.514.617-.514.103 0 .205.069.205.171 0 .035 0 .103-.034.137-.137.446-.24.857-.24 1.269 0 .24.034.582.102.788 0 .034.035.069.07.069.068 0 .548-.445.89-1.028-.308-.206-.48-.549-.48-.96 0-.72.446-1.097.858-1.097.343 0 .617.24.617.72 0 .308-.103.65-.274.96h.102a.77.77 0 0 0 .584-.24.293.293 0 0 1 .134-.117c.335-.425.83-.74 1.41-.74.48 0 .924.205.959.582.068.515-.378.618-.515.618l-.002-.002c-.138 0-.377-.035-.377-.172 0-.137.309-.068.274-.376-.034-.206-.24-.275-.446-.275-.686 0-1.13.891-1.028 1.611.034.275.171.583.445.583.206 0 .515-.308.652-.754.068-.274.343-.514.583-.514.103 0 .17.034.205.171 0 .069 0 .206-.137.652-.17.308-.171.48-.137.617.034.274.171.48.309.583.034.034.068.102.068.102 0 .069-.034.138-.137.138-.034 0-.068 0-.103-.035-.514-.205-.72-.548-.789-.891-.205.24-.445.377-.72.377-.445 0-.89-.411-.96-.926a1.609 1.609 0 0 1 .075-.649c-.203.13-.422.203-.623.203h-.17c-.447.652-.927 1.098-1.27 1.303a.896.896 0 0 1-.377.104c-.068 0-.171-.035-.205-.104-.095-.152-.156-.392-.193-.667-.481.527-1.145.805-1.453.805-.343 0-.548-.206-.582-.55v-.376c.102-.754.377-1.2.377-1.337a.074.074 0 0 0-.069-.07c-.24 0-1.028.824-1.166 1.373l-.103.445c-.068.309-.377.515-.582.515-.103 0-.172-.035-.206-.172v-.137l.046-.233c-.435.31-.87.508-1.075.508-.308 0-.48-.172-.514-.412-.206.274-.445.412-.754.412-.352 0-.696-.24-.862-.593-.244.275-.523.553-.852.764-.48.309-1.028.549-1.68.549-.582 0-1.097-.309-1.371-.583-.412-.377-.651-.96-.686-1.509-.205-1.68.823-3.84 2.4-4.8.378-.205.755-.343 1.132-.343zm9.77 3.291c-.104 0-.172.172-.172.343 0 .274.137.583.309.755a1.74 1.74 0 0 0 .102-.583c0-.343-.137-.515-.24-.515z"/></svg>' },
+    { n: 'ChatGPT', bg: '#0B0B0B', how: 'Cross-checking prompts, synthetic benchmark generation, and comparative model evaluations.', icon: '<svg viewBox="0 0 24 24"><path fill="#fff" d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z"/></svg>' },
+    { n: 'Gmail', bg: '#FFFFFF', how: 'Direct inbox at contact@peji.ca for client builds, sovereign AI deployments, and executive roles.', icon: '<svg viewBox="0 0 24 24"><path fill="#4285F4" d="M2 6.5v11A1.5 1.5 0 0 0 3.5 19H6V10l-4-3.5z"/><path fill="#34A853" d="M18 19h2.5a1.5 1.5 0 0 0 1.5-1.5v-11L18 10z"/><path fill="#FBBC04" d="M18 5.5V10l4-3.5V5.2c0-1.3-1.5-2-2.5-1.2z"/><path fill="#EA4335" d="M6 10V5.5l6 4.5 6-4.5V10l-6 4.5z"/><path fill="#C5221F" d="M2 5.2v1.3L6 10V5.5L4.5 4C3.5 3.2 2 3.9 2 5.2z"/></svg>' },
+    { n: 'ElevenLabs', bg: '#0B0B0B', how: 'Voice synthesis & interactive audio for game prototypes and multimodal demos.', icon: '<svg viewBox="0 0 24 24"><path fill="#fff" d="M4.6035 0v24h4.9317V0zm9.8613 0v24h4.9317V0z"/></svg>' }
   ];
-
-  const bookcaseShelves = $('#bookcaseShelves');
-  if (bookcaseShelves) {
-    bookcaseShelves.innerHTML = SHELVES.map(s => `
-      <div class="bc-shelf">
-        <div class="bc-shelf-header">
-          <span class="bc-shelf-tag"><span class="bc-brass-pin"></span>${s.section}</span>
-          <h3 class="bc-shelf-title">${s.title}</h3>
-        </div>
-        <div class="bc-books-row">
-          ${s.books.map(b => `
-            <div class="book-card" tabindex="0" role="article" aria-label="${b.n}: ${b.role}" title="${b.n} · ${b.role}">
-              <div class="book-spine"></div>
-              <div class="book-face">
-                <div class="book-icon" style="background:${b.bg}">${b.icon}</div>
-                <h4 class="book-name">${b.n}</h4>
-                <div class="book-role">${b.role}</div>
-              </div>
-            </div>
-          `).join('')}
-        </div>
-        <div class="bc-plank"></div>
-      </div>
-    `).join('');
+  const giftStageEl = $('#giftStage'), beam = $('#beam'), stackTrack = $('#stackTrack'), stackHead = $('#stackHead'), gift = $('#gift'), lidG = $('#lid'), gGlow = $('#gGlowEl'), burst = $('#burst'), ring = $('#ring'), toolTip = $('#toolTip'), giftCap = $('#giftCap'), confetti = $('#confetti');
+  let stTop = 0, stRange = 1, RX = 420, RY = 250, tipFor = -1;
+  if (!hoverable) $('#giftCapV').textContent = 'Tap';
+  // two rows of an arc that rises out of the box: a wide back row and a tighter front row
+  const MOUTH = -70;
+  const BUNCH = [[5, 6, 5, 1], [4, 5, 4, 3, 1]].map(rows => rows.flatMap((n, r) => Array.from({ length: n }, (_, k) => [r, k - (n - 1) / 2])));
+  let BS = 104, BCY = -380;
+  // an organic cloud of balloons (a sunflower spread inside an ellipse), all tied back to the box
+  // the tools land in a neat, glassy grid above the box, like a home screen
+  let TS = 1, BRX = 0, BRY = 0, COLS = 6, PX = 104, PY = 106, GTOP = -420, GIFT_LIFT = 0;
+  const toolPos = i => { const n = TOOLS.length, rows = Math.ceil(n / COLS), r = Math.floor(i / COLS), inRow = r < rows - 1 ? COLS : n - COLS * (rows - 1), c = i % COLS;
+    return [(c - (inRow - 1) / 2) * PX, GTOP + r * PY + PY / 2]; };
+  const toolPosOld = i => { if (mobile) { const row = i < 4 ? 0 : i < 8 ? 1 : 2, inRow = row < 2 ? 4 : TOOLS.length - 8, k = row < 2 ? i % 4 : i - 8; return [(k - (inRow - 1) / 2) * Math.min(86, vw * .22), -210 - (2 - row) * 100]; }
+    const a = (188 + 164 * i / (TOOLS.length - 1)) * Math.PI / 180; return [Math.cos(a) * RX, MOUTH + Math.sin(a) * RY]; };
+  const toolEls = TOOLS.map((t, i) => {
+    const b = document.createElement('button'); b.type = 'button'; b.className = 'tool'; b.style.setProperty('--bg', t.bg); b.style.setProperty('--i', i);
+    b.setAttribute('aria-label', `${t.n}: ${t.how}`);
+    b.innerHTML = `<span class="ti">${t.icon}</span><span class="tn">${t.n.replace('Microsoft ', '')}</span>`;
+    b.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') showTip(i); });
+    b.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse') showTip(-1); });
+    b.addEventListener('focus', () => showTip(i)); b.addEventListener('blur', () => showTip(-1));
+    b.addEventListener('click', () => showTip(tipFor === i ? -1 : i));
+    ring.appendChild(b); return b;
+  });
+  Array.from({ length: 14 }, (_, k) => { const el = document.createElement('i'); el.style.cssText = `--x0:${((k * 37) % 120) - 60}px;--x1:${((k * 71) % 260) - 130}px;--d:${(-k * .41).toFixed(2)}s;--s:${(.4 + (k * 29 % 10) / 14).toFixed(2)}`; confetti.appendChild(el); });
+  const strSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg'); strSvg.setAttribute('class', 'strings'); strSvg.setAttribute('aria-hidden', 'true'); ring.before(strSvg);
+  const strings = TOOLS.map(() => { const p = document.createElementNS('http://www.w3.org/2000/svg', 'path'); strSvg.appendChild(p); return p; });
+  function showTip(i) {
+    tipFor = i; toolEls.forEach((b, k) => b.classList.toggle('on', k === i)); ring.classList.toggle('hov', i >= 0);
+    if (i < 0 || !toolEls[i].classList.contains('set')) { toolTip.classList.remove('in'); giftCap.classList.remove('hide'); ring.classList.toggle('hov', false); return; }
+    const t = TOOLS[i];
+    $('#ttN').textContent = t.n; $('#ttP').textContent = t.how; $('#ttC').textContent = TOOL_ROLE[t.n] || ''; $('#ttI').innerHTML = t.icon; toolTip.style.setProperty('--bg', t.bg);
+    // sit right next to the hovered icon: outside edge first, flip inward if there's no room
+    const [px, py] = toolPos(i), w = mobile ? 220 : 300, gap = mobile ? 40 : 58;
+    let tx, ty = py;
+    if (mobile) { tx = clamp(px, -vw / 2 + w / 2 + 12, vw / 2 - w / 2 - 12); ty = py < GTOP + PY ? py + gap + 60 : py - gap - 56; }
+    else { const out = px >= 0 ? 1 : -1; tx = px + out * (gap + w / 2); if (Math.abs(tx) + w / 2 > vw / 2 - 16) tx = px - out * (gap + w / 2); }
+    toolTip.style.left = tx.toFixed(0) + 'px'; toolTip.style.top = ty.toFixed(0) + 'px';
+    toolTip.classList.add('in'); giftCap.classList.add('hide');
   }
+  let giftTap = false, giftQ = 0, giftGo = false;
+  const giftBtn = document.createElement('button'); giftBtn.type = 'button'; giftBtn.className = 'gift-tap'; giftBtn.innerHTML = '<i></i>Tap to unwrap'; $('#giftStage').parentElement.appendChild(giftBtn);
+  const unwrap = () => { if (giftTap && !giftGo) { giftGo = true; giftBtn.classList.add('gone'); } };
+  giftBtn.addEventListener('click', unwrap); $('#giftStage').addEventListener('click', unwrap);
+  function layoutStack() {
+    giftTap = true; $('#stack').classList.toggle('tap', giftTap);
+    stTop = top(stackTrack); stRange = Math.max(1, stackTrack.offsetHeight - vh);
+    RX = mobile ? vw * .44 : Math.min(vw * .42, 620); RY = mobile ? Math.min(vh * .46, 380) : Math.min(vh * .58, 480);
+    COLS = mobile ? (vh < 720 ? 6 : 5) : 9; PX = mobile ? Math.min(74, (vw - 24) / COLS) : Math.min(112, (vw - 80) / 9); PY = mobile ? 84 : 116; BS = 1; BRX = COLS * PX / 2;
+    // heading, icon rows and gift stack as one tight group: the gift sits right under the last row of icons
+    const pinBox = $('#giftStage').parentElement.getBoundingClientRect(), headB = stackHead.getBoundingClientRect().bottom - pinBox.top;
+    const giftTop = mobile ? 125 : 170, gapTop = mobile ? 18 : 30, gapMid = mobile ? 24 : 44, rows = Math.ceil(TOOLS.length / COLS);
+    // short screens: tighten and shrink the icon grid so it always sits fully above the gift
+    const room = pinBox.height - (mobile ? 120 : 150) - (headB + gapTop + gapMid + giftTop), basePY = PY;
+    if (rows * PY > room) PY = Math.max(mobile ? 42 : 62, room / rows);
+    TS = Math.min(1, PY / basePY); PX = Math.max(PX * TS, Math.min(PX, (vw - 24) / COLS) * TS);
+    const gridH = rows * PY;
+    const stageY = Math.min(pinBox.height - (mobile ? 120 : 150), headB + gapTop + gridH + gapMid + giftTop);
+    $('#giftStage').style.top = stageY + 'px';
+    GTOP = headB + gapTop - stageY; GIFT_LIFT = Math.max(0, stageY - (headB + gapTop + giftTop));
 
-  const stackTrack = $('#stackTrack');
-  let stTop = 0, stRange = 0;
-  function layoutStack() {}
-  function frameStack() {}
+  }
+  function frameStack(y) {
+    // the unwrap plays on its own clock: about seven unhurried seconds, eased at both ends
+    if (giftTap && giftGo) { if (!giftGo.t) giftGo = { t: performance.now() }; const u = reduce ? 1 : Math.min(1, (performance.now() - giftGo.t) / 7000); giftQ = u < 1 ? .5 - .5 * Math.cos(Math.PI * u) : 1; }
+    if (giftTap && !giftGo) { const gb = gift.getBoundingClientRect(), pb = giftBtn.parentElement.getBoundingClientRect(); if (gb.height) giftBtn.style.top = (gb.bottom - pb.top + 18).toFixed(0) + 'px'; }
+    const q = giftTap ? giftQ : clamp((y - stTop) / stRange), now = performance.now() / 1000;
+    const rise = ss(range(q, 0, .05)), shake = range(q, .03, .17), open = ss(range(q, .16, .25)), drop = ss(range(q, .14, .28));
+    giftStageEl.style.transform = `translate3d(0, ${(-(1 - drop) * GIFT_LIFT).toFixed(1)}px, 0)`;
+    const amp = reduce ? 0 : shake * (1 - open) * 3.5, rot = Math.sin(now * 23) * amp, hop = Math.abs(Math.sin(now * 11.5)) * amp * 1.4;
+    gift.style.transform = `translate3d(0, ${((1 - rise) * vh * .08 - hop).toFixed(1)}px, 0) rotate(${rot.toFixed(2)}deg) scale(${(.9 + .1 * rise).toFixed(3)})`;
+    lidG.style.transform = `translate(${(open * 90).toFixed(1)}px, ${(-open * 150 + Math.sin(open * Math.PI) * -40 + ss(range(q, .25, .38)) * 110).toFixed(1)}px) rotate(${(open * 28).toFixed(1)}deg)`;
+    gGlow.setAttribute('opacity', open.toFixed(3)); burst.style.opacity = (open * .95).toFixed(3); burst.style.scale = (.55 + .45 * open).toFixed(3);
+    $('#giftStage').classList.toggle('open', open > .6); beam.style.opacity = (open * .8).toFixed(3);
+    const hk = 0; stackHead.style.opacity = (1 - hk).toFixed(3); stackHead.style.transform = `translate3d(0, ${(-hk * 40).toFixed(1)}px, 0)`;
+    giftCap.style.opacity = 0;
+    toolEls.forEach((el, i) => {
+      const s0 = .27 + i * .028, f = ss(range(q, s0, s0 + .11)), [tx, ty] = toolPos(i);
+      const cx = tx * .25, cy = ty - 60, sx = 0, sy = MOUTH, u = 1 - f;
+      const x = u * u * sx + 2 * u * f * cx + f * f * tx, yy = u * u * sy + 2 * u * f * cy + f * f * ty;
+      el.style.transform = `translate3d(${x.toFixed(1)}px, ${yy.toFixed(1)}px, 0) scale(${((.2 + .8 * f) * TS).toFixed(3)}) rotate(${(u * (tx < 0 ? -40 : 40)).toFixed(1)}deg)`;
+      el.style.opacity = f > 0 ? Math.min(1, f * 5).toFixed(2) : 0; el.style.pointerEvents = f > .98 ? '' : 'none';
+      const set = f > .98; if (el.classList.contains('set') !== set) { el.classList.toggle('set', set); if (!set && tipFor === i) showTip(-1); }
+    });
+  }
 
   const procLine = $('#procLine'), procFg = $('#procFg'), procBg = $('#procBg'); let pNodes = [], pLen = 0, pTop = 0;
   PROC.forEach(([b, s, c], i) => { const n = document.createElement('div'); n.className = 'pnode' + (i % 2 ? ' up' : ''); n.style.setProperty('--c', c); n.innerHTML = `<span class="dot"></span><b>${b}</b><span>${s}</span>`; procLine.appendChild(n); pNodes.push(n); });
@@ -3119,12 +3030,12 @@ void main() {
   const fmtDate = t => { try { return new Date(t).toLocaleDateString(undefined, { month: 'short', day: 'numeric' }); } catch (_) { return ''; } };
   const nwRows = [$('#nwRow1'), $('#nwRow2')];
   const SEED_NOTES = [
-    { id: 'seed-1', name: 'Director General', role: 'Management Leadership', company: 'Statistics Canada', note: 'Peter authored the $25M Budget 2025 Techstat business case and modernized our Digital Economy pipelines from SAS to R with rare strategic clarity.', at: Date.now() - 86400000 * 18 },
+    { id: 'seed-1', name: 'Director General', role: 'Executive Leadership', company: 'Statistics Canada', note: 'Peter authored the $25M Budget 2025 Techstat business case and modernized our Digital Economy pipelines from SAS to R with rare strategic clarity.', at: Date.now() - 86400000 * 18 },
     { id: 'seed-2', name: 'Managing Partner', role: 'Boutique Advisory', company: 'Ottawa Legal & Tax', note: 'Running 70B+ local models on Peter’s 256GB M5 Ultra air-gapped setup let us audit confidential client records with zero cloud exposure.', at: Date.now() - 86400000 * 14 },
     { id: 'seed-3', name: 'Club President', role: 'Operations Lead', company: 'Figure Skating Club', note: 'The mkdailysender automated pipeline Peter built through Peji.ca turned hours of daily schedule emails into a zero-touch morning workflow.', at: Date.now() - 86400000 * 11 },
     { id: 'seed-4', name: 'Senior Methodologist', role: 'Survey Architecture', company: 'Public Sector', note: 'Modular Survey Tools brings DDI 3.3 lifecycle metadata straight into the browser—clean, bilingual, and interoperable from day one.', at: Date.now() - 86400000 * 8 },
     { id: 'seed-5', name: 'Creative Directors', role: 'Ages 8 & 10', company: 'Wobbleton Studios', note: 'Best co-founder ever! We designed the characters and Dad built Kingdoms of Wobbleton in 3D right in front of us.', at: Date.now() - 86400000 * 5 },
-    { id: 'seed-6', name: 'Cohort Peer', role: 'Management Program', company: 'Rotman Mini-MBA · U of T', note: 'Peter bridges deep technical AI architecture with manager storytelling better than anyone I’ve worked with.', at: Date.now() - 86400000 * 2 }
+    { id: 'seed-6', name: 'Cohort Peer', role: 'Executive Program', company: 'Rotman Mini-MBA · U of T', note: 'Peter bridges deep technical AI architecture with executive storytelling better than anyone I’ve worked with.', at: Date.now() - 86400000 * 2 }
   ];
   let wallNotes = [...SEED_NOTES], localNotes = [], freshId = null;
   try { localNotes = JSON.parse(localStorage.getItem('jc-notes') || '[]').filter(n => n && n.note); } catch (_) {}
@@ -3198,7 +3109,7 @@ void main() {
 
   /* ---------- book a free call: who you are and what you need, then pick a slot ---------- */
   const BK_URL = 'https://peji.ca';
-  const BK_SVC = ['Light Tier (1–7 days)', 'Medium Tier (8–14 days)', 'Large Tier (15+ days)', 'Sovereign Local AI (M5 Ultra Air-Gap)', 'Data & Survey Modernization', 'Manager AI Advisory'];
+  const BK_SVC = ['Light Tier (1–7 days)', 'Medium Tier (8–14 days)', 'Large Tier (15+ days)', 'Sovereign Local AI (M5 Ultra Air-Gap)', 'Data & Survey Modernization', 'Executive AI Advisory'];
   let bkEl = null, bkLast = null;
   const bkClose = () => { if (!bkEl) return; bkEl.classList.remove('open'); bkEl.setAttribute('aria-hidden', 'true'); const f = $('.bk-cal', bkEl); if (f) f.remove(); if (bkLast) bkLast.focus(); };
   const bkBuild = () => {
@@ -3208,7 +3119,7 @@ void main() {
       <div class="bk-step1">
         <p class="nw-k">Peji.ca · Project & Advisory Inquiry</p>
         <h3 id="bkTitle">Let’s scope your build.</h3>
-        <p class="bk-lead">Whether you need a <b>rapid web app (1–14 days)</b>, <b>air-gapped local AI on M5 Ultra</b>, or <b>manager data architecture</b>, tell me a bit about your organization.</p>
+        <p class="bk-lead">Whether you need a <b>rapid web app (1–14 days)</b>, <b>air-gapped local AI on M5 Ultra</b>, or <b>executive data architecture</b>, tell me a bit about your organization.</p>
         <div class="nw-two">
           <label class="nw-f"><span>Organization / Company</span><input name="co" maxlength="60" autocomplete="organization" required></label>
           <label class="nw-f"><span>Your role</span><input name="role" maxlength="60" autocomplete="organization-title" required></label>
@@ -3282,9 +3193,9 @@ void main() {
     let m = null, last = null;
     const build = () => { m = document.createElement('div'); m.className = 'wop-modal'; m.setAttribute('role', 'dialog'); m.setAttribute('aria-modal', 'true'); m.setAttribute('aria-labelledby', 'wopT'); m.dataset.lenisPrevent = '';
       m.innerHTML = `<button type="button" class="wop-x" aria-label="Close">&times;</button>
-        <div class="wop-card"><div class="wop-tilt"><img class="wop-pill" src="v2/wop/featured-pill.webp" alt="One-Year AI Sabbatical: 50 Milestones, 40+ Prototypes, 562-Node PKG" draggable="false"><i class="wop-glint" aria-hidden="true"></i></div></div>
+        <div class="wop-card"><div class="wop-tilt"><img class="wop-pill" src="v2/wop/featured-pill.webp" alt="One-Year AI Sabbatical: 50 Milestones, 40+ Prototypes, 287-Node PKG" draggable="false"><i class="wop-glint" aria-hidden="true"></i></div></div>
         <p class="wop-cap" id="wopT"><b>One-Year AI Sabbatical</b> · 2026</p>
-        <p class="wop-sub">50 documented milestones, 40+ live prototypes, and a 562-node Personal Knowledge Graph built across one year of deep agentic exploration.</p>
+        <p class="wop-sub">50 documented milestones, 40+ live prototypes, and a 287-node Personal Knowledge Graph built across one year of deep agentic exploration.</p>
         <a class="wop-link" href="https://peji.ca/localllm/" target="_blank" rel="noopener">Explore Sovereign Local AI & Sabbatical Builds ↗</a>`;
       document.body.appendChild(m);
       m.addEventListener('click', e => { if (e.target === m || e.target.closest('.wop-x')) close(); });
@@ -3641,8 +3552,15 @@ void main() {
     layoutValley(); layoutStory(); layoutJourney(); layoutBrand(); layoutStack(); layoutLL(); layoutProc(); boxScale();
   }
   let last = performance.now();
-  // fold disabled: dynamic height collapse causes sudden 7,000px+ scroll shifts and desyncs Lenis
-  function fold(k, el, ref, extra) {}
+  // fold a finished scene down to one screen, keeping what's on screen exactly where it is
+  function fold(k, el, ref, extra) {
+    if (DONE[k] || el.getBoundingClientRect().bottom > vh + 2) return;
+    const y = Y(), before = top(ref);
+    el.style.height = '100vh'; el.style.height = '100svh'; if (extra) extra();
+    DONE[k] = 1; const delta = before - top(ref);
+    if (lenis) lenis.scrollTo(y - delta, { immediate: true, force: true }); else scrollTo(0, y - delta);
+    layout();
+  }
   function frame(t) {
     const dt = Math.min(.05, (t - last) / 1000); last = t;
     if (lenis) lenis.raf(t);
@@ -3658,7 +3576,7 @@ void main() {
     if (!jCar && nextAfterJ) fold('j', jTrack, nextAfterJ);
     if (boxOpen && boxTrack && boxTrack.offsetParent) fold('box', boxTrack, $('#brand'));
     const nextAfterSt = ($('#process') && $('#process').offsetParent) ? $('#process') : $('#life');
-    if (stackTrack && nextAfterSt) fold('st', stackTrack, nextAfterSt);
+    if (!giftTap && nextAfterSt) fold('st', stackTrack, nextAfterSt);
     if (llRevTrack && llRevTrack.offsetParent) fold('ll', llRevTrack, llRoles);
     y = Y();
     if (y < vTop + vRange + vh) frameValley(dt, y);
@@ -3666,7 +3584,7 @@ void main() {
     if (y > jTop - vh && y < jTop + jRange + vh) frameJourney(dt, y);
     if (boxTrack && boxTrack.offsetParent && y > jTop + jRange - vh) frameWork(dt);
     if (y > bTop - vh && y < bTop + bRange + vh) frameBrand(dt, held('b', y, bTop - vh));
-    if (stackTrack && y > stTop - vh && y < stTop + Math.max(stRange, vh) + vh) frameStack(DONE.st ? 1e9 : held('st', y, stTop - vh));
+    if (y > stTop - vh && y < stTop + Math.max(stRange, vh) + vh) frameStack(DONE.st ? 1e9 : held('st', y, stTop - vh));
     if (llRevTrack && llRevTrack.offsetParent && y > llTop - vh && y < llTop + llRange + vh) frameLL(DONE.ll ? 1e9 : held('ll', y, llTop - vh));
     if (procLine && procLine.offsetParent && y > pTop - vh * 1.2) frameProc(held('p', y, pTop - vh * 1.2));
     frameMisc(y);
