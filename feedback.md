@@ -7,6 +7,13 @@
 <!-- Use the in-app Review widget to drop pins and save changes here -->
 
 ## Resolved
+- [x] **Item #71 (2026-10-24)** (Valley View Landmark Hover Illumination Promotion to Live)
+  - **Requested Change**: Promote the hover light effect to live production.
+  - **Resolution**:
+    1) Removed localhost environment gate (`EXP_LIGHT = true`) in [app.js](file:///Users/pushp/Documents/Projects/visualportfolio/app.js) so the soft golden sunbeam (day) and architectural floodlight (night) are fully active on production.
+    2) Bumped script asset cache token in [index.html](file:///Users/pushp/Documents/Projects/visualportfolio/index.html) to `v=20261024light`.
+    3) Deployed live to Cloudflare Pages (`portfolio-peji`) and verified on production via headless Chrome.
+
 - [x] **Item #70 (2026-10-24)** (`#skyBirds` Valley Sky Flock Animation)
   - **Requested Change**: Replace the two flying birds with better bird animations (e.g. natural horizon flock like FX Elements crows flock).
   - **Resolution**:
@@ -33,16 +40,19 @@
     3) Verified via headless Chrome on Stop 2 (`iitd`) that both the journey card gallery thumbnail and modal lightbox load and render the new photo with crisp natural resolution (1280x719).
 
 - [x] **Item #67 (2026-10-24)** (`div.gift-stage:nth-of-type(2) > div.gift:nth-of-type(4) > svg`)
-  - **Requested Change**: Find different assets or build one for the library shelf that opens to access all skill icons. Search GitHub, Figma, etc. for assets and recommend top 3.
+  - **Requested Change**: Find different assets or build one for the library shelf that opens to access all skill icons. User selected **Option 1 (French Glass Door Cabinet)** and requested to improve its drawing to match the visual style of the website.
   - **Component & File Locations**:
     - HTML markup: [`#giftStage > #gift > svg`](file:///Users/pushp/Documents/Projects/visualportfolio/index.html#L232-L393) in [index.html](file:///Users/pushp/Documents/Projects/visualportfolio/index.html).
     - Unwrapping & physics animation: `frameStack()` and `layoutStack()` in [app.js](file:///Users/pushp/Documents/Projects/visualportfolio/app.js#L2972-L3056).
     - Styling & sizing: `.gift-stage`, `.gift`, `.gift svg` in [styles.css](file:///Users/pushp/Documents/Projects/visualportfolio/styles.css#L631-L640).
-  - **Evaluation & Top 3 Recommendations**:
-    1. **Antique Glass-Mullion Library Cabinet (French Doors with Brass Latches)**: Replaces the awkward lifting top lid with twin hinged glass doors (`#doorLeft`, `#doorRight`) that swing outward in 3D perspective (`rotateY(±110deg)`), flooding warm archival light as the 17 icons ascend. Pure vector SVG, zero network lag, razor-sharp on Retina.
-    2. **Vintage Library Card Catalog Chest (Dewey Decimal Brass Drawers)**: Classic multi-drawer walnut card catalog with brass label plates ("Agentic AI", "Data Pipelines", "Sovereign LLMs"). Drawers slide forward in 3D parallax, and glowing catalog cards/skill icons lift upward.
-    3. **Secret Revolving Study Bookcase (Hidden Tech Core Passage)**: A traditional study bookcase where pulling a golden secret book tilts the shelf, rotating 180° around a central axis to reveal an illuminated sovereign compute rack / holographic tech core from which the tools beam up.
-  - **Status**: Researched across GitHub, Figma Community, CodePen, and CC0 asset libraries; top 3 candidate architectures presented for user selection before implementing SVG/animation changes.
+    - Interactive Standalone Prototype: [`option1_french_door_cabinet.html`](file:///Users/pushp/.gemini/antigravity/brain/b1d2056f-d154-422c-8881-0b94ba72ff97/option1_french_door_cabinet.html).
+  - **Style Refinements Applied**:
+    1. **Exact 300x300 Coordinate Space & Perspective**: Replaced the previous flat frontal box with the portfolio's authentic 3D dimetric bookcase frame (`viewBox="0 0 300 300"`, showing top ceiling depth, right wall perspective depth, and navy ink ground shadow `fill="#13233A"`).
+    2. **Permanent Carved Cornice Pediment**: The arched pediment crest, gold finial, and "PEJI LAB" brass nameplate remain permanently anchored at the top rather than lifting off as a lid.
+    3. **3-Tier French Mullion Doors**: Designed twin mahogany-framed glass doors (`#doorL`, `#doorR`) with 3 vertical glazing panes that align with the 3 interior shelves (monographs, brass globe, succulent bonsai, rolled scrolls, micro-terminal).
+    4. **Antique Cremone Bolt Hardware**: Added a detailed vertical brass locking rod and central oval turn-latch that smoothly rotates 90° upon unlocking before the doors swing outward (`rotateY(±118deg)`).
+    5. **Design System & Palette Harmonization**: Styled with the site's semantic `--paper`, `--ink`, `--sun`, `--coral` tokens, and added a live Day/Night theme toggle matching the portfolio's `#themeBtn`.
+    6. **Verified Visual States**: Captured day closed ([option1_style_matched_closed.png](file:///Users/pushp/.gemini/antigravity/brain/b1d2056f-d154-422c-8881-0b94ba72ff97/option1_style_matched_closed.png)), day open ([option1_style_matched_open.png](file:///Users/pushp/.gemini/antigravity/brain/b1d2056f-d154-422c-8881-0b94ba72ff97/option1_style_matched_open.png)), night closed ([option1_style_matched_night_closed.png](file:///Users/pushp/.gemini/antigravity/brain/b1d2056f-d154-422c-8881-0b94ba72ff97/option1_style_matched_night_closed.png)), and night open ([option1_style_matched_night_open.png](file:///Users/pushp/.gemini/antigravity/brain/b1d2056f-d154-422c-8881-0b94ba72ff97/option1_style_matched_night_open.png)).
 
 - [x] **Item #66 (2026-10-24)** (`aside.sheet.left` R.H. Coats Building / StatCan Drawer)
   - **Requested Change**:

@@ -202,9 +202,9 @@
   /* =========================================================
      1 · THE VALLEY
      ========================================================= */
-  /* Localhost experiment: soft warm sunbeam on building hover */
-  const EXP_LIGHT = (['localhost', '127.0.0.1', '0.0.0.0'].includes(location.hostname) || location.hostname.endsWith('.local') || !!location.port || new URLSearchParams(location.search).has('exp'));
-  if (EXP_LIGHT) document.documentElement.classList.add('exp-light');
+  /* Building hover illumination: soft warm sunbeam by day, architectural floodlight by night */
+  const EXP_LIGHT = true;
+  document.documentElement.classList.add('exp-light');
   const heroScrim = $('#heroScrim'), stage = $('#stage'), cam = $('#cam'), scene = $('#scene'), valley = $('#top');
   const layers = $$('.ly', scene).map(el => ({ el, d: +el.dataset.d || 0 }));
   const chips = document.createElement('div'), heroCopy = $('#heroCopy'), places = document.createElement('div'), cue = $('#cue'), hint = $('#hint'), sheet = $('#sheet');
