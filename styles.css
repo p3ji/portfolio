@@ -4174,10 +4174,10 @@ html:root .cs .cs-bar button.cs-close { width: 48px; height: 48px; padding: 0 !i
 .ph-hero { display: none; }
 @media (max-width: 859px) {
   /* the painting itself, edge to edge, no colour laid over it; it is pinned a little right of centre so the buildings on that side stay in view */
-  .ph-hero { display: block; position: absolute; inset: 0; z-index: 0; pointer-events: none; background: url("v2/h/phone-day.webp?v=20261023c") 65% 100% / cover no-repeat; }
+  .ph-hero { display: block; position: absolute; inset: 0; z-index: 0; pointer-events: none; background: url("v2/h/phone-day.webp?v=20261024d") 65% 100% / cover no-repeat; }
   .stage .cam { display: none !important; }
   .stage::before { display: none !important; }
-  :root[data-theme="dark"] .ph-hero { background-image: url("v2/h/phone-night.webp?v=20261023c"); }
+  :root[data-theme="dark"] .ph-hero { background-image: url("v2/h/phone-night.webp?v=20261024d"); }
 }
 
 /* case-study footer: on phones the socials are just their logos; laptops keep the labelled pills */

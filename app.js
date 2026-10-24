@@ -277,11 +277,11 @@ void main() {
       });
       g.uniform1i(glU.uTex, 0); g.uniform1i(glU.uDep, 1); g.uniform1i(glU.uTexN, 2);
       gl = g;
-      Promise.all([load('v2/h/plate.webp', 0, true), load('v2/h/depth2.png', 1, false)]).then(() => {
+      Promise.all([load('v2/h/plate.webp?v=20261024d', 0, true), load('v2/h/depth2.png', 1, false)]).then(() => {
         glReady = true; scene.classList.add('gl'); sizeGL(); glc.classList.add('on');
         if (!mobile) drawGL(0, 0, 0, .016);
         // the night painting loads once it is wanted (or a few seconds after the day one)
-        const wantN = () => { if (nightLoad) return; nightLoad = load('v2/h/plate-night2.webp', 2, true).then(() => { nightReady = true; glc.classList.add('nt'); }).catch(() => {}); };
+        const wantN = () => { if (nightLoad) return; nightLoad = load('v2/h/plate-night2.webp?v=20261024d', 2, true).then(() => { nightReady = true; glc.classList.add('nt'); }).catch(() => {}); };
         if (document.documentElement.dataset.theme === 'dark') wantN(); else setTimeout(wantN, 1500); addEventListener('themechange', () => { wantN(); if (glReady && !mobile) { glKey = ''; drawGL(lastDraw[0], lastDraw[1], lastDraw[2], .016); } });
       }).catch(err => {
         console.warn('plate shader fallback to image:', err);
