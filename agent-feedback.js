@@ -10,6 +10,13 @@
  */
 (function () {
   if (window.__AGENT_FEEDBACK_INITIALIZED__) return;
+  const isDev = Boolean(
+    ['localhost', '127.0.0.1', '0.0.0.0'].includes(location.hostname) ||
+    location.hostname.endsWith('.local') ||
+    location.port ||
+    new URLSearchParams(location.search).has('review')
+  );
+  if (!isDev) return;
   window.__AGENT_FEEDBACK_INITIALIZED__ = true;
 
   const STORAGE_KEY = 'agent_feedback_pins_v1';
