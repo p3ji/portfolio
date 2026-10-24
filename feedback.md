@@ -4,6 +4,11 @@
 <!-- Use the in-app Review widget to drop pins and save changes here -->
 
 ## Resolved
+- [x] **Item #45 (2026-10-23)** (`div.brand-head > div.bh-l > a.bh-cta`)
+  - Current text: "Start a project inquiry ↗"
+  - **Requested Change**: Remove
+  - **Resolution**: Removed the `<a class="bh-cta">Start a project inquiry ↗</a>` link button from `.brand-head .bh-l` in [index.html](file:///Users/pushp/Documents/Projects/visualportfolio/index.html).
+
 - [x] **Item #44 (2026-10-23)** (`div.wrap > div.desk:nth-of-type(2) > p.desk-hint`)
   - Current text: "it’s my board, but go ahead, move things around ;)"
   - **Requested Change**: "original design by James Chugh"
