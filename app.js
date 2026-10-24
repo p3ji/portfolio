@@ -203,6 +203,9 @@
   /* =========================================================
      1 · THE VALLEY
      ========================================================= */
+  /* Localhost experiment: soft warm sunbeam on building hover */
+  const EXP_LIGHT = (['localhost', '127.0.0.1', '0.0.0.0'].includes(location.hostname) || location.hostname.endsWith('.local') || !!location.port || new URLSearchParams(location.search).has('exp'));
+  if (EXP_LIGHT) document.documentElement.classList.add('exp-light');
   const heroScrim = $('#heroScrim'), stage = $('#stage'), cam = $('#cam'), scene = $('#scene'), valley = $('#top');
   const layers = $$('.ly', scene).map(el => ({ el, d: +el.dataset.d || 0 }));
   const chips = document.createElement('div'), heroCopy = $('#heroCopy'), places = document.createElement('div'), cue = $('#cue'), hint = $('#hint'), sheet = $('#sheet');
@@ -225,8 +228,9 @@
 
   /* the painting is a WebGL plate: a 4000px texture with mipmaps (a zoom stays sharp) and a hand-built depth map, so the pointer and the scroll move near things more than far ones */
   const AR = 2000 / 1126, PAR = [.005, .0025], FOC = [.52, .58];
-  const SPOT = { nsut: [.205, .42, .14, .15], oyo: [.905, .29, .10, .11], mmt: [.695, .36, .12, .16], eazydiner: [.82, .68, .11, .12], me: [.185, .72, .15, .15] };
+  const SPOT = { nsut: [.205, .42, .14, .15], oyo: [.905, .29, .10, .11], mmt: [.695, .36, .12, .16], eazydiner: [.82, .68, .11, .12], me: [.185, .72, .15, .15], radio: [.07, .70, .07, .08] };
   const glc = $('#glPlate'); let lastDraw = [0, 0, 0], glKey = '', nightLoad = null, nightReady = false, nf = 0, gl = null, glU = null, glReady = false, fa = 0, hspot = SPOT.eazydiner;
+  let hoverPlaceId = null, hovAmt = 0, hovSpot = [...SPOT.eazydiner];
   const gain = (e, d) => 1 + e * (.08 + d * .35);
   (function initGL() {
     if (matchMedia('(max-width: 859px)').matches) { addEventListener('resize', () => { if (!gl && innerWidth >= 860) initGL(); }); }
@@ -240,6 +244,7 @@ in vec2 p; void main() { gl_Position = vec4(p, 0., 1.); }`));
       g.attachShader(pr, sh(g.FRAGMENT_SHADER, `#version 300 es
 precision highp float;
 uniform sampler2D uTex, uTexN, uDep; uniform vec2 uRes, uSize, uOff; uniform vec3 uCam; uniform float uE, uDpr, uFocus, uNight; uniform vec4 uSpot;
+uniform float uHov; uniform vec4 uHovSpot;
 out vec4 o;
 const vec2 F = vec2(.52, .58);
 float gn(float d) { return 1. + uE * (.08 + d * .35); }
@@ -256,6 +261,20 @@ void main() {
   float bias = clamp(max(oo.x, oo.y) * 110., 0., 4.);
   vec3 col = texture(uTex, mc, bias).rgb;
   if (uNight > .001) col = mix(col, texture(uTexN, mc, bias).rgb, uNight);
+
+  // Hover sunbeam / architectural light (localhost experiment)
+  if (uHov > .001) {
+    float hm = 1. - smoothstep(.32, 1.05, length((c - uHovSpot.xy) / uHovSpot.zw));
+    if (hm > .001) {
+      // Day mode: soft golden sunbeam (+20% exposure, warm amber radiance)
+      vec3 sun = col * vec3(1.20, 1.14, 1.02) + vec3(0.045, 0.032, 0.010);
+      // Night mode: illuminated warm floodlight & window radiance (+38% exposure, soft lantern warmth)
+      vec3 nightGlow = col * vec3(1.38, 1.30, 1.16) + vec3(0.075, 0.055, 0.025);
+      vec3 hovLight = mix(sun, nightGlow, uNight);
+      col = mix(col, hovLight, hm * uHov);
+    }
+  }
+
   float m = 1. - smoothstep(.58, 1., length((c - uSpot.xy) / uSpot.zw));
   float l = dot(col, vec3(.299, .587, .114));
   vec3 dim = mix(vec3(l), col, .55) * .86, lit = mix(vec3(l), col, 1.12) * 1.06;
@@ -266,7 +285,7 @@ void main() {
       g.useProgram(pr);
       g.bindBuffer(g.ARRAY_BUFFER, g.createBuffer()); g.bufferData(g.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), g.STATIC_DRAW);
       const a = g.getAttribLocation(pr, 'p'); g.enableVertexAttribArray(a); g.vertexAttribPointer(a, 2, g.FLOAT, false, 0, 0);
-      glU = {}; ['uTex', 'uTexN', 'uDep', 'uRes', 'uSize', 'uOff', 'uCam', 'uE', 'uDpr', 'uFocus', 'uNight', 'uSpot'].forEach(n => glU[n] = g.getUniformLocation(pr, n));
+      glU = {}; ['uTex', 'uTexN', 'uDep', 'uRes', 'uSize', 'uOff', 'uCam', 'uE', 'uDpr', 'uFocus', 'uNight', 'uSpot', 'uHov', 'uHovSpot'].forEach(n => glU[n] = g.getUniformLocation(pr, n));
       const load = (src, unit, mips) => fetch(src).then(r => r.blob()).then(b => (window.createImageBitmap ? createImageBitmap(b) : Promise.reject('no createImageBitmap'))).then(bm => {
         const t = g.createTexture(); g.activeTexture(g.TEXTURE0 + unit); g.bindTexture(g.TEXTURE_2D, t);
         g.texImage2D(g.TEXTURE_2D, 0, g.RGBA, g.RGBA, g.UNSIGNED_BYTE, bm);
@@ -305,12 +324,29 @@ void main() {
     nf = reduce || document.startViewTransition ? nt : nf + (nt - nf) * clamp(dt * 3);
     lastDraw = [e, px, py];
     if (focusId && SPOT[focusId]) hspot = SPOT[focusId];
-    const key = [cur.x, cur.y, cur.s, SW, px, py, e, fa, nf, glc.width, glc.height, hspot[0]].map(v => v.toFixed(3)).join();
+
+    // Hover light experiment (localhost)
+    const targetHov = (EXP_LIGHT && hoverPlaceId && !focusId && SPOT[hoverPlaceId]) ? 1 : 0;
+    hovAmt += (targetHov - hovAmt) * (reduce ? 1 : clamp(dt * 7.5));
+    if (hoverPlaceId && SPOT[hoverPlaceId]) {
+      const sp = SPOT[hoverPlaceId];
+      const kHov = (reduce ? 1 : clamp(dt * 8.5));
+      hovSpot[0] += (sp[0] - hovSpot[0]) * kHov;
+      hovSpot[1] += (sp[1] - hovSpot[1]) * kHov;
+      hovSpot[2] += (sp[2] - hovSpot[2]) * kHov;
+      hovSpot[3] += (sp[3] - hovSpot[3]) * kHov;
+    }
+
+    const key = [cur.x, cur.y, cur.s, SW, px, py, e, fa, nf, hovAmt, hovSpot[0], glc.width, glc.height, hspot[0]].map(v => v.toFixed(3)).join();
     if (key === glKey) return; glKey = key;   // nothing moved: leave the last picture on screen
     gl.uniform2f(glU.uRes, glc.width, glc.height); gl.uniform1f(glU.uDpr, dpr);
     gl.uniform3f(glU.uCam, cur.x, cur.y, cur.s); gl.uniform2f(glU.uSize, SW, SH);
     gl.uniform2f(glU.uOff, -px * PAR[0] * (1 - fa), -py * PAR[1] * (1 - fa) * (SW / SH)); gl.uniform1f(glU.uE, e);
     gl.uniform1f(glU.uFocus, fa); gl.uniform1f(glU.uNight, nf); gl.uniform4f(glU.uSpot, hspot[0], hspot[1], hspot[2], hspot[3]);
+    if (glU.uHov) {
+      gl.uniform1f(glU.uHov, hovAmt);
+      gl.uniform4f(glU.uHovSpot, hovSpot[0], hovSpot[1], hovSpot[2], hovSpot[3]);
+    }
     gl.drawArrays(gl.TRIANGLES, 0, 3);
   }
 
@@ -388,11 +424,22 @@ void main() {
     heroCopy.style.opacity = ''; hint.style.opacity = ''; chips.style.opacity = '';
   }
   let hoverT = 0, leaveT = 0;
+  const setHoverPlace = id => { if (hoverPlaceId !== id) hoverPlaceId = id; };
+  const clearHoverPlace = id => { if (hoverPlaceId === id) hoverPlaceId = null; };
   $$('.hot, .pin:not(.rpin)', scene).forEach(el => {
-    const pinFor = $(`.pin[data-id="${el.dataset.id}"]`, scene);
-    el.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') pinFor.classList.add('hov'); });
-    el.addEventListener('pointerleave', () => pinFor.classList.remove('hov'));
-    el.addEventListener('click', () => focus(el.dataset.id));
+    const id = el.dataset.id;
+    const pinFor = $(`.pin[data-id="${id}"]`, scene);
+    el.addEventListener('pointerenter', e => {
+      if (e.pointerType === 'mouse') {
+        if (pinFor) pinFor.classList.add('hov');
+        setHoverPlace(id);
+      }
+    });
+    el.addEventListener('pointerleave', () => {
+      if (pinFor) pinFor.classList.remove('hov');
+      clearHoverPlace(id);
+    });
+    el.addEventListener('click', () => focus(id));
   });
   let moved = 0, lmx = null, lmy = null, focusAt = 0;
   stage.addEventListener('pointermove', e => {
@@ -402,7 +449,12 @@ void main() {
   places.id = 'places'; places.className = 'places'; places.setAttribute('aria-label', 'Places in the valley');
   places.innerHTML = Object.entries(PLACES).map(([id, P]) => `<button type="button" data-id="${id}" style="--c:${P.c}">${id === 'me' ? 'Me' : P.t.replace(/,.*/, '')}</button>`).join('');
   stage.appendChild(places);
-  $$('#places button').forEach(b => b.addEventListener('click', () => focusId === b.dataset.id ? unfocus() : focus(b.dataset.id)));
+  $$('#places button').forEach(b => {
+    const id = b.dataset.id;
+    b.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') setHoverPlace(id); });
+    b.addEventListener('pointerleave', () => clearHoverPlace(id));
+    b.addEventListener('click', () => focusId === id ? unfocus() : focus(id));
+  });
   $('#s-x').addEventListener('click', unfocus);
   // the mouse wheel over an open card scrolls the card, and never the page behind it
   sheet.addEventListener('wheel', e => { const up = e.deltaY < 0, top = sheet.scrollTop <= 0, end = sheet.scrollTop + sheet.clientHeight >= sheet.scrollHeight - 1;
