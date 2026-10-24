@@ -4,6 +4,18 @@
 <!-- Use the in-app Review widget to drop pins and save changes here -->
 
 ## Resolved
+- [x] **Item #61 (2026-10-24)** (Journey Cards & Gallery Updates)
+  - **Requested Change**:
+    1) Replace `uoft-rotman.webp` with Barry Wellman Award for Best Undergraduate Paper, Rex Lucas Award for best Qualitative Field Work, Quantitative social science paper presented at International Conference.
+    2) Digital Economy and Society Portal (`https://www.statcan.gc.ca/en/subjects-start/digital_economy_and_society`).
+    3) Don't mention "O-train" in the transit header.
+    4) Replace `stc-coats.webp` with an icon/graphic representing "Improve timeliness and efficiency".
+  - **Resolution**:
+    1) Designed high-resolution academic honors certificate graphic [v2/s/uoft-awards.webp](file:///Users/pushp/Documents/Projects/visualportfolio/v2/s/uoft-awards.webp) displaying the Barry Wellman Award, Rex Lucas Award, and International Conference Quantitative Paper, and updated Stop 0 in [app.js](file:///Users/pushp/Documents/Projects/visualportfolio/app.js).
+    2) Captured the live Statistics Canada Digital Economy and Society Portal to [v2/s/stc-digital.webp](file:///Users/pushp/Documents/Projects/visualportfolio/v2/s/stc-digital.webp), updated caption to "Digital Economy and Society Portal (statcan.gc.ca)", and added a direct link button and POI to `https://www.statcan.gc.ca/en/subjects-start/digital_economy_and_society`.
+    3) Updated the journey card transit kicker strip in [app.js](file:///Users/pushp/Documents/Projects/visualportfolio/app.js#L913) to `LINE 1 · LIGNE 1 CONFEDERATION`, removing "O-Train".
+    4) Created a custom federal pipeline modernization graphic [v2/s/stc-efficiency.webp](file:///Users/pushp/Documents/Projects/visualportfolio/v2/s/stc-efficiency.webp) showcasing timeliness and efficiency gains (-40% release turnaround lag, 100% automated reproducible R pipelines, 15+ multidisciplinary team), and updated Stop 3 gallery.
+    5) Bumped image asset cache buster to `v=20261024i`.
 - [x] **Item #60 (2026-10-24)** (Ottawa LRT O-Train Metro Station Design for Journey Map)
   - **Requested Change**: Experiment with a new design for the journey map that shows metro stops designed to match the Ottawa LRT stops.
   - **Resolution**:

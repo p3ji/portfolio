@@ -75,7 +75,7 @@
     { id: 'jee', when: '2009 – 2011', place: 'Toronto · U of T', icon: 'cap', logo: 'logo-uoft', c: '#002A5C', at: [400, 1420], lift: 175, name: 'Innis College · U of T',
       title: 'Where empirical thinking met systems architecture.',
       txt: 'At the <b>University of Toronto (Innis College)</b>, I completed my Honours B.Sc. and M.A. in Sociology while working as a Media Analyst at the <b>Ontario Cabinet Office</b>. Studying how complex social systems behave—and how to measure them rigorously—laid the foundation for everything that followed.',
-      photos: [['uoft-uc', 'Innis College · U of T'], ['uoft-rotman', 'Rotman Mini-MBA · 2026']],
+      photos: [['uoft-uc', 'Innis College · U of T'], ['uoft-awards', 'Barry Wellman Award for Best Undergraduate Paper. Rex Lucas Award for best Qualitative Field Work. Quantitative social science paper presented at International Conference.']],
       pois: [[-170, -120, 'check', 'Honours B.Sc. & M.A. at Innis College.']] },
     { id: 'app', when: '2011 – 2018', place: 'Ottawa · Tunney’s Pasture', icon: 'book', logo: 'logo-statcan', c: '#C8102E', at: [960, 960], lift: 150, name: 'Analyst to Unit Head',
       title: 'Entering R.H. Coats & rising from Analyst to Unit Head.',
@@ -93,8 +93,10 @@
       title: 'Measuring Canada’s digital economy & program modernization.',
       txt: 'As <b>Chief, Digital Economy & Society</b> at the R.H. Coats Building, I led a 15-person multidisciplinary team, represented Canada at <b>OECD working parties</b>, and spearheaded <b>various initiatives that improved timeliness and efficiency</b>.',
       stats: [['Modernized', 'pipeline timeliness & efficiency'], ['15', 'analysts & methodologists led']],
-      photos: [['stc-digital', 'Digital Economy Modernization & Timeliness'], ['stc-coats', 'R.H. Coats Tower · Tunney’s Pasture']],
-      pois: [[160, 90, 'news', 'Modernized initiatives delivering timely economic indicators.']] },
+      photos: [['stc-digital', 'Digital Economy and Society Portal (statcan.gc.ca)'], ['stc-efficiency', 'Initiatives Improving Timeliness and Efficiency']],
+      work: 'https://www.statcan.gc.ca/en/subjects-start/digital_economy_and_society',
+      workLabel: 'Explore Digital Economy & Society Portal',
+      pois: [[160, 90, 'news', 'Digital Economy and Society Portal', 'https://www.statcan.gc.ca/en/subjects-start/digital_economy_and_society', '#1E7FC8']] },
     { id: 'eazydiner', when: '2024 – 2026', place: 'Ottawa · Management Suite', logo: 'logo-eba', c: '#D97706', at: [2640, 1400], lift: 150, name: '$25M Budget 2025 & EBA',
       title: 'Securing $25M in Federal Budget 2025 & leading Enterprise Architecture.',
       txt: 'As <b>Acting Assistant Director</b>, I authored the business case securing <b>$25M over 6 years in Federal Budget 2025</b> for the Techstat AI measurement program. As <b>Enterprise Business Architecture Lead</b>, I secured <b>$500K+ in annual base funding</b> and co-led the agency-wide AI Hackathon.',
@@ -179,7 +181,7 @@
     ['Ship to production', 'Live URL in days (1–7d Light, 8–14d Medium).', '#FFD23F'],
     ['Write the reflection', 'Every build feeds back into the digital brain.', '#9FD3FF']
   ];
-  const img = k => `v2/s/${k}.webp?v=20261024h`;
+  const img = k => `v2/s/${k}.webp?v=20261024i`;
 
   /* ---------- smooth scroll ---------- */
   const lenis = (!reduce && window.Lenis && innerWidth >= 860 && !matchMedia('(pointer: coarse)').matches) ? new Lenis({ lerp: .09, smoothWheel: true, wheelMultiplier: .9 }) : null;
@@ -908,7 +910,7 @@ void main() {
   function cardHTML(i) {
     const st = STOPS[i];
     const tile = st.logo ? `<span class="tile"><img src="${img(st.logo)}" alt="${st.name} logo"></span>` : `<span class="tile"><svg viewBox="0 0 24 24">${ICONS[st.icon]}</svg></span>`;
-    return `<div class="jc-lrt-strip"><span class="jc-lrt-badge">1</span><span class="jc-lrt-line">O-TRAIN · LIGNE 1 CONFEDERATION</span><span class="jc-lrt-stat">STATION ${String(i + 1).padStart(2, '0')} / ${String(N).padStart(2, '0')}</span></div>
+    return `<div class="jc-lrt-strip"><span class="jc-lrt-badge">1</span><span class="jc-lrt-line">LINE 1 · LIGNE 1 CONFEDERATION</span><span class="jc-lrt-stat">STATION ${String(i + 1).padStart(2, '0')} / ${String(N).padStart(2, '0')}</span></div>
       <div class="jc-top">${tile}<p><b>${st.name}</b>${st.when} · ${st.place}</p><em>${String(i + 1).padStart(2, '0')} / ${String(N).padStart(2, '0')}</em></div>
       <div class="jc-bd"><h3>${st.title}</h3><p class="txt">${st.txt}</p><button type="button" class="jc-more" aria-expanded="false">Read more</button>
       ${st.share ? `<div class="jc-share"><a href="${LI}" target="_blank" rel="noopener"><i style="background:#C4622D"><svg viewBox="0 0 24 24">${ICONS.rocket}</svg></i><div>peji.ca<span>Independent Digital Practice & Sovereign Local AI</span></div><em>↗</em></a><a href="${IG}" target="_blank" rel="noopener"><i style="background:#13233A"><svg viewBox="0 0 24 24">${ICONS.gear}</svg></i><div>@p3ji on GitHub<span>40+ prototypes, DDI 3.3 tools & open-source builds</span></div><em>↗</em></a></div>` : ''}
