@@ -4,6 +4,10 @@
 <!-- Use the in-app Review widget to drop pins and save changes here -->
 
 ## Resolved
+- [x] **Item #59 (2026-10-24)** (Environment-Scoped Visual Review Tool)
+  - **Requested Change**: Remove the visual reviewer tool from production (`portfolio.peji.ca`), but keep it automatically active for local development on localhost.
+  - **Resolution**: Added client-side host environment checks in [index.html](file:///Users/pushp/Documents/Projects/visualportfolio/index.html) and [agent-feedback.js](file:///Users/pushp/Documents/Projects/visualportfolio/agent-feedback.js). The tool only loads when browsing on `localhost`, `127.0.0.1`, a local port, or when explicitly requested via `?review=1` query parameter, ensuring production remains 100% clean for external visitors.
+
 - [x] **Item #58 (2026-10-24)** (`div.win > div.page:nth-of-type(2) > img` with `src: "v2/b/aijobsearch.webp"`)
   - **Requested Change**: Link Canadian AI Jobs Report card to `https://occupation-ai.vercel.app`.
   - **Resolution**: Updated `href` and `url` for the Canadian AI Jobs Report in `SITES` in [app.js](file:///Users/pushp/Documents/Projects/visualportfolio/app.js#L2784) to `https://occupation-ai.vercel.app`, and bumped asset cache buster to `v=20261024h`.
