@@ -4,6 +4,10 @@
 <!-- Use the in-app Review widget to drop pins and save changes here -->
 
 ## Resolved
+- [x] **Item #53 (2026-10-24)** (`aside.sheet.left > div.did:nth-of-type(2) > p`)
+  - **Requested Change**: Remove "in 26 story RH coats building". Update to: "Across 15+ years at Statistics Canada, I delivered insights through complex data analysis, led national survey modernization, a rapid country-wide COVID-19 serology study, and grew key programs related to technology measurement while improving timeliness and efficiency."
+  - **Resolution**: Updated `PLACES.mmt.st[0]` in [app.js](file:///Users/pushp/Documents/Projects/visualportfolio/app.js) to the requested text.
+
 - [x] **Item #52 (2026-10-24)** (`ul.sf-pane:nth-of-type(2) > li > span` and `li:nth-of-type(2)`)
   - **Requested Change**:
     1) Remove "at RH coats" from StatCan career progression.
