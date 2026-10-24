@@ -629,7 +629,17 @@ void main() {
       el.addEventListener('pointerdown', e => { d0 = [e.clientX, e.clientY]; });
       el.addEventListener('pointerup', e => { if (e.target.closest('a, button')) return; if (d0 && Math.hypot(e.clientX - d0[0], e.clientY - d0[1]) < 6) el.classList.toggle('ask'); d0 = null; });
       el.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); el.classList.toggle('ask'); } });
-      $('.vn-x', el).addEventListener('click', () => el.classList.remove('ask')); }
+      $('.vn-x', el).addEventListener('click', () => el.classList.remove('ask'));
+      const playBtn = $('.vn-play-track', el);
+      if (playBtn) {
+        playBtn.addEventListener('click', e => {
+          e.preventDefault(); e.stopPropagation();
+          const radio = $('#radio');
+          if (radio && !radio.classList.contains('on')) radio.click();
+          el.classList.remove('ask');
+        });
+      }
+    }
     if (el.classList.contains('mag')) el.addEventListener('pointerdown', () => { el.classList.remove('wig'); void el.offsetWidth; el.classList.add('wig'); });
   });
 

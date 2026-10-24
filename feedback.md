@@ -7,6 +7,22 @@
 <!-- Use the in-app Review widget to drop pins and save changes here -->
 
 ## Resolved
+- [x] **Item #73 (2026-10-24)** (`div.desk:nth-of-type(2) > div.item.vinyl:nth-of-type(2) > div.vn-sleeve` Vinyl Record Label & Music Integration)
+  - **Requested Change**:
+    Change text from "Substack Essays & Notes" to:
+    "Music
+    (to add:  my musical creations)"
+  - **Resolution**:
+    1) Updated [index.html](file:///Users/pushp/Documents/Projects/visualportfolio/index.html) under `.item.vinyl > .vn-sleeve`:
+       - Replaced Substack bookmark SVG with an elegant dual-note music SVG icon (`viewBox="0 0 24 24"` with solid filled noteheads).
+       - Changed title to `<b>Music</b>` and subtitle to `<small>(to add:  my musical creations)</small>`.
+       - Updated outer element title to `title="Tap to play music"` and desk label to `<span>music</span>`.
+       - Reconfigured popup dialog `.vn-ask` to "Original Piano & Music" with a direct interactive action: `<a href="#play" class="vn-play-track">Play piano lo-fi ♫</a>`.
+    2) In [styles.css](file:///Users/pushp/Documents/Projects/visualportfolio/styles.css), refined `.vn-sleeve small` line-height to `1.3` to ensure graceful text wrap for multi-word subtitles.
+    3) In [app.js](file:///Users/pushp/Documents/Projects/visualportfolio/app.js), wired the `.vn-play-track` button directly to trigger the ambient lo-fi piano track playback engine (`#radio`), smoothly playing Peter's musical composition.
+    4) Bumped asset cache busters to `styles.css?v=20261024music` and `app.js?v=20261024music`.
+    5) Verified rendering on desktop and mobile viewports via automated headless Chrome tests and verified that clicking the vinyl dialog plays the piano track (`radioOn: true`).
+
 - [x] **Item #72 (2026-10-24)** (`div.wrap > div.desk:nth-of-type(2) > div.item.about` Off the Clock Narrative & Interests)
   - **Requested Change**:
     Update the Off the Clock desk card content to reflect technology intersections and non-nerdy interests:
