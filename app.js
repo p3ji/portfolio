@@ -2775,7 +2775,6 @@ void main() {
      ========================================================= */
   const SITES = [
     { name: 'Peji Digital Practice', url: 'peji.ca', href: 'https://peji.ca/', img: 'peji', kind: 'Consulting · 3 Tiers', dy: 14, r: 1.2, st: '<span class="stk pill" style="left:-16px;top:-18px;transform:rotate(-6deg)">peji.ca ↗</span>' },
-    { name: 'Sovereign Local AI', url: 'peji.ca/localllm', href: 'https://peji.ca/localllm/', img: 'localllm', kind: 'Air-Gap AI · M5 Ultra', dy: -18, r: -1.5, st: '<span class="stk tape" style="left:40%;top:-14px"></span>' },
     { name: 'Ottawa Optical Booking', url: 'demobooking.peji.ca', href: 'https://demobooking.peji.ca/', img: 'demobooking', kind: 'Tier 01 · Light Build', dy: 20, r: 1.5, st: '<span class="stk round" style="--sc:#EAD8C3;right:-18px;top:-22px;transform:rotate(7deg)">demo<br>app ↗</span>' },
     { name: 'Skating Club ETL Pipeline', url: 'peji.ca', href: 'https://peji.ca/', img: 'mkdaily', kind: 'Tier 02 · Daily Pipeline', dy: -14, r: -1.2, st: '<span class="stk tape" style="right:20%;top:-14px;transform:rotate(5deg);background:rgba(56,189,248,.85)"></span>' },
     { name: 'PA Volunteer Tracker', url: 'pa.peji.ca', href: 'https://pa.peji.ca/', img: 'patracker', kind: 'Tier 03 · Custom App', dy: 24, r: 1.4, st: '<span class="stk pill" style="left:-16px;top:-18px;transform:rotate(-5deg)">live app ↗</span>' },

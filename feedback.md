@@ -4,6 +4,11 @@
 <!-- Use the in-app Review widget to drop pins and save changes here -->
 
 ## Resolved
+- [x] **Item #46 (2026-10-23)** (`div.win > div.page:nth-of-type(2) > img`)
+  - Attributes: src: "v2/b/localllm.webp", alt: "Sovereign Local AI website home page"
+  - **Requested Change**: Remove
+  - **Resolution**: Removed the `Sovereign Local AI` card (`localllm.webp`) from the `SITES` showcase carousel array in [app.js](file:///Users/pushp/Documents/Projects/visualportfolio/app.js).
+
 - [x] **Item #45 (2026-10-23)** (`div.brand-head > div.bh-l > a.bh-cta`)
   - Current text: "Start a project inquiry ↗"
   - **Requested Change**: Remove
