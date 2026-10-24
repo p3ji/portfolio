@@ -4,6 +4,13 @@
 <!-- Use the in-app Review widget to drop pins and save changes here -->
 
 ## Resolved
+- [x] **Item #56 (2026-10-24)** (`div.win > div.page:nth-of-type(2) > img` with `src: "v2/b/patracker.webp"`)
+  - **Requested Change**: Fix graphics as text flows off.
+  - **Resolution**:
+    1) Fixed text overflow in [v2/b/patracker.webp](file:///Users/pushp/Documents/Projects/visualportfolio/v2/b/patracker.webp): reformatted headline and subtitle into two clean, properly wrapped lines with generous horizontal margins (>100px padding from edges), streamlined stat labels, and refined the volunteer tracking shift cards to eliminate any clipping.
+    2) Also audited and updated companion brand cards [v2/b/mkdaily.webp](file:///Users/pushp/Documents/Projects/visualportfolio/v2/b/mkdaily.webp), [v2/b/paper-diggov.webp](file:///Users/pushp/Documents/Projects/visualportfolio/v2/b/paper-diggov.webp), and [v2/b/paper-divide.webp](file:///Users/pushp/Documents/Projects/visualportfolio/v2/b/paper-divide.webp) to ensure all abstract and subtitle lines maintain >120px right margin boundaries.
+    3) Appended cache-busting token `?v=20261024f` to brand showcase image URLs in [app.js](file:///Users/pushp/Documents/Projects/visualportfolio/app.js) and asset references in [index.html](file:///Users/pushp/Documents/Projects/visualportfolio/index.html) so browsers render the new graphics immediately.
+
 - [x] **Item #55 (2026-10-24)** (`div.jc-in > div.jc-bd:nth-of-type(2) > h3` and `button.jc-ph:nth-of-type(2) > span.ph > img`)
   - **Requested Change**:
     1) Update headline in Creator card: "Peji Independent Digital Practice & Seeking new challenges to make an impact."

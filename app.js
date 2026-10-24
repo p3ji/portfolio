@@ -179,7 +179,7 @@
     ['Ship to production', 'Live URL in days (1–7d Light, 8–14d Medium).', '#FFD23F'],
     ['Write the reflection', 'Every build feeds back into the digital brain.', '#9FD3FF']
   ];
-  const img = k => `v2/s/${k}.webp?v=20261024e`;
+  const img = k => `v2/s/${k}.webp?v=20261024f`;
 
   /* ---------- smooth scroll ---------- */
   const lenis = (!reduce && window.Lenis && innerWidth >= 860 && !matchMedia('(pointer: coarse)').matches) ? new Lenis({ lerp: .09, smoothWheel: true, wheelMultiplier: .9 }) : null;
@@ -2784,7 +2784,7 @@ void main() {
     { name: 'Canadian AI Jobs Report', url: 'github.com/p3ji', href: 'https://github.com/p3ji', img: 'aijobsearch', kind: 'Labour Intelligence · AI', dy: 22, r: 1.3, st: '<span class="stk tape" style="left:35%;top:-14px"></span>' }
   ];
   const brandSec = $('#brand'), brandRow = $('#brandRow'), brandProg = $('#brandProg');
-  brandRow.innerHTML = SITES.map(x => `<a class="site" href="${x.href}" target="_blank" rel="noopener" style="--dy:${x.dy}px;--r:${x.r}deg">${x.st}<div class="win"><div class="chrome"><i></i><i></i><i></i><span>${x.url}</span></div><div class="page"><img src="v2/b/${x.img}.webp" alt="${x.name} website home page" loading="lazy"></div></div><div class="cap"><b>${x.name}</b><span>${x.kind} · visit ↗</span></div></a>`).join('');
+  brandRow.innerHTML = SITES.map(x => `<a class="site" href="${x.href}" target="_blank" rel="noopener" style="--dy:${x.dy}px;--r:${x.r}deg">${x.st}<div class="win"><div class="chrome"><i></i><i></i><i></i><span>${x.url}</span></div><div class="page"><img src="v2/b/${x.img}.webp?v=20261024f" alt="${x.name} website home page" loading="lazy"></div></div><div class="cap"><b>${x.name}</b><span>${x.kind} · visit ↗</span></div></a>`).join('');
   let bTop = 0, bRange = 1, bShift = 0;
   let bManual = false;
   function layoutBrand() {
