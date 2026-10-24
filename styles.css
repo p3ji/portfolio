@@ -576,7 +576,7 @@ p, li, figcaption, blockquote, small, dd { text-wrap: pretty; }
 .site .cap b { font: 800 22px/1 var(--sans); letter-spacing: -.03em; }
 .site .cap span { font: 400 14px/1 var(--geist); color: var(--ink-2); }
 .stk { position: absolute; z-index: 3; pointer-events: none; filter: drop-shadow(0 8px 10px rgba(19, 35, 58, .25)); }
-.stk.round { width: 92px; height: 92px; border-radius: 50%; display: grid; place-items: center; text-align: center; font: 700 19px/1 var(--hand); color: #fff; background: var(--sc, #FF6B4A); border: 3px solid #fff; }
+.stk.round { width: 92px; height: 92px; border-radius: 50%; display: grid; place-items: center; text-align: center; font: 700 19px/1 var(--hand); color: var(--stk-c, #fff); background: var(--sc, #FF6B4A); border: 3px solid #fff; }
 .stk.tape { width: 110px; height: 30px; background: rgba(255, 216, 107, .8); transform: rotate(-8deg); }
 .stk.star { width: 84px; height: 84px; }
 .stk.star svg { width: 100%; height: 100%; }
@@ -1705,8 +1705,10 @@ p, li, figcaption, blockquote, small, dd { text-wrap: pretty; }
 }
 /* tablets */
 @media (min-width: 600px) and (max-width: 1100px) {
-  .tell { font-size: clamp(1.9rem, min(5vw, 5.6vh), 3.2rem); }
-  .tell-box { padding-right: min(14rem, 24vw); }
+  .story-pin, .story-pin > .wrap { min-width: 0; max-width: 100%; box-sizing: border-box; }
+  .tell { font-size: clamp(1.9rem, min(5vw, 5.6vh), 3.2rem); max-width: 100%; }
+  .tell .hl { white-space: normal; }
+  .tell-box { padding-right: min(10rem, 16vw); max-width: 100%; box-sizing: border-box; }
   .ll-tell { font-size: clamp(1.6rem, min(4.2vw, 4.6vh), 2.6rem); }
   .ll-roles li b { font-size: 16px; } .ll-roles li span { font-size: 13px; }
 }

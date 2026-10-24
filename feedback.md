@@ -1,5 +1,8 @@
 # Visual Feedback Log
 
+> [!NOTE]
+> **Design Revert Reference**: If we decide to revert from the Ottawa LRT Line 1 transit guideway back to the smooth circular journey design, the verified circle route is preserved at commit `8364cd0` (`git checkout 8364cd0 -- app.js`).
+
 ## Pending Changes
 <!-- Use the in-app Review widget to drop pins and save changes here -->
 
