@@ -10,10 +10,10 @@
 
   /* ---------- content: Peter Jiao · Public Data, Sovereign AI & Peji Systems ---------- */
   const PLACES = {
-    nsut: { c: '#002A5C', logo: 'v2/s/logo-uoft.webp', yr: '2005', side: 'right', tag: 'Chapter 01 · 2005–2011 · Toronto', t: 'Innis College · U of T', r: 'B.Sc. & M.A., Sociology · Rotman Mini-MBA (2026)',
+    nsut: { c: '#002A5C', logo: 'v2/s/logo-uoft.webp', yr: '2005', side: 'right', tag: 'Chapter 01 · 2005–2011 · Toronto', t: 'Innis College · U of T', r: 'B.A. & M.A., Sociology · Rotman Mini-MBA (2026)',
       h: 'Where empirical thinking met systems architecture.',
-      st: ['At <b>Innis College</b> at the University of Toronto, I completed my Honours B.Sc. and M.A. in Sociology while working as a Media Analyst at the <b>Ontario Cabinet Office</b>.', 'In 2026, I returned to U of T for the <b>Rotman School of Management</b> Mini-MBA, pairing quantitative rigour with manager communication.'],
-      n: [['B.Sc. + M.A.', 'University of Toronto'], ['2026', 'Rotman Mini-MBA']], j: 0 },
+      st: ['At <b>Innis College</b> at the University of Toronto, I completed my Honours B.A. and M.A. in Sociology while working as a Media Analyst at the <b>Ontario Cabinet Office</b>.', 'In 2026, I returned to U of T for the <b>Rotman School of Management</b> Mini-MBA, pairing quantitative rigour with manager communication.'],
+      n: [['B.A. + M.A.', 'University of Toronto'], ['2026', 'Rotman Mini-MBA']], j: 0 },
     mmt: { c: '#C8102E', logo: 'v2/s/logo-statcan.webp', yr: '2011–26', side: 'left', tag: 'Chapter 02 · 2011–2026 · Ottawa', t: 'R.H. Coats Building · StatCan', r: 'Chief → Acting Assistant Director → Enterprise Business Architecture Lead',
       h: '15 years modernizing Canada’s national statistical infrastructure.',
       st: ['Across 15+ years at <b>Statistics Canada</b>, I delivered insights through complex data analysis, led national survey modernization, a rapid country-wide COVID-19 serology study, and grew key programs related to technology measurement while improving timeliness and efficiency.', 'As Acting Assistant Director, I authored the business case that secured <b>$25M over 6 years in Federal Budget 2025</b> for the Techstat AI & Digital Technology Measurement Program, and secured <b>$500K+ in annual base funding</b> for Enterprise Business Architecture.'],
@@ -30,7 +30,7 @@
       h: 'I bridge organizational strategy with rapid agentic execution.',
       st: [],
       fun: [
-        ['Foundations', '#002A5C', [['Innis College, U of T', 'Honours B.Sc. & M.A. in Sociology. Empirical systems thinking from day one.'], ['Rotman Mini-MBA (2026)', 'Executive program in business management and AI at U of T.'], ['Vanderbilt AI Specializations', 'Agentic AI, Prompt Engineering & Claude Code certifications (2026).']]],
+        ['Foundations', '#002A5C', [['Innis College, U of T', 'Honours B.A. & M.A. in Sociology. Empirical systems thinking from day one.'], ['Rotman Mini-MBA (2026)', 'Executive program in business management and AI at U of T.'], ['Vanderbilt AI Specializations', 'Agentic AI, Prompt Engineering & Claude Code certifications (2026).']]],
         ['Public Service & AI', '#C8102E', [['15+ years at Statistics Canada', 'Analyst → Unit Head → Chief → Acting Assistant Director → EBA Lead.'], ['Continuous Learning & Technical Depth', 'Never afraid to dive into programming, data systems, and diverse subjects even as I hone my management and strategy skills through work.'], ['Peji.ca & Sovereign AI Lab', '256GB M5 Ultra air-gapped local LLM architecture + rapid client builds.']]],
         ['Off the clock', '#2E9E6B', [['Game studio with my kids', 'We co-designed Kingdoms of Wobbleton & 3D voxel worlds in Three.js.'], ['Ottawa ⇄ Toronto', 'Skating club pipelines, Gatineau Park trails, and family road trips down Hwy 401.'], ['562-Node Digital Brain', 'Obsidian PKG connecting every reflection, dataset, and agent skill.']]]
       ],
@@ -74,9 +74,9 @@
   const STOPS = [
     { id: 'jee', when: '2005 – 2011', place: 'Toronto · U of T', icon: 'cap', logo: 'logo-uoft', c: '#002A5C', at: [400, 1420], lift: 175, name: 'Innis College · U of T',
       title: 'Where empirical thinking met systems architecture.',
-      txt: 'At the <b>University of Toronto (Innis College)</b>, I completed my Honours B.Sc. and M.A. in Sociology while working as a Media Analyst at the <b>Ontario Cabinet Office</b>. Studying how complex social systems behave—and how to measure them rigorously—laid the foundation for everything that followed.',
+      txt: 'At the <b>University of Toronto (Innis College)</b>, I completed my Honours B.A. and M.A. in Sociology while working as a Media Analyst at the <b>Ontario Cabinet Office</b>. Studying how complex social systems behave—and how to measure them rigorously—laid the foundation for everything that followed.',
       photos: [['uoft-uc', 'Innis College · U of T'], ['uoft-awards', '']],
-      pois: [[-170, -120, 'check', 'Honours B.Sc. & M.A. at Innis College.']] },
+      pois: [[-170, -120, 'check', 'Honours B.A. & M.A. at Innis College.']] },
     { id: 'app', when: '2011 – 2018', place: 'Ottawa · Tunney’s Pasture', icon: 'book', logo: 'logo-statcan', c: '#C8102E', at: [960, 960], lift: 150, name: 'Analyst to Unit Head',
       title: 'Entering R.H. Coats & rising from Analyst to Unit Head.',
       txt: 'I joined <b>Statistics Canada</b> in Ottawa and rose from Analyst to Unit Head, leading electronic questionnaire modernization and survey redesign initiatives across national statistical programs serving millions of Canadians.',

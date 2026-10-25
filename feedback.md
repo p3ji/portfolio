@@ -7,6 +7,19 @@
 <!-- Use the in-app Review widget to drop pins and save changes here -->
 
 ## Resolved
+- [x] **Item #76 (2026-10-25)** (U of T Undergraduate Degree Calibration: Honours B.A. in Sociology)
+  - **Requested Change**:
+    Update undergraduate degree nomenclature from Bachelor of Science (B.Sc.) to Bachelor of Arts (Honours B.A.).
+  - **Resolution**:
+    1) Updated sticky note in [index.html](file:///Users/pushp/Documents/Projects/visualportfolio/index.html):
+       - `U of T Sociology (B.A. &amp; M.A.) + Rotman Mini-MBA + Agentic AI certificates.`
+    2) Updated [app.js](file:///Users/pushp/Documents/Projects/visualportfolio/app.js):
+       - `PLACES.nsut`: role tagline changed to `B.A. & M.A., Sociology · Rotman Mini-MBA (2026)`, story changed to `Honours B.A. and M.A. in Sociology`, badge changed to `B.A. + M.A.`.
+       - `PLACES.oyo` foundations list changed to `Honours B.A. & M.A. in Sociology`.
+       - `STOPS[0]` (`jee`): narrative text updated to `Honours B.A. and M.A. in Sociology` and poi checkpoint to `Honours B.A. & M.A. at Innis College.`.
+       - Bumped script cache token to `v=20261025ba`.
+    3) Updated [mobile-valley-sandbox.html](file:///Users/pushp/Documents/Projects/visualportfolio/mobile-valley-sandbox.html) to keep sandbox synchronized.
+
 - [x] **Item #75 (2026-10-25)** (U of T & Toronto Era Education Dates Calibration: 2005–2011 · 2026)
   - **Requested Change**:
     Calibrate University of Toronto dates from "2009–2011" to reflect the full Toronto education era starting with undergraduate study (~2005–2009 B.Sc., 2009–2010 M.A., 2009–2011 TA/RA, 2026 Rotman Mini-MBA).
