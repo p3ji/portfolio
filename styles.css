@@ -4606,7 +4606,7 @@ html:has(.cs.open) .np { z-index: 95; }   /* the music button keeps its spot, to
 
 /* mobile: hide bottom places dock (exclusive site-level navigation) */
 @media (max-width: 859px) {
-  .stage .places, #places {
+  .stage .places, #places, .places {
     display: none !important;
   }
 

@@ -579,6 +579,7 @@ void main() {
 
   places.id = 'places'; places.className = 'places'; places.setAttribute('aria-label', 'Places in the valley');
   places.innerHTML = Object.entries(PLACES).map(([id, P]) => `<button type="button" data-id="${id}" style="--c:${P.c}"><img class="p-icon" src="${P.logo || 'v2/s/logo-statcan.webp'}" alt=""><span>${id === 'me' ? 'Me' : P.t.replace(/,.*/, '')}</span>${P.yr ? `<span class="p-yr">${P.yr}</span>` : ''}</button>`).join('');
+  if (isMobile()) places.style.display = 'none';
   stage.appendChild(places);
   $$('#places button').forEach(b => {
     const id = b.dataset.id;
@@ -616,7 +617,12 @@ void main() {
     }, 80);
 
     addEventListener('resize', () => {
-      if (isMobile() && !isTouchPanning) panMobileToLandmark(activeMobilePlace, false);
+      if (isMobile()) {
+        places.style.display = 'none';
+        if (!isTouchPanning) panMobileToLandmark(activeMobilePlace, false);
+      } else {
+        places.style.display = '';
+      }
     });
   }
 
