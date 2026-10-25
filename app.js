@@ -455,21 +455,26 @@ void main() {
   };
   let activeMobilePlace = 'mmt';
   const isMobile = () => innerWidth < 860;
+  let mobilePanX = 0;
 
-  function panMobileToLandmark(id) {
-    activeMobilePlace = id;
-    const lm = MOBILE_LANDMARKS[id];
+  function updateMobileSpotlight(currentPan) {
     const pano = $('#phPanoCanvas', stage);
-    if (!lm || !pano) return;
-
+    if (!pano) return;
     const heroH = stage.offsetHeight || window.innerHeight;
     const canvasW = heroH * (4000 / 2252);
     const screenW = window.innerWidth;
-    const targetX = canvasW * lm.x;
-    let panX = (screenW / 2) - targetX;
-    const minPan = screenW - canvasW;
-    panX = Math.max(minPan, Math.min(0, panX));
-    pano.style.transform = `translateX(${panX.toFixed(1)}px)`;
+    const centerX = (-currentPan + screenW / 2) / canvasW;
+
+    let nearestId = 'mmt', minDist = Infinity;
+    for (const [id, lm] of Object.entries(MOBILE_LANDMARKS)) {
+      const dist = Math.abs(lm.x - centerX);
+      if (dist < minDist) {
+        minDist = dist;
+        nearestId = id;
+      }
+    }
+    activeMobilePlace = nearestId;
+    const lm = MOBILE_LANDMARKS[nearestId];
 
     const spot = $('#phSpotlight', stage);
     if (spot) {
@@ -481,15 +486,96 @@ void main() {
     }
 
     $$('.ph-beacon', stage).forEach(b => {
-      b.classList.toggle('visible', b.dataset.id === id);
-    });
-
-    $$('#places button').forEach(b => {
-      const isCur = b.dataset.id === id;
-      b.classList.toggle('on', isCur);
-      if (isCur && isMobile()) b.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      b.classList.toggle('active', b.dataset.id === nearestId);
     });
   }
+
+  function setMobilePan(panX, smooth = false) {
+    const pano = $('#phPanoCanvas', stage);
+    if (!pano) return;
+    const heroH = stage.offsetHeight || window.innerHeight;
+    const canvasW = heroH * (4000 / 2252);
+    const screenW = window.innerWidth;
+    const minPan = screenW - canvasW;
+    mobilePanX = Math.max(minPan, Math.min(0, panX));
+
+    pano.style.transition = smooth ? 'transform 0.65s cubic-bezier(0.16, 1, 0.3, 1)' : 'none';
+    pano.style.transform = `translateX(${mobilePanX.toFixed(1)}px)`;
+    updateMobileSpotlight(mobilePanX);
+  }
+
+  function panMobileToLandmark(id, smooth = true) {
+    const lm = MOBILE_LANDMARKS[id];
+    if (!lm) return;
+    const heroH = stage.offsetHeight || window.innerHeight;
+    const canvasW = heroH * (4000 / 2252);
+    const screenW = window.innerWidth;
+    const targetX = canvasW * lm.x;
+    const targetPanX = (screenW / 2) - targetX;
+    setMobilePan(targetPanX, smooth);
+  }
+
+  // Mobile horizontal touch drag with direction-locking and momentum
+  let touchStartX = 0, touchStartY = 0, touchInitialPan = 0;
+  let isTouchPanning = false, isTouchScrolling = false;
+  let lastTouchX = 0, lastTouchTime = 0, touchVelocity = 0;
+  let swayTimer = 0;
+
+  stage.addEventListener('touchstart', e => {
+    if (!isMobile() || e.touches.length !== 1 || focusId) return;
+    clearTimeout(swayTimer);
+    const t = e.touches[0];
+    touchStartX = t.clientX;
+    touchStartY = t.clientY;
+    touchInitialPan = mobilePanX;
+    isTouchPanning = false;
+    isTouchScrolling = false;
+    lastTouchX = t.clientX;
+    lastTouchTime = performance.now();
+    touchVelocity = 0;
+
+    const pano = $('#phPanoCanvas', stage);
+    if (pano) pano.style.transition = 'none';
+  }, { passive: true });
+
+  stage.addEventListener('touchmove', e => {
+    if (!isMobile() || e.touches.length !== 1 || focusId || isTouchScrolling) return;
+    const t = e.touches[0];
+    const dx = t.clientX - touchStartX;
+    const dy = t.clientY - touchStartY;
+
+    if (!isTouchPanning && !isTouchScrolling) {
+      if (Math.abs(dx) > 7 || Math.abs(dy) > 7) {
+        if (Math.abs(dx) > Math.abs(dy)) {
+          isTouchPanning = true;
+        } else {
+          isTouchScrolling = true;
+          return;
+        }
+      }
+    }
+
+    if (isTouchPanning) {
+      if (e.cancelable) e.preventDefault();
+      const now = performance.now();
+      const dt = Math.max(1, now - lastTouchTime);
+      touchVelocity = (t.clientX - lastTouchX) / dt;
+      lastTouchX = t.clientX;
+      lastTouchTime = now;
+
+      setMobilePan(touchInitialPan + dx, false);
+    }
+  }, { passive: false });
+
+  stage.addEventListener('touchend', e => {
+    if (!isMobile() || !isTouchPanning) return;
+    isTouchPanning = false;
+
+    // Apply momentum glide
+    const momentumDist = touchVelocity * 220;
+    const targetPan = mobilePanX + momentumDist;
+    setMobilePan(targetPan, true);
+  });
 
   places.id = 'places'; places.className = 'places'; places.setAttribute('aria-label', 'Places in the valley');
   places.innerHTML = Object.entries(PLACES).map(([id, P]) => `<button type="button" data-id="${id}" style="--c:${P.c}"><img class="p-icon" src="${P.logo || 'v2/s/logo-statcan.webp'}" alt=""><span>${id === 'me' ? 'Me' : P.t.replace(/,.*/, '')}</span>${P.yr ? `<span class="p-yr">${P.yr}</span>` : ''}</button>`).join('');
@@ -498,34 +584,40 @@ void main() {
     const id = b.dataset.id;
     b.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') setHoverPlace(id); });
     b.addEventListener('pointerleave', () => clearHoverPlace(id));
-    b.addEventListener('click', () => {
-      if (isMobile()) {
-        if (activeMobilePlace === id && !sheet.classList.contains('on')) {
-          focus(id);
-        } else if (activeMobilePlace === id && sheet.classList.contains('on')) {
-          unfocus();
-        } else {
-          if (sheet.classList.contains('on')) unfocus();
-          panMobileToLandmark(id);
-        }
-      } else {
-        focusId === id ? unfocus() : focus(id);
-      }
-    });
+    b.addEventListener('click', () => focusId === id ? unfocus() : focus(id));
   });
 
   $$('.ph-beacon', stage).forEach(b => {
-    b.addEventListener('click', e => {
+    const handleBeacon = e => {
       e.stopPropagation();
       const id = b.dataset.id;
-      if (activeMobilePlace !== id) panMobileToLandmark(id);
+      panMobileToLandmark(id, true);
       focus(id);
-    });
+    };
+    b.addEventListener('click', handleBeacon);
+    b.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleBeacon(e); } });
   });
 
   if (isMobile()) {
-    setTimeout(() => panMobileToLandmark(activeMobilePlace), 100);
-    addEventListener('resize', () => { if (isMobile()) panMobileToLandmark(activeMobilePlace); });
+    setTimeout(() => {
+      panMobileToLandmark('mmt', false);
+      swayTimer = setTimeout(() => {
+        if (focusId || isTouchPanning || scrollY > 10) return;
+        const heroH = stage.offsetHeight || window.innerHeight;
+        const canvasW = heroH * (4000 / 2252);
+        const screenW = window.innerWidth;
+        const basePan = (screenW / 2) - (canvasW * MOBILE_LANDMARKS.mmt.x);
+        setMobilePan(basePan - 45, true);
+        swayTimer = setTimeout(() => {
+          if (focusId || isTouchPanning || scrollY > 10) return;
+          setMobilePan(basePan, true);
+        }, 1200);
+      }, 2300);
+    }, 80);
+
+    addEventListener('resize', () => {
+      if (isMobile() && !isTouchPanning) panMobileToLandmark(activeMobilePlace, false);
+    });
   }
 
   $('#s-x').addEventListener('click', unfocus);

@@ -16,12 +16,12 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Geist:wght@400;600&family=Gaegu:wght@400;700&family=Anton&family=Mrs+Saint+Delafield&display=swap">
-<link rel="stylesheet" href="styles.css?v=20261024mobile">
+<link rel="stylesheet" href="styles.css?v=20261025pan">
 
 <script>(() => { let t = null; try { t = localStorage.getItem('jc-theme'); } catch (_) {} document.documentElement.dataset.theme = t || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); })();</script>
 <header class="bar">
   <button class="np" id="np" type="button" aria-label="Play music" title="Play music"><span class="np-d" aria-hidden="true"></span><span class="np-t">Music in the valley</span><span class="np-b" aria-hidden="true"><i></i><i></i></span></button>
-<div class="vc" id="vc" aria-live="polite"><i aria-hidden="true"></i><span><b class="pkg-node-count">568</b><span class="vc-w"> PKG nodes</span></span></div>
+<div class="vc" id="vc" aria-live="polite"><i aria-hidden="true"></i><span><b class="pkg-node-count">571</b><span class="vc-w"> PKG nodes</span></span></div>
     <button type="button" class="sfx-btn" id="sfxBtn" aria-pressed="true" aria-label="Sound effects on" title="Sound on/off"><svg class="on" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5z"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/></svg><svg class="off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5z"/><path d="M16 9.5l5 5M21 9.5l-5 5"/></svg></button>
 
 <button class="theme-btn" id="themeBtn" type="button" aria-label="Switch theme"><span class="ti"><svg class="moon" viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg><svg class="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></svg></span><span class="tl"><b class="tl-n">Night</b><b class="tl-d">Day</b></span></button>
@@ -45,11 +45,11 @@
         <img src="v2/h/plate.webp?v=20261024d" class="ph-plate day" alt="" draggable="false">
         <img src="v2/h/plate-night2.webp?v=20261024d" class="ph-plate night" alt="" draggable="false">
         <div class="ph-spotlight" id="phSpotlight"></div>
-        <div class="ph-beacon" id="phBeacon-nsut" data-id="nsut" style="left:20.5%;top:38%;--c:#002A5C"><img src="v2/s/logo-uoft.webp" alt=""><span>Innis College · U of T</span></div>
-        <div class="ph-beacon" id="phBeacon-mmt" data-id="mmt" style="left:69.5%;top:36%;--c:#C8102E"><img src="v2/s/logo-statcan.webp" alt=""><span>R.H. Coats · StatCan</span></div>
-        <div class="ph-beacon" id="phBeacon-oyo" data-id="oyo" style="left:90.5%;top:27.5%;--c:#C4622D"><img src="v2/s/logo-peji.webp" alt=""><span>Peji Systems</span></div>
-        <div class="ph-beacon" id="phBeacon-eazydiner" data-id="eazydiner" style="left:82.0%;top:66.5%;--c:#1E7FC8"><img src="v2/s/logo-aijourney.webp" alt=""><span>1-Year AI Journey</span></div>
-        <div class="ph-beacon" id="phBeacon-me" data-id="me" style="left:18.5%;top:68%;--c:#F2B705"><img src="v2/s/photo.webp" alt=""><span>Me · Peter</span></div>
+        <div class="ph-beacon" id="phBeacon-nsut" data-id="nsut" role="button" tabindex="0" aria-label="Innis College, University of Toronto" style="left:20.5%;top:38%;--c:#002A5C"><img src="v2/s/logo-uoft.webp" alt=""><span>Innis College · U of T</span></div>
+        <div class="ph-beacon" id="phBeacon-mmt" data-id="mmt" role="button" tabindex="0" aria-label="R.H. Coats Building, Statistics Canada" style="left:69.5%;top:36%;--c:#C8102E"><img src="v2/s/logo-statcan.webp" alt=""><span>R.H. Coats · StatCan</span></div>
+        <div class="ph-beacon" id="phBeacon-oyo" data-id="oyo" role="button" tabindex="0" aria-label="Peji Systems cottage" style="left:90.5%;top:27.5%;--c:#C4622D"><img src="v2/s/logo-peji.webp" alt=""><span>Peji Systems</span></div>
+        <div class="ph-beacon" id="phBeacon-eazydiner" data-id="eazydiner" role="button" tabindex="0" aria-label="1-Year AI Journey pavilion" style="left:82.0%;top:66.5%;--c:#1E7FC8"><img src="v2/s/logo-aijourney.webp" alt=""><span>1-Year AI Journey</span></div>
+        <div class="ph-beacon" id="phBeacon-me" data-id="me" role="button" tabindex="0" aria-label="About Peter" style="left:18.5%;top:68%;--c:#F2B705"><img src="v2/s/photo.webp" alt=""><span>Me · Peter</span></div>
       </div>
     </div>
     <canvas class="gl-plate" id="glPlate" aria-hidden="true"></canvas>
@@ -217,11 +217,11 @@
         <li style="--c:#F2A93B;--d:1"><i class="hat"><svg viewBox="0 0 64 44"><path d="M10 32c0-14 10-24 22-24s22 10 22 24z" fill="#FF6B4A"/><path d="M26 10h12l-2-4h-8z" fill="#E14F30"/><path d="M4 32h30c-2 5-8 8-14 8-8 0-14-3-16-8z" fill="#E14F30"/><path d="M34 32h24v4H34z" fill="#C63E22"/><path d="M40 14c4 2 7 6 8 11" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round" opacity=".5"/></svg></i><b>Tier 02 · Medium (8–14d)</b><span>Workflow automation &amp; daily data pipelines (mkdailysender)</span></li>
         <li style="--c:#C98B52;--d:2"><i class="hat"><svg viewBox="0 0 64 44"><ellipse cx="32" cy="26" rx="26" ry="12" fill="#C98B52"/><ellipse cx="30" cy="24" rx="22" ry="9" fill="#DDA36B"/><path d="M31 15c1-5 3-8 3-8" stroke="#8B5E33" stroke-width="3" stroke-linecap="round"/><circle cx="20" cy="24" r="3" fill="#FF6B4A"/><circle cx="30" cy="27" r="3" fill="#4285F4"/><circle cx="40" cy="24" r="3" fill="#FFD23F"/></svg></i><b>Tier 03 · Large (15+d)</b><span>Custom multi-view apps &amp; DDI 3.3 survey platforms (pa.peji.ca)</span></li>
         <li style="--c:#1DB954;--d:3"><i class="hat"><svg viewBox="0 0 64 44"><path d="M10 30c0-13 10-22 22-22s22 9 22 22z" fill="#FFC21A"/><path d="M26 9h12v21H26z" fill="#F2AE00"/><path d="M4 30h56v5c0 2-2 4-4 4H8c-2 0-4-2-4-4z" fill="#F2AE00"/><path d="M16 22c2-6 6-10 10-11" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round" opacity=".6"/></svg></i><b>Sovereign Local AI</b><span>M5 Ultra (256GB) zero-cloud-leakage hooks (peji.ca/localllm)</span></li>
-        <li style="--c:#0B0B0C;--d:4"><i class="hat"><svg viewBox="0 0 64 44"><path d="M32 2L50 38H14z" fill="#9C7BFF"/><path d="M23 20l18 8M19 28l24 9M28 10l12 6" stroke="#FFD23F" stroke-width="3" stroke-linecap="round"/><circle cx="32" cy="3" r="4" fill="#FF6B4A"/><path d="M10 38h44" stroke="#7B5CD6" stroke-width="4" stroke-linecap="round"/></svg></i><b>Digital Brain (PKG)</b><span><span class="pkg-node-count">568</span>-node Obsidian graph + autonomous daily review agents</span></li>
+        <li style="--c:#0B0B0C;--d:4"><i class="hat"><svg viewBox="0 0 64 44"><path d="M32 2L50 38H14z" fill="#9C7BFF"/><path d="M23 20l18 8M19 28l24 9M28 10l12 6" stroke="#FFD23F" stroke-width="3" stroke-linecap="round"/><circle cx="32" cy="3" r="4" fill="#FF6B4A"/><path d="M10 38h44" stroke="#7B5CD6" stroke-width="4" stroke-linecap="round"/></svg></i><b>Digital Brain (PKG)</b><span><span class="pkg-node-count">571</span>-node Obsidian graph + autonomous daily review agents</span></li>
         <li style="--c:#E1306C;--d:5"><i class="hat"><svg viewBox="0 0 64 44"><rect x="18" y="4" width="28" height="28" rx="2" fill="#1B1B1F"/><rect x="18" y="22" width="28" height="6" fill="#E1306C"/><path d="M4 34c0-2 2-3 4-3h48c2 0 4 1 4 3s-2 4-4 4H8c-2 0-4-2-4-4z" fill="#111114"/><path d="M22 8v10" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity=".25"/></svg></i><b>Nonprofit Friendly</b><span>Low-cost or pro-bono builds for local community impact</span></li>
       </ol>
     </div>
-    <ul class="ll-stats"><li><b>40+</b><span>prototypes &amp; apps shipped</span></li><li><b class="pkg-node-count">568</b><span>Digital Brain PKG nodes</span></li><li><b>256 GB</b><span>M5 Ultra unified memory air-gap</span></li></ul>
+    <ul class="ll-stats"><li><b>40+</b><span>prototypes &amp; apps shipped</span></li><li><b class="pkg-node-count">571</b><span>Digital Brain PKG nodes</span></li><li><b>256 GB</b><span>M5 Ultra unified memory air-gap</span></li></ul>
     <div class="ll-cta">
       <a class="ll-store" href="https://peji.ca" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2L2 7l10 5 10-5-10-5zm0 7.5l-6-3 6-3 6 3-6 3zm0 2.5l-10-5v2l10 5 10-5v-2l-10 5zm0 5l-10-5v2l10 5 10-5v-2l-10 5z"/></svg><span><small>Explore consulting &amp; demos</small>Visit peji.ca ↗</span></a>
       <a class="ll-follow" href="https://peji.ca/localllm" target="_blank" rel="noopener">Read the Zero-Cloud-Leakage Local AI Architecture ↗</a>
@@ -501,7 +501,7 @@
           <li>Rethinking old processes and automating the manual stuff</li>
           <li>Finding solutions to problems at every level of the organization</li>
           <li>Mixing different disciplines together to generate new things and insights</li>
-          <li>Connecting every challenge back to an ever-growing <span class="pkg-node-count">568</span>-node Personal Knowledge Graph that grows with me</li>
+          <li>Connecting every challenge back to an ever-growing <span class="pkg-node-count">571</span>-node Personal Knowledge Graph that grows with me</li>
         </ul>
         <b>Non-nerdy stuff</b>
         <ul>
@@ -516,9 +516,9 @@
       <div class="item vinyl p5" style="left:38%;top:44%;--r:-3deg" tabindex="0" title="Tap to play music"><div class="vn-sleeve"><svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3" fill="#fff"/><circle cx="18" cy="16" r="3" fill="#fff"/></svg><b>Music</b><small>(to add:  my musical creations)</small></div><div class="vn-disc"><i></i></div><span>music</span><div class="vn-ask" role="dialog" aria-label="Play Music"><b>Original Piano &amp; Music</b><p style="margin:0 0 12px;font:500 13px/1.35 var(--sans);color:var(--ink-2);">Piano recordings &amp; creative tracks.</p><a href="#play" class="vn-play-track" style="cursor:pointer">Play piano lo-fi ♫</a><button type="button" class="vn-x" aria-label="Close">×</button></div></div>
       <figure class="item polaroid pinned pol-sm pc4" style="left:64%;top:32%;--r:3deg;--pc:#2A7BD1;width:165px;margin:0"><img src="v2/s/life-sister.png" alt="Family Kitchen Meal Planner PWA" loading="lazy"><figcaption>Family Kitchen PWA</figcaption></figure>
       <figure class="item polaroid pinned pol-sm pc5" style="left:2%;top:45%;--r:-4deg;--pc:#F2B705;width:165px;margin:0"><img src="v2/s/life-cars.png" alt="MKSC Skating Club Automation" loading="lazy"><figcaption>MKSC skating club app</figcaption></figure>
-      <figure class="item polaroid pinned pol-sm pc6" style="left:19%;top:47%;--r:3deg;--pc:#E4402A;width:175px;margin:0"><img src="v2/s/life-olive.png" alt="Digital Brain PKG" loading="lazy"><figcaption><span class="pkg-node-count">568</span>-node Digital Brain</figcaption></figure>
+      <figure class="item polaroid pinned pol-sm pc6" style="left:19%;top:47%;--r:3deg;--pc:#E4402A;width:175px;margin:0"><img src="v2/s/life-olive.png" alt="Digital Brain PKG" loading="lazy"><figcaption><span class="pkg-node-count">571</span>-node Digital Brain</figcaption></figure>
       <figure class="item polaroid pinned pol-sm pc7" style="left:47%;top:66%;--r:-3deg;--pc:#2A7BD1;width:165px;margin:0"><img src="v2/s/life-gym.png" alt="M5 Ultra 256GB Air-Gap Lab" loading="lazy"><figcaption>M5 Ultra 256GB lab</figcaption></figure>
-      <div class="item note taped p17" id="pkgNote" style="--sc:#D9CCFF;left:78%;top:70%;--r:-4deg;width:180px"><span class="pkg-node-count">568</span> nodes in my PKG.<small><span class="pkg-week-diff">+14</span> nodes this week · Obsidian</small></div>
+      <div class="item note taped p17" id="pkgNote" style="--sc:#D9CCFF;left:78%;top:70%;--r:-4deg;width:180px"><span class="pkg-node-count">571</span> nodes in my PKG.<small><span class="pkg-week-diff">+16</span> nodes this week · Obsidian</small></div>
       <div class="item ticket pinned p7" style="left:4%;top:76%;--r:3deg;--pc:#C8202A">
         <div class="tk-main">
           <div class="tk-top"><span class="tk-air">Corridor</span><small>One-Year AI Journey</small></div>
@@ -622,7 +622,7 @@
 </main>
 
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
-<script src="app.js?v=20261024mobile"></script>
+<script src="app.js?v=20261025pan"></script>
 <!-- In-app visual review widget (dev mode only) -->
 <script>
   if (['localhost', '127.0.0.1', '0.0.0.0'].includes(location.hostname) || location.hostname.endsWith('.local') || location.port || new URLSearchParams(location.search).has('review')) {

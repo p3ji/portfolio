@@ -4491,7 +4491,7 @@ html:root .cs .cs-bar button.cs-close { width: 48px; height: 48px; padding: 0 !i
     100% { transform: translate(-50%, -50%) scale(1.06); opacity: 1; }
   }
 
-  /* Landmark Beacon (Spotlight marker on active building) */
+  /* Landmark Beacon (Spotlight marker on buildings) */
   .ph-beacon {
     position: absolute;
     transform: translate(-50%, -100%);
@@ -4501,28 +4501,36 @@ html:root .cs .cs-bar button.cs-close { width: 48px; height: 48px; padding: 0 !i
     gap: 6px;
     padding: 5px 12px 5px 6px;
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.96);
-    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.38);
-    font-size: 12px;
-    font-weight: 800;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.28);
+    font-size: 11.5px;
+    font-weight: 700;
     color: #13233A;
     white-space: nowrap;
-    opacity: 0;
-    scale: 0.85;
+    opacity: 0.88;
+    scale: 0.95;
     pointer-events: auto;
     cursor: pointer;
-    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), scale 0.4s;
+    transition: opacity 0.3s ease, scale 0.3s var(--spring), box-shadow 0.3s;
     z-index: 35;
   }
-  .ph-beacon.visible {
+  .ph-beacon.active {
     opacity: 1;
-    scale: 1;
+    scale: 1.06;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.42), 0 0 0 2px var(--c, #2563EB);
+    z-index: 38;
   }
-  .ph-beacon img { width: 22px; height: 22px; border-radius: 50%; object-fit: cover; }
+  .ph-beacon img { width: 20px; height: 20px; border-radius: 50%; object-fit: cover; }
   :root[data-theme="dark"] .ph-beacon {
-    background: rgba(24, 30, 42, 0.95);
+    background: rgba(24, 30, 42, 0.94);
     color: #F3F4F6;
-    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.12);
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.12);
+  }
+  :root[data-theme="dark"] .ph-beacon.active {
+    background: #1E293B;
+    box-shadow: 0 8px 26px rgba(0, 0, 0, 0.8), 0 0 0 2px var(--c, #2563EB);
   }
 
   /* Pin stem connecting bubble to building anchor dot */
@@ -4532,18 +4540,22 @@ html:root .cs .cs-bar button.cs-close { width: 48px; height: 48px; padding: 0 !i
     left: 50%;
     bottom: -14px;
     transform: translateX(-50%);
-    width: 14px;
-    height: 14px;
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
     background: var(--c, #2563EB);
-    box-shadow: 0 0 0 3px #FFFFFF, 0 3px 8px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 0 2.5px #FFFFFF, 0 2px 6px rgba(0, 0, 0, 0.4);
+    transition: transform 0.25s var(--spring);
+  }
+  .ph-beacon.active::after {
+    transform: translateX(-50%) scale(1.25);
   }
   :root[data-theme="dark"] .ph-beacon::after {
-    box-shadow: 0 0 0 2.5px #1E293B, 0 3px 8px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 0 0 2px #1E293B, 0 2px 6px rgba(0, 0, 0, 0.7);
   }
 
-  /* Pulsing radar wave radiating directly from the building anchor */
-  .ph-beacon::before {
+  /* Pulsing radar wave only on the active centered building */
+  .ph-beacon.active::before {
     content: "";
     position: absolute;
     left: 50%;
@@ -4592,76 +4604,10 @@ html:has(.cs.open) .np { z-index: 95; }   /* the music button keeps its spot, to
 @media (min-width: 860px) { html:has(.cs.open) .np { right: clamp(14px, 2.4vw, 28px) !important; } html:has(.cs.open) .np { top: calc(env(safe-area-inset-top, 0px) + 16px) !important; } html:has(.cs.open) .cs-bar { padding-right: calc(clamp(14px, 2.4vw, 28px) + var(--npw, 170px) + 8px) !important; } html:has(.cs.open) .cs-right { overflow: visible !important; } html:has(.cs.open) .cs-bar > :last-child { min-width: 0; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; } }   /* in a case study the music button takes the far right and the bar's own title and theme switch sit just left of it */
 @media (max-width: 859px) { html:has(.cs.open) .np { padding: 0 8px !important; gap: 0 !important; } html:has(.cs.open) .np .np-b { display: none; } }
 
-/* mobile bottom places capsule dock & bottom sheet */
+/* mobile: hide bottom places dock (exclusive site-level navigation) */
 @media (max-width: 859px) {
   .stage .places, #places {
-    display: flex !important;
-    position: absolute;
-    z-index: 25;
-    left: 10px;
-    right: 10px;
-    bottom: calc(env(safe-area-inset-bottom, 0px) + 72px);
-    transform: none;
-    max-width: none;
-    gap: 6px;
-    overflow-x: auto;
-    scrollbar-width: none;
-    padding: 6px 6px;
-    scroll-snap-type: x mandatory;
-    background: rgba(255, 253, 247, 0.88);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.22);
-    pointer-events: auto;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-  }
-  }
-  #places::-webkit-scrollbar { display: none; }
-  #places button {
-    flex: 0 0 auto;
-    scroll-snap-align: start;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 7px 12px 7px 7px;
-    border-radius: 999px;
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--ink);
-    background: rgba(255, 255, 255, 0.85);
-    border: 1.5px solid transparent;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
-    transition: transform 0.2s, background 0.2s, border-color 0.2s, box-shadow 0.2s;
-  }
-  #places button::before { display: none; }
-  #places button.on {
-    background: #FFFFFF;
-    border-color: var(--c, #2563EB);
-    box-shadow: 0 0 0 2.5px color-mix(in srgb, var(--c, #2563EB) 30%, transparent), 0 4px 14px rgba(0,0,0,0.25);
-    transform: translateY(-2px);
-  }
-  #places button .p-icon {
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    object-fit: cover;
-    box-shadow: 0 0 0 1.5px var(--c, #2563EB);
-  }
-  #places button .p-yr {
-    font-size: 10px;
-    font-weight: 600;
-    color: var(--ink-2);
-    margin-left: -2px;
-  }
-  :root[data-theme="dark"] #places {
-    background: rgba(24, 30, 42, 0.9);
-  }
-  :root[data-theme="dark"] #places button {
-    background: rgba(30, 41, 59, 0.85);
-    color: #F3F4F6;
-  }
-  :root[data-theme="dark"] #places button.on {
-    background: #1E293B;
+    display: none !important;
   }
 
   /* mobile chapter card: clean bottom sheet overlay */
