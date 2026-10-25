@@ -579,8 +579,9 @@ void main() {
 
   places.id = 'places'; places.className = 'places'; places.setAttribute('aria-label', 'Places in the valley');
   places.innerHTML = Object.entries(PLACES).map(([id, P]) => `<button type="button" data-id="${id}" style="--c:${P.c}"><img class="p-icon" src="${P.logo || 'v2/s/logo-statcan.webp'}" alt=""><span>${id === 'me' ? 'Me' : P.t.replace(/,.*/, '')}</span>${P.yr ? `<span class="p-yr">${P.yr}</span>` : ''}</button>`).join('');
-  if (isMobile()) places.style.display = 'none';
-  stage.appendChild(places);
+  places.style.display = 'none';
+  // Redundant landmark dock removed: the site-level .nav bar has exclusive presence at bottom on all devices
+  // stage.appendChild(places);
   $$('#places button').forEach(b => {
     const id = b.dataset.id;
     b.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') setHoverPlace(id); });
