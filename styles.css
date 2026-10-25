@@ -171,7 +171,8 @@ p, li, figcaption, blockquote, small, dd { text-wrap: pretty; }
   max-width: calc(100vw - 32px); overflow-x: auto; scrollbar-width: none; opacity: 0; animation: fade 1s var(--ease) 3.4s forwards; }
 .places::-webkit-scrollbar { display: none; }
 .places button { white-space: nowrap; font-size: 13.5px; font-weight: 600; padding: 9px 14px; border-radius: 999px; display: inline-flex; align-items: center; gap: 7px; transition: background .3s; }
-.places button::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--c); }
+.places button .p-icon { width: 18px; height: 18px; border-radius: 50%; object-fit: cover; }
+@media (min-width: 860px) { .places button .p-yr { display: none; } }
 .places button:hover, .places button.on { background: var(--card); box-shadow: 0 2px 10px -3px rgba(19, 35, 58, .3); }
 .scroll-cue { position: absolute; z-index: 5; right: clamp(16px, 3vw, 36px); bottom: calc(env(safe-area-inset-bottom, 0px) + 28px); display: flex; align-items: center; gap: 10px;
   font: 400 19px/1 var(--serif); font-size-adjust: .46; color: #fff; text-shadow: 0 1px 12px rgba(10, 30, 50, .6); pointer-events: none; opacity: 0; animation: fade 1s var(--ease) 3.8s forwards; }
@@ -3267,8 +3268,7 @@ div.mm { overflow-x: clip; }
 @media (max-width: 760px) { .fb-in { grid-template-columns: 1fr; border-radius: 26px; } .fb-row { grid-template-columns: 1fr; } .fb-done { grid-column: 1; } .fb-go { width: 100%; justify-content: center; } }
 @media (max-width: 560px) { .fb-row { grid-template-columns: 1fr; } }
 
-/* ===== phones: nothing plays on scroll; you tap to explore ===== */
-.places { display: none; }
+/* ===== phones: tap to explore ===== */
 @media (max-width: 860px) {
   .valley { height: 100vh !important; height: 100svh !important; }
   .story { margin-top: 0 !important; height: auto !important; }
@@ -3277,9 +3277,6 @@ div.mm { overflow-x: clip; }
   .ll-rev-track { height: auto !important; }
   .ll-rev-pin { position: relative !important; height: auto !important; padding: 12vh 0; }
   .box-track { height: 100vh !important; height: 100svh !important; }
-  .places { display: flex; bottom: calc(var(--navh, 92px) + 8px); opacity: 1; animation: none; max-width: calc(100vw - 24px); }
-  .places button { padding: 9px 12px; font-size: 13px; }
-  .stage .sheet, .stage .sheet.left { bottom: calc(var(--navh, 92px) + 66px) !important; max-height: calc(100svh - var(--navh, 92px) - 150px) !important; }
   .hint, .scroll-cue { display: none !important; }
 }
 :root[data-theme="dark"] .places { background: rgba(34, 34, 34, .86); }
@@ -4043,11 +4040,10 @@ html:root:not([data-theme="dark"]) .cs .cs-bar button.cs-close:hover { box-shado
 .logo i { position: relative; }
 .logo .jc { position: absolute; inset: 0; display: grid; place-items: center; background: var(--ink); color: var(--paper); font: 800 12.5px/1 var(--sans); letter-spacing: -.02em; opacity: 0; scale: .6; transition: opacity .35s, scale .45s var(--spring); }
 @media (max-width: 859px) {
-  /* hero: one painted sky from edge to edge, no flat blue, no places bar */
+  /* hero: one painted sky from edge to edge */
   .stage { background: linear-gradient(180deg, #2C86D8 0%, #1C74C6 45%, #0E64B7 100%) !important; }
   :root[data-theme="dark"] .stage { background: #09090B !important; }
   .cam { -webkit-mask: linear-gradient(transparent, #000 9%); mask: linear-gradient(transparent, #000 9%); }
-  .stage .places, #places { display: none !important; }
   /* the name chip is just my photo; once you scroll it becomes JC */
   .logo { padding: 5px; gap: 0; height: 48px; width: 48px; box-sizing: border-box; justify-content: center; }
   .logo .lt { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
@@ -4409,14 +4405,161 @@ html:root .cs .cs-bar button.cs-close { width: 48px; height: 48px; padding: 0 !i
   .c3-b2 { max-width: min(100%, 52svh) !important; margin-inline: auto !important; }
 }
 
-/* phone home: one portrait painting with a tall sky for the headline, instead of the wide layered valley */
+/* phone home: 1:1 panoramic landscape canvas with responsive building auto-pan & spotlight */
 .ph-hero { display: none; }
 @media (max-width: 859px) {
-  /* the painting itself, edge to edge, no colour laid over it; it is pinned a little right of centre so the buildings on that side stay in view */
-  .ph-hero { display: block; position: absolute; inset: 0; z-index: 0; pointer-events: none; background: url("v2/h/phone-day.webp?v=20261024d") 65% 100% / cover no-repeat; }
+  .ph-hero {
+    display: block;
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
   .stage .cam { display: none !important; }
   .stage::before { display: none !important; }
-  :root[data-theme="dark"] .ph-hero { background-image: url("v2/h/phone-night.webp?v=20261024d"); }
+
+  .ph-pano-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    aspect-ratio: 4000 / 2252;
+    pointer-events: none;
+    transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
+  }
+  .ph-plate {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 1.2s ease;
+    pointer-events: none;
+  }
+  .ph-plate.day { opacity: 1; }
+  .ph-plate.night { opacity: 0; }
+  :root[data-theme="dark"] .ph-plate.day { opacity: 0; }
+  :root[data-theme="dark"] .ph-plate.night { opacity: 1; }
+
+  /* Building Sunbeam & Architectural Floodlight */
+  .ph-spotlight {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 12;
+    border-radius: 50%;
+    opacity: 0;
+    transition: left 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+                top 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+                width 0.85s, height 0.85s,
+                opacity 0.6s ease;
+  }
+  .ph-spotlight.lit { opacity: 1; }
+
+  :root[data-theme="light"] .ph-spotlight {
+    background: radial-gradient(ellipse at center,
+      rgba(255, 248, 205, 0.92) 0%,
+      rgba(255, 228, 145, 0.62) 32%,
+      rgba(255, 195, 80, 0.28) 62%,
+      transparent 85%
+    );
+    mix-blend-mode: color-dodge;
+    filter: blur(8px);
+    animation: phSunbeamBreathe 3.5s ease-in-out infinite alternate;
+  }
+
+  :root[data-theme="dark"] .ph-spotlight {
+    background: radial-gradient(ellipse at center,
+      rgba(255, 238, 165, 0.96) 0%,
+      rgba(255, 190, 80, 0.72) 35%,
+      rgba(255, 135, 20, 0.3) 65%,
+      transparent 85%
+    );
+    mix-blend-mode: screen;
+    filter: blur(6px);
+    animation: phFloodlightGlow 3s ease-in-out infinite alternate;
+  }
+
+  @keyframes phSunbeamBreathe {
+    0% { transform: translate(-50%, -50%) scale(0.96); opacity: 0.88; }
+    100% { transform: translate(-50%, -50%) scale(1.08); opacity: 1; }
+  }
+  @keyframes phFloodlightGlow {
+    0% { transform: translate(-50%, -50%) scale(0.97); opacity: 0.9; }
+    100% { transform: translate(-50%, -50%) scale(1.06); opacity: 1; }
+  }
+
+  /* Landmark Beacon (Spotlight marker on active building) */
+  .ph-beacon {
+    position: absolute;
+    transform: translate(-50%, -100%);
+    margin-top: -14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px 5px 6px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.38);
+    font-size: 12px;
+    font-weight: 800;
+    color: #13233A;
+    white-space: nowrap;
+    opacity: 0;
+    scale: 0.85;
+    pointer-events: auto;
+    cursor: pointer;
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), scale 0.4s;
+    z-index: 35;
+  }
+  .ph-beacon.visible {
+    opacity: 1;
+    scale: 1;
+  }
+  .ph-beacon img { width: 22px; height: 22px; border-radius: 50%; object-fit: cover; }
+  :root[data-theme="dark"] .ph-beacon {
+    background: rgba(24, 30, 42, 0.95);
+    color: #F3F4F6;
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.12);
+  }
+
+  /* Pin stem connecting bubble to building anchor dot */
+  .ph-beacon::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -14px;
+    transform: translateX(-50%);
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--c, #2563EB);
+    box-shadow: 0 0 0 3px #FFFFFF, 0 3px 8px rgba(0, 0, 0, 0.4);
+  }
+  :root[data-theme="dark"] .ph-beacon::after {
+    box-shadow: 0 0 0 2.5px #1E293B, 0 3px 8px rgba(0, 0, 0, 0.7);
+  }
+
+  /* Pulsing radar wave radiating directly from the building anchor */
+  .ph-beacon::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -14px;
+    transform: translateX(-50%);
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2.5px solid var(--c, #2563EB);
+    animation: phBeaconPulseRing 2s cubic-bezier(0.2, 0.8, 0.4, 1) infinite;
+    pointer-events: none;
+  }
+  @keyframes phBeaconPulseRing {
+    0% { transform: translateX(-50%) scale(1); opacity: 0.95; }
+    100% { transform: translateX(-50%) scale(3.5); opacity: 0; }
+  }
 }
 
 /* case-study footer: on phones the socials are just their logos; laptops keep the labelled pills */
@@ -4449,27 +4592,109 @@ html:has(.cs.open) .np { z-index: 95; }   /* the music button keeps its spot, to
 @media (min-width: 860px) { html:has(.cs.open) .np { right: clamp(14px, 2.4vw, 28px) !important; } html:has(.cs.open) .np { top: calc(env(safe-area-inset-top, 0px) + 16px) !important; } html:has(.cs.open) .cs-bar { padding-right: calc(clamp(14px, 2.4vw, 28px) + var(--npw, 170px) + 8px) !important; } html:has(.cs.open) .cs-right { overflow: visible !important; } html:has(.cs.open) .cs-bar > :last-child { min-width: 0; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; } }   /* in a case study the music button takes the far right and the bar's own title and theme switch sit just left of it */
 @media (max-width: 859px) { html:has(.cs.open) .np { padding: 0 8px !important; gap: 0 !important; } html:has(.cs.open) .np .np-b { display: none; } }
 
-/* phone place pins over the portrait painting (same box as the cover-fit image, anchored at the bottom) */
-.ph-pins { display: none; }
+/* mobile bottom places capsule dock & bottom sheet */
 @media (max-width: 859px) {
-  .ph-pins { display: block; position: absolute; z-index: 1; left: calc((100vw - max(100vw, 100svh * .5625)) * .65); bottom: 0; width: max(100vw, 100svh * .5625); height: max(100svh, 100vw / .5625); pointer-events: none; }
-  .ph-pin { position: absolute; z-index: 1; pointer-events: auto; opacity: 0; animation: phpin .6s var(--spring) forwards; }
-  .ph-pin:nth-child(2) { animation-delay: .1s; } .ph-pin:nth-child(3) { animation-delay: .2s; } .ph-pin:nth-child(4) { animation-delay: .3s; } .ph-pin:nth-child(5) { animation-delay: .4s; } .ph-pin:nth-child(6) { animation-delay: .5s; }
-  .ph-pin.l { transform: translate(-22%, -100%); } .ph-pin.l b::after { left: 22%; }
-  .ph-pin.r { transform: translate(-78%, -100%); } .ph-pin.r b::after { left: 78%; }
-  .ph-pin b { font-size: 12.5px; padding: 4px 11px 4px 4px; }
-  .hero-copy { top: calc(env(safe-area-inset-top, 0px) + 96px) !important; }   /* the headline block sits higher, clear of the OYO pin */
-  .ph-pin b { gap: 9px !important; }
-  .ph-pin b > img { width: 22px; height: 22px; }
-  .ph-pin b > img { margin-right: 0; }
-  .ph-music b { padding-left: 11px; }
-  .ph-music .eq { display: inline-flex; align-items: flex-end; gap: 2px; height: 12px; } .ph-music .eq i { width: 3px; height: 12px; border-radius: 2px; background: #7B5CD6; transform-origin: 50% 100%; transform: scaleY(.45); }
-  .ph-music.on .eq i { animation: eqb .9s ease-in-out infinite alternate; } .ph-music.on .eq i:nth-child(2) { animation-delay: .3s; } .ph-music.on .eq i:nth-child(3) { animation-delay: .6s; }
-  .stage.still .ph-pins { opacity: .35; transition: opacity .4s; }
-  .ph-pin.down { flex-direction: column-reverse; transform: translate(-50%, -14px); } .ph-pin.down.l { transform: translate(-22%, -14px); } .ph-pin.down.r { transform: translate(-78%, -14px); }
-  .ph-pin.down b { margin-top: 6px; } .ph-pin.down b::after { bottom: auto; top: -5px; transform: rotate(225deg); }
+  .stage .places, #places {
+    display: flex !important;
+    position: absolute;
+    z-index: 25;
+    left: 10px;
+    right: 10px;
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 72px);
+    transform: none;
+    max-width: none;
+    gap: 6px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding: 6px 6px;
+    scroll-snap-type: x mandatory;
+    background: rgba(255, 253, 247, 0.88);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.22);
+    pointer-events: auto;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  }
+  #places::-webkit-scrollbar { display: none; }
+  #places button {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 12px 7px 7px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--ink);
+    background: rgba(255, 255, 255, 0.85);
+    border: 1.5px solid transparent;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    transition: transform 0.2s, background 0.2s, border-color 0.2s, box-shadow 0.2s;
+  }
+  #places button::before { display: none; }
+  #places button.on {
+    background: #FFFFFF;
+    border-color: var(--c, #2563EB);
+    box-shadow: 0 0 0 2.5px color-mix(in srgb, var(--c, #2563EB) 30%, transparent), 0 4px 14px rgba(0,0,0,0.25);
+    transform: translateY(-2px);
+  }
+  #places button .p-icon {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 0 0 1.5px var(--c, #2563EB);
+  }
+  #places button .p-yr {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--ink-2);
+    margin-left: -2px;
+  }
+  :root[data-theme="dark"] #places {
+    background: rgba(24, 30, 42, 0.9);
+  }
+  :root[data-theme="dark"] #places button {
+    background: rgba(30, 41, 59, 0.85);
+    color: #F3F4F6;
+  }
+  :root[data-theme="dark"] #places button.on {
+    background: #1E293B;
+  }
+
+  /* mobile chapter card: clean bottom sheet overlay */
+  .stage .sheet, .stage .sheet.left {
+    position: fixed !important;
+    left: 12px !important;
+    right: 12px !important;
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 16px) !important;
+    top: auto !important;
+    width: auto !important;
+    max-width: none !important;
+    max-height: calc(100svh - 110px) !important;
+    z-index: 70 !important;
+    border-radius: 26px !important;
+    box-shadow: 0 16px 50px rgba(0, 0, 0, 0.45) !important;
+    transform: translateY(30px) !important;
+  }
+  .stage .sheet.on, .stage .sheet.left.on {
+    transform: translateY(0) !important;
+  }
+  .hero-copy {
+    top: calc(env(safe-area-inset-top, 0px) + 64px) !important;
+  }
+  .hero-copy h1 {
+    font-size: clamp(1.8rem, 7.6vw, 2.3rem) !important;
+  }
+  .hero-copy .sub {
+    font-size: 12px !important;
+    margin-top: 5px !important;
+    max-width: 280px !important;
+    line-height: 1.35 !important;
+  }
 }
-@keyframes phpin { from { opacity: 0; margin-top: 10px; } to { opacity: 1; margin-top: 0; } }
 
 /* inside a case study the site's own top bar and navbar step away completely */
 html:has(.cs.open) :is(header.bar, nav.nav, .mnav) { visibility: hidden !important; pointer-events: none !important; }

@@ -10,23 +10,23 @@
 
   /* ---------- content: Peter Jiao · Public Data, Sovereign AI & Peji Systems ---------- */
   const PLACES = {
-    nsut: { c: '#002A5C', side: 'right', tag: 'Chapter 01 · 2009–2011 · Toronto', t: 'Innis College · U of T', r: 'B.Sc. & M.A., Sociology · Rotman Mini-MBA (2026)',
+    nsut: { c: '#002A5C', logo: 'v2/s/logo-uoft.webp', yr: '2009', side: 'right', tag: 'Chapter 01 · 2009–2011 · Toronto', t: 'Innis College · U of T', r: 'B.Sc. & M.A., Sociology · Rotman Mini-MBA (2026)',
       h: 'Where empirical thinking met systems architecture.',
       st: ['At <b>Innis College</b> at the University of Toronto, I completed my Honours B.Sc. and M.A. in Sociology while working as a Media Analyst at the <b>Ontario Cabinet Office</b>.', 'In 2026, I returned to U of T for the <b>Rotman School of Management</b> Mini-MBA, pairing quantitative rigour with manager communication.'],
       n: [['B.Sc. + M.A.', 'University of Toronto'], ['2026', 'Rotman Mini-MBA']], j: 0 },
-    mmt: { c: '#C8102E', side: 'left', tag: 'Chapter 02 · 2011–2026 · Ottawa', t: 'R.H. Coats Building · StatCan', r: 'Chief → Acting Assistant Director → Enterprise Business Architecture Lead',
+    mmt: { c: '#C8102E', logo: 'v2/s/logo-statcan.webp', yr: '2011–26', side: 'left', tag: 'Chapter 02 · 2011–2026 · Ottawa', t: 'R.H. Coats Building · StatCan', r: 'Chief → Acting Assistant Director → Enterprise Business Architecture Lead',
       h: '15 years modernizing Canada’s national statistical infrastructure.',
       st: ['Across 15+ years at <b>Statistics Canada</b>, I delivered insights through complex data analysis, led national survey modernization, a rapid country-wide COVID-19 serology study, and grew key programs related to technology measurement while improving timeliness and efficiency.', 'As Acting Assistant Director, I authored the business case that secured <b>$25M over 6 years in Federal Budget 2025</b> for the Techstat AI & Digital Technology Measurement Program, and secured <b>$500K+ in annual base funding</b> for Enterprise Business Architecture.'],
       n: [], j: 4 },
-    eazydiner: { c: '#1E7FC8', side: 'left', tag: 'Chapter 03 · 2026 · Sabbatical', t: '1-Year AI Journey', r: '50 Milestones · 40+ Prototypes · 562-Node Digital Brain',
-      h: 'What happens when a public-sector manager spends a year building with AI.',
-      st: ['During my one-year sabbatical, I built <b>40+ live prototypes</b>: including the <i>Canadian AI Jobs & Skills Report</i>, <b>Modular Survey Tools</b>, and <b>various automation workflow patterns</b>.', 'Everything is wired into a <b>562-node Obsidian Personal Knowledge Graph</b> and a multi-agent workflow orchestrating Claude Code, Antigravity, and local models.'],
-      n: [['50', 'documented milestones'], ['40+', 'working prototypes'], ['562', 'PKG knowledge nodes']], j: 5 },
-    oyo: { c: '#C4622D', side: 'left', tag: 'Chapter 04 · Now · peji.ca', t: 'Peji Systems', r: 'Founder · Sovereign Local AI (M5 Ultra 256GB Air-Gap)',
+    oyo: { c: '#C4622D', logo: 'v2/s/logo-peji.webp', yr: 'Now', side: 'left', tag: 'Chapter 04 · Now · peji.ca', t: 'Peji Systems', r: 'Founder · Sovereign Local AI (M5 Ultra 256GB Air-Gap)',
       h: 'Practical digital solutions & zero-cloud-leakage local AI.',
       st: ['Through <b>peji.ca</b>, I work with small business and non-profits.', 'For sensitive files, I architected a <b>Sovereign Local AI Lab</b> on a 256GB M5 Ultra Mac Studio with OS-level zero-cloud-leakage enforcement so sensitive PII never leaves the premises.'],
       n: [['256GB', 'M5 Ultra unified memory'], ['0 bytes', 'cloud PII leakage'], ['3 tiers', 'Light · Medium · Large']], j: 8 },
-    me: { c: '#F2B705', side: 'right', tag: 'About me', t: 'Hey, I’m Peter', r: 'Ottawa · Data Manager · AI Builder · Founder, Peji.ca',
+    eazydiner: { c: '#1E7FC8', logo: 'v2/s/logo-aijourney.webp', yr: '2026', side: 'left', tag: 'Chapter 03 · 2026 · Sabbatical', t: '1-Year AI Journey', r: '50 Milestones · 40+ Prototypes · 562-Node Digital Brain',
+      h: 'What happens when a public-sector manager spends a year building with AI.',
+      st: ['During my one-year sabbatical, I built <b>40+ live prototypes</b>: including the <i>Canadian AI Jobs & Skills Report</i>, <b>Modular Survey Tools</b>, and <b>various automation workflow patterns</b>.', 'Everything is wired into a <b>562-node Obsidian Personal Knowledge Graph</b> and a multi-agent workflow orchestrating Claude Code, Antigravity, and local models.'],
+      n: [['50', 'documented milestones'], ['40+', 'working prototypes'], ['562', 'PKG knowledge nodes']], j: 5 },
+    me: { c: '#F2B705', logo: 'v2/s/photo.webp', yr: '', side: 'right', tag: 'About me', t: 'Hey, I’m Peter', r: 'Ottawa · Data Manager · AI Builder · Founder, Peji.ca',
       h: 'I bridge organizational strategy with rapid agentic execution.',
       st: [],
       fun: [
@@ -406,6 +406,7 @@ void main() {
   function focus(id) {
     if (!PLACES[id] || pV > .04) { if (PLACES[id]) { goTo(vTop); setTimeout(() => focus(id), 900); } return; }
     if (focusId === id) return;
+    if (isMobile()) panMobileToLandmark(id);
     stage.classList.add('still');
     focusId = id; rate = 3; moved = 0; focusAt = performance.now(); clearTimeout(leaveT); leaveT = 0; fillSheet(id);
     sheet.classList.toggle('left', PLACES[id].side === 'left'); sheet.classList.add('on');
@@ -419,7 +420,7 @@ void main() {
     stage.classList.remove('still');
     focusId = null; rate = 2.6; sheet.classList.remove('on'); scene.classList.remove('focusing');
     layers.forEach(L => L.el.classList.remove('on', 'lift'));
-    $$('.pin, #places button').forEach(b => b.classList.remove('on'));
+    $$('.pin, #places button').forEach(b => b.classList.toggle('on', isMobile() && b.dataset.id === activeMobilePlace));
     heroCopy.style.opacity = ''; hint.style.opacity = ''; chips.style.opacity = '';
   }
   let hoverT = 0, leaveT = 0;
@@ -445,15 +446,88 @@ void main() {
     if (e.pointerType !== 'mouse') return;
     lmx = e.clientX; lmy = e.clientY;
   });
+  const MOBILE_LANDMARKS = {
+    nsut:      { x: 0.205, y: 0.380, w: '260px', h: '240px' },
+    mmt:       { x: 0.695, y: 0.360, w: '240px', h: '320px' },
+    oyo:       { x: 0.905, y: 0.275, w: '220px', h: '200px' },
+    eazydiner: { x: 0.820, y: 0.665, w: '230px', h: '210px' },
+    me:        { x: 0.185, y: 0.680, w: '200px', h: '200px' }
+  };
+  let activeMobilePlace = 'mmt';
+  const isMobile = () => innerWidth < 860;
+
+  function panMobileToLandmark(id) {
+    activeMobilePlace = id;
+    const lm = MOBILE_LANDMARKS[id];
+    const pano = $('#phPanoCanvas', stage);
+    if (!lm || !pano) return;
+
+    const heroH = stage.offsetHeight || window.innerHeight;
+    const canvasW = heroH * (4000 / 2252);
+    const screenW = window.innerWidth;
+    const targetX = canvasW * lm.x;
+    let panX = (screenW / 2) - targetX;
+    const minPan = screenW - canvasW;
+    panX = Math.max(minPan, Math.min(0, panX));
+    pano.style.transform = `translateX(${panX.toFixed(1)}px)`;
+
+    const spot = $('#phSpotlight', stage);
+    if (spot) {
+      spot.style.left = (lm.x * 100).toFixed(2) + '%';
+      spot.style.top = (lm.y * 100).toFixed(2) + '%';
+      spot.style.width = lm.w;
+      spot.style.height = lm.h;
+      spot.classList.add('lit');
+    }
+
+    $$('.ph-beacon', stage).forEach(b => {
+      b.classList.toggle('visible', b.dataset.id === id);
+    });
+
+    $$('#places button').forEach(b => {
+      const isCur = b.dataset.id === id;
+      b.classList.toggle('on', isCur);
+      if (isCur && isMobile()) b.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    });
+  }
+
   places.id = 'places'; places.className = 'places'; places.setAttribute('aria-label', 'Places in the valley');
-  places.innerHTML = Object.entries(PLACES).map(([id, P]) => `<button type="button" data-id="${id}" style="--c:${P.c}">${id === 'me' ? 'Me' : P.t.replace(/,.*/, '')}</button>`).join('');
+  places.innerHTML = Object.entries(PLACES).map(([id, P]) => `<button type="button" data-id="${id}" style="--c:${P.c}"><img class="p-icon" src="${P.logo || 'v2/s/logo-statcan.webp'}" alt=""><span>${id === 'me' ? 'Me' : P.t.replace(/,.*/, '')}</span>${P.yr ? `<span class="p-yr">${P.yr}</span>` : ''}</button>`).join('');
   stage.appendChild(places);
   $$('#places button').forEach(b => {
     const id = b.dataset.id;
     b.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') setHoverPlace(id); });
     b.addEventListener('pointerleave', () => clearHoverPlace(id));
-    b.addEventListener('click', () => focusId === id ? unfocus() : focus(id));
+    b.addEventListener('click', () => {
+      if (isMobile()) {
+        if (activeMobilePlace === id && !sheet.classList.contains('on')) {
+          focus(id);
+        } else if (activeMobilePlace === id && sheet.classList.contains('on')) {
+          unfocus();
+        } else {
+          if (sheet.classList.contains('on')) unfocus();
+          panMobileToLandmark(id);
+        }
+      } else {
+        focusId === id ? unfocus() : focus(id);
+      }
+    });
   });
+
+  $$('.ph-beacon', stage).forEach(b => {
+    b.addEventListener('click', e => {
+      e.stopPropagation();
+      const id = b.dataset.id;
+      if (activeMobilePlace !== id) panMobileToLandmark(id);
+      focus(id);
+    });
+  });
+
+  if (isMobile()) {
+    setTimeout(() => panMobileToLandmark(activeMobilePlace), 100);
+    addEventListener('resize', () => { if (isMobile()) panMobileToLandmark(activeMobilePlace); });
+  }
+
   $('#s-x').addEventListener('click', unfocus);
   // the mouse wheel over an open card scrolls the card, and never the page behind it
   sheet.addEventListener('wheel', e => { const up = e.deltaY < 0, top = sheet.scrollTop <= 0, end = sheet.scrollTop + sheet.clientHeight >= sheet.scrollHeight - 1;
@@ -461,25 +535,7 @@ void main() {
   sheet.addEventListener('click', e => { const ft = e.target.closest('[data-ft]'); if (ft) { const k = ft.dataset.ft; $$('[data-ft]', sheet).forEach(b => b.setAttribute('aria-selected', b === ft)); $$('[data-fp]', sheet).forEach(u => u.hidden = u.dataset.fp !== k); return; } const w = e.target.closest('[data-walk]'); if (w) { unfocus(); walkTo(+w.dataset.walk); return; } const g = e.target.closest('[data-sg]'); if (g && focusId) { const P = PLACES[focusId]; openLB(P.j, +g.dataset.sg, P.photos && { c: P.c, when: P.tag, place: 'off the clock', title: 'That’s me', photos: P.photos }); return; } const c = e.target.closest('[data-case]'); if (c) openCaseAt(c.dataset.case, c); });
   addEventListener('keydown', e => { if (e.key === 'Escape') unfocus(); });
   stage.addEventListener('pointermove', e => { if (e.pointerType === 'mouse') { ptr.x = e.clientX / vw * 2 - 1; ptr.y = e.clientY / vh * 2 - 1; } });
-  stage.addEventListener('click', e => { if (focusId && !e.target.closest('.hot, .pin, .sheet, .places')) unfocus(); });
-  // phones: the portrait painting gets its own place pins, pinned to the buildings in it
-  (() => {
-    const ov = document.createElement('div'); ov.className = 'ph-pins';
-    const SPOTS = [['nsut', 20, 44, 'l'], ['mmt', 70, 38, 'r'], ['oyo', 89, 29, 'r'], ['eazydiner', 82, 66, 'r'], ['me', 21, 70, 'l']];
-    ov.innerHTML = SPOTS.map(([id, x, y, a]) => { const p = $(`.pin[data-id="${id}"]`, scene); if (!p) return ''; const c = p.cloneNode(true); $$('.hint', c).forEach(h => h.remove()); c.classList.add('ph-pin'); if (id === 'mmt') { const b = $('b', c), t = [...b.childNodes].reverse().find(n => n.nodeType === 3 && n.textContent.trim()); if (t) t.textContent = 'StatCan'; } if (a) c.classList.add(a); c.style.left = x + '%'; c.style.top = y + '%'; return c.outerHTML; }).join('')
-    ;
-    $('.ph-hero', stage).after(ov);
-    $$('.ph-pin[data-id]', ov).forEach(b => b.addEventListener('click', e => { e.stopPropagation(); focusId === b.dataset.id ? unfocus() : focus(b.dataset.id); }));
-    // a pin never sits on the headline or its subtitle: if it would, it hangs below its spot instead
-    const clear = () => { const t = $('.hero-copy', stage); if (!t || innerWidth >= 860) return; const lim = t.getBoundingClientRect().bottom + 6;
-      $$('.ph-pin', ov).forEach(p => { p.classList.remove('down'); if (p.dataset.id === 'oyo' || p.getBoundingClientRect().top < lim) p.classList.add('down'); });
-      // and never under the bottom nav: on real phones the browser bars and home bar push the nav up over the lowest pins
-      const nav = [...document.querySelectorAll('nav')].find(n => { const r = n.getBoundingClientRect(); return r.height && r.top > innerHeight * .6; });
-      const floor = (nav ? nav.getBoundingClientRect().top : innerHeight - 92) - 12;
-      $$('.ph-pin', ov).forEach(p => { p.style.translate = ''; const r = p.getBoundingClientRect(), over = r.bottom - floor, dx = Math.round(Math.min(0, innerWidth - 10 - r.right) + Math.max(0, 10 - r.left)); if (over > 0 || dx) p.style.translate = `${dx}px ${over > 0 ? -Math.ceil(over) : 0}px`; }); };
-    addEventListener('resize', clear); addEventListener('load', clear); setTimeout(clear, 900); setTimeout(clear, 2000);
-    if (window.visualViewport) visualViewport.addEventListener('resize', clear);
-  })();
+  stage.addEventListener('click', e => { if (focusId && !e.target.closest('.hot, .pin, .sheet, .places, .ph-beacon')) unfocus(); });
 
   // mobile: drag to look around
   let drag0 = null;
@@ -518,8 +574,16 @@ void main() {
     heroCopy.style.transform = `translate3d(0, ${(-t * vh * .35).toFixed(1)}px, 0)`;
     if (!focusId) heroCopy.style.opacity = (1 - t * 1.2).toFixed(3);
     heroScrim.style.opacity = focusId ? 0 : Math.max(0, 1 - t * 1.2).toFixed(3);
-    places.style.opacity = pV > .002 ? (1 - range(pV, .0, .08)).toFixed(3) : '';
-    places.style.pointerEvents = pV > .06 ? 'none' : '';
+    if (isMobile()) {
+      const mop = y > 24 ? 0 : 1;
+      places.style.opacity = mop;
+      places.style.pointerEvents = mop ? 'auto' : 'none';
+      places.style.transform = mop ? 'none' : 'translateY(16px)';
+    } else {
+      places.style.opacity = pV > .002 ? (1 - range(pV, .0, .08)).toFixed(3) : '';
+      places.style.pointerEvents = pV > .06 ? 'none' : '';
+      places.style.transform = '';
+    }
     if (pV > .002 || focusId) cue.classList.remove('idle');
     shade.style.opacity = range(pV, .25, .65).toFixed(3);
     if (!focusId) { const fo = (1 - range(pV, .0, .12)); chips.style.opacity = pV > .002 ? fo.toFixed(3) : ''; hint.style.opacity = pV > .002 ? fo.toFixed(3) : ''; }

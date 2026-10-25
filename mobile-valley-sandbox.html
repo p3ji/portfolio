@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mobile Valley & Locations Sandbox · Peji Visual Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@1,6..72,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-day: #F5EFEB;
+    --bg-night: #0E121A;
+    --panel: #FFFFFF;
+    --border: rgba(19, 35, 58, 0.12);
+    --ink: #13233A;
+    --ink-sub: #556275;
+    --accent: #2563EB;
+    --gold: #D97706;
+    --font: 'Plus Jakarta Sans', -apple-system, sans-serif;
+  }
+  :root[data-theme="dark"] {
+    --bg-day: #0B0E14;
+    --panel: #161C26;
+    --border: rgba(255, 255, 255, 0.12);
+    --ink: #F3F4F6;
+    --ink-sub: #9CA3AF;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: var(--font);
+    background: var(--bg-day);
+    color: var(--ink);
+    min-height: 100vh;
+    padding-bottom: 60px;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+
+  /* Sticky Top Control Toolbar */
+  header.sandbox-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--panel);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 24px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    box-shadow: 0 4px 20px -8px rgba(0,0,0,0.08);
+  }
+  .sb-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .sb-title h1 {
+    font-size: 17px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+  }
+  .sb-badge {
+    background: #EFF6FF;
+    color: #1D4ED8;
+    border: 1px solid #BFDBFE;
+    padding: 3px 8px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  :root[data-theme="dark"] .sb-badge {
+    background: #1E3A8A;
+    color: #93C5FD;
+    border-color: #2563EB;
+  }
+
+  .sb-controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+  }
+  .btn-grp {
+    display: inline-flex;
+    background: rgba(0,0,0,0.05);
+    border-radius: 10px;
+    padding: 3px;
+    gap: 2px;
+  }
+  :root[data-theme="dark"] .btn-grp {
+    background: rgba(255,255,255,0.06);
+  }
+  .btn-grp button {
+    background: transparent;
+    border: 0;
+    padding: 7px 14px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink-sub);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-grp button.active {
+    background: var(--panel);
+    color: var(--ink);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  /* Description & Notes Banner */
+  .sb-banner {
+    max-width: 1200px;
+    margin: 10px auto;
+    padding: 12px 18px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .sb-banner-txt h2 {
+    font-size: 14px;
+    font-weight: 800;
+    margin-bottom: 2px;
+  }
+  .sb-banner-txt p {
+    font-size: 12.5px;
+    color: var(--ink-sub);
+    line-height: 1.4;
+  }
+  .sb-pill-summary {
+    display: inline-flex;
+    gap: 8px;
+    margin-top: 8px;
+  }
+  .sb-tag {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 6px;
+    background: rgba(0,0,0,0.05);
+  }
+  :root[data-theme="dark"] .sb-tag {
+    background: rgba(255,255,255,0.08);
+  }
+
+  /* Comparison Stage Container */
+  .sandbox-stage {
+    max-width: 1400px;
+    margin: 10px auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+    gap: 36px;
+    align-items: flex-start;
+  }
+  .sandbox-stage.side-by-side {
+    justify-content: center;
+    gap: 24px;
+  }
+  .sandbox-stage.side-by-side .phone-frame {
+    transform: scale(0.82);
+    transform-origin: top center;
+    margin-bottom: -130px;
+  }
+
+  /* Device Bezel Simulator */
+  .device-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  .device-label {
+    font-size: 14px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .device-label span.badge {
+    font-size: 11px;
+    padding: 2px 7px;
+    border-radius: 999px;
+    font-weight: 700;
+  }
+  .badge-baseline { background: #FEE2E2; color: #991B1B; }
+  .badge-opt-a { background: #DCFCE7; color: #166534; }
+  .badge-opt-b { background: #E0E7FF; color: #3730A3; }
+
+  .phone-frame {
+    position: relative;
+    width: var(--pw, 393px);
+    height: var(--ph, 852px);
+    border-radius: 50px;
+    background: #000;
+    padding: 12px;
+    box-shadow: 0 25px 60px -15px rgba(0,0,0,0.35), 0 0 0 4px #262626;
+    user-select: none;
+    overflow: hidden;
+  }
+  .phone-screen {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 40px;
+    background: #FFFDF8;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    display: block;
+    scrollbar-width: none;
+  }
+  .phone-screen::-webkit-scrollbar { display: none; }
+
+  /* Dynamic Island / Notch */
+  .phone-island {
+    position: absolute;
+    top: 11px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 115px;
+    height: 30px;
+    background: #000;
+    border-radius: 20px;
+    z-index: 50;
+    pointer-events: none;
+  }
+  .phone-bar {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 135px;
+    height: 4px;
+    background: #FFFFFF;
+    border-radius: 4px;
+    z-index: 50;
+    pointer-events: none;
+    opacity: 0.8;
+  }
+
+  /* Phone Header Elements */
+  .ph-topbar {
+    position: absolute;
+    top: 48px;
+    left: 18px;
+    right: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 40;
+    pointer-events: auto;
+  }
+  .ph-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+  }
+  .ph-avatar img { width: 100%; height: 100%; object-fit: cover; }
+  .ph-actions {
+    display: flex;
+    gap: 8px;
+  }
+  .ph-icon-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 0;
+    display: grid;
+    place-items: center;
+    color: #13233A;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    cursor: pointer;
+  }
+
+  /* ======================================================== */
+  /* SECTION 1: THE VALLEY HERO CONTAINER                     */
+  /* ======================================================== */
+  .valley-hero-section {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: var(--ph, 852px);
+    overflow: hidden;
+  }
+
+  /* Panorama Canvas that Slides Horizontally */
+  .hero-panorama-viewport {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    overflow: hidden;
+  }
+  .hero-panorama-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    aspect-ratio: 4000 / 2252;
+    transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
+  }
+  .hero-panorama-canvas .pano-plate {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: fill;
+    pointer-events: none;
+    user-select: none;
+  }
+  .hero-panorama-canvas .pano-plate.night-plate {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  :root[data-theme="dark"] .hero-panorama-canvas .pano-plate.night-plate {
+    opacity: 1;
+  }
+
+  /* Scrim over sky for clean typography contrast */
+  .hero-sky-scrim {
+    position: absolute;
+    inset: 0;
+    z-index: 15;
+    background: linear-gradient(180deg,
+      rgba(15, 30, 55, 0.72) 0%,
+      rgba(15, 30, 55, 0.45) 32%,
+      rgba(15, 30, 55, 0.12) 55%,
+      transparent 75%,
+      rgba(15, 30, 55, 0.45) 100%
+    );
+    pointer-events: none;
+  }
+  :root[data-theme="dark"] .hero-sky-scrim {
+    background: linear-gradient(180deg,
+      rgba(5, 7, 12, 0.85) 0%,
+      rgba(5, 7, 12, 0.55) 35%,
+      rgba(5, 7, 12, 0.15) 58%,
+      transparent 72%,
+      rgba(5, 7, 12, 0.65) 100%
+    );
+  }
+
+  /* Hero Headline Block inside Phone */
+  .ph-copy {
+    position: absolute;
+    top: 102px;
+    left: 20px;
+    right: 20px;
+    z-index: 30;
+    color: #fff;
+    text-shadow: 0 2px 14px rgba(10, 30, 60, 0.55);
+    pointer-events: none;
+  }
+  .ph-copy .hey {
+    font-size: 13.5px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 6px;
+  }
+  .ph-copy h1 {
+    font-size: clamp(27px, 7.5vw, 33px);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+    margin-bottom: 10px;
+  }
+  .ph-copy h1 span.hl {
+    color: #FFD23F;
+    position: relative;
+    display: inline-block;
+  }
+  .ph-copy .sub {
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: rgba(255,255,255,0.92);
+    max-width: 320px;
+  }
+
+  /* Landmark Beacon (Spotlight marker on active building) */
+  .landmark-beacon {
+    position: absolute;
+    transform: translate(-50%, -100%);
+    margin-top: -14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px 5px 6px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.96);
+    box-shadow: 0 6px 22px rgba(0,0,0,0.38);
+    font-size: 12px;
+    font-weight: 800;
+    color: #13233A;
+    white-space: nowrap;
+    opacity: 0;
+    scale: 0.85;
+    pointer-events: auto;
+    cursor: pointer;
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), scale 0.4s;
+    z-index: 35;
+  }
+  .landmark-beacon.visible {
+    opacity: 1;
+    scale: 1;
+  }
+  .landmark-beacon img { width: 22px; height: 22px; border-radius: 50%; }
+
+  /* Pin stem connecting bubble to the building anchor dot */
+  .landmark-beacon::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -14px;
+    transform: translateX(-50%);
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--c, #2563EB);
+    box-shadow: 0 0 0 3px #FFFFFF, 0 3px 8px rgba(0,0,0,0.4);
+  }
+  /* Pulsing radar wave radiating directly from the building anchor */
+  .landmark-beacon::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -14px;
+    transform: translateX(-50%);
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2.5px solid var(--c, #2563EB);
+    animation: beaconPulseRing 2s cubic-bezier(0.2, 0.8, 0.4, 1) infinite;
+    pointer-events: none;
+  }
+  @keyframes beaconPulseRing {
+    0% { transform: translateX(-50%) scale(1); opacity: 0.95; }
+    100% { transform: translateX(-50%) scale(3.5); opacity: 0; }
+  }
+
+  .beacon-innis { left: 20.5%; top: 38%; --c: #002A5C; }
+  .beacon-statcan { left: 69.5%; top: 36%; --c: #C8102E; }
+  .beacon-peji { left: 90.5%; top: 27.5%; --c: #C4622D; }
+  .beacon-journey { left: 82.0%; top: 66.5%; --c: #1E7FC8; }
+  .beacon-me { left: 18.5%; top: 68%; --c: #F2B705; }
+
+  /* Building Sunbeam & Architectural Floodlight */
+  .building-spotlight {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 12;
+    border-radius: 50%;
+    opacity: 0;
+    transition: left 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+                top 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+                width 0.85s, height 0.85s,
+                opacity 0.6s ease;
+  }
+  .building-spotlight.lit {
+    opacity: 1;
+  }
+
+  /* Day: Sunbeam radiance right on the building */
+  :root[data-theme="light"] .building-spotlight {
+    background: radial-gradient(ellipse at center,
+      rgba(255, 248, 205, 0.92) 0%,
+      rgba(255, 228, 145, 0.62) 32%,
+      rgba(255, 195, 80, 0.28) 62%,
+      transparent 85%
+    );
+    mix-blend-mode: color-dodge;
+    filter: blur(8px);
+    animation: sunbeamBreathe 3.5s ease-in-out infinite alternate;
+  }
+
+  /* Night: Floodlight radiance right on the building */
+  :root[data-theme="dark"] .building-spotlight {
+    background: radial-gradient(ellipse at center,
+      rgba(255, 238, 165, 0.96) 0%,
+      rgba(255, 190, 80, 0.72) 35%,
+      rgba(255, 135, 20, 0.3) 65%,
+      transparent 85%
+    );
+    mix-blend-mode: screen;
+    filter: blur(6px);
+    animation: floodlightGlow 3s ease-in-out infinite alternate;
+  }
+
+  @keyframes sunbeamBreathe {
+    0% { transform: translate(-50%, -50%) scale(0.96); opacity: 0.88; }
+    100% { transform: translate(-50%, -50%) scale(1.08); opacity: 1; }
+  }
+  @keyframes floodlightGlow {
+    0% { transform: translate(-50%, -50%) scale(0.97); opacity: 0.9; }
+    100% { transform: translate(-50%, -50%) scale(1.06); opacity: 1; }
+  }
+
+  /* Bottom Interactive Places Capsule Dock */
+  .opt-a-dock {
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    bottom: 22px;
+    z-index: 40;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+  .opt-a-dock-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 4px;
+    font-size: 11px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.88);
+    text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .opt-a-capsules {
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding: 6px 4px 8px;
+    scroll-snap-type: x mandatory;
+  }
+  .opt-a-capsules::-webkit-scrollbar { display: none; }
+  .opt-a-chip {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 13px 8px 7px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1.5px solid transparent;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.22);
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #13233A;
+    transition: transform 0.2s, background 0.2s, border-color 0.2s, box-shadow 0.2s;
+  }
+  .opt-a-chip.active {
+    background: #FFFFFF;
+    border-color: var(--c, #2563EB);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--c, #2563EB) 35%, transparent), 0 8px 24px rgba(0,0,0,0.3);
+    transform: translateY(-2px);
+  }
+  .opt-a-chip img {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 0 0 1.5px var(--c, #2563EB);
+  }
+  .opt-a-chip span.yr {
+    font-size: 10.5px;
+    font-weight: 600;
+    color: #64748B;
+    margin-left: -2px;
+  }
+  :root[data-theme="dark"] .opt-a-chip {
+    background: rgba(24, 30, 42, 0.88);
+    color: #F3F4F6;
+  }
+  :root[data-theme="dark"] .opt-a-chip.active {
+    background: #1E293B;
+  }
+  :root[data-theme="dark"] .opt-a-chip span.yr { color: #94A3B8; }
+
+  /* Scroll cue indicator */
+  .hero-scroll-cue {
+    position: absolute;
+    bottom: 92px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 35;
+    font-size: 11.5px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.75);
+    text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    pointer-events: none;
+    animation: bounceDown 2s infinite;
+  }
+  @keyframes bounceDown {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(4px); }
+  }
+
+  /* ======================================================== */
+  /* SECTION 2: THE PAPER STORY (SCROLL SIMULATION)           */
+  /* ======================================================== */
+  .story-section-sim {
+    position: relative;
+    z-index: 20;
+    background: #FFFDF8;
+    color: #13233A;
+    padding: 60px 22px 50px;
+    box-shadow: 0 -20px 35px rgba(0,0,0,0.18);
+  }
+  :root[data-theme="dark"] .story-section-sim {
+    background: #12161F;
+    color: #F3F4F6;
+  }
+  .story-tear {
+    position: absolute;
+    top: -24px;
+    left: 0;
+    right: 0;
+    height: 25px;
+    background: url("v2/h/tear.png") center top / cover repeat-x;
+    pointer-events: none;
+  }
+  .story-kicker {
+    font-size: 12px;
+    font-weight: 700;
+    color: #64748B;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 8px;
+  }
+  .story-title {
+    font-size: 26px;
+    font-weight: 800;
+    line-height: 1.18;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+  .story-body {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--ink-sub);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .story-sticky {
+    margin-top: 20px;
+    background: #FFF9D2;
+    color: #13233A;
+    padding: 16px;
+    border-radius: 6px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    font-size: 14px;
+    line-height: 1.4;
+    border-left: 4px solid #F59E0B;
+  }
+
+  /* ======================================================== */
+  /* DETAIL SHEET DRAWER                                      */
+  /* ======================================================== */
+  .ph-sheet {
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    max-height: 80%;
+    background: #FFFFFF;
+    color: #13233A;
+    border-radius: 28px 28px 36px 36px;
+    box-shadow: 0 -15px 40px rgba(0,0,0,0.35);
+    z-index: 60;
+    padding: 20px 22px 34px;
+    transform: translateY(115%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow-y: auto;
+    pointer-events: none;
+  }
+  .ph-sheet.open {
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  .sheet-handle {
+    width: 44px;
+    height: 5px;
+    background: #CBD5E1;
+    border-radius: 3px;
+    margin: 0 auto 16px;
+  }
+  :root[data-theme="dark"] .sheet-handle { background: #374151; }
+  .sheet-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8px;
+  }
+  .sheet-tag {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+  }
+  .sheet-close {
+    background: rgba(0,0,0,0.06);
+    border: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    color: inherit;
+  }
+  :root[data-theme="dark"] .sheet-close { background: rgba(255,255,255,0.1); }
+  .sheet-title {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 4px;
+  }
+  .sheet-role {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .sheet-body {
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--ink-sub);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .sheet-btn {
+    margin-top: 18px;
+    width: 100%;
+    background: #13233A;
+    color: #fff;
+    border: 0;
+    padding: 12px;
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  :root[data-theme="dark"] .sheet-btn {
+    background: #2563EB;
+  }
+
+  /* Baseline view styles */
+  .view-baseline .hero-panorama-canvas {
+    width: 100%;
+    background: url("v2/h/phone-day.webp") 65% 100% / cover no-repeat !important;
+    transform: none !important;
+  }
+  :root[data-theme="dark"] .view-baseline .hero-panorama-canvas {
+    background-image: url("v2/h/phone-night.webp") !important;
+  }
+  .baseline-pin {
+    position: absolute;
+    z-index: 35;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px 4px 4px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.92);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.28);
+    font-size: 12px;
+    font-weight: 700;
+    color: #13233A;
+    white-space: nowrap;
+    transform: translate(-50%, -100%);
+  }
+  .baseline-pin img { width: 22px; height: 22px; border-radius: 50%; }
+  .baseline-pin .pin-dot {
+    position: absolute;
+    left: 50%;
+    bottom: -6px;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--c, #C8102E);
+    box-shadow: 0 0 0 2px #fff;
+  }
+  .baseline-pin.pin-oyo { left: 88%; top: 32%; --c:#13233A; }
+  .baseline-pin.pin-mmt { left: 70%; top: 42%; --c:#C8102E; }
+  .baseline-pin.pin-nsut { left: 24%; top: 47%; --c:#002A5C; }
+  .baseline-pin.pin-ai { left: 76%; top: 62%; --c:#1E7FC8; }
+  .baseline-pin.pin-me { left: 22%; top: 67%; --c:#F2B705; }
+</style>
+</head>
+<body>
+
+<header class="sandbox-nav">
+  <div class="sb-title">
+    <h1>Valley & Locations Mobile Laboratory</h1>
+    <span class="sb-badge">Interactive Preview</span>
+  </div>
+
+  <div class="sb-controls">
+    <div class="btn-grp" id="viewModeGrp">
+      <button class="active" data-mode="hybrid">Option A+ (Dock + Auto-Pan Panorama)</button>
+      <button data-mode="baseline">Current Live (Bugged Baseline)</button>
+      <button data-mode="side-by-side">Side-by-Side Comparison</button>
+    </div>
+
+    <div class="btn-grp" id="deviceGrp">
+      <button class="active" data-w="393" data-h="852">iPhone 16 Pro</button>
+      <button data-w="375" data-h="667">iPhone SE</button>
+      <button data-w="412" data-h="915">Pixel 8</button>
+    </div>
+
+    <div class="btn-grp" id="themeGrp">
+      <button class="active" data-th="light">☀️ Day</button>
+      <button data-th="dark">🌙 Night</button>
+    </div>
+  </div>
+</header>
+
+<div class="sb-banner">
+  <div class="sb-banner-txt">
+    <h2 id="sbBannerTitle">Option A+: Interactive Places Dock + Responsive Landmark Panorama</h2>
+    <p id="sbBannerDesc">
+      Tap any chapter in the bottom dock: the panoramic landscape smoothly pans and centers on that landmark (Innis College on the left, StatCan in center, Peji Systems on the cliff). The active building illuminates with a clean spotlight beacon. Scroll down naturally inside the phone screen to see the paper story section slide up!
+    </p>
+    <div class="sb-pill-summary">
+      <span class="sb-tag">✨ Auto-Pans to Selected Landmark</span>
+      <span class="sb-tag">📱 Full Landscape Intact</span>
+      <span class="sb-tag">📜 Smooth Natural Scroll-Down</span>
+      <span class="sb-tag">🚫 0% Clutter or Broken Pins</span>
+    </div>
+  </div>
+</div>
+
+<main class="sandbox-stage" id="stageContainer">
+
+  <!-- Primary Device Simulator -->
+  <div class="device-card" id="primaryCard">
+    <div class="device-label">
+      <span id="primaryLabel">Option A+ (Proposed Solution)</span>
+      <span class="badge badge-opt-a" id="primaryBadge">Interactive & Scrollable</span>
+    </div>
+
+    <div class="phone-frame" id="phoneFrame">
+      <div class="phone-island"></div>
+      <div class="phone-bar"></div>
+
+      <!-- Scrollable Phone Screen -->
+      <div class="phone-screen" id="phoneScreen">
+
+        <!-- SECTION 1: THE VALLEY HERO -->
+        <section class="valley-hero-section" id="heroSec">
+          <!-- Horizontal Panorama Canvas -->
+          <div class="hero-panorama-viewport">
+            <div class="hero-panorama-canvas" id="panoCanvas">
+              <img src="v2/h/plate.webp" class="pano-plate day-plate" alt="" draggable="false">
+              <img src="v2/h/plate-night2.webp" class="pano-plate night-plate" alt="" draggable="false">
+
+              <!-- Building Sunbeam / Spotlight Illumination (exact building coordinates) -->
+              <div class="building-spotlight lit" id="buildingSpotlight"></div>
+
+              <!-- Landmark Beacons (exact building coordinates) -->
+              <div class="landmark-beacon beacon-innis" id="beacon-nsut" data-place="nsut"><img src="v2/s/logo-uoft.webp">Innis College · U of T</div>
+              <div class="landmark-beacon beacon-statcan visible" id="beacon-mmt" data-place="mmt"><img src="v2/s/logo-statcan.webp">R.H. Coats · StatCan</div>
+              <div class="landmark-beacon beacon-peji" id="beacon-oyo" data-place="oyo"><img src="v2/s/logo-peji.webp">Peji Systems</div>
+              <div class="landmark-beacon beacon-journey" id="beacon-eazydiner" data-place="eazydiner"><img src="v2/s/logo-aijourney.webp">1-Year AI Journey</div>
+              <div class="landmark-beacon beacon-me" id="beacon-me" data-place="me"><img src="v2/s/photo.webp">Me · Peter</div>
+            </div>
+          </div>
+
+          <div class="hero-sky-scrim" id="heroScrim"></div>
+
+          <!-- Topbar -->
+          <div class="ph-topbar">
+            <div class="ph-avatar"><img src="v2/s/photo.webp" alt="Peter Jiao"></div>
+            <div class="ph-actions">
+              <button class="ph-icon-btn" title="Play audio">♫</button>
+              <button class="ph-icon-btn" id="phoneThemeToggle" title="Theme switch">🌙</button>
+            </div>
+          </div>
+
+          <!-- Headline Copy -->
+          <div class="ph-copy">
+            <p class="hey">👋 hi, I'm Peter</p>
+            <h1>Good technology should make <span class="hl">work easier.</span></h1>
+            <p class="sub">Sociologist, economist & manager (on leave). 15+ years at Statistics Canada · Building agentic AI & Peji Systems.</p>
+          </div>
+
+          <!-- Scroll cue -->
+          <div class="hero-scroll-cue">
+            <span>↓ scroll down to read story</span>
+          </div>
+
+          <!-- Floating Pins (Baseline Only) -->
+          <div class="baseline-pins-container" id="baselinePins" style="display:none;">
+            <div class="baseline-pin pin-oyo"><img src="v2/s/logo-peji.webp">Peji Systems<div class="pin-dot"></div></div>
+            <div class="baseline-pin pin-mmt"><img src="v2/s/logo-statcan.webp">StatCan<div class="pin-dot"></div></div>
+            <div class="baseline-pin pin-nsut"><img src="v2/s/logo-uoft.webp">Innis College<div class="pin-dot"></div></div>
+            <div class="baseline-pin pin-ai"><img src="v2/s/logo-aijourney.webp">1-Year AI Journey<div class="pin-dot"></div></div>
+            <div class="baseline-pin pin-me"><img src="v2/s/photo.webp">Me · Peter<div class="pin-dot"></div></div>
+          </div>
+
+          <!-- Bottom Places Capsule Dock -->
+          <div class="opt-a-dock" id="optADock">
+            <div class="opt-a-dock-label">
+              <span>Select Landmark to Pan</span>
+              <span>Tap again for info</span>
+            </div>
+            <div class="opt-a-capsules">
+              <button class="opt-a-chip" data-place="nsut" style="--c:#002A5C">
+                <img src="v2/s/logo-uoft.webp" alt="">
+                <span>Innis College</span>
+                <span class="yr">2009</span>
+              </button>
+              <button class="opt-a-chip active" data-place="mmt" style="--c:#C8102E">
+                <img src="v2/s/logo-statcan.webp" alt="">
+                <span>StatCan</span>
+                <span class="yr">2011–26</span>
+              </button>
+              <button class="opt-a-chip" data-place="oyo" style="--c:#C4622D">
+                <img src="v2/s/logo-peji.webp" alt="">
+                <span>Peji Systems</span>
+                <span class="yr">Now</span>
+              </button>
+              <button class="opt-a-chip" data-place="eazydiner" style="--c:#1E7FC8">
+                <img src="v2/s/logo-aijourney.webp" alt="">
+                <span>1-Yr AI</span>
+                <span class="yr">2026</span>
+              </button>
+              <button class="opt-a-chip" data-place="me" style="--c:#F2B705">
+                <img src="v2/s/photo.webp" alt="">
+                <span>Me</span>
+              </button>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- SECTION 2: THE PAPER STORY (Natural Scroll-Down Simulation) -->
+        <section class="story-section-sim" id="storySec">
+          <div class="story-tear"></div>
+          <p class="story-kicker">How I got here</p>
+          <h2 class="story-title">For 15 years at Statistics Canada, I studied how technology shapes our society…</h2>
+          <div class="story-body">
+            <p>…and grew the programs that continue this work. Then I took a <b>One-Year AI Journey</b> to build with it directly — shipping <b>40+ functional prototypes</b> and founding <b>Peji Systems</b> to help organizations work smarter.</p>
+            <p>From complex data collection systems to agentic workflow orchestration, my focus is bridging public-sector strategy with hands-on technical depth.</p>
+          </div>
+          <div class="story-sticky">
+            📌 <b>Try scrolling up and down</b> inside this phone frame! Notice how cleanly the valley transitions without getting stuck in a dead-scroll trap.
+          </div>
+        </section>
+      </div>
+
+      <!-- Interactive Milestone Sheet Drawer (Docked to device frame) -->
+      <div class="ph-sheet" id="phSheet">
+        <div class="sheet-handle"></div>
+        <div class="sheet-head">
+          <span class="sheet-tag" id="sheetTag">Chapter 02 · 2011–2026 · Ottawa</span>
+          <button class="sheet-close" id="sheetCloseBtn">✕</button>
+        </div>
+        <h2 class="sheet-title" id="sheetTitle">R.H. Coats Building · StatCan</h2>
+        <p class="sheet-role" id="sheetRole">Chief → Acting Assistant Director → EBA Lead</p>
+        <div class="sheet-body" id="sheetBody">
+          <p>15 years modernizing Canada's national statistical infrastructure.</p>
+          <p>Authored the business case that secured $25M over 6 years in Federal Budget 2025 for the Techstat AI & Digital Measurement Program.</p>
+        </div>
+        <button class="sheet-btn" id="sheetCta">Explore Full Case Study →</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Secondary Device for Side-by-Side Comparison -->
+  <div class="device-card" id="secondaryCard" style="display:none;">
+    <div class="device-label">
+      <span>Current Live (Baseline)</span>
+      <span class="badge badge-baseline">Current Bugged</span>
+    </div>
+
+    <div class="phone-frame" style="--pw:393px; --ph:852px;">
+      <div class="phone-island"></div>
+      <div class="phone-bar"></div>
+      <div class="phone-screen view-baseline">
+        <div class="hero-panorama-viewport">
+          <div class="hero-panorama-canvas"></div>
+        </div>
+        <div class="ph-topbar">
+          <div class="ph-avatar"><img src="v2/s/photo.webp" alt=""></div>
+          <div class="ph-actions">
+            <button class="ph-icon-btn">♫</button>
+            <button class="ph-icon-btn">🌙</button>
+          </div>
+        </div>
+        <div class="ph-copy">
+          <p class="hey">👋 hi, I'm Peter</p>
+          <h1>Good technology should make <span class="hl">work easier.</span></h1>
+          <p class="sub">Sociologist, economist & manager (on leave). 15+ years at Statistics Canada · Building agentic AI & Peji Systems.</p>
+        </div>
+        <div class="baseline-pins-container">
+          <div class="baseline-pin pin-oyo"><img src="v2/s/logo-peji.webp">Peji Systems<div class="pin-dot"></div></div>
+          <div class="baseline-pin pin-mmt"><img src="v2/s/logo-statcan.webp">StatCan<div class="pin-dot"></div></div>
+          <div class="baseline-pin pin-nsut"><img src="v2/s/logo-uoft.webp">Innis College<div class="pin-dot"></div></div>
+          <div class="baseline-pin pin-ai"><img src="v2/s/logo-aijourney.webp">1-Year AI Journey<div class="pin-dot"></div></div>
+          <div class="baseline-pin pin-me"><img src="v2/s/photo.webp">Me · Peter<div class="pin-dot"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<script>
+  const PLACES_DATA = {
+    nsut: {
+      tag: 'Chapter 01 · 2009–2011 · Toronto',
+      t: 'Innis College · U of T',
+      r: 'B.Sc. & M.A., Sociology · Rotman Mini-MBA (2026)',
+      d: ['At Innis College at the University of Toronto, I completed my Honours B.Sc. and M.A. in Sociology while working as a Media Analyst at the Ontario Cabinet Office.', 'In 2026, I returned to U of T for the Rotman School of Management Mini-MBA, pairing quantitative rigour with executive communication.']
+    },
+    mmt: {
+      tag: 'Chapter 02 · 2011–2026 · Ottawa',
+      t: 'R.H. Coats Building · StatCan',
+      r: 'Chief → Acting Assistant Director → Enterprise Business Architecture Lead',
+      d: ['Across 15+ years at Statistics Canada, I delivered insights through complex data analysis, led national survey modernization, a rapid country-wide COVID-19 serology study, and grew key programs related to technology measurement.', 'As Acting Assistant Director, I authored the business case that secured $25M over 6 years in Federal Budget 2025 for the Techstat AI & Digital Technology Measurement Program.']
+    },
+    oyo: {
+      tag: 'Chapter 04 · Now · peji.ca',
+      t: 'Peji Systems & AI Lab',
+      r: 'Founder · Sovereign Local AI (M5 Ultra 256GB Air-Gap)',
+      d: ['Through peji.ca, I work with small business and non-profits to build agentic workflows, automation, and modern web applications.', 'For sensitive client files, I architected a Sovereign Local AI Lab on a 256GB M5 Ultra Mac Studio with OS-level zero-cloud-leakage enforcement so sensitive PII never leaves the premises.']
+    },
+    eazydiner: {
+      tag: 'Chapter 03 · 2026 · Sabbatical',
+      t: '1-Year AI Journey',
+      r: '50 Milestones · 40+ Prototypes · 562-Node Digital Brain',
+      d: ['During my one-year sabbatical, I built 40+ live prototypes: including the Canadian AI Jobs & Skills Report, Modular Survey Tools, and various automation workflow patterns.', 'Everything is wired into a 562-node Obsidian Personal Knowledge Graph and a multi-agent workflow.']
+    },
+    me: {
+      tag: 'About Peter Jiao',
+      t: 'Hey, I’m Peter',
+      r: 'Ottawa · Data Manager · AI Builder · Founder, Peji.ca',
+      d: ['I bridge public-sector strategy with rapid agentic execution.', 'Off the clock: Running a weekend game studio with my kids (Three.js 3D games), skating club pipelines, and Gatineau trails.']
+    }
+  };
+
+  // Exact percentage landmarks from plate.webp (4000x2252)
+  const LANDMARKS = {
+    nsut: { x: 0.205, y: 0.380, w: '24%', h: '34%' },
+    me: { x: 0.185, y: 0.680, w: '18%', h: '22%' },
+    mmt: { x: 0.695, y: 0.360, w: '20%', h: '42%' },
+    eazydiner: { x: 0.820, y: 0.665, w: '20%', h: '26%' },
+    oyo: { x: 0.905, y: 0.275, w: '20%', h: '25%' }
+  };
+
+  let activePlace = 'mmt';
+  const panoCanvas = document.getElementById('panoCanvas');
+  const buildingSpotlight = document.getElementById('buildingSpotlight');
+  const phSheet = document.getElementById('phSheet');
+  const sheetCloseBtn = document.getElementById('sheetCloseBtn');
+  const phoneScreen = document.getElementById('phoneScreen');
+  const phoneFrame = document.getElementById('phoneFrame');
+  const secondaryCard = document.getElementById('secondaryCard');
+  const primaryBadge = document.getElementById('primaryBadge');
+  const primaryLabel = document.getElementById('primaryLabel');
+  const sbBannerTitle = document.getElementById('sbBannerTitle');
+  const sbBannerDesc = document.getElementById('sbBannerDesc');
+  const baselinePins = document.getElementById('baselinePins');
+  const optADock = document.getElementById('optADock');
+
+  // Dismiss sheet when scrolling down into story
+  phoneScreen.addEventListener('scroll', () => {
+    if (phoneScreen.scrollTop > 50 && phSheet.classList.contains('open')) {
+      closeSheet();
+    }
+  });
+
+  function panToLandmark(id, shouldOpenSheet = false) {
+    activePlace = id;
+    closeSheet();
+
+    const lm = LANDMARKS[id];
+    if (!lm) return;
+
+    // Canvas aspect ratio is exactly 4000 / 2252
+    const heroEl = document.getElementById('heroSec');
+    const heroH = heroEl ? heroEl.offsetHeight : 852;
+    const canvasW = heroH * (4000 / 2252);
+    const phoneW = phoneScreen.clientWidth || 393;
+
+    // Center landmark horizontally in the phone screen
+    const targetX = canvasW * lm.x;
+    let panX = (phoneW / 2) - targetX;
+    const minPan = phoneW - canvasW;
+    panX = Math.max(minPan, Math.min(0, panX));
+
+    panoCanvas.style.transform = `translateX(${panX.toFixed(1)}px)`;
+
+    // Position spotlight directly on building center
+    if (buildingSpotlight) {
+      buildingSpotlight.style.left = (lm.x * 100).toFixed(2) + '%';
+      buildingSpotlight.style.top = (lm.y * 100).toFixed(2) + '%';
+      buildingSpotlight.style.width = lm.w;
+      buildingSpotlight.style.height = lm.h;
+      buildingSpotlight.classList.add('lit');
+    }
+
+    // Update active capsule chip
+    document.querySelectorAll('.opt-a-chip').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.place === id);
+    });
+
+    // Update landmark beacon
+    document.querySelectorAll('.landmark-beacon').forEach(b => {
+      b.classList.toggle('visible', b.id === `beacon-${id}`);
+    });
+
+    if (shouldOpenSheet) {
+      setTimeout(() => openSheet(id), 500);
+    }
+  }
+
+  // Initial setup after DOM layout
+  setTimeout(() => panToLandmark(activePlace, false), 50);
+
+  function openSheet(id) {
+    const data = PLACES_DATA[id];
+    if (!data) return;
+    document.getElementById('sheetTag').textContent = data.tag;
+    document.getElementById('sheetTitle').textContent = data.t;
+    document.getElementById('sheetRole').textContent = data.r;
+    document.getElementById('sheetBody').innerHTML = data.d.map(p => `<p>${p}</p>`).join('');
+    phSheet.classList.add('open');
+  }
+
+  function closeSheet() {
+    phSheet.classList.remove('open');
+  }
+
+  sheetCloseBtn.addEventListener('click', closeSheet);
+
+  // Bottom dock clicks
+  document.querySelectorAll('.opt-a-chip').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const place = btn.dataset.place;
+      if (btn.classList.contains('active')) {
+        // Second tap opens info sheet
+        openSheet(place);
+      } else {
+        // First tap pans smoothly to landmark
+        panToLandmark(place, false);
+      }
+    });
+  });
+
+  // Clicking the beacon directly opens the sheet
+  document.querySelectorAll('.landmark-beacon').forEach(b => {
+    b.addEventListener('click', () => {
+      openSheet(b.dataset.place);
+    });
+  });
+
+  // View Mode Switching
+  document.querySelectorAll('#viewModeGrp button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#viewModeGrp button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const mode = btn.dataset.mode;
+      closeSheet();
+
+      if (mode === 'hybrid') {
+        secondaryCard.style.display = 'none';
+        phoneScreen.className = 'phone-screen';
+        optADock.style.display = 'flex';
+        baselinePins.style.display = 'none';
+        primaryLabel.textContent = 'Option A+ (Proposed Solution)';
+        primaryBadge.textContent = 'Interactive & Scrollable';
+        primaryBadge.className = 'badge badge-opt-a';
+        sbBannerTitle.textContent = 'Option A+: Interactive Places Dock + Responsive Landmark Panorama';
+        sbBannerDesc.textContent = 'Tap any chapter in the bottom dock: the panoramic landscape smoothly pans and centers on that landmark (Innis College on the left, StatCan in center, Peji Systems on the cliff). The active building illuminates with a clean spotlight beacon. Scroll down naturally inside the phone screen to see the paper story section slide up!';
+        panToLandmark('mmt', false);
+      } else if (mode === 'baseline') {
+        secondaryCard.style.display = 'none';
+        phoneScreen.className = 'phone-screen view-baseline';
+        optADock.style.display = 'none';
+        baselinePins.style.display = 'block';
+        primaryLabel.textContent = 'Current Live Baseline';
+        primaryBadge.textContent = 'Current Bugged';
+        primaryBadge.className = 'badge badge-baseline';
+        sbBannerTitle.textContent = 'Current Live Baseline (Problems Demonstrated)';
+        sbBannerDesc.textContent = 'Notice how Innis College is cropped off on the left, Peji Systems pin is placed directly on the StatCan building windows, StatCan pin is right next to it, and 1-Year AI Journey floats in the river water.';
+      } else if (mode === 'side-by-side') {
+        secondaryCard.style.display = 'flex';
+        phoneScreen.className = 'phone-screen';
+        optADock.style.display = 'flex';
+        baselinePins.style.display = 'none';
+        primaryLabel.textContent = 'Option A+ (Proposed)';
+        primaryBadge.textContent = 'Clean & Interactive';
+        primaryBadge.className = 'badge badge-opt-a';
+        sbBannerTitle.textContent = 'Side-by-Side Comparison: Proposed Option A+ vs Current Live Baseline';
+        sbBannerDesc.textContent = 'Compare the two approaches directly on mobile viewports: Responsive panning and high-touch capsule navigation vs. heavy 70% cropping and conflicting floating pins.';
+        panToLandmark('mmt', false);
+      }
+    });
+  });
+
+  // Device Size Switching
+  document.querySelectorAll('#deviceGrp button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#deviceGrp button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const w = btn.dataset.w + 'px';
+      const h = btn.dataset.h + 'px';
+      phoneFrame.style.setProperty('--pw', w);
+      phoneFrame.style.setProperty('--ph', h);
+    });
+  });
+
+  // Theme Switching
+  document.querySelectorAll('#themeGrp button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#themeGrp button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.documentElement.dataset.theme = btn.dataset.th;
+    });
+  });
+
+  document.getElementById('phoneThemeToggle').addEventListener('click', () => {
+    const cur = document.documentElement.dataset.theme;
+    const next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = next;
+    document.querySelectorAll('#themeGrp button').forEach(b => b.classList.toggle('active', b.dataset.th === next));
+  });
+</script>
+
+</body>
+</html>
