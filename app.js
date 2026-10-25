@@ -566,14 +566,12 @@ void main() {
   });
 
   if (isMobile()) {
-    setTimeout(() => {
-      panMobileToLandmark('me', false);
-    }, 80);
+    setMobilePan(0, false);
 
     addEventListener('resize', () => {
       if (isMobile()) {
         places.style.display = 'none';
-        if (!isTouchPanning) panMobileToLandmark(activeMobilePlace, false);
+        if (!isTouchPanning) setMobilePan(mobilePanX, false);
       } else {
         places.style.display = '';
       }

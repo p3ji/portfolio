@@ -4429,7 +4429,6 @@ html:root .cs .cs-bar button.cs-close { width: 48px; height: 48px; padding: 0 !i
     height: 100%;
     aspect-ratio: 4000 / 2252;
     pointer-events: none;
-    transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: transform;
   }
   .ph-plate {
