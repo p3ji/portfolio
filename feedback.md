@@ -7,6 +7,21 @@
 <!-- Use the in-app Review widget to drop pins and save changes here -->
 
 ## Resolved
+- [x] **Item #75 (2026-10-25)** (U of T & Toronto Era Education Dates Calibration: 2005–2011 · 2026)
+  - **Requested Change**:
+    Calibrate University of Toronto dates from "2009–2011" to reflect the full Toronto education era starting with undergraduate study (~2005–2009 B.Sc., 2009–2010 M.A., 2009–2011 TA/RA, 2026 Rotman Mini-MBA).
+  - **Resolution**:
+    1) Updated [index.html](file:///Users/pushp/Documents/Projects/visualportfolio/index.html):
+       - Valley landmark pin: `Innis College · U of T <small class="pyr">2005–11 · 2026</small>`
+       - Journey intro description: `Nine stops from Toronto to Ottawa (2005 to 2026).`
+       - Journey timeline indicator: `<span class="yr" id="jtlYr">2005 &rarr; 2026</span>`
+    2) Updated [app.js](file:///Users/pushp/Documents/Projects/visualportfolio/app.js):
+       - `PLACES.nsut`: `yr: '2005'`, `tag: 'Chapter 01 · 2005–2011 · Toronto'`
+       - `STOPS[0]` (`jee`): `when: '2005 – 2011'`
+       - Default timeline year string: `'2005 → 2026'`
+       - Bumped script cache token to `v=20261025uoft`.
+    3) Updated [mobile-valley-sandbox.html](file:///Users/pushp/Documents/Projects/visualportfolio/mobile-valley-sandbox.html) to keep sandbox synchronized.
+
 - [x] **Item #74 (2026-10-24)** (`#stack` My Stack Skills & Tool Constellation)
   - **Requested Change**:
     1) Add 5 icons to the stack section: **SAS**, **Python**, **R**, **Stata**, **Hermes**.

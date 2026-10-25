@@ -10,7 +10,7 @@
 
   /* ---------- content: Peter Jiao · Public Data, Sovereign AI & Peji Systems ---------- */
   const PLACES = {
-    nsut: { c: '#002A5C', logo: 'v2/s/logo-uoft.webp', yr: '2009', side: 'right', tag: 'Chapter 01 · 2009–2011 · Toronto', t: 'Innis College · U of T', r: 'B.Sc. & M.A., Sociology · Rotman Mini-MBA (2026)',
+    nsut: { c: '#002A5C', logo: 'v2/s/logo-uoft.webp', yr: '2005', side: 'right', tag: 'Chapter 01 · 2005–2011 · Toronto', t: 'Innis College · U of T', r: 'B.Sc. & M.A., Sociology · Rotman Mini-MBA (2026)',
       h: 'Where empirical thinking met systems architecture.',
       st: ['At <b>Innis College</b> at the University of Toronto, I completed my Honours B.Sc. and M.A. in Sociology while working as a Media Analyst at the <b>Ontario Cabinet Office</b>.', 'In 2026, I returned to U of T for the <b>Rotman School of Management</b> Mini-MBA, pairing quantitative rigour with manager communication.'],
       n: [['B.Sc. + M.A.', 'University of Toronto'], ['2026', 'Rotman Mini-MBA']], j: 0 },
@@ -72,7 +72,7 @@
   };
   const LI = 'https://peji.ca', IG = 'https://github.com/p3ji', APP = 'https://peji.ca/localllm/';
   const STOPS = [
-    { id: 'jee', when: '2009 – 2011', place: 'Toronto · U of T', icon: 'cap', logo: 'logo-uoft', c: '#002A5C', at: [400, 1420], lift: 175, name: 'Innis College · U of T',
+    { id: 'jee', when: '2005 – 2011', place: 'Toronto · U of T', icon: 'cap', logo: 'logo-uoft', c: '#002A5C', at: [400, 1420], lift: 175, name: 'Innis College · U of T',
       title: 'Where empirical thinking met systems architecture.',
       txt: 'At the <b>University of Toronto (Innis College)</b>, I completed my Honours B.Sc. and M.A. in Sociology while working as a Media Analyst at the <b>Ontario Cabinet Office</b>. Studying how complex social systems behave—and how to measure them rigorously—laid the foundation for everything that followed.',
       photos: [['uoft-uc', 'Innis College · U of T'], ['uoft-awards', '']],
@@ -1162,7 +1162,7 @@ void main() {
     needle.style.transform = `rotate(${heading.toFixed(1)}deg)`; meTip.style.setProperty('--hd', heading.toFixed(1) + 'deg');
     compass.classList.toggle('in', p > .005 && p < .999);
     tlBtns.forEach((b, i) => { b.classList.toggle('on', i === active); b.classList.toggle('done', ph.pos >= i - .08 && ph.k > .5); });
-    jtlYr.textContent = active >= 0 ? `${STOPS[active].when} · ${STOPS[active].place}` : '2009 → 2026';
+    jtlYr.textContent = active >= 0 ? `${STOPS[active].when} · ${STOPS[active].place}` : '2005 → 2026';
     showCard(active);
     if (jCar) { const f = ph.pos < 0 ? 0 : ph.pos - Math.round(ph.pos), dx = (-f * 150).toFixed(1), da = Math.max(0, 1 - Math.abs(f) * 2.1).toFixed(3);
       if (dx !== frameJourney.dx || da !== frameJourney.da) { frameJourney.dx = dx; frameJourney.da = da; jcIn.style.transform = `translate3d(${dx}px, 0, 0)`; jcIn.style.opacity = da; } }
