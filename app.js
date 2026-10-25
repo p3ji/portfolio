@@ -453,42 +453,9 @@ void main() {
     eazydiner: { x: 0.820, y: 0.665, w: '230px', h: '210px' },
     me:        { x: 0.185, y: 0.680, w: '200px', h: '200px' }
   };
-  let activeMobilePlace = 'mmt';
+  let activeMobilePlace = 'me';
   const isMobile = () => innerWidth < 860;
   let mobilePanX = 0;
-
-  function updateMobileSpotlight(currentPan) {
-    const pano = $('#phPanoCanvas', stage);
-    if (!pano) return;
-    const heroH = stage.offsetHeight || window.innerHeight;
-    const canvasW = heroH * (4000 / 2252);
-    const screenW = window.innerWidth;
-    const centerX = (-currentPan + screenW / 2) / canvasW;
-
-    let nearestId = 'mmt', minDist = Infinity;
-    for (const [id, lm] of Object.entries(MOBILE_LANDMARKS)) {
-      const dist = Math.abs(lm.x - centerX);
-      if (dist < minDist) {
-        minDist = dist;
-        nearestId = id;
-      }
-    }
-    activeMobilePlace = nearestId;
-    const lm = MOBILE_LANDMARKS[nearestId];
-
-    const spot = $('#phSpotlight', stage);
-    if (spot) {
-      spot.style.left = (lm.x * 100).toFixed(2) + '%';
-      spot.style.top = (lm.y * 100).toFixed(2) + '%';
-      spot.style.width = lm.w;
-      spot.style.height = lm.h;
-      spot.classList.add('lit');
-    }
-
-    $$('.ph-beacon', stage).forEach(b => {
-      b.classList.toggle('active', b.dataset.id === nearestId);
-    });
-  }
 
   function setMobilePan(panX, smooth = false) {
     const pano = $('#phPanoCanvas', stage);
@@ -501,10 +468,10 @@ void main() {
 
     pano.style.transition = smooth ? 'transform 0.65s cubic-bezier(0.16, 1, 0.3, 1)' : 'none';
     pano.style.transform = `translateX(${mobilePanX.toFixed(1)}px)`;
-    updateMobileSpotlight(mobilePanX);
   }
 
   function panMobileToLandmark(id, smooth = true) {
+    activeMobilePlace = id;
     const lm = MOBILE_LANDMARKS[id];
     if (!lm) return;
     const heroH = stage.offsetHeight || window.innerHeight;
@@ -602,13 +569,13 @@ void main() {
 
   if (isMobile()) {
     setTimeout(() => {
-      panMobileToLandmark('mmt', false);
+      panMobileToLandmark('me', false);
       swayTimer = setTimeout(() => {
         if (focusId || isTouchPanning || scrollY > 10) return;
         const heroH = stage.offsetHeight || window.innerHeight;
         const canvasW = heroH * (4000 / 2252);
         const screenW = window.innerWidth;
-        const basePan = (screenW / 2) - (canvasW * MOBILE_LANDMARKS.mmt.x);
+        const basePan = Math.max(screenW - canvasW, Math.min(0, (screenW / 2) - (canvasW * MOBILE_LANDMARKS.me.x)));
         setMobilePan(basePan - 45, true);
         swayTimer = setTimeout(() => {
           if (focusId || isTouchPanning || scrollY > 10) return;
