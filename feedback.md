@@ -7,6 +7,22 @@
 <!-- Use the in-app Review widget to drop pins and save changes here -->
 
 ## Resolved
+- [x] **Item #77 (2026-10-25)** (Simplified Education Nomenclature: University of Toronto)
+  - **Requested Change**:
+    Remove "Innis College" from all texts and streamline to "University of Toronto".
+  - **Resolution**:
+    1) Updated [index.html](file:///Users/pushp/Documents/Projects/visualportfolio/index.html):
+       - Valley landmark pin: `University of Toronto <small class="pyr">2005–11 · 2026</small>`
+       - Valley beacon label: `<span>University of Toronto</span>`
+       - Plate image alt text: `University of Toronto on the left ridge`
+    2) Updated [app.js](file:///Users/pushp/Documents/Projects/visualportfolio/app.js):
+       - `PLACES.nsut`: title changed to `University of Toronto`; narrative simplified to `"At the <b>University of Toronto</b>, I completed my Honours B.A. and M.A. in Sociology..."`.
+       - `PLACES.oyo` foundations: simplified to `[['University of Toronto', 'Honours B.A. & M.A. in Sociology. Empirical systems thinking from day one.']]`.
+       - `STOPS[0]` (`jee`): name changed to `University of Toronto`; card text updated to `"At the <b>University of Toronto</b>, I completed my Honours B.A. and M.A. in Sociology..."`; POI checkpoint simplified to `"Honours B.A. & M.A. at University of Toronto."`.
+       - Gallery captions updated to `University of Toronto`.
+       - Bumped script cache token to `v=20261025uoftclean`.
+    3) Updated [mobile-valley-sandbox.html](file:///Users/pushp/Documents/Projects/visualportfolio/mobile-valley-sandbox.html) to keep sandbox synchronized.
+
 - [x] **Item #76 (2026-10-25)** (U of T Undergraduate Degree Calibration: Honours B.A. in Sociology)
   - **Requested Change**:
     Update undergraduate degree nomenclature from Bachelor of Science (B.Sc.) to Bachelor of Arts (Honours B.A.).
