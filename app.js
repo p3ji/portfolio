@@ -589,15 +589,18 @@ void main() {
   stage.addEventListener('pointermove', e => { if (e.pointerType === 'mouse') { ptr.x = e.clientX / vw * 2 - 1; ptr.y = e.clientY / vh * 2 - 1; } });
   stage.addEventListener('click', e => { if (focusId && !e.target.closest('.hot, .pin, .sheet, .places, .ph-beacon')) unfocus(); });
 
-  // mobile: drag to look around
-  let drag0 = null;
-  stage.addEventListener('pointerdown', e => { if (e.pointerType !== 'mouse' && mobile && !focusId) drag0 = { x: e.clientX, ax }; });
-  stage.addEventListener('pointermove', e => { if (drag0) { ax = clamp(drag0.ax - (e.clientX - drag0.x) / Math.max(1, SW - vw)); baseX = (vw - SW) * ax; } });
-  addEventListener('pointerup', () => drag0 = null);
   setTimeout(() => stage.classList.add('ready'), 4700);
   if (!hoverable) hint.innerHTML = hint.innerHTML.replace('click a place', 'tap a place');
 
   function frameValley(dt, y) {
+    if (isMobile()) {
+      if (focusId && y > 30) unfocus();
+      const t = clamp(y / 240);
+      heroCopy.style.transform = `translate3d(0, ${(-t * 60).toFixed(1)}px, 0)`;
+      if (!focusId) heroCopy.style.opacity = (1 - t).toFixed(3);
+      heroScrim.style.opacity = focusId ? 0 : Math.max(0, 1 - t).toFixed(3);
+      return;
+    }
     pV = clamp((y - vTop) / vRange);
     if (focusId && pV > .04) unfocus();
     const e = ss(pV);
@@ -626,16 +629,9 @@ void main() {
     heroCopy.style.transform = `translate3d(0, ${(-t * vh * .35).toFixed(1)}px, 0)`;
     if (!focusId) heroCopy.style.opacity = (1 - t * 1.2).toFixed(3);
     heroScrim.style.opacity = focusId ? 0 : Math.max(0, 1 - t * 1.2).toFixed(3);
-    if (isMobile()) {
-      const mop = y > 24 ? 0 : 1;
-      places.style.opacity = mop;
-      places.style.pointerEvents = mop ? 'auto' : 'none';
-      places.style.transform = mop ? 'none' : 'translateY(16px)';
-    } else {
-      places.style.opacity = pV > .002 ? (1 - range(pV, .0, .08)).toFixed(3) : '';
-      places.style.pointerEvents = pV > .06 ? 'none' : '';
-      places.style.transform = '';
-    }
+    places.style.opacity = pV > .002 ? (1 - range(pV, .0, .08)).toFixed(3) : '';
+    places.style.pointerEvents = pV > .06 ? 'none' : '';
+    places.style.transform = '';
     if (pV > .002 || focusId) cue.classList.remove('idle');
     shade.style.opacity = range(pV, .25, .65).toFixed(3);
     if (!focusId) { const fo = (1 - range(pV, .0, .12)); chips.style.opacity = pV > .002 ? fo.toFixed(3) : ''; hint.style.opacity = pV > .002 ? fo.toFixed(3) : ''; }
@@ -3847,13 +3843,15 @@ void main() {
     const dt = Math.min(.05, (t - last) / 1000); last = t;
     if (lenis) lenis.raf(t);
     let y = Y();
-    if (DONE.v && y < vRange) {
-      DONE.v = 0;
-      valley.style.height = '';
-      layoutValley();
+    if (!isMobile()) {
+      if (DONE.v && y < vRange) {
+        DONE.v = 0;
+        valley.style.height = '';
+        layoutValley();
+      }
+      fold('v', valley, $('#journey'), () => { story.style.marginTop = '0px'; });
+      fold('s', story, $('#journey'));
     }
-    fold('v', valley, $('#journey'), () => { story.style.marginTop = '0px'; });
-    fold('s', story, $('#journey'));
     const nextAfterJ = ($('#work') && $('#work').offsetParent) ? $('#work') : $('#brand');
     if (!jCar && nextAfterJ) fold('j', jTrack, nextAfterJ);
     if (boxOpen && boxTrack && boxTrack.offsetParent) fold('box', boxTrack, $('#brand'));

@@ -4406,6 +4406,11 @@ html:root .cs .cs-bar button.cs-close { width: 48px; height: 48px; padding: 0 !i
 /* phone home: 1:1 panoramic landscape canvas with responsive building auto-pan & spotlight */
 .ph-hero { display: none; }
 @media (max-width: 859px) {
+  .stage {
+    position: relative !important;
+    height: 100vh !important;
+    height: 100svh !important;
+  }
   .ph-hero {
     display: block;
     position: absolute;
