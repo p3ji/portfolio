@@ -486,11 +486,9 @@ void main() {
   let touchStartX = 0, touchStartY = 0, touchInitialPan = 0;
   let isTouchPanning = false, isTouchScrolling = false;
   let lastTouchX = 0, lastTouchTime = 0, touchVelocity = 0;
-  let swayTimer = 0;
 
   stage.addEventListener('touchstart', e => {
     if (!isMobile() || e.touches.length !== 1 || focusId) return;
-    clearTimeout(swayTimer);
     const t = e.touches[0];
     touchStartX = t.clientX;
     touchStartY = t.clientY;
@@ -570,18 +568,6 @@ void main() {
   if (isMobile()) {
     setTimeout(() => {
       panMobileToLandmark('me', false);
-      swayTimer = setTimeout(() => {
-        if (focusId || isTouchPanning || scrollY > 10) return;
-        const heroH = stage.offsetHeight || window.innerHeight;
-        const canvasW = heroH * (4000 / 2252);
-        const screenW = window.innerWidth;
-        const basePan = Math.max(screenW - canvasW, Math.min(0, (screenW / 2) - (canvasW * MOBILE_LANDMARKS.me.x)));
-        setMobilePan(basePan - 45, true);
-        swayTimer = setTimeout(() => {
-          if (focusId || isTouchPanning || scrollY > 10) return;
-          setMobilePan(basePan, true);
-        }, 1200);
-      }, 2300);
     }, 80);
 
     addEventListener('resize', () => {

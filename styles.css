@@ -4610,7 +4610,7 @@ html:has(.cs.open) .np { z-index: 95; }   /* the music button keeps its spot, to
     line-height: 1.35 !important;
   }
 
-  /* mobile scroll-reveal cue */
+  /* mobile dual action cue: swipe to pan landscape / scroll to explore */
   .mobile-scroll-cue {
     position: fixed;
     z-index: 60;
@@ -4619,16 +4619,16 @@ html:has(.cs.open) .np { z-index: 95; }   /* the music button keeps its spot, to
     transform: translateX(-50%);
     display: inline-flex;
     align-items: center;
-    gap: 7px;
+    gap: 8px;
     height: 44px;
-    padding: 0 16px 0 18px;
+    padding: 0 16px;
     border-radius: 999px;
-    border: 1px solid rgba(255, 255, 255, 0.65);
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 250, 240, 0.78));
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(255, 250, 240, 0.82));
     backdrop-filter: blur(20px) saturate(1.8);
     -webkit-backdrop-filter: blur(20px) saturate(1.8);
     box-shadow: 0 4px 18px rgba(19, 35, 58, 0.18), inset 0 1px 0 #FFFFFF;
-    font: 600 13px/1 var(--sans);
+    font: 600 12.5px/1 var(--sans);
     color: var(--ink);
     letter-spacing: -0.01em;
     cursor: pointer;
@@ -4638,14 +4638,30 @@ html:has(.cs.open) .np { z-index: 95; }   /* the music button keeps its spot, to
     transition: opacity 0.35s ease, transform 0.4s var(--ease), visibility 0.35s;
     -webkit-tap-highlight-color: transparent;
   }
-  .mobile-scroll-cue svg {
+  .mobile-scroll-cue:active {
+    transform: translateX(-50%) scale(0.96);
+  }
+  .msc-swipe, .msc-scroll {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .msc-dot {
+    opacity: 0.38;
+    font-size: 14px;
+    font-weight: 700;
+  }
+  .msc-ico-h {
     width: 15px;
     height: 15px;
     color: var(--ink-2);
-    animation: bobChevron 1.8s ease-in-out infinite;
+    animation: bobHorizontal 2.2s ease-in-out infinite;
   }
-  .mobile-scroll-cue:active {
-    transform: translateX(-50%) scale(0.96);
+  .msc-ico-v {
+    width: 14px;
+    height: 14px;
+    color: var(--ink-2);
+    animation: bobChevron 1.8s ease-in-out infinite;
   }
   .mobile-scroll-cue.hidden {
     opacity: 0;
@@ -4654,17 +4670,22 @@ html:has(.cs.open) .np { z-index: 95; }   /* the music button keeps its spot, to
     visibility: hidden;
   }
   :root[data-theme="dark"] .mobile-scroll-cue {
-    background: rgba(30, 41, 59, 0.9);
+    background: rgba(30, 41, 59, 0.92);
     border-color: rgba(255, 255, 255, 0.12);
     color: #F3F4F6;
     box-shadow: 0 4px 18px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.08);
   }
-  :root[data-theme="dark"] .mobile-scroll-cue svg {
+  :root[data-theme="dark"] .msc-ico-h,
+  :root[data-theme="dark"] .msc-ico-v {
     color: #CBD5E1;
   }
 }
 @media (min-width: 860px) {
   .mobile-scroll-cue { display: none !important; }
+}
+@keyframes bobHorizontal {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(3px); }
 }
 @keyframes bobChevron {
   0%, 100% { transform: translateY(0); }
