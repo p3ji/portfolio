@@ -3230,6 +3230,16 @@ void main() {
   const cloudsFoot = $$('#cloudsFoot img');
   let dockY = 0;
   const dock = $('.bar .nav');
+  const mScrollCue = $('#mobileScrollCue');
+  if (mScrollCue) {
+    mScrollCue.addEventListener('click', () => {
+      const journey = $('#journey');
+      if (journey) goTo(top(journey), 650);
+    });
+  }
+  if (isMobile() && window.scrollY < 50 && dock) {
+    dock.classList.add('away');
+  }
   const navLinks = $$('.bar .nav a[data-go]'), navInd = $('#navInd'); let navOn = null, navTops = [];
   function frameMisc(y) {
     if (!navTops.length) navTops = navLinks.map(a => top($('#' + a.dataset.go)));
@@ -3242,7 +3252,15 @@ void main() {
     const llPinned = (llRevTrack && llRevTrack.offsetParent) ? (y > rvTop - vh * .2 && y < rvTop + rvRange) : false;
     const pinned = bxPinned || (y > stTop - vh * .2 && y < stTop + stRange) || llPinned || (y > bTop - vh * .2 && y < bTop + bRange);
     if (y > dockY + 3 && y > vh * .5) dock.dataset.dn = 1; else if (y < dockY - 3) dock.dataset.dn = '';
-    dock.classList.remove('away'); dockY = y; // the nav always stays on screen
+    if (isMobile()) {
+      const atTop = y < 50;
+      dock.classList.toggle('away', atTop);
+      if (mScrollCue) mScrollCue.classList.toggle('hidden', !atTop);
+    } else {
+      dock.classList.remove('away');
+      if (mScrollCue) mScrollCue.classList.add('hidden');
+    }
+    dockY = y;
     lateHl.forEach(h => { if (h && h.offsetParent && !h.classList.contains('on') && h.getBoundingClientRect().top < vh * .78) h.classList.add('on'); });
     const hr = helloRq.getBoundingClientRect();
     if (hr.top < vh * .8 && !helloRq.dataset.done) { helloRq.dataset.done = 1; helloRq.classList.add('painted'); }

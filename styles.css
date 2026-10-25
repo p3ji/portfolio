@@ -4609,6 +4609,66 @@ html:has(.cs.open) .np { z-index: 95; }   /* the music button keeps its spot, to
     max-width: 280px !important;
     line-height: 1.35 !important;
   }
+
+  /* mobile scroll-reveal cue */
+  .mobile-scroll-cue {
+    position: fixed;
+    z-index: 60;
+    left: 50%;
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 20px);
+    transform: translateX(-50%);
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    height: 44px;
+    padding: 0 16px 0 18px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.65);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 250, 240, 0.78));
+    backdrop-filter: blur(20px) saturate(1.8);
+    -webkit-backdrop-filter: blur(20px) saturate(1.8);
+    box-shadow: 0 4px 18px rgba(19, 35, 58, 0.18), inset 0 1px 0 #FFFFFF;
+    font: 600 13px/1 var(--sans);
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    cursor: pointer;
+    white-space: nowrap;
+    opacity: 1;
+    pointer-events: auto;
+    transition: opacity 0.35s ease, transform 0.4s var(--ease), visibility 0.35s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .mobile-scroll-cue svg {
+    width: 15px;
+    height: 15px;
+    color: var(--ink-2);
+    animation: bobChevron 1.8s ease-in-out infinite;
+  }
+  .mobile-scroll-cue:active {
+    transform: translateX(-50%) scale(0.96);
+  }
+  .mobile-scroll-cue.hidden {
+    opacity: 0;
+    transform: translateX(-50%) translateY(16px);
+    pointer-events: none;
+    visibility: hidden;
+  }
+  :root[data-theme="dark"] .mobile-scroll-cue {
+    background: rgba(30, 41, 59, 0.9);
+    border-color: rgba(255, 255, 255, 0.12);
+    color: #F3F4F6;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  }
+  :root[data-theme="dark"] .mobile-scroll-cue svg {
+    color: #CBD5E1;
+  }
+}
+@media (min-width: 860px) {
+  .mobile-scroll-cue { display: none !important; }
+}
+@keyframes bobChevron {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(3.5px); }
 }
 
 /* inside a case study the site's own top bar and navbar step away completely */
