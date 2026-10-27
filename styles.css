@@ -2443,7 +2443,7 @@ html.theme-fade, html.theme-fade * { transition: background-color .9s ease, colo
   .journey.jcm .jcard .jc-bd { padding: 12px 16px 14px; }
   .journey.jcm .jcard h3 { margin: 0 0 6px; font-size: 20px; line-height: 1.12; }
   .journey.jcm .jcard .txt { margin: 0; font-size: 14.5px; line-height: 1.5; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; }
-  .journey.jcm .jcard:not(.open) .jc-bd > :not(h3):not(.txt):not(.jc-more) { display: none; }
+  .journey.jcm .jcard:not(.open) .jc-bd > :not(h3):not(.jc-more) { display: none; }
   .journey.jcm .jc-more { display: inline-flex; align-items: center; gap: 6px; margin-top: 10px; padding: 8px 14px; border-radius: 999px; font: 700 13px/1 var(--sans); color: color-mix(in srgb, var(--c) 75%, var(--ink)); background: color-mix(in srgb, var(--c) 12%, transparent); }
   .journey.jcm .jc-more::after { content: ""; width: 7px; height: 7px; border: solid currentColor; border-width: 0 2px 2px 0; transform: translateY(-2px) rotate(45deg); transition: transform .3s var(--ease); }
   .journey.jcm .jcard.open { overflow-y: auto; max-height: calc(100svh - var(--navh) - 150px) !important; }

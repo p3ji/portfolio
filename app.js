@@ -97,7 +97,7 @@
       workLabel: 'Explore Digital Economy & Society Portal',
       pois: [[160, 90, 'news', 'Digital Economy and Society Portal', 'https://www.statcan.gc.ca/en/subjects-start/digital_economy_and_society', '#1E7FC8']] },
     { id: 'eazydiner', when: '2024 – 2026', place: 'Ottawa · Management Suite', logo: 'logo-eba', c: '#D97706', at: [2640, 1400], lift: 150, name: '$25M Budget 2025 & EBA',
-      title: 'Securing $25M in Federal Budget 2025 & leading Enterprise Architecture.',
+      title: 'Securing $25M in Federal Budget 2025 and leading Business Architecture.',
       txt: 'As <b>Acting Assistant Director</b>, I authored the business case securing <b>$25M over 6 years in Federal Budget 2025</b> for the Techstat AI measurement program. As <b>Enterprise Business Architecture Lead</b>, I secured <b>$500K+ in annual base funding</b> and co-led the agency-wide AI Hackathon.',
       stats: [['$25M', 'Federal Budget 2025 secured'], ['$500K+', 'annual EBA base funding']],
       work: 'https://budget.canada.ca',
