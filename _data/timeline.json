@@ -927,5 +927,77 @@
     "href": "https://msurvey.peji.ca"
    }
   ]
+ },
+ {
+  "date": "October 29, 2026",
+  "type": "prototype",
+  "title": "GameShare — One Collection, Four Households",
+  "description": "A board game library and lending tracker for friends: import from BoardGameGeek, track who has what, ping the current holder with one tap.",
+  "details": "Batch BGG sync pulls box art, ratings and player counts; loans are tracked live across four households (126 games) on Firestore real-time sync. One-tap WhatsApp/iMessage pings go to whoever currently holds the game, and an installable PWA puts the shelf on your home screen with availability badges.",
+  "tags": [
+   "PWA",
+   "Board Games",
+   "Firestore",
+   "Next.js"
+  ],
+  "links": [
+   {
+    "label": "Live Site",
+    "href": "https://gamemenu.peji.ca"
+   },
+   {
+    "label": "GitHub",
+    "href": "https://github.com/p3ji/bg"
+   }
+  ]
+ },
+ {
+  "date": "November 1, 2026",
+  "type": "prototype",
+  "title": "Moonrock Home Café — QR Table Ordering",
+  "description": "A home café website with a bilingual two-sided menu and QR-code table ordering, built as fully static pages.",
+  "details": "The menu renders as plain HTML — no JavaScript required to read the food — with a reduced-motion-aware arrival animation and print-perfect US Letter PDFs generated from the same source data. Table QR codes route guests straight to the drinks page; host actions run behind a passcode-protected Cloudflare Workers backend.",
+  "tags": [
+   "Web",
+   "Print",
+   "Cloudflare Workers",
+   "Bilingual"
+  ],
+  "links": [
+   {
+    "label": "Live Site",
+    "href": "https://cafe.peji.ca"
+   },
+   {
+    "label": "GitHub",
+    "href": "https://github.com/p3ji/moonrock"
+   }
+  ]
+ },
+ {
+  "date": "November 2, 2026",
+  "type": "prototype",
+  "title": "LiDAR Home Inventory — Your House as a Searchable Model",
+  "description": "A private visual home inventory: capture rooms on your iPhone and find any item in a cozy cutaway model of your house.",
+  "details": "The companion iOS app records walkthroughs, overlapping photos and LiDAR meshes; an offline Mac tool reconstructs them into a 3D house you browse locally. Search 'lighter' or 'screwdrivers', pick a result, and it reveals the floor, shelf, drawer or box — with nested storage locations, CSV import/export and full backup/restore. No hosting, no cloud: everything stays on your own devices.",
+  "tags": [
+   "LiDAR",
+   "iOS",
+   "3D",
+   "Privacy"
+  ]
+ },
+ {
+  "date": "November 3, 2026",
+  "type": "prototype",
+  "title": "Gen Woo Studio — 3D Balloon Customizer",
+  "description": "A client-built interactive 3D balloon garland customizer with true-to-scale sizing and AR preview.",
+  "details": "Three.js PBR rendering of matte, pearl/shimmer, mirror-chrome and jewel balloons; drag to arrange a garland at real-world scale against the shop's actual Ottawa catalog pricing. Export as an AR Quick Look scene or .GLB file so customers can hold it in their space before ordering, plus a companion Shopify widget that drops the customizer into product pages.",
+  "tags": [
+   "Three.js",
+   "WebGL",
+   "AR",
+   "Shopify"
+  ]
  }
 ]

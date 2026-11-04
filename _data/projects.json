@@ -851,5 +851,79 @@
   "icon": "fa-landmark",
   "featured": false,
   "links": []
+ },
+ {
+  "id": "gen-woo-balloon-customizer",
+  "title": "Gen Woo Studio — 3D Balloon Customizer",
+  "description": "Client-built interactive 3D balloon garland customizer with true-to-scale sizing and AR preview.",
+  "details": "Three.js PBR rendering of matte, pearl/shimmer, mirror-chrome and jewel balloons; drag to arrange a garland at real-world scale against the shop's actual Ottawa catalog pricing. Export the design as an AR Quick Look scene or .GLB file so customers can hold it in their space before ordering, plus a companion Shopify widget that drops the customizer straight into product pages.",
+  "category": [
+   "work-tools"
+  ],
+  "stage": "prototype",
+  "icon": "fa-wand-magic-sparkles",
+  "featured": false,
+  "links": []
+ },
+ {
+  "id": "gameshare",
+  "title": "GameShare — Board Game Library & Lending",
+  "description": "A PWA for friends to share one board game collection: track who has what, and lend it out with a single tap.",
+  "details": "Batch-imports collections from BoardGameGeek with box art, ratings and player counts; live loan tracking across four households (126 games) on Firestore real-time sync. One-tap WhatsApp/iMessage pings go to whoever currently holds the game, and an installable PWA puts the shelf on your home screen with availability badges.",
+  "category": [
+   "personal-tools"
+  ],
+  "stage": "prototype",
+  "icon": "fa-dice",
+  "featured": false,
+  "links": [
+   {
+    "label": "GitHub",
+    "icon": "fa-github",
+    "href": "https://github.com/p3ji/bg"
+   },
+   {
+    "label": "Live Site",
+    "icon": "fa-play",
+    "href": "https://gamemenu.peji.ca"
+   }
+  ]
+ },
+ {
+  "id": "moonrock-cafe",
+  "title": "Moonrock Home Café",
+  "description": "A home café website with a bilingual two-sided menu and QR-code table ordering.",
+  "details": "The menu renders as fully static HTML — no JavaScript required to read the food — with a reduced-motion-aware arrival animation and print-perfect US Letter PDFs generated from the same source data. Table QR codes route guests straight to the drinks page; host actions run behind a passcode-protected Cloudflare Workers backend.",
+  "category": [
+   "personal-tools"
+  ],
+  "stage": "prototype",
+  "icon": "fa-mug-hot",
+  "featured": false,
+  "links": [
+   {
+    "label": "GitHub",
+    "icon": "fa-github",
+    "href": "https://github.com/p3ji/moonrock"
+   },
+   {
+    "label": "Live Site",
+    "icon": "fa-play",
+    "href": "https://cafe.peji.ca"
+   }
+  ]
+ },
+ {
+  "id": "lidar-home-inventory",
+  "title": "LiDAR Home Inventory",
+  "description": "A private visual home inventory: capture rooms on your iPhone and find any item in a cutaway model of your house.",
+  "details": "The companion iOS app records walkthroughs, overlapping photos and LiDAR meshes; an offline Mac tool reconstructs them into a 3D house you browse locally. Search 'lighter' or 'screwdrivers', pick a result, and it reveals the floor, shelf, drawer or box — with nested storage locations, CSV import/export and full backup/restore. No hosting, no cloud: everything stays on your own devices.",
+  "category": [
+   "personal-tools"
+  ],
+  "stage": "prototype",
+  "icon": "fa-house-chimney-crack",
+  "featured": false,
+  "links": []
  }
 ]
