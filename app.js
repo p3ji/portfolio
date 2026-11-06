@@ -3625,7 +3625,7 @@ void main() {
     window.__sfx = play;
     const unlock = () => { load(); if (ctx && ctx.state === 'suspended') ctx.resume(); };
     addEventListener('pointerdown', unlock, { capture: true, once: false, passive: true }); addEventListener('keydown', unlock, { capture: true, passive: true });
-    if (btn) btn.addEventListener('click', e => { e.stopPropagation(); muted = !muted; try { localStorage.setItem('jc-sfx', muted ? '0' : '1'); } catch (_) {} paint(); if (!muted) { unlock(); setTimeout(() => play('click'), 60); } });
+    if (btn) btn.addEventListener('click', e => { e.stopPropagation(); const rad = matchMedia('(max-width: 859px)').matches ? document.getElementById('radio') : null; if (rad) { const musicOn = rad.classList.contains('on'); muted = musicOn; rad.click(); } else muted = !muted; try { localStorage.setItem('jc-sfx', muted ? '0' : '1'); } catch (_) {} paint(); if (!muted) { unlock(); setTimeout(() => play('click'), 60); } });
     paint();
     const CLOSE = '.cs-close, .nw-x, .nw-rd-x, .wop-x, .nw-all-x, #s-x, .sheet .x, .bk-x';
     const TAP = 'a, button, summary, [role="button"], label[for]';

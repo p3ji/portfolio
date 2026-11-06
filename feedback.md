@@ -7,6 +7,9 @@
 <!-- Use the in-app Review widget to drop pins and save changes here -->
 
 ## Resolved
+- [x] **Item #79 (2026-11-06)** (Mobile sound icon toggles music)
+  - **Requested Change**: On mobile, the sound/volume symbol should also toggle the music on/off, same as the record-player icon.
+  - **Resolution**: In [app.js](file:///Users/pushp/Documents/Projects/visualportfolio/app.js), the `#sfxBtn` click handler now (at `max-width: 859px`) clicks `#radio` so music starts/stops with the icon, and the icon state follows the music (speaker on = playing, muted = stopped). Desktop behaviour unchanged. Cache buster `app.js?v=20261106snd`.
 - [x] **Item #78 (2026-10-27)** (Journey card on mobile + Stop 6 title)
   - **Requested Change**: 1) On phones, journey cards show only the title; description appears via "Read more". 2) Retitle the $25M stop to "Securing $25M in Federal Budget 2025 and leading Business Architecture".
   - **Resolution**:
