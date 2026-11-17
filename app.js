@@ -231,8 +231,14 @@
   const glc = $('#glPlate'); let lastDraw = [0, 0, 0], glKey = '', nightLoad = null, nightReady = false, nf = 0, gl = null, glU = null, glReady = false, fa = 0, hspot = SPOT.eazydiner;
   let hoverPlaceId = null, hovAmt = 0, hovSpot = [...SPOT.eazydiner];
   const gain = (e, d) => 1 + e * (.08 + d * .35);
-  (function initGL() {
-    if (matchMedia('(max-width: 859px)').matches) { addEventListener('resize', () => { if (!gl && innerWidth >= 860) initGL(); }); }
+  function initGL() {
+    if (matchMedia('(max-width: 859px)').matches) {
+      if (!initGL._bound) {
+        initGL._bound = true;
+        addEventListener('resize', () => { if (!gl && innerWidth >= 860) initGL(); });
+      }
+      return;
+    }
     let g; try { g = glc.getContext('webgl2', { antialias: false, alpha: false, preserveDrawingBuffer: true, powerPreference: 'high-performance' }); } catch (_) {}
     if (!g) return;
     const sh = (t, src) => { const o = g.createShader(t); g.shaderSource(o, src); g.compileShader(o); if (!g.getShaderParameter(o, g.COMPILE_STATUS)) throw new Error(g.getShaderInfoLog(o)); return o; };
@@ -310,7 +316,8 @@ void main() {
         glc.classList.remove('on');
       });
     } catch (err) { console.warn('plate shader', err); gl = null; }
-  })();
+  }
+  initGL();
   function sizeGL() {
     const dpr = Math.max(1, Math.min(devicePixelRatio || 1, 2, Math.sqrt(4e6 / (vw * vh)))), w = Math.round(vw * dpr), h = Math.round(vh * dpr);
     if (glc.width !== w || glc.height !== h) { glc.width = w; glc.height = h; gl.viewport(0, 0, w, h); glKey = ''; }
@@ -455,92 +462,17 @@ void main() {
   };
   let activeMobilePlace = 'me';
   const isMobile = () => innerWidth < 860;
-  let mobilePanX = 0;
-
-  function setMobilePan(panX, smooth = false) {
-    const pano = $('#phPanoCanvas', stage);
-    if (!pano) return;
-    const heroH = stage.offsetHeight || window.innerHeight;
-    const canvasW = heroH * (4000 / 2252);
-    const screenW = window.innerWidth;
-    const minPan = screenW - canvasW;
-    mobilePanX = Math.max(minPan, Math.min(0, panX));
-
-    pano.style.transition = smooth ? 'transform 0.65s cubic-bezier(0.16, 1, 0.3, 1)' : 'none';
-    pano.style.transform = `translateX(${mobilePanX.toFixed(1)}px)`;
-  }
+  const phHero = $('#phHero', stage);
 
   function panMobileToLandmark(id, smooth = true) {
     activeMobilePlace = id;
     const lm = MOBILE_LANDMARKS[id];
-    if (!lm) return;
-    const heroH = stage.offsetHeight || window.innerHeight;
-    const canvasW = heroH * (4000 / 2252);
-    const screenW = window.innerWidth;
-    const targetX = canvasW * lm.x;
-    const targetPanX = (screenW / 2) - targetX;
-    setMobilePan(targetPanX, smooth);
+    if (!lm || !phHero) return;
+    const canvasW = phHero.scrollWidth || (stage.offsetHeight || window.innerHeight) * (4000 / 2252);
+    const screenW = phHero.clientWidth || window.innerWidth;
+    const targetLeft = Math.max(0, Math.min(canvasW - screenW, (canvasW * lm.x) - (screenW / 2)));
+    phHero.scrollTo({ left: targetLeft, behavior: smooth && !reduce ? 'smooth' : 'auto' });
   }
-
-  // Mobile horizontal touch drag with direction-locking and momentum
-  let touchStartX = 0, touchStartY = 0, touchInitialPan = 0;
-  let isTouchPanning = false, isTouchScrolling = false;
-  let lastTouchX = 0, lastTouchTime = 0, touchVelocity = 0;
-
-  stage.addEventListener('touchstart', e => {
-    if (!isMobile() || e.touches.length !== 1 || focusId) return;
-    const t = e.touches[0];
-    touchStartX = t.clientX;
-    touchStartY = t.clientY;
-    touchInitialPan = mobilePanX;
-    isTouchPanning = false;
-    isTouchScrolling = false;
-    lastTouchX = t.clientX;
-    lastTouchTime = performance.now();
-    touchVelocity = 0;
-
-    const pano = $('#phPanoCanvas', stage);
-    if (pano) pano.style.transition = 'none';
-  }, { passive: true });
-
-  stage.addEventListener('touchmove', e => {
-    if (!isMobile() || e.touches.length !== 1 || focusId || isTouchScrolling) return;
-    const t = e.touches[0];
-    const dx = t.clientX - touchStartX;
-    const dy = t.clientY - touchStartY;
-
-    if (!isTouchPanning && !isTouchScrolling) {
-      if (Math.abs(dx) > 7 || Math.abs(dy) > 7) {
-        if (Math.abs(dx) > Math.abs(dy)) {
-          isTouchPanning = true;
-        } else {
-          isTouchScrolling = true;
-          return;
-        }
-      }
-    }
-
-    if (isTouchPanning) {
-      if (e.cancelable) e.preventDefault();
-      const now = performance.now();
-      const dt = Math.max(1, now - lastTouchTime);
-      touchVelocity = (t.clientX - lastTouchX) / dt;
-      lastTouchX = t.clientX;
-      lastTouchTime = now;
-
-      setMobilePan(touchInitialPan + dx, false);
-    }
-  }, { passive: false });
-
-  stage.addEventListener('touchend', e => {
-    if (!isMobile() || !isTouchPanning) return;
-    isTouchPanning = false;
-
-    // Apply momentum glide
-    const momentumDist = touchVelocity * 220;
-    const targetPan = mobilePanX + momentumDist;
-    setMobilePan(targetPan, true);
-  });
 
   places.id = 'places'; places.className = 'places'; places.setAttribute('aria-label', 'Places in the valley');
   places.innerHTML = Object.entries(PLACES).map(([id, P]) => `<button type="button" data-id="${id}" style="--c:${P.c}"><img class="p-icon" src="${P.logo || 'v2/s/logo-statcan.webp'}" alt=""><span>${id === 'me' ? 'Me' : P.t.replace(/,.*/, '')}</span>${P.yr ? `<span class="p-yr">${P.yr}</span>` : ''}</button>`).join('');
@@ -566,12 +498,11 @@ void main() {
   });
 
   if (isMobile()) {
-    setMobilePan(0, false);
+    if (phHero) phHero.scrollLeft = 0;
 
     addEventListener('resize', () => {
       if (isMobile()) {
         places.style.display = 'none';
-        if (!isTouchPanning) setMobilePan(mobilePanX, false);
       } else {
         places.style.display = '';
       }
@@ -590,10 +521,15 @@ void main() {
   setTimeout(() => stage.classList.add('ready'), 4700);
   if (!hoverable) hint.innerHTML = hint.innerHTML.replace('click a place', 'tap a place');
 
+  let lastMobileValleyY = -1, lastMobileFocus = null;
   function frameValley(dt, y) {
     if (isMobile()) {
       if (focusId && y > 30) unfocus();
-      const t = clamp(y / 240);
+      const clampedY = Math.min(240, Math.max(0, y));
+      if (clampedY === lastMobileValleyY && focusId === lastMobileFocus) return;
+      lastMobileValleyY = clampedY;
+      lastMobileFocus = focusId;
+      const t = clamp(clampedY / 240);
       heroCopy.style.transform = `translate3d(0, ${(-t * 60).toFixed(1)}px, 0)`;
       if (!focusId) heroCopy.style.opacity = (1 - t).toFixed(3);
       heroScrim.style.opacity = focusId ? 0 : Math.max(0, 1 - t).toFixed(3);
@@ -696,7 +632,7 @@ void main() {
   // phones: a reveal starts when its block comes into view and plays on its own, the scroll never holds it
   const PLAY = {};
   function playIn(el, k, ms) { if (!PLAY[k]) { const r = el.getBoundingClientRect(); if (r.top < vh * .8 && r.bottom > 0) PLAY[k] = performance.now(); else return 0; } return clamp((performance.now() - PLAY[k]) / ms); }
-  function layoutStory() { sTop = top(story); sRange = Math.max(1, story.offsetHeight - vh); buildDoodles(); lastQ = -1; }
+  function layoutStory() { sTop = top(story); sRange = Math.max(1, story.offsetHeight - vh); if (!mobile) buildDoodles(); lastQ = -1; }
   let lastQ = -1;
   function frameStory(y) {
     const q = playIn(tell, 'st', 2800);
@@ -3026,17 +2962,17 @@ void main() {
      4b · BRAND & WEB
      ========================================================= */
   const SITES = [
-    { name: 'Peji Digital Practice', url: 'peji.ca', href: 'https://peji.ca/', img: 'peji', kind: 'Consulting · 3 Tiers', dy: 14, r: 1.2, st: '<span class="stk pill" style="left:-16px;top:-18px;transform:rotate(-6deg)">peji.ca ↗</span>' },
-    { name: 'Ottawa Optical Booking', url: 'demobooking.peji.ca', href: 'https://demobooking.peji.ca/', img: 'demobooking', kind: 'Tier 01 · Light Build', dy: 20, r: 1.5, st: '<span class="stk round" style="--sc:#EAD8C3;--stk-c:#13233A;right:-18px;top:-22px;transform:rotate(7deg)">demo<br>app ↗</span>' },
-    { name: 'Skating Club ETL Pipeline', url: 'peji.ca', href: 'https://peji.ca/', img: 'mkdaily', kind: 'Tier 02 · Daily Pipeline', dy: -14, r: -1.2, st: '<span class="stk tape" style="right:20%;top:-14px;transform:rotate(5deg);background:rgba(56,189,248,.85)"></span>' },
-    { name: 'PA Volunteer Tracker', url: 'pa.peji.ca', href: 'https://pa.peji.ca/', img: 'patracker', kind: 'Tier 03 · Custom App', dy: 24, r: 1.4, st: '<span class="stk pill" style="left:-16px;top:-18px;transform:rotate(-5deg)">live app ↗</span>' },
-    { name: 'Modular Survey Tools', url: 'msurvey.peji.ca', href: 'https://msurvey.peji.ca/', img: 'modularsurvey', kind: 'Tier 03 · DDI Lifecycle', dy: -12, r: -1.4, st: '<span class="stk pill" style="right:-18px;top:-18px;transform:rotate(6deg)">suite ↗</span>' },
-    { name: 'Users of Digital Government', url: 'statcan.gc.ca', href: 'https://www150.statcan.gc.ca/n1/pub/22-20-0001/222000012026001-eng.htm', img: 'paper-diggov', kind: 'Published Paper · 2026', dy: 16, r: 1.2, st: '<span class="stk round" style="--sc:#E2E8F0;--stk-c:#0F172A;left:-24px;top:-26px;transform:rotate(-8deg)">published<br>2026</span>' },
-    { name: 'Digital Divides in Canada', url: 'cetic.br', href: 'https://bibliotecadigital.acervo.nic.br/server/api/core/bitstreams/b2bf1957-5fe3-421a-bbab-3a8ace9ac0bc/content', img: 'paper-divide', kind: 'Published Study · 2019', dy: -16, r: -1.3, st: '<span class="stk pill" style="right:-18px;top:-18px;transform:rotate(-6deg)">research ↗</span>' },
-    { name: 'Canadian AI Jobs Report', url: 'occupation-ai.vercel.app', href: 'https://occupation-ai.vercel.app', img: 'aijobsearch', kind: 'Labour Intelligence · AI', dy: 22, r: 1.3, st: '<span class="stk tape" style="left:35%;top:-14px"></span>' }
+    { name: 'Peji Digital Practice', url: 'peji.ca', href: 'https://peji.ca/', img: 'peji', w: 896, h: 1195, kind: 'Consulting · 3 Tiers', dy: 14, r: 1.2, st: '<span class="stk pill" style="left:-16px;top:-18px;transform:rotate(-6deg)">peji.ca ↗</span>' },
+    { name: 'Ottawa Optical Booking', url: 'demobooking.peji.ca', href: 'https://demobooking.peji.ca/', img: 'demobooking', w: 1200, h: 800, kind: 'Tier 01 · Light Build', dy: 20, r: 1.5, st: '<span class="stk round" style="--sc:#EAD8C3;--stk-c:#13233A;right:-18px;top:-22px;transform:rotate(7deg)">demo<br>app ↗</span>' },
+    { name: 'Skating Club ETL Pipeline', url: 'peji.ca', href: 'https://peji.ca/', img: 'mkdaily', w: 1200, h: 800, kind: 'Tier 02 · Daily Pipeline', dy: -14, r: -1.2, st: '<span class="stk tape" style="right:20%;top:-14px;transform:rotate(5deg);background:rgba(56,189,248,.85)"></span>' },
+    { name: 'PA Volunteer Tracker', url: 'pa.peji.ca', href: 'https://pa.peji.ca/', img: 'patracker', w: 1200, h: 800, kind: 'Tier 03 · Custom App', dy: 24, r: 1.4, st: '<span class="stk pill" style="left:-16px;top:-18px;transform:rotate(-5deg)">live app ↗</span>' },
+    { name: 'Modular Survey Tools', url: 'msurvey.peji.ca', href: 'https://msurvey.peji.ca/', img: 'modularsurvey', w: 1200, h: 800, kind: 'Tier 03 · DDI Lifecycle', dy: -12, r: -1.4, st: '<span class="stk pill" style="right:-18px;top:-18px;transform:rotate(6deg)">suite ↗</span>' },
+    { name: 'Users of Digital Government', url: 'statcan.gc.ca', href: 'https://www150.statcan.gc.ca/n1/pub/22-20-0001/222000012026001-eng.htm', img: 'paper-diggov', w: 1200, h: 800, kind: 'Published Paper · 2026', dy: 16, r: 1.2, st: '<span class="stk round" style="--sc:#E2E8F0;--stk-c:#0F172A;left:-24px;top:-26px;transform:rotate(-8deg)">published<br>2026</span>' },
+    { name: 'Digital Divides in Canada', url: 'cetic.br', href: 'https://bibliotecadigital.acervo.nic.br/server/api/core/bitstreams/b2bf1957-5fe3-421a-bbab-3a8ace9ac0bc/content', img: 'paper-divide', w: 1200, h: 800, kind: 'Published Study · 2019', dy: -16, r: -1.3, st: '<span class="stk pill" style="right:-18px;top:-18px;transform:rotate(-6deg)">research ↗</span>' },
+    { name: 'Canadian AI Jobs Report', url: 'occupation-ai.vercel.app', href: 'https://occupation-ai.vercel.app', img: 'aijobsearch', w: 1280, h: 720, kind: 'Labour Intelligence · AI', dy: 22, r: 1.3, st: '<span class="stk tape" style="left:35%;top:-14px"></span>' }
   ];
   const brandSec = $('#brand'), brandRow = $('#brandRow'), brandProg = $('#brandProg');
-  brandRow.innerHTML = SITES.map(x => `<a class="site" href="${x.href}" target="_blank" rel="noopener" style="--dy:${x.dy}px;--r:${x.r}deg">${x.st}<div class="win"><div class="chrome"><i></i><i></i><i></i><span>${x.url}</span></div><div class="page"><img src="v2/b/${x.img}.webp?v=20261024h" alt="${x.name} website home page" loading="lazy"></div></div><div class="cap"><b>${x.name}</b><span>${x.kind} · visit ↗</span></div></a>`).join('');
+  brandRow.innerHTML = SITES.map(x => `<a class="site" href="${x.href}" target="_blank" rel="noopener" style="--dy:${x.dy}px;--r:${x.r}deg">${x.st}<div class="win"><div class="chrome"><i></i><i></i><i></i><span>${x.url}</span></div><div class="page" style="aspect-ratio:${x.w}/${x.h}"><img src="v2/b/${x.img}.webp?v=20261024h" width="${x.w}" height="${x.h}" alt="${x.name} website home page" loading="lazy"></div></div><div class="cap"><b>${x.name}</b><span>${x.kind} · visit ↗</span></div></a>`).join('');
   let bTop = 0, bRange = 1, bShift = 0;
   let bManual = false;
   function layoutBrand() {
@@ -3220,17 +3156,27 @@ void main() {
   if (isMobile() && window.scrollY < 50 && dock) {
     dock.classList.add('away');
   }
-  const navLinks = $$('.bar .nav a[data-go]'), navInd = $('#navInd'); let navOn = null, navTops = [];
+  const navLinks = $$('.bar .nav a[data-go]'), navInd = $('#navInd'), cloudsFootEl = $('#cloudsFoot'); let navOn = null, navTops = [], lastMiscY = -1;
   function frameMisc(y) {
+    if (y === lastMiscY && navTops.length) return;
+    lastMiscY = y;
+    // Batch all layout reads before any style/class writes
     if (!navTops.length) navTops = navLinks.map(a => top($('#' + a.dataset.go)));
     let cur = null; navLinks.forEach((a, k) => { if (a.offsetParent && navTops[k] <= y + vh * .5) cur = a; });
     if (y < vh * .5) cur = navLinks.find(a => a.dataset.go === 'top') || null;
-    if (navOn && navOn === cur && navInd.offsetWidth !== navOn.offsetWidth) { navInd.style.width = navOn.offsetWidth + 'px'; navInd.style.transform = `translateX(${navOn.offsetLeft}px)`; }
-    if (cur !== navOn) { navOn = cur; navLinks.forEach(a => a.classList.toggle('on', a === cur)); navInd.classList.toggle('on', !!cur); if (cur) { navInd.style.width = cur.offsetWidth + 'px'; navInd.style.transform = `translateX(${cur.offsetLeft}px)`; } }
-    const inMap = y > jTop - vh * .4 && y < jTop + jRange + vh * .3;
-    const bxPinned = (boxTrack && boxTrack.offsetParent) ? (() => { const bx = boxTrack.getBoundingClientRect(); return bx.top < vh * .3 && bx.bottom > vh * .7; })() : false;
-    const llPinned = (llRevTrack && llRevTrack.offsetParent) ? (y > rvTop - vh * .2 && y < rvTop + rvRange) : false;
-    const pinned = bxPinned || (y > stTop - vh * .2 && y < stTop + stRange) || llPinned || (y > bTop - vh * .2 && y < bTop + bRange);
+    const indNeedsSync = navOn && navOn === cur && navInd.offsetWidth !== navOn.offsetWidth;
+    const indTarget = indNeedsSync ? navOn : (cur !== navOn ? cur : null);
+    const indW = indTarget ? indTarget.offsetWidth : 0;
+    const indL = indTarget ? indTarget.offsetLeft : 0;
+    const hlHits = lateHl.filter(h => h && !h.classList.contains('on') && h.offsetParent && h.getBoundingClientRect().top < vh * .78);
+    const paintHello = !helloRq.dataset.done && helloRq.getBoundingClientRect().top < vh * .8;
+    const fr = cloudsFootEl.getBoundingClientRect();
+    const footVisible = fr.top < vh + 100 && fr.bottom > -100;
+    const fq = footVisible ? clamp(1 - fr.top / vh) : 0;
+
+    // Batch DOM writes
+    if (indNeedsSync) { navInd.style.width = indW + 'px'; navInd.style.transform = `translateX(${indL}px)`; }
+    if (cur !== navOn) { navOn = cur; navLinks.forEach(a => a.classList.toggle('on', a === cur)); navInd.classList.toggle('on', !!cur); if (cur) { navInd.style.width = indW + 'px'; navInd.style.transform = `translateX(${indL}px)`; } }
     if (y > dockY + 3 && y > vh * .5) dock.dataset.dn = 1; else if (y < dockY - 3) dock.dataset.dn = '';
     if (isMobile()) {
       const atTop = y < 50;
@@ -3241,11 +3187,9 @@ void main() {
       if (mScrollCue) mScrollCue.classList.add('hidden');
     }
     dockY = y;
-    lateHl.forEach(h => { if (h && h.offsetParent && !h.classList.contains('on') && h.getBoundingClientRect().top < vh * .78) h.classList.add('on'); });
-    const hr = helloRq.getBoundingClientRect();
-    if (hr.top < vh * .8 && !helloRq.dataset.done) { helloRq.dataset.done = 1; helloRq.classList.add('painted'); }
-    const fr = $('#cloudsFoot').getBoundingClientRect(), fq = clamp(1 - fr.top / vh);
-    cloudsFoot.forEach(im => im.style.transform = `translate3d(0, ${(-(fq) * vh * +im.dataset.sp).toFixed(1)}px, 0)` + (im.dataset.f ? ' scaleX(-1)' : ''));
+    hlHits.forEach(h => h.classList.add('on'));
+    if (paintHello) { helloRq.dataset.done = 1; helloRq.classList.add('painted'); }
+    if (footVisible) cloudsFoot.forEach(im => im.style.transform = `translate3d(0, ${(-(fq) * vh * +im.dataset.sp).toFixed(1)}px, 0)` + (im.dataset.f ? ' scaleX(-1)' : ''));
   }
   const st = document.createElement('style'); st.textContent = '#helloRq::before{animation:none}#helloRq.painted::before{animation:paint 1s var(--ease) .1s forwards}'; document.head.appendChild(st);
 
@@ -3824,7 +3768,7 @@ void main() {
   /* ---------- loop ---------- */
   function layout() {
     vw = innerWidth; vh = innerHeight; mobile = vw < 860;
-    navTops = []; navOn = undefined;
+    navTops = []; navOn = undefined; lastMiscY = -1; lastMobileValleyY = -1;
     layoutValley(); layoutStory(); layoutJourney(); layoutBrand(); layoutStack(); layoutLL(); layoutProc(); boxScale();
   }
   let last = performance.now();
@@ -3849,13 +3793,13 @@ void main() {
       }
       fold('v', valley, $('#journey'), () => { story.style.marginTop = '0px'; });
       fold('s', story, $('#journey'));
+      const nextAfterJ = ($('#work') && $('#work').offsetParent) ? $('#work') : $('#brand');
+      if (!jCar && nextAfterJ) fold('j', jTrack, nextAfterJ);
+      if (boxOpen && boxTrack && boxTrack.offsetParent) fold('box', boxTrack, $('#brand'));
+      const nextAfterSt = ($('#process') && $('#process').offsetParent) ? $('#process') : $('#life');
+      if (!giftTap && nextAfterSt) fold('st', stackTrack, nextAfterSt);
+      if (llRevTrack && llRevTrack.offsetParent) fold('ll', llRevTrack, llRoles);
     }
-    const nextAfterJ = ($('#work') && $('#work').offsetParent) ? $('#work') : $('#brand');
-    if (!jCar && nextAfterJ) fold('j', jTrack, nextAfterJ);
-    if (boxOpen && boxTrack && boxTrack.offsetParent) fold('box', boxTrack, $('#brand'));
-    const nextAfterSt = ($('#process') && $('#process').offsetParent) ? $('#process') : $('#life');
-    if (!giftTap && nextAfterSt) fold('st', stackTrack, nextAfterSt);
-    if (llRevTrack && llRevTrack.offsetParent) fold('ll', llRevTrack, llRoles);
     y = Y();
     if (y < vTop + vRange + vh) frameValley(dt, y);
     if (y > sTop - vh && y < sTop + sRange + vh) frameStory(DONE.s ? 1e9 : held('s', y, sTop - vh));
@@ -3868,8 +3812,13 @@ void main() {
     frameMisc(y);
     requestAnimationFrame(frame);
   }
-  let lt = 0;
-  const ro = new ResizeObserver(() => { cancelAnimationFrame(lt); lt = requestAnimationFrame(layout); });
+  let lt = 0, lastBodyW = innerWidth, lastBodyH = document.body.scrollHeight;
+  const ro = new ResizeObserver(() => {
+    const bw = innerWidth, bh = document.body.scrollHeight;
+    if (isMobile() && bw === lastBodyW && Math.abs(bh - lastBodyH) < 2) return;
+    lastBodyW = bw; lastBodyH = bh;
+    cancelAnimationFrame(lt); lt = requestAnimationFrame(layout);
+  });
   ro.observe(document.body);
   addEventListener('load', layout);
   document.fonts && document.fonts.ready.then(layout);

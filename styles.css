@@ -1568,7 +1568,7 @@ p, li, figcaption, blockquote, small, dd { text-wrap: pretty; }
 @media (max-width: 1100px) { .c3-galrow { justify-content: flex-start; scroll-snap-type: x mandatory; } .c3-galrow img { scroll-snap-align: center; width: min(56vw, 230px); } }
 /* ---------- small screens ---------- */
 @media (max-width: 860px) {
-  .nav { height: 56px; padding: 0 6px; }
+  .nav { height: 56px; padding: 0 6px; will-change: transform, opacity; backdrop-filter: blur(14px) saturate(1.4); -webkit-backdrop-filter: blur(14px) saturate(1.4); }
   .nav a { height: 44px; padding: 0 11px; font-size: 13.5px; }
   .nav .ind { top: 6px; height: 44px; }
   .nav a[data-go="life"], .nav a[data-go="stack"], .nav a[data-go="lastlook"], .nav .sep { display: none; }
@@ -4152,7 +4152,7 @@ html:root[data-theme="dark"] :is(.btn-ink, .btn-ghost, .cs-close, .bh-cta, .mail
 /* reveal text never pins the page: it plays by itself once it scrolls into view */
 /* the story never pins, but on desktop it still slides up over the valley like a sheet of paper */
 .story { height: auto !important; }
-@media (max-width: 859px) { .story { margin-top: 0 !important; } }
+@media (max-width: 859px) { .story { margin-top: 0 !important; } .story::before { filter: none; } }
 .story-pin { position: relative !important; height: auto !important; padding: 16vh 0 14vh; overflow: visible; }
 .ll-rev-track { height: auto !important; }
 .ll-rev-pin { position: relative !important; height: auto !important; padding: 16vh 0; }
@@ -4410,26 +4410,30 @@ html:root .cs .cs-bar button.cs-close { width: 48px; height: 48px; padding: 0 !i
     position: relative !important;
     height: 100vh !important;
     height: 100svh !important;
+    touch-action: pan-x pan-y;
   }
   .ph-hero {
     display: block;
     position: absolute;
     inset: 0;
     z-index: 0;
-    overflow: hidden;
-    pointer-events: none;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x pan-y;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    pointer-events: auto;
   }
+  .ph-hero::-webkit-scrollbar { display: none; }
   .stage .cam { display: none !important; }
   .stage::before { display: none !important; }
 
   .ph-pano-canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
+    position: relative;
     height: 100%;
     aspect-ratio: 4000 / 2252;
     pointer-events: none;
-    will-change: transform;
   }
   .ph-plate {
     position: absolute;
@@ -4603,6 +4607,10 @@ html:has(.cs.open) .np { z-index: 95; }   /* the music button keeps its spot, to
   }
   .hero-copy {
     top: calc(env(safe-area-inset-top, 0px) + 64px) !important;
+    transition: none;
+  }
+  .stage.still .hero-copy {
+    transition: opacity .35s var(--ease);
   }
   .hero-copy h1 {
     font-size: clamp(1.8rem, 7.6vw, 2.3rem) !important;
