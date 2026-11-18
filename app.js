@@ -16,26 +16,26 @@
       n: [['B.A. + M.A.', 'University of Toronto'], ['2026', 'Rotman Mini-MBA']], j: 0 },
     mmt: { c: '#C8102E', logo: 'v2/s/logo-statcan.webp', yr: '2011–26', side: 'left', tag: 'Chapter 02 · 2011–2026 · Ottawa', t: 'R.H. Coats Building · StatCan', r: 'Chief → Acting Assistant Director → Enterprise Business Architecture Lead',
       h: '15 years modernizing Canada’s national statistical infrastructure.',
-      st: ['Across 15+ years at <b>Statistics Canada</b>, I delivered insights through complex data analysis, led national survey modernization, a rapid country-wide COVID-19 serology study, and grew key programs related to technology measurement while improving timeliness and efficiency.', 'As Acting Assistant Director, I authored the business case that secured <b>$25M over 6 years in Federal Budget 2025</b> for the Techstat AI & Digital Technology Measurement Program, and secured <b>$500K+ in annual base funding</b> for Enterprise Business Architecture.'],
+      st: ['Across 15+ years at <b>Statistics Canada</b>, I delivered insights through complex data analysis, led national survey modernization, a rapid country-wide COVID-19 serology study, and grew key programs related to technology measurement while improving timeliness and efficiency.', 'As Acting Assistant Director, I authored the business case that secured <b>$25M over 6 years in Federal Budget 2025</b> for the Techstat AI & Digital Technology Measurement Program, and established the <b>Enterprise Business Architecture</b> practice.'],
       n: [], j: 4 },
-    oyo: { c: '#C4622D', logo: 'v2/s/logo-peji.webp', yr: 'Now', side: 'left', tag: 'Chapter 04 · Now · peji.ca', t: 'Peji Systems', r: 'Founder · Sovereign Local AI (M5 Ultra 256GB Air-Gap)',
-      h: 'Practical digital solutions & zero-cloud-leakage local AI.',
-      st: ['Through <b>peji.ca</b>, I work with small business and non-profits.', 'For sensitive files, I architected a <b>Sovereign Local AI Lab</b> on a 256GB M5 Ultra Mac Studio with OS-level zero-cloud-leakage enforcement so sensitive PII never leaves the premises.'],
-      n: [['256GB', 'M5 Ultra unified memory'], ['0 bytes', 'cloud PII leakage'], ['3 tiers', 'Light · Medium · Large']], j: 8 },
+    oyo: { c: '#C4622D', logo: 'v2/s/logo-peji.webp', yr: 'Now', side: 'left', tag: 'Chapter 04 · Now · Sabbatical Lab', t: 'Sovereign AI Lab', r: 'M5 Ultra (256GB Air-Gap) & Community Builds',
+      h: 'Zero-cloud-leakage local AI & practical community software.',
+      st: ['For sensitive files, I architected a <b>Sovereign Local AI Lab</b> on a 256GB M5 Ultra Mac Studio with OS-level zero-cloud-leakage enforcement so sensitive PII never leaves the premises.', 'Built practical web apps and automations for local community groups and family projects, from automated skating-club pipelines to interactive booking and volunteer apps.'],
+      n: [['256GB', 'M5 Ultra unified memory'], ['0 bytes', 'cloud PII leakage'], ['40+', 'prototypes & apps shipped']], j: 8 },
     eazydiner: { c: '#1E7FC8', logo: 'v2/s/logo-aijourney.webp', yr: '2026', side: 'left', tag: 'Chapter 03 · 2026 · Sabbatical', t: '1-Year AI Journey', r: '50 Milestones · 40+ Prototypes · 562-Node Digital Brain',
       h: 'What happens when a public-sector manager spends a year building with AI.',
       st: ['During my one-year sabbatical, I built <b>40+ live prototypes</b>: including the <i>Canadian AI Jobs & Skills Report</i>, <b>Sovereign Local AI</b>, and <b>various automation workflow patterns</b>.', 'Everything is wired into a <b>562-node Obsidian Personal Knowledge Graph</b> and a multi-agent workflow orchestrating Claude Code, Antigravity, and local models.'],
       n: [['50', 'documented milestones'], ['40+', 'working prototypes'], ['562', 'PKG knowledge nodes']], j: 5 },
-    me: { c: '#F2B705', logo: 'v2/s/photo.webp', yr: '', side: 'right', tag: 'About me', t: 'Hey, I’m Peter', r: 'Ottawa · Data Manager · AI Builder · Founder, Peji.ca',
+    me: { c: '#F2B705', logo: 'v2/s/photo.webp', yr: '', side: 'right', tag: 'About me', t: 'Hey, I’m Peter', r: 'Ottawa · Data Manager · AI Builder',
       h: 'I bridge organizational strategy with rapid agentic execution.',
       st: [],
       fun: [
         ['Foundations', '#002A5C', [['University of Toronto', 'Honours B.A. & M.A. in Sociology. Empirical systems thinking from day one.'], ['Rotman Mini-MBA (2026)', 'Executive program in business management and AI at U of T.'], ['Vanderbilt AI Specializations', 'Agentic AI, Prompt Engineering & Claude Code certifications (2026).']]],
-        ['Public Service & AI', '#C8102E', [['15+ years at Statistics Canada', 'Analyst → Unit Head → Chief → Acting Assistant Director → EBA Lead.'], ['Continuous Learning & Technical Depth', 'Never afraid to dive into programming, data systems, and diverse subjects even as I hone my management and strategy skills through work.'], ['Peji.ca & Sovereign AI Lab', '256GB M5 Ultra air-gapped local LLM architecture + rapid client builds.']]],
+        ['Public Service & AI', '#C8102E', [['15+ years at Statistics Canada', 'Analyst → Unit Head → Chief → Acting Assistant Director → EBA Lead.'], ['Continuous Learning & Technical Depth', 'Never afraid to dive into programming, data systems, and diverse subjects even as I hone my management and strategy skills through work.'], ['Sovereign AI Lab', '256GB M5 Ultra air-gapped local LLM architecture + community builds.']]],
         ['Off the clock', '#2E9E6B', [['Game studio with my kids', 'We co-designed Kingdoms of Wobbleton & 3D voxel worlds in Three.js.'], ['Ottawa ⇄ Toronto', 'Skating club pipelines, Gatineau Park trails, and family road trips down Hwy 401.'], ['562-Node Digital Brain', 'Obsidian PKG connecting every reflection, dataset, and agent skill.']]]
       ],
       n: [['15+ yrs', 'Statistics Canada leadership'], ['40+', 'AI systems & apps shipped']], j: 8,
-      photos: [['photo', 'Peter Jiao · Peji Systems'], ['uoft-uc', 'University of Toronto'], ['stc-coats', 'R.H. Coats Building · StatCan']],
+      photos: [['photo', 'Peter Jiao · Ottawa'], ['uoft-uc', 'University of Toronto'], ['stc-coats', 'R.H. Coats Building · StatCan']],
       links: true, about: true }
   };
 
@@ -98,8 +98,8 @@
       pois: [[160, 90, 'news', 'Digital Economy and Society Portal', 'https://www.statcan.gc.ca/en/subjects-start/digital_economy_and_society', '#1E7FC8']] },
     { id: 'eazydiner', when: '2024 – 2026', place: 'Ottawa · Management Suite', logo: 'logo-eba', c: '#D97706', at: [2640, 1400], lift: 150, name: '$25M Budget 2025 & EBA',
       title: 'Securing $25M in Federal Budget 2025 and leading Business Architecture.',
-      txt: 'As <b>Acting Assistant Director</b>, I authored the business case securing <b>$25M over 6 years in Federal Budget 2025</b> for the Techstat AI measurement program. As <b>Enterprise Business Architecture Lead</b>, I secured <b>$500K+ in annual base funding</b> and co-led the agency-wide AI Hackathon.',
-      stats: [['$25M', 'Federal Budget 2025 secured'], ['$500K+', 'annual EBA base funding']],
+      txt: 'As <b>Acting Assistant Director</b>, I authored the business case securing <b>$25M over 6 years in Federal Budget 2025</b> for the Techstat AI measurement program. As <b>Enterprise Business Architecture Lead</b>, I established the EBA practice and co-led the agency-wide AI Hackathon.',
+      stats: [['$25M', 'Federal Budget 2025 secured'], ['EBA', 'Enterprise Business Architecture']],
       work: 'https://budget.canada.ca',
       workLabel: 'Explore Federal Budget 2025 (Techstat Allocation)',
       photos: [['stc-techstat', '$25M Federal Budget 2025 · Techstat AI']],
@@ -125,29 +125,29 @@
       stats: [['562', 'Obsidian PKG nodes'], ['2', 'AI market intelligence apps']],
       photos: [['aijobsearch', 'AI Job Search Canada']],
       pois: [[160, 100, 'rocket', 'Stream A + B ideation powered by a 562-node graph.']] },
-    { id: 'creator', when: 'Now', place: 'peji.ca · Ottawa', icon: 'camera', logo: 'logo-peji', c: '#C4622D', at: [4940, 1260], lift: 150, name: 'Peji.ca & Sovereign AI',
-      title: 'Peji Independent Digital Practice & Seeking new challenges to make an impact.',
-      txt: 'Founded <b>peji.ca</b> to help organizations build custom web apps, automations, and <b>Sovereign Local AI</b> on a 256GB M5 Ultra Mac Studio with OS-level zero-cloud-leakage guarantees.',
+    { id: 'creator', when: 'Now', place: 'Ottawa · Sabbatical Lab', icon: 'camera', logo: 'logo-peji', c: '#C4622D', at: [4940, 1260], lift: 150, name: 'Sovereign Local AI',
+      title: 'Sovereign Local AI Lab & Seeking new challenges to make an impact.',
+      txt: 'Architected <b>Sovereign Local AI</b> on a 256GB M5 Ultra Mac Studio with OS-level zero-cloud-leakage guarantees alongside 40+ practical web apps and automations.',
       share: true,
       stats: [['256GB', 'M5 Ultra unified memory'], ['0 bytes', 'cloud PII leakage']],
-      photos: [['peji', 'Peji.ca Independent Digital Practice'], ['localllm', 'Sovereign Local AI · M5 Ultra 256GB']],
+      photos: [['localllm', 'Sovereign Local AI · M5 Ultra 256GB'], ['peji', 'Sabbatical Builds & Web Systems']],
       pois: [[-90, 110, 'in', 'peji.ca', LI, '#C4622D'], [90, 110, 'ig', 'GitHub', IG, '#13233A']] }
   ];
   const CS_SOON = [];
   const WORK = [
-    { id: 'localllm', bg: 'radial-gradient(120% 80% at 15% 0%, #FFD6B8 0%, transparent 55%), radial-gradient(90% 70% at 100% 100%, #8F3814 0%, transparent 60%), linear-gradient(165deg, #D97236, #A84419)', glow: '#E87A42', logo: 'logo-peji', face: ['big', '256GB', 'air-gapped M5 Ultra AI'], name: 'Sovereign Local AI', co: 'Peji.ca · Air-Gap Protocol', t: '#FFF2E8', c: '#C4622D', icon: 'key', cs: 'https://peji.ca/localllm/', csLabel: 'Explore peji.ca/localllm', status: 'Live on M5 Ultra',
+    { id: 'localllm', bg: 'radial-gradient(120% 80% at 15% 0%, #FFD6B8 0%, transparent 55%), radial-gradient(90% 70% at 100% 100%, #8F3814 0%, transparent 60%), linear-gradient(165deg, #D97236, #A84419)', glow: '#E87A42', logo: 'logo-peji', face: ['big', '256GB', 'air-gapped M5 Ultra AI'], name: 'Sovereign Local AI', co: 'Sovereign AI Lab · Air-Gap Protocol', t: '#FFF2E8', c: '#C4622D', icon: 'key', cs: 'https://peji.ca/localllm/', csLabel: 'Explore peji.ca/localllm', status: 'Live on M5 Ultra',
       pitch: 'Frontier-grade document intelligence, PII sanitization, and deep financial/clinical auditing running 100% on-device with zero cloud leakage.',
       meta: [['Role', 'Principal Architect & Builder'], ['Hardware', 'Apple Silicon M5 Ultra · 256GB Unified RAM'], ['Security', 'OS-Level PreToolUse Air-Gap Hooks']],
       problem: 'Law firms, clinics, and research teams want frontier LLM reasoning on confidential records, financial ledgers, and sensitive files—but cloud APIs create unacceptable data-sovereignty, privacy, and compliance risks.',
       did: ['Architected an on-premise AI appliance on Apple Silicon M5 Ultra (256GB unified memory) capable of holding 70B–120B+ parameter models entirely in local VRAM', 'Enforced a strict Zero-Cloud-Leakage Policy via OS-level PreToolUse hooks that block raw unredacted file reads from ever entering cloud context windows', 'Built an on-device MCP server (local-privacy-llm) exposing deterministic surrogate PII redaction (sanitize_pii) and multi-profile local auditing (fast, deep_audit, document_vision)', 'Paired local vision-language OCR with structured JSON extraction so scanned PDFs, tax forms, and clinical tables are parsed and audited without a single packet leaving the building'],
       res: [['0 bytes', 'cloud transmission of sensitive PII'], ['256GB', 'unified memory on M5 Ultra'], ['3 profiles', 'fast · deep_audit · document_vision'], ['100%', 'on-device surrogate redaction']],
       shots: ['localllm', 'peji', 'pkg-brain'] },
-    { id: 'techstat', bg: 'radial-gradient(110% 70% at 10% 0%, #FFB0B8 0%, transparent 55%), radial-gradient(90% 80% at 100% 100%, #6E0816 0%, transparent 60%), linear-gradient(165deg, #D81E36, #9E0B20)', glow: '#E4263C', logo: 'logo-statcan', face: ['big', '$25M', 'Budget 2025 secured'], name: 'Techstat & RAP Migration', co: 'Statistics Canada · R.H. Coats', t: '#FFE6EA', c: '#C8102E', icon: 'news', cs: 'https://www.statcan.gc.ca/', csLabel: 'Statistics Canada', status: 'Federal Budget 2025',
-      pitch: 'Securing $25M in Federal Budget 2025 for national AI measurement and migrating 100% of Digital Economy production pipelines from legacy SAS to reproducible R.',
-      meta: [['Role', 'Chief & Acting Assistant Director'], ['Timeline', '2021 – 2026 · R.H. Coats Building'], ['Scope', '$25M Budget 2025 + $500K/yr EBA base']],
-      problem: 'Canada needed timely, internationally comparable empirical data on AI adoption, cloud computing, and digital intensity across enterprises—while legacy SAS production pipelines were costly, brittle, and slow to adapt.',
-      did: ['Authored the end-to-end Treasury Board / Budget business case securing $25M over 6 years in Federal Budget 2025 for the Techstat AI and digital technology measurement program', 'Led a 15-person multidisciplinary division to migrate 100% of Digital Economy survey processing pipelines from proprietary SAS to modular, git-backed Reproducible Analytical Pipelines (RAP) in R', 'Represented Canada at OECD working parties on the digital economy and AI measurement standards', 'Established the Enterprise Business Architecture (EBA) practice, securing $500K+ in permanent annual base funding and co-leading the agency-wide AI Hackathon'],
-      res: [['$25M', 'secured in Federal Budget 2025 (6 yrs)'], ['100%', 'SAS-to-R production pipeline migration'], ['$500K+', 'annual base funding for EBA'], ['15+', 'analysts, economists & methodologists led']],
+    { id: 'techstat', bg: 'radial-gradient(110% 70% at 10% 0%, #FFB0B8 0%, transparent 55%), radial-gradient(90% 80% at 100% 100%, #6E0816 0%, transparent 60%), linear-gradient(165deg, #D81E36, #9E0B20)', glow: '#E4263C', logo: 'logo-statcan', face: ['big', '$25M', 'Budget 2025 secured'], name: 'Techstat & Program Modernization', co: 'Statistics Canada · R.H. Coats', t: '#FFE6EA', c: '#C8102E', icon: 'news', cs: 'https://www.statcan.gc.ca/', csLabel: 'Statistics Canada', status: 'Federal Budget 2025',
+      pitch: 'Securing $25M in Federal Budget 2025 for national AI measurement and modernizing Digital Economy analytical workflows.',
+      meta: [['Role', 'Chief & Acting Assistant Director'], ['Timeline', '2021 – 2026 · R.H. Coats Building'], ['Scope', '$25M Budget 2025 & EBA Practice']],
+      problem: 'Canada needed timely, internationally comparable empirical data on AI adoption, cloud computing, and digital intensity across enterprises—while legacy analytical workflows were costly and slow to adapt.',
+      did: ['Authored the business case securing $25M over 6 years in Federal Budget 2025 for the Techstat AI and digital technology measurement program', 'Led a multidisciplinary division to modernize Digital Economy analytical workflows to reproducible R pipelines', 'Represented Canada at OECD working parties on the digital economy and AI measurement standards', 'Established the Enterprise Business Architecture (EBA) practice and co-led the agency-wide AI Hackathon'],
+      res: [['$25M', 'secured in Federal Budget 2025 (6 yrs)'], ['R / Git', 'reproducible analytical workflows'], ['OECD', 'international AI measurement standards'], ['15+', 'analysts, economists & methodologists led']],
       shots: ['stc-techstat', 'stc-digital', 'stc-coats', 'stc-gss'] },
     { id: 'aijobsearch', bg: 'radial-gradient(110% 80% at 0% 0%, #C7B3FF 0%, transparent 55%), radial-gradient(100% 80% at 100% 100%, #1F359E 0%, transparent 60%), linear-gradient(150deg, #7B5CF0, #4A48C9 55%, #24388F)', glow: '#8C6BFF', logo: 'logo-rotman', face: ['mid', 'Canadian AI jobs & labour trends.', 'RAG + Market Intelligence'], name: 'AI Job & Labour Radar', co: 'AI Job Search · Labour Intelligence · RAG', t: '#F1ECFF', c: '#5B4CF0', icon: 'bulb', cs: 'https://github.com/p3ji', csLabel: 'Explore Prototypes', status: 'Live Web Apps',
       pitch: 'Turning noisy Canadian labour-market postings and complex reference documents into structured, citation-grounded decision tools.',
@@ -156,12 +156,12 @@
       did: ['Built AI Job Search Canada & the Canadian AI Jobs Report to classify skill demand, salary bands, and regional AI adoption across Canadian employers', 'Engineered citation-grounded RAG assistants with strict source verification and zero-hallucination guardrails', 'Built the interactive DB Early Retirement Calculator to model retirement timelines, bridge benefits, and actuarial trade-offs visually'],
       res: [['3+ apps', 'AI Jobs · Citation RAG · Retirement Modelling'], ['100%', 'citation-grounded answers'], ['50', 'sabbatical milestones documented'], ['562', 'connected PKG nodes']],
       shots: ['aijobsearch', 'dbretire', 'watspeed'] },
-    { id: 'pejistudio', bg: 'radial-gradient(110% 70% at 15% 0%, #B8E8C8 0%, transparent 55%), radial-gradient(90% 70% at 100% 100%, #143E28 0%, transparent 60%), linear-gradient(165deg, #2E8B57, #1B5436)', glow: '#3CB371', logo: 'logo-peji', face: ['mid', 'Shipped in days, not quarters ↗', 'peji.ca · 3 Tiers'], name: 'Peji Systems & Family Lab', co: 'peji.ca · Client Builds & 3D Games', t: '#E6F7EC', c: '#2E7D4F', icon: 'rocket', cs: 'https://peji.ca', csLabel: 'Visit peji.ca', status: 'Independent Practice',
-      pitch: 'High-leverage web apps and workflow automations for real-world businesses by day—and a family 3D game studio with my kids by night.',
-      meta: [['Role', 'Founder · Peji.ca'], ['Engagement', 'Light (1–7d) · Medium (8–14d) · Large (15+d)'], ['Live Builds', 'Booking · Daily Pipelines · PAtracker · 3D Games']],
-      problem: 'Small businesses, sports clubs, and community organizations are stuck between generic SaaS templates that don’t fit their workflow and traditional agencies charging $50K+ for months of discovery.',
-      did: ['Structured Peji.ca around three transparent, outcome-driven tiers: Light (1–7 days), Medium (8–14 days), and Large (15+ days)', 'Shipped demobooking.peji.ca (interactive service booking), mkdailysender (automated daily ice-schedule & communication pipeline for a figure skating club), and pa.peji.ca (PAtracker)', 'Ran a weekend game studio with my kids as creative directors, shipping 3D browser games in Three.js including Kingdoms of Wobbleton and the N-1 cognitive trainer'],
-      res: [['1–14d', 'rapid prototype-to-production delivery'], ['3 tiers', 'Light · Medium · Large engagements'], ['4+ live', 'client & community web systems'], ['2 games', 'Kingdoms of Wobbleton & N-1']],
+    { id: 'pejistudio', bg: 'radial-gradient(110% 70% at 15% 0%, #B8E8C8 0%, transparent 55%), radial-gradient(90% 70% at 100% 100%, #143E28 0%, transparent 60%), linear-gradient(165deg, #2E8B57, #1B5436)', glow: '#3CB371', logo: 'logo-peji', face: ['mid', 'Community web apps & 3D games ↗', 'Sabbatical Builds'], name: 'Community Apps & Family Lab', co: 'Community Builds & 3D Games', t: '#E6F7EC', c: '#2E7D4F', icon: 'rocket', cs: 'https://peji.ca', csLabel: 'Visit peji.ca', status: 'Sabbatical Builds',
+      pitch: 'High-leverage web apps and workflow automations for local community groups by day—and a family 3D game studio with my kids by night.',
+      meta: [['Role', 'Builder & Architect'], ['Focus', 'Workflow Automation · Web Apps · 3D Games'], ['Live Builds', 'Booking · Daily Pipelines · PAtracker · 3D Games']],
+      problem: 'Local clubs and community organizations are often stuck between generic templates that don’t fit their workflow and complex enterprise software.',
+      did: ['Shipped demobooking.peji.ca (interactive service booking), mkdailysender (automated daily ice-schedule & communication pipeline for a figure skating club), and pa.peji.ca (PAtracker)', 'Ran a weekend game studio with my kids as creative directors, shipping 3D browser games in Three.js including Kingdoms of Wobbleton and the N-1 cognitive trainer'],
+      res: [['4+ live', 'community & demo web systems'], ['2 games', 'Kingdoms of Wobbleton & N-1'], ['Zero-touch', 'daily club schedule automation'], ['3D / WebGL', 'Three.js browser games']],
       shots: ['peji', 'kingdoms', 'n-1', 'localllm'] }
   ];
   const PROC = [
@@ -2915,7 +2915,7 @@ void main() {
     $('#csClose').focus({ preventScroll: true });
   }
   /* ---------- addresses: every case study and section gets its own link and tab title ---------- */
-  const SITE = 'Peter Jiao · Peji Systems';
+  const SITE = 'Peter Jiao · AI Strategy & Prototyping';
   const CS_SLUG = { localllm: 'localllm', techstat: 'techstat', modularsurvey: 'modularsurvey', aijobsearch: 'aijobsearch', pejistudio: 'pejistudio' };
   const SEC_PATH = { journey: ['journey', 'The journey'], work: ['work', 'Work'], life: ['about', 'About me'], hello: ['contact', 'Say hi'] };
   const ROUTED = location.protocol.startsWith('http') && /(^|\.)peji\.ca$|\.vercel\.app$|^localhost$|^127\./.test(location.hostname);
@@ -2955,7 +2955,7 @@ void main() {
      4b · BRAND & WEB
      ========================================================= */
   const SITES = [
-    { name: 'Peji Digital Practice', url: 'peji.ca', href: 'https://peji.ca/', img: 'peji', w: 896, h: 1195, kind: 'Independent Digital Practice', dy: 14, r: 1.2, st: '<span class="stk pill" style="left:-16px;top:-18px;transform:rotate(-6deg)">peji.ca ↗</span>' },
+    { name: 'Sovereign Local AI Lab', url: 'peji.ca/localllm', href: 'https://peji.ca/localllm/', img: 'localllm', w: 1536, h: 1024, kind: '256GB M5 Ultra · Air-Gap', dy: 14, r: 1.2, st: '<span class="stk pill" style="left:-16px;top:-18px;transform:rotate(-6deg)">air-gap ↗</span>' },
     { name: 'Ottawa Optical Booking', url: 'demobooking.peji.ca', href: 'https://demobooking.peji.ca/', img: 'demobooking', w: 1200, h: 800, kind: 'Interactive Booking Demo', dy: 20, r: 1.5, st: '<span class="stk round" style="--sc:#EAD8C3;--stk-c:#13233A;right:-18px;top:-22px;transform:rotate(7deg)">demo<br>app ↗</span>' },
     { name: 'Skating Club ETL Pipeline', url: 'peji.ca', href: 'https://peji.ca/', img: 'mkdaily', w: 1200, h: 800, kind: 'Automated Club Pipeline', dy: -14, r: -1.2, st: '<span class="stk tape" style="right:20%;top:-14px;transform:rotate(5deg);background:rgba(56,189,248,.85)"></span>' },
     { name: 'PA Volunteer Tracker', url: 'pa.peji.ca', href: 'https://pa.peji.ca/', img: 'patracker', w: 1200, h: 800, kind: 'Community Volunteer App', dy: 24, r: 1.4, st: '<span class="stk pill" style="left:-16px;top:-18px;transform:rotate(-5deg)">live app ↗</span>' },
@@ -3243,7 +3243,7 @@ void main() {
   const fmtDate = t => { try { return new Date(t).toLocaleDateString(undefined, { month: 'short', day: 'numeric' }); } catch (_) { return ''; } };
   const nwRows = [$('#nwRow1'), $('#nwRow2')];
   const SEED_NOTES = [
-    { id: 'seed-3', name: 'Club President', role: 'Operations Lead', company: 'Figure Skating Club', note: 'The mkdailysender automated pipeline Peter built through Peji.ca turned hours of daily schedule emails into a zero-touch morning workflow.', at: Date.now() - 86400000 * 11 },
+    { id: 'seed-3', name: 'Club President', role: 'Operations Lead', company: 'Figure Skating Club', note: 'The mkdailysender automated pipeline Peter built for our club turned hours of daily schedule emails into a zero-touch morning workflow.', at: Date.now() - 86400000 * 11 },
     { id: 'seed-5', name: 'Creative Directors', role: 'Ages 8 & 10', company: 'Wobbleton Studios', note: 'Best co-founder ever! We designed the characters and Dad built Kingdoms of Wobbleton in 3D right in front of us.', at: Date.now() - 86400000 * 5 },
     { id: 'seed-6', name: 'Cohort Peer', role: 'Executive Program', company: 'Rotman Mini-MBA · U of T', note: 'Peter bridges deep technical AI architecture with executive leadership better than anyone I’ve worked with.', at: Date.now() - 86400000 * 2 }
   ];
