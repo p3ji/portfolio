@@ -3251,10 +3251,8 @@ void main() {
   const fmtDate = t => { try { return new Date(t).toLocaleDateString(undefined, { month: 'short', day: 'numeric' }); } catch (_) { return ''; } };
   const nwRows = [$('#nwRow1'), $('#nwRow2')];
   const SEED_NOTES = [
-    { id: 'seed-1', name: 'Director General', role: 'Executive Leadership', company: 'Statistics Canada', note: 'Peter authored the $25M Budget 2025 Techstat business case and modernized our Digital Economy pipelines from SAS to R with rare strategic clarity.', at: Date.now() - 86400000 * 18 },
     { id: 'seed-2', name: 'Managing Partner', role: 'Boutique Advisory', company: 'Ottawa Legal & Tax', note: 'Running 70B+ local models on Peter’s 256GB M5 Ultra air-gapped setup let us audit confidential client records with zero cloud exposure.', at: Date.now() - 86400000 * 14 },
     { id: 'seed-3', name: 'Club President', role: 'Operations Lead', company: 'Figure Skating Club', note: 'The mkdailysender automated pipeline Peter built through Peji.ca turned hours of daily schedule emails into a zero-touch morning workflow.', at: Date.now() - 86400000 * 11 },
-    { id: 'seed-4', name: 'Senior Methodologist', role: 'Survey Architecture', company: 'Public Sector', note: 'Modular Survey Tools brings DDI 3.3 lifecycle metadata straight into the browser—clean, bilingual, and interoperable from day one.', at: Date.now() - 86400000 * 8 },
     { id: 'seed-5', name: 'Creative Directors', role: 'Ages 8 & 10', company: 'Wobbleton Studios', note: 'Best co-founder ever! We designed the characters and Dad built Kingdoms of Wobbleton in 3D right in front of us.', at: Date.now() - 86400000 * 5 },
     { id: 'seed-6', name: 'Cohort Peer', role: 'Executive Program', company: 'Rotman Mini-MBA · U of T', note: 'Peter bridges deep technical AI architecture with executive leadership better than anyone I’ve worked with.', at: Date.now() - 86400000 * 2 }
   ];
