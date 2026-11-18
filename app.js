@@ -12,30 +12,30 @@
   const PLACES = {
     nsut: { c: '#002A5C', logo: 'v2/s/logo-uoft.webp', yr: '2005', side: 'right', tag: 'Chapter 01 · 2005–2011 · Toronto', t: 'University of Toronto', r: 'B.A. & M.A., Sociology · Rotman Mini-MBA (2026)',
       h: 'Where empirical thinking met systems architecture.',
-      st: ['At the <b>University of Toronto</b>, I completed my Honours B.A. and M.A. in Sociology while working as a Media Analyst at the <b>Ontario Cabinet Office</b>.', 'In 2026, I returned to U of T for the <b>Rotman School of Management</b> Mini-MBA, pairing quantitative rigour with manager communication.'],
+      st: ['At the <b>University of Toronto</b>, I completed my Honours B.A. and M.A. in Sociology while working as a Media &amp; Research Analyst in Toronto.', 'In 2026, I returned to U of T for the <b>Rotman School of Management</b> Mini-MBA, pairing quantitative rigour with strategic communication.'],
       n: [['B.A. + M.A.', 'University of Toronto'], ['2026', 'Rotman Mini-MBA']], j: 0 },
-    mmt: { c: '#C8102E', logo: 'v2/s/logo-statcan.webp', yr: '2011–26', side: 'left', tag: 'Chapter 02 · 2011–2026 · Ottawa', t: 'R.H. Coats Building · StatCan', r: 'Chief → Acting Assistant Director → Enterprise Business Architecture Lead',
-      h: '15 years modernizing Canada’s national statistical infrastructure.',
-      st: ['Across 15+ years at <b>Statistics Canada</b>, I delivered insights through complex data analysis, led national survey modernization, a rapid country-wide COVID-19 serology study, and grew key programs related to technology measurement while improving timeliness and efficiency.', 'As Acting Assistant Director, I authored the business case that secured <b>$25M over 6 years in Federal Budget 2025</b> for the Techstat AI & Digital Technology Measurement Program, and established the <b>Enterprise Business Architecture</b> practice.'],
+    mmt: { c: '#C8102E', logo: 'v2/s/logo-statcan.webp', yr: '2011–26', side: 'left', tag: 'Chapter 02 · 2011–2026 · Ottawa', t: 'Ottawa · Data & Strategy', r: 'Researcher → Unit Lead → Enterprise Business Architecture Lead',
+      h: '15 years modernizing large-scale empirical data & analytics.',
+      st: ['Across 15+ years in <b>Ottawa’s data and research ecosystem</b>, I delivered insights through complex statistical analysis, led multi-mode survey modernization, coordinated rapid-response health analytics, and grew technology-measurement programs while improving timeliness and efficiency.', 'I later authored major strategic business cases for AI &amp; digital technology measurement and established an <b>Enterprise Business Architecture (EBA)</b> practice.'],
       n: [], j: 4 },
     oyo: { c: '#C4622D', logo: 'v2/s/logo-peji.webp', yr: 'Now', side: 'left', tag: 'Chapter 04 · Now · Sabbatical Lab', t: 'Sovereign AI Lab', r: 'M5 Ultra (256GB Air-Gap) & Community Builds',
       h: 'Zero-cloud-leakage local AI & practical community software.',
       st: ['For sensitive files, I architected a <b>Sovereign Local AI Lab</b> on a 256GB M5 Ultra Mac Studio with OS-level zero-cloud-leakage enforcement so sensitive PII never leaves the premises.', 'Built practical web apps and automations for local community groups and family projects, from automated skating-club pipelines to interactive booking and volunteer apps.'],
       n: [['256GB', 'M5 Ultra unified memory'], ['0 bytes', 'cloud PII leakage'], ['40+', 'prototypes & apps shipped']], j: 8 },
     eazydiner: { c: '#1E7FC8', logo: 'v2/s/logo-aijourney.webp', yr: '2026', side: 'left', tag: 'Chapter 03 · 2026 · Sabbatical', t: '1-Year AI Journey', r: '50 Milestones · 40+ Prototypes · 562-Node Digital Brain',
-      h: 'What happens when a public-sector manager spends a year building with AI.',
+      h: 'What happens when a data strategist spends a year building with AI.',
       st: ['During my one-year sabbatical, I built <b>40+ live prototypes</b>: including the <i>Canadian AI Jobs & Skills Report</i>, <b>Sovereign Local AI</b>, and <b>various automation workflow patterns</b>.', 'Everything is wired into a <b>562-node Obsidian Personal Knowledge Graph</b> and a multi-agent workflow orchestrating Claude Code, Antigravity, and local models.'],
       n: [['50', 'documented milestones'], ['40+', 'working prototypes'], ['562', 'PKG knowledge nodes']], j: 5 },
-    me: { c: '#F2B705', logo: 'v2/s/photo.webp', yr: '', side: 'right', tag: 'About me', t: 'Hey, I’m Peter', r: 'Ottawa · Data Manager · AI Builder',
+    me: { c: '#F2B705', logo: 'v2/s/photo.webp', yr: '', side: 'right', tag: 'About me', t: 'Hey, I’m Peter', r: 'Ottawa · Data Strategist · AI Builder',
       h: 'I bridge organizational strategy with rapid agentic execution.',
       st: [],
       fun: [
         ['Foundations', '#002A5C', [['University of Toronto', 'Honours B.A. & M.A. in Sociology. Empirical systems thinking from day one.'], ['Rotman Mini-MBA (2026)', 'Executive program in business management and AI at U of T.'], ['Vanderbilt AI Specializations', 'Agentic AI, Prompt Engineering & Claude Code certifications (2026).']]],
-        ['Public Service & AI', '#C8102E', [['15+ years at Statistics Canada', 'Analyst → Unit Head → Chief → Acting Assistant Director → EBA Lead.'], ['Continuous Learning & Technical Depth', 'Never afraid to dive into programming, data systems, and diverse subjects even as I hone my management and strategy skills through work.'], ['Sovereign AI Lab', '256GB M5 Ultra air-gapped local LLM architecture + community builds.']]],
+        ['Data Systems & AI', '#C8102E', [['15+ years in Research & Architecture', 'Researcher → Unit Lead → Program Strategy → Enterprise Business Architecture.'], ['Continuous Learning & Technical Depth', 'Never afraid to dive into programming, data systems, and diverse subjects while honing management and strategy skills.'], ['Sovereign AI Lab', '256GB M5 Ultra air-gapped local LLM architecture + community builds.']]],
         ['Off the clock', '#2E9E6B', [['Game studio with my kids', 'We co-designed Kingdoms of Wobbleton & 3D voxel worlds in Three.js.'], ['Ottawa ⇄ Toronto', 'Skating club pipelines, Gatineau Park trails, and family road trips down Hwy 401.'], ['562-Node Digital Brain', 'Obsidian PKG connecting every reflection, dataset, and agent skill.']]]
       ],
-      n: [['15+ yrs', 'Statistics Canada leadership'], ['40+', 'AI systems & apps shipped']], j: 8,
-      photos: [['photo', 'Peter Jiao · Ottawa'], ['uoft-uc', 'University of Toronto'], ['stc-coats', 'R.H. Coats Building · StatCan']],
+      n: [['15+ yrs', 'Data & architecture leadership'], ['40+', 'AI systems & apps shipped']], j: 8,
+      photos: [['photo', 'Peter Jiao · Ottawa'], ['uoft-uc', 'University of Toronto'], ['localllm', 'Sovereign Local AI Lab']],
       links: true, about: true }
   };
 
@@ -74,36 +74,32 @@
   const STOPS = [
     { id: 'jee', when: '2005 – 2011', place: 'Toronto · U of T', icon: 'cap', logo: 'logo-uoft', c: '#002A5C', at: [400, 1420], lift: 175, name: 'University of Toronto',
       title: 'Where empirical thinking met systems architecture.',
-      txt: 'At the <b>University of Toronto</b>, I completed my Honours B.A. and M.A. in Sociology while working as a Media Analyst at the <b>Ontario Cabinet Office</b>. Studying how complex social systems behave—and how to measure them rigorously—laid the foundation for everything that followed.',
+      txt: 'At the <b>University of Toronto</b>, I completed my Honours B.A. and M.A. in Sociology while working as a Media &amp; Research Analyst in Toronto. Studying how complex social systems behave—and how to measure them rigorously—laid the foundation for everything that followed.',
       photos: [['uoft-uc', 'University of Toronto'], ['uoft-awards', '']],
       pois: [[-170, -120, 'check', 'Honours B.A. & M.A. at University of Toronto.']] },
-    { id: 'app', when: '2011 – 2018', place: 'Ottawa · Tunney’s Pasture', icon: 'book', logo: 'logo-statcan', c: '#C8102E', at: [960, 960], lift: 150, name: 'Analyst to Unit Head',
-      title: 'Entering R.H. Coats & rising from Analyst to Unit Head.',
-      txt: 'I joined <b>Statistics Canada</b> in Ottawa and rose from Analyst to Unit Head, leading electronic questionnaire modernization and survey redesign initiatives across national statistical programs serving millions of Canadians.',
-      photos: [['stc-coats', 'R.H. Coats Building · Ottawa'], ['stc-gss', 'National Survey Modernization']],
-      pois: [[160, 90, 'pen', 'Electronic questionnaire transformation across national surveys.']] },
-    { id: 'iitd', when: '2020 – 2021', place: 'Ottawa · R.H. Coats', icon: 'bulb', logo: 'logo-statcan', c: '#2E9E6B', at: [1520, 1320], lift: 165, name: 'Chief · COVID-19 Data',
+    { id: 'app', when: '2011 – 2018', place: 'Ottawa · Research Labs', icon: 'book', logo: 'logo-statcan', c: '#C8102E', at: [960, 960], lift: 150, name: 'Analyst to Unit Lead',
+      title: 'Leading electronic data collection & large-scale survey modernization.',
+      txt: 'Working in <b>Ottawa</b>, I progressed from Senior Analyst to Unit Lead, spearheading electronic questionnaire transitions and multi-mode survey redesign initiatives across nationwide household and business datasets.',
+      photos: [['stc-gss', 'Survey Modernization Workflows']],
+      pois: [[160, 90, 'pen', 'Electronic questionnaire transformation across multi-mode surveys.']] },
+    { id: 'iitd', when: '2020 – 2021', place: 'Ottawa · Health Research', icon: 'bulb', logo: 'logo-statcan', c: '#2E9E6B', at: [1520, 1320], lift: 165, name: 'COVID-19 Data Lead',
       title: 'Leading rapid-response national health data in a crisis.',
-      txt: 'Appointed <b>Chief of COVID-19 & Health Data Projects</b>, I directed rapid-turnaround data collection and analytics for <b>Health Canada, PHAC, and the COVID-19 Immunity Taskforce</b>, briefing senior managers and serving as a national media spokesperson on CBC and CTV.',
-      work: 'https://www.cbc.ca/news/canada/prince-edward-island/statistics-canada-blood-canadians-study-1.5868511',
-      workLabel: 'Read CBC News coverage',
-      photos: [['stc-covid', 'CBC News: 48,000 Canadians COVID-19 Antibody Study']],
-      pois: [[170, 90, 'news', 'CBC News: 48,000 Canadians Antibody Study', 'https://www.cbc.ca/news/canada/prince-edward-island/statistics-canada-blood-canadians-study-1.5868511', '#2E9E6B']] },
-    { id: 'ht', when: '2021 – 2024', place: 'R.H. Coats Building', icon: 'news', logo: 'logo-statcan', c: '#1E7FC8', at: [2080, 880], lift: 272, name: 'Chief · Digital Economy',
+      txt: 'Leading <b>COVID-19 &amp; Health Data Projects</b>, I directed rapid-turnaround serology data collection and cross-institutional analytics during the pandemic, translating complex health trends for leadership and national media broadcasts.',
+      photos: [['stc-covid', 'Rapid Serology Data Collection & Analytics']],
+      pois: [[170, 90, 'news', '48,000-participant rapid health serology study']] },
+    { id: 'ht', when: '2021 – 2024', place: 'Ottawa · Digital Economy', icon: 'news', logo: 'logo-statcan', c: '#1E7FC8', at: [2080, 880], lift: 272, name: 'Digital Economy Lead',
       title: 'Measuring Canada’s digital economy & program modernization.',
-      txt: 'As <b>Chief, Digital Economy & Society</b> at the R.H. Coats Building, I led a multidisciplinary team, represented Canada at <b>OECD working parties</b>, and spearheaded <b>various initiatives that improved timeliness and efficiency</b>.',
-      photos: [['stc-digital', 'Digital Economy and Society Portal (statcan.gc.ca)'], ['stc-efficiency', 'Initiatives Improving Timeliness and Efficiency']],
-      work: 'https://www.statcan.gc.ca/en/subjects-start/digital_economy_and_society',
-      workLabel: 'Explore Digital Economy & Society Portal',
-      pois: [[160, 90, 'news', 'Digital Economy and Society Portal', 'https://www.statcan.gc.ca/en/subjects-start/digital_economy_and_society', '#1E7FC8']] },
-    { id: 'eazydiner', when: '2024 – 2026', place: 'Ottawa · Management Suite', logo: 'logo-eba', c: '#D97706', at: [2640, 1400], lift: 150, name: '$25M Budget 2025 & EBA',
-      title: 'Securing $25M in Federal Budget 2025 and leading Business Architecture.',
-      txt: 'As <b>Acting Assistant Director</b>, I authored the business case securing <b>$25M over 6 years in Federal Budget 2025</b> for the Techstat AI measurement program. As <b>Enterprise Business Architecture Lead</b>, I established the EBA practice and co-led the agency-wide AI Hackathon.',
-      stats: [['$25M', 'Federal Budget 2025 secured'], ['EBA', 'Enterprise Business Architecture']],
-      work: 'https://budget.canada.ca',
-      workLabel: 'Explore Federal Budget 2025 (Techstat Allocation)',
-      photos: [['stc-techstat', '$25M Federal Budget 2025 · Techstat AI']],
-      pois: [[150, 100, 'ticket', '$25M over 6 years for national AI measurement.', 'https://budget.canada.ca', '#D97706']] },
+      txt: 'Leading <b>Digital Economy &amp; Society</b> analytics, I managed a multidisciplinary team, contributed to international digital-economy measurement standards, and transitioned legacy analytical workflows to reproducible R &amp; Git pipelines.',
+      photos: [['stc-efficiency', 'Reproducible R & Git Modernization']],
+      work: 'https://bibliotecadigital.acervo.nic.br/server/api/core/bitstreams/b2bf1957-5fe3-421a-bbab-3a8ace9ac0bc/content',
+      workLabel: 'Read Digital Divides Study',
+      pois: [[160, 90, 'news', 'Published Digital Economy Research', 'https://bibliotecadigital.acervo.nic.br/server/api/core/bitstreams/b2bf1957-5fe3-421a-bbab-3a8ace9ac0bc/content', '#1E7FC8']] },
+    { id: 'eazydiner', when: '2024 – 2026', place: 'Ottawa · Architecture', logo: 'logo-eba', c: '#D97706', at: [2640, 1400], lift: 150, name: 'AI Measurement & EBA',
+      title: 'Architecting AI measurement programs and Enterprise Business Architecture.',
+      txt: 'I authored strategic multi-year business cases for national AI &amp; digital technology measurement, established an <b>Enterprise Business Architecture (EBA)</b> practice connecting capability modeling with delivery, and co-led organization-wide AI hackathons.',
+      stats: [['AI', 'Technology measurement strategy'], ['EBA', 'Enterprise Business Architecture']],
+      photos: [['stc-techstat', 'Enterprise Business Architecture & AI Strategy']],
+      pois: [[150, 100, 'ticket', 'Enterprise Business Architecture & AI Measurement Strategy.']] },
     { id: 'mmt', when: 'June 2026', place: 'Ottawa · Sabbatical', logo: 'logo-aijourney', c: '#7B5CD6', at: [3260, 1000], lift: 238, name: 'One-Year AI Journey',
       title: 'Trading the manager briefing deck for the terminal.',
       txt: 'I launched a <b>One-Year AI Sabbatical</b> to master agentic engineering hands-on—building projects like the <i>Canadian AI Jobs & Skills Report</i>, <b>Sovereign Local AI</b>, and <b>various automation workflow patterns</b>.',
@@ -142,13 +138,13 @@
       did: ['Architected an on-premise AI appliance on Apple Silicon M5 Ultra (256GB unified memory) capable of holding 70B–120B+ parameter models entirely in local VRAM', 'Enforced a strict Zero-Cloud-Leakage Policy via OS-level PreToolUse hooks that block raw unredacted file reads from ever entering cloud context windows', 'Built an on-device MCP server (local-privacy-llm) exposing deterministic surrogate PII redaction (sanitize_pii) and multi-profile local auditing (fast, deep_audit, document_vision)', 'Paired local vision-language OCR with structured JSON extraction so scanned PDFs and structured tables are parsed and audited without a single packet leaving the machine'],
       res: [['0 bytes', 'cloud transmission of sensitive PII'], ['256GB', 'unified memory on M5 Ultra'], ['3 profiles', 'fast · deep_audit · document_vision'], ['100%', 'on-device surrogate redaction']],
       shots: ['localllm', 'peji', 'pkg-brain'] },
-    { id: 'techstat', bg: 'radial-gradient(110% 70% at 10% 0%, #FFB0B8 0%, transparent 55%), radial-gradient(90% 80% at 100% 100%, #6E0816 0%, transparent 60%), linear-gradient(165deg, #D81E36, #9E0B20)', glow: '#E4263C', logo: 'logo-statcan', face: ['big', '$25M', 'Budget 2025 secured'], name: 'Techstat & Program Modernization', co: 'Statistics Canada · R.H. Coats', t: '#FFE6EA', c: '#C8102E', icon: 'news', cs: 'https://www.statcan.gc.ca/', csLabel: 'Statistics Canada', status: 'Federal Budget 2025',
-      pitch: 'Securing $25M in Federal Budget 2025 for national AI measurement and modernizing Digital Economy analytical workflows.',
-      meta: [['Role', 'Chief & Acting Assistant Director'], ['Timeline', '2021 – 2026 · R.H. Coats Building'], ['Scope', '$25M Budget 2025 & EBA Practice']],
-      problem: 'Canada needed timely, internationally comparable empirical data on AI adoption, cloud computing, and digital intensity across enterprises—while legacy analytical workflows were costly and slow to adapt.',
-      did: ['Authored the business case securing $25M over 6 years in Federal Budget 2025 for the Techstat AI and digital technology measurement program', 'Led a multidisciplinary division to modernize Digital Economy analytical workflows to reproducible R pipelines', 'Represented Canada at OECD working parties on the digital economy and AI measurement standards', 'Established the Enterprise Business Architecture (EBA) practice and co-led the agency-wide AI Hackathon'],
-      res: [['$25M', 'secured in Federal Budget 2025 (6 yrs)'], ['R / Git', 'reproducible analytical workflows'], ['OECD', 'international AI measurement standards'], ['15+', 'analysts, economists & methodologists led']],
-      shots: ['stc-techstat', 'stc-digital', 'stc-coats', 'stc-gss'] },
+    { id: 'techstat', bg: 'radial-gradient(110% 70% at 10% 0%, #FFB0B8 0%, transparent 55%), radial-gradient(90% 80% at 100% 100%, #6E0816 0%, transparent 60%), linear-gradient(165deg, #D81E36, #9E0B20)', glow: '#E4263C', logo: 'logo-statcan', face: ['big', 'EBA', 'AI Measurement & Strategy'], name: 'Digital Strategy & Program Modernization', co: 'Ottawa · Research & Architecture', t: '#FFE6EA', c: '#C8102E', icon: 'news', cs: 'https://github.com/p3ji', csLabel: 'Explore Work', status: 'Enterprise Architecture',
+      pitch: 'Establishing Enterprise Business Architecture and modernizing Digital Economy analytical workflows with reproducible R & Git pipelines.',
+      meta: [['Role', 'Program Lead & Enterprise Architect'], ['Timeline', '2021 – 2026 · Ottawa'], ['Scope', 'AI Measurement & EBA Practice']],
+      problem: 'Organizations needed timely, internationally comparable empirical data on AI adoption, cloud computing, and digital intensity—while legacy analytical workflows were costly and slow to adapt.',
+      did: ['Authored multi-year strategic business cases for national AI and digital technology measurement programs', 'Led a multidisciplinary division to modernize Digital Economy analytical workflows to reproducible R pipelines', 'Contributed to international digital economy and AI measurement standards', 'Established an Enterprise Business Architecture (EBA) practice and co-led organization-wide AI hackathons'],
+      res: [['Strategy', 'multi-year AI measurement roadmap'], ['R / Git', 'reproducible analytical workflows'], ['OECD', 'international AI measurement standards'], ['Multi-Team', 'analysts, economists & methodologists led']],
+      shots: ['stc-techstat', 'stc-efficiency', 'stc-gss'] },
     { id: 'aijobsearch', bg: 'radial-gradient(110% 80% at 0% 0%, #C7B3FF 0%, transparent 55%), radial-gradient(100% 80% at 100% 100%, #1F359E 0%, transparent 60%), linear-gradient(150deg, #7B5CF0, #4A48C9 55%, #24388F)', glow: '#8C6BFF', logo: 'logo-rotman', face: ['mid', 'Canadian AI jobs & labour trends.', 'RAG + Market Intelligence'], name: 'AI Job & Labour Radar', co: 'AI Job Search · Labour Intelligence · RAG', t: '#F1ECFF', c: '#5B4CF0', icon: 'bulb', cs: 'https://github.com/p3ji', csLabel: 'Explore Prototypes', status: 'Live Web Apps',
       pitch: 'Turning noisy Canadian labour-market postings and complex reference documents into structured, citation-grounded decision tools.',
       meta: [['Role', 'Creator & AI Engineer'], ['Timeline', '2026 Sabbatical'], ['Models', 'Claude · Gemini · Local Embeddings']],
@@ -173,7 +169,7 @@
     ['Ship to production', 'From working prototype to live web app in days.', '#FFD23F'],
     ['Write the reflection', 'Every build feeds back into the digital brain.', '#9FD3FF']
   ];
-  const img = k => `v2/s/${k}.webp?v=20261118h`;
+  const img = k => `v2/s/${k}.webp?v=20261118s`;
 
   /* ---------- smooth scroll ---------- */
   const lenis = (!reduce && window.Lenis && innerWidth >= 860 && !matchMedia('(pointer: coarse)').matches) ? new Lenis({ lerp: .09, smoothWheel: true, wheelMultiplier: .9 }) : null;
@@ -842,7 +838,7 @@ void main() {
         `<rect x="${x - 118}" y="${y - 74}" width="74" height="74" rx="4" fill="#F3EEE3"/>` + grid(x - 108, y - 64, 3, 3, 14, 14, 9, 8, '#9CB7D6', 2) +
         `<defs><linearGradient id="htG" x1="0" x2="1"><stop offset="0" stop-color="#C86D51"/><stop offset="1" stop-color="#9A4B34"/></linearGradient></defs>` +
         `<rect x="${x - 46}" y="${y - 236}" width="92" height="236" rx="5" fill="url(#htG)"/>` + grid(x - 34, y - 222, 4, 11, 12, 12, 8, 8, '#EAF3FD', 2) +
-        `<rect x="${x - 66}" y="${y - 270}" width="132" height="36" rx="8" fill="#fff" stroke="#C8102E" stroke-width="2"/><text x="${x}" y="${y - 245}" text-anchor="middle" font-family="${FONT}" font-weight="800" font-size="18" fill="#C8102E" letter-spacing="1">R.H. COATS</text>` +
+        `<rect x="${x - 66}" y="${y - 270}" width="132" height="36" rx="8" fill="#fff" stroke="#C8102E" stroke-width="2"/><text x="${x}" y="${y - 245}" text-anchor="middle" font-family="${FONT}" font-weight="800" font-size="18" fill="#C8102E" letter-spacing="1">OTTAWA</text>` +
         `<rect x="${x - 16}" y="${y - 30}" width="32" height="30" rx="3" fill="#4A2518"/>`,
       eazydiner: (x, y) => gnd(x, y, 300) + tr(x - 155, y) + tr(x + 158, y, .9, '#8CC66F') +
         `<rect x="${x - 115}" y="${y - 104}" width="230" height="104" rx="5" fill="#FFF4E6"/><rect x="${x - 121}" y="${y - 112}" width="242" height="13" rx="4" fill="#D97706"/>` +
@@ -1004,7 +1000,7 @@ void main() {
   lb.addEventListener('click', e => { if (e.target === lb || e.target.classList.contains('lb-slide') || e.target === lbTrack) closeLB(); });
   addEventListener('keydown', e => { if (!lb.classList.contains('open')) return; if (e.key === 'Escape') closeLB(); if (e.key === 'ArrowRight') lbGo(1); if (e.key === 'ArrowLeft') lbGo(-1); });
   // the card
-  const CASE_OF = { localllm: 'localllm', techstat: 'techstat', modularsurvey: 'modularsurvey', aijobsearch: 'aijobsearch', pejistudio: 'pejistudio' };
+  const CASE_OF = { localllm: 'localllm', techstat: 'techstat', aijobsearch: 'aijobsearch', pejistudio: 'pejistudio' };
   function cardHTML(i) {
     const st = STOPS[i];
     const tile = st.logo ? `<span class="tile"><img src="${img(st.logo)}" alt="${st.name} logo"></span>` : `<span class="tile"><svg viewBox="0 0 24 24">${ICONS[st.icon]}</svg></span>`;
@@ -1173,7 +1169,7 @@ void main() {
   const rim = (k, z) => { k.el.style.clipPath = z < 0 ? `inset(${z <= SUNK ? 0 : -90}px -90px ${-z}px -90px)` : (k.el.style.clipPath ? 'inset(-90px -90px 0px -90px)' : ''); };
   wks.forEach(k => { k.el.style.transform = stand(k.z); rim(k, k.z); });
   let boxOpen = false, picked = null, hoverK = null, boxS = 1;
-  const BOX_TOP = [['256GB', 'M5 Ultra Sovereign AI'], ['$25M', 'Federal Budget 2025'], ['40+', 'prototypes & apps shipped']];
+  const BOX_TOP = [['256GB', 'M5 Ultra Sovereign AI'], ['EBA', 'Enterprise Architecture'], ['40+', 'prototypes & apps shipped']];
   const boxInfo = document.createElement('div'); boxInfo.className = 'box-info'; boxStage.appendChild(boxInfo);
   boxInfo.innerHTML = `<ol class="bi-list">${WORK.map((w, i) => `<li><button type="button" data-k="${i}" style="--c:${w.c}"><b>${String(i + 1).padStart(2, '0')}</b><em>${w.name}</em><span>${w.co}</span></button></li>`).join('')}</ol>`;
   { const sh = $('#work .sec-head'); sh.classList.add('bi-head'); boxInfo.prepend(sh); }
@@ -2803,7 +2799,7 @@ void main() {
     }));
   }
   // the case-study top bar: a round back button on the left; the story's name and the Day/Night switch on the right
-  const CS_NAME = { localllm: 'Sovereign Local AI', techstat: 'Techstat & Program Modernization', aijobsearch: 'AI Job & Labour Radar', pejistudio: 'Community Apps & Family Lab' };
+  const CS_NAME = { localllm: 'Sovereign Local AI', techstat: 'Digital Strategy & Program Modernization', aijobsearch: 'AI Job & Labour Radar', pejistudio: 'Community Apps & Family Lab' };
   function csBar(w) {
     const bar = $('.cs-bar', csEl); if (!bar) return;
     const close = $('#csClose', bar); if (close) { close.setAttribute('aria-label', 'Back'); close.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>'; }
@@ -2959,12 +2955,11 @@ void main() {
     { name: 'Ottawa Optical Booking', url: 'demobooking.peji.ca', href: 'https://demobooking.peji.ca/', img: 'demobooking', w: 1200, h: 800, kind: 'Interactive Booking Demo', dy: 20, r: 1.5, st: '<span class="stk round" style="--sc:#EAD8C3;--stk-c:#13233A;right:-18px;top:-22px;transform:rotate(7deg)">demo<br>app ↗</span>' },
     { name: 'Skating Club ETL Pipeline', url: 'github.com/p3ji', href: 'https://github.com/p3ji/', img: 'mkdaily', w: 1200, h: 800, kind: 'Automated Club Pipeline', dy: -14, r: -1.2, st: '<span class="stk tape" style="right:20%;top:-14px;transform:rotate(5deg);background:rgba(56,189,248,.85)"></span>' },
     { name: 'PA Volunteer Tracker', url: 'pa.peji.ca', href: 'https://pa.peji.ca/', img: 'patracker', w: 1200, h: 800, kind: 'Community Volunteer App', dy: 24, r: 1.4, st: '<span class="stk pill" style="left:-16px;top:-18px;transform:rotate(-5deg)">live app ↗</span>' },
-    { name: 'Users of Digital Government', url: 'statcan.gc.ca', href: 'https://www150.statcan.gc.ca/n1/pub/22-20-0001/222000012026001-eng.htm', img: 'paper-diggov', w: 1200, h: 800, kind: 'Published Paper · 2026', dy: 16, r: 1.2, st: '<span class="stk round" style="--sc:#E2E8F0;--stk-c:#0F172A;left:-24px;top:-26px;transform:rotate(-8deg)">published<br>2026</span>' },
     { name: 'Digital Divides in Canada', url: 'cetic.br', href: 'https://bibliotecadigital.acervo.nic.br/server/api/core/bitstreams/b2bf1957-5fe3-421a-bbab-3a8ace9ac0bc/content', img: 'paper-divide', w: 1200, h: 800, kind: 'Published Study · 2019', dy: -16, r: -1.3, st: '<span class="stk pill" style="right:-18px;top:-18px;transform:rotate(-6deg)">research ↗</span>' },
     { name: 'Canadian AI Jobs Report', url: 'occupation-ai.vercel.app', href: 'https://occupation-ai.vercel.app', img: 'aijobsearch', w: 1280, h: 720, kind: 'Labour Intelligence · AI', dy: 22, r: 1.3, st: '<span class="stk tape" style="left:35%;top:-14px"></span>' }
   ];
   const brandSec = $('#brand'), brandRow = $('#brandRow'), brandProg = $('#brandProg');
-  brandRow.innerHTML = SITES.map(x => `<a class="site" href="${x.href}" target="_blank" rel="noopener" style="--dy:${x.dy}px;--r:${x.r}deg">${x.st}<div class="win"><div class="chrome"><i></i><i></i><i></i><span>${x.url}</span></div><div class="page" style="aspect-ratio:${x.w}/${x.h}"><img src="v2/b/${x.img}.webp?v=20261118h" width="${x.w}" height="${x.h}" alt="${x.name} website home page" loading="lazy"></div></div><div class="cap"><b>${x.name}</b><span>${x.kind} · visit ↗</span></div></a>`).join('');
+  brandRow.innerHTML = SITES.map(x => `<a class="site" href="${x.href}" target="_blank" rel="noopener" style="--dy:${x.dy}px;--r:${x.r}deg">${x.st}<div class="win"><div class="chrome"><i></i><i></i><i></i><span>${x.url}</span></div><div class="page" style="aspect-ratio:${x.w}/${x.h}"><img src="v2/b/${x.img}.webp?v=20261118s" width="${x.w}" height="${x.h}" alt="${x.name} website home page" loading="lazy"></div></div><div class="cap"><b>${x.name}</b><span>${x.kind} · visit ↗</span></div></a>`).join('');
   let bTop = 0, bRange = 1, bShift = 0;
   let bManual = false;
   function layoutBrand() {
