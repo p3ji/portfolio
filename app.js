@@ -2729,7 +2729,7 @@ void main() {
   }
   // ---------- coming soon: the case study is still being written ----------
   const SOON = {
-    lastlook: { name: 'LastLook', app: 'https://apps.apple.com/in/app/lastlook-adhd-item-checklist/id6785531140' },
+    lastlook: { name: 'LastLook' },
     campusx: { name: 'CampusX' }
   };
   const SN_SECS = ['The problem', 'Research', 'Ideas', 'Design', 'Results'];
@@ -2951,7 +2951,7 @@ void main() {
      4b · BRAND & WEB
      ========================================================= */
   const SITES = [
-    { name: 'Sovereign Local AI Lab', url: 'peji.ca/localllm', href: 'https://peji.ca/localllm/', img: 'localllm', w: 1536, h: 1024, kind: '256GB M5 Ultra · Air-Gap', dy: 14, r: 1.2, st: '<span class="stk pill" style="left:-16px;top:-18px;transform:rotate(-6deg)">air-gap ↗</span>' },
+    { name: 'Sovereign Local AI Lab', url: 'm5-ultra · 256gb local', href: null, img: 'localllm', w: 1536, h: 1024, kind: '256GB M5 Ultra · Air-Gap', dy: 14, r: 1.2, st: '<span class="stk pill" style="left:-16px;top:-18px;transform:rotate(-6deg)">air-gap</span>' },
     { name: 'Moonrock Cafe & 3D Demos', url: 'cafe.peji.ca', href: 'https://cafe.peji.ca/', type: 'tierLoop', w: 1200, h: 800, kind: 'Restaurant & 3D/AR Demos', dy: -12, r: -1.1, st: '<span class="stk pill" style="right:-16px;top:-18px;transform:rotate(5deg);background:#671c32">live preview ↗</span>' },
     { name: 'Skating Club ETL Pipeline', url: 'mkdailysender · daily pipeline', href: 'https://peji.ca/#work', type: 'iframe', src: 'v2/peji/workflow-animation.html?embed=1', bg: '#1c0910', title: 'Peji workflow: pull daily data, validate changes, reports & dashboard, serve to apps', w: 1200, h: 800, kind: 'Automated Club Pipeline', dy: 18, r: 1.3, st: '<span class="stk tape" style="right:20%;top:-14px;transform:rotate(5deg);background:rgba(56,189,248,.85)"></span>' },
     { name: 'Digital Brain · PKG Graph', url: 'digital-brain · node growth', href: 'https://peji.ca/#work', type: 'iframe', src: 'v2/peji/brain-animation.html?embed=1&v=fit2', bg: '#0a0406', title: 'Digital brain: knowledge graph nodes growing over time', w: 1200, h: 800, kind: 'Live Knowledge Graph', dy: -16, r: -1.2, st: '<span class="stk pill" style="left:-16px;top:-18px;transform:rotate(-5deg);background:#116466">3D live ↗</span>' },
@@ -2967,6 +2967,9 @@ void main() {
     }
     if (x.type === 'iframe') {
       return `<div class="site site-live" style="--dy:${x.dy}px;--r:${x.r}deg">${x.st}<div class="win win-dark"><div class="chrome"><i></i><i></i><i></i><a class="chrome-url" href="${x.href}" target="_blank" rel="noopener">${x.url}</a></div><div class="page peji-page" style="aspect-ratio:${x.w}/${x.h};background:${x.bg || '#1c0910'}"><iframe class="site-iframe" src="${x.src}" title="${x.title || x.name}" loading="lazy" scrolling="no"></iframe></div></div><a class="cap" href="${x.href}" target="_blank" rel="noopener"><b>${x.name}</b><span>${x.kind} · visit ↗</span></a></div>`;
+    }
+    if (!x.href) {
+      return `<div class="site" style="--dy:${x.dy}px;--r:${x.r}deg">${x.st}<div class="win"><div class="chrome"><i></i><i></i><i></i><span>${x.url}</span></div><div class="page" style="aspect-ratio:${x.w}/${x.h}"><img src="v2/b/${x.img}.${x.ext || 'webp'}?v=20261119s" width="${x.w}" height="${x.h}" alt="${x.name}" loading="lazy"></div></div><div class="cap"><b>${x.name}</b><span>${x.kind}</span></div></div>`;
     }
     return `<a class="site" href="${x.href}" target="_blank" rel="noopener" style="--dy:${x.dy}px;--r:${x.r}deg">${x.st}<div class="win"><div class="chrome"><i></i><i></i><i></i><span>${x.url}</span></div><div class="page" style="aspect-ratio:${x.w}/${x.h}"><img src="v2/b/${x.img}.${x.ext || 'webp'}?v=20261119s" width="${x.w}" height="${x.h}" alt="${x.name} website home page" loading="lazy"></div></div><div class="cap"><b>${x.name}</b><span>${x.kind} · visit ↗</span></div></a>`;
   }).join('');
