@@ -2952,14 +2952,69 @@ void main() {
      ========================================================= */
   const SITES = [
     { name: 'Sovereign Local AI Lab', url: 'peji.ca/localllm', href: 'https://peji.ca/localllm/', img: 'localllm', w: 1536, h: 1024, kind: '256GB M5 Ultra · Air-Gap', dy: 14, r: 1.2, st: '<span class="stk pill" style="left:-16px;top:-18px;transform:rotate(-6deg)">air-gap ↗</span>' },
+    { name: 'Moonrock Cafe & 3D Demos', url: 'cafe.peji.ca', href: 'https://cafe.peji.ca/', type: 'tierLoop', w: 1200, h: 800, kind: 'Restaurant & 3D/AR Demos', dy: -12, r: -1.1, st: '<span class="stk pill" style="right:-16px;top:-18px;transform:rotate(5deg);background:#671c32">live preview ↗</span>' },
+    { name: 'Skating Club ETL Pipeline', url: 'mkdailysender · daily pipeline', href: 'https://peji.ca/#work', type: 'iframe', src: 'v2/peji/workflow-animation.html?embed=1', bg: '#1c0910', title: 'Peji workflow: pull daily data, validate changes, reports & dashboard, serve to apps', w: 1200, h: 800, kind: 'Automated Club Pipeline', dy: 18, r: 1.3, st: '<span class="stk tape" style="right:20%;top:-14px;transform:rotate(5deg);background:rgba(56,189,248,.85)"></span>' },
+    { name: 'Digital Brain · PKG Graph', url: 'digital-brain · node growth', href: 'https://peji.ca/#work', type: 'iframe', src: 'v2/peji/brain-animation.html?embed=1&v=fit2', bg: '#0a0406', title: 'Digital brain: knowledge graph nodes growing over time', w: 1200, h: 800, kind: 'Live Knowledge Graph', dy: -16, r: -1.2, st: '<span class="stk pill" style="left:-16px;top:-18px;transform:rotate(-5deg);background:#116466">3D live ↗</span>' },
     { name: 'Ottawa Optical Booking', url: 'demobooking.peji.ca', href: 'https://demobooking.peji.ca/', img: 'demobooking', w: 1200, h: 800, kind: 'Interactive Booking Demo', dy: 20, r: 1.5, st: '<span class="stk round" style="--sc:#EAD8C3;--stk-c:#13233A;right:-18px;top:-22px;transform:rotate(7deg)">demo<br>app ↗</span>' },
-    { name: 'Skating Club ETL Pipeline', url: 'github.com/p3ji', href: 'https://github.com/p3ji/', img: 'mkdaily', w: 1200, h: 800, kind: 'Automated Club Pipeline', dy: -14, r: -1.2, st: '<span class="stk tape" style="right:20%;top:-14px;transform:rotate(5deg);background:rgba(56,189,248,.85)"></span>' },
-    { name: 'PA Volunteer Tracker', url: 'pa.peji.ca', href: 'https://pa.peji.ca/', img: 'patracker', w: 1200, h: 800, kind: 'Community Volunteer App', dy: 24, r: 1.4, st: '<span class="stk pill" style="left:-16px;top:-18px;transform:rotate(-5deg)">live app ↗</span>' },
-    { name: 'Digital Divides in Canada', url: 'cetic.br', href: 'https://bibliotecadigital.acervo.nic.br/server/api/core/bitstreams/b2bf1957-5fe3-421a-bbab-3a8ace9ac0bc/content', img: 'paper-divide', w: 1200, h: 800, kind: 'Published Study · 2019', dy: -16, r: -1.3, st: '<span class="stk pill" style="right:-18px;top:-18px;transform:rotate(-6deg)">research ↗</span>' },
-    { name: 'Canadian AI Jobs Report', url: 'occupation-ai.vercel.app', href: 'https://occupation-ai.vercel.app', img: 'aijobsearch', w: 1280, h: 720, kind: 'Labour Intelligence · AI', dy: 22, r: 1.3, st: '<span class="stk tape" style="left:35%;top:-14px"></span>' }
+    { name: 'PA Volunteer Tracker', url: 'pa.peji.ca', href: 'https://pa.peji.ca/', img: 'patracker', w: 1200, h: 800, kind: 'Community Volunteer App', dy: -10, r: -1.0, st: '<span class="stk pill" style="left:-16px;top:-18px;transform:rotate(-5deg)">live app ↗</span>' },
+    { name: 'Digital Government Users', url: 'statcan.gc.ca/22-20-0001', href: 'https://www150.statcan.gc.ca/n1/en/catalogue/222000012026001', img: 'paper-diggov', ext: 'png', w: 1200, h: 800, kind: 'Published Study · 2026', dy: -14, r: -1.2, st: '<span class="stk pill" style="left:-16px;top:-18px;transform:rotate(-5deg);background:#991B1B">2026 paper ↗</span>' },
+    { name: 'Digital Divides in Canada', url: 'cetic.br', href: 'https://bibliotecadigital.acervo.nic.br/server/api/core/bitstreams/b2bf1957-5fe3-421a-bbab-3a8ace9ac0bc/content', img: 'paper-divide', w: 1200, h: 800, kind: 'Published Study · 2019', dy: 16, r: 1.2, st: '<span class="stk pill" style="right:-18px;top:-18px;transform:rotate(-6deg)">research ↗</span>' }
   ];
   const brandSec = $('#brand'), brandRow = $('#brandRow'), brandProg = $('#brandProg');
-  brandRow.innerHTML = SITES.map(x => `<a class="site" href="${x.href}" target="_blank" rel="noopener" style="--dy:${x.dy}px;--r:${x.r}deg">${x.st}<div class="win"><div class="chrome"><i></i><i></i><i></i><span>${x.url}</span></div><div class="page" style="aspect-ratio:${x.w}/${x.h}"><img src="v2/b/${x.img}.webp?v=20261118s" width="${x.w}" height="${x.h}" alt="${x.name} website home page" loading="lazy"></div></div><div class="cap"><b>${x.name}</b><span>${x.kind} · visit ↗</span></div></a>`).join('');
+  brandRow.innerHTML = SITES.map(x => {
+    if (x.type === 'tierLoop') {
+      return `<div class="site site-live" style="--dy:${x.dy}px;--r:${x.r}deg">${x.st}<div class="win win-dark"><div class="chrome"><i></i><i></i><i></i><a class="chrome-url" href="${x.href}" target="_blank" rel="noopener" data-preview-label>Moonrock · restaurant website</a></div><div class="page peji-page" style="aspect-ratio:${x.w}/${x.h}" data-tier-loop><div class="peji-vid-stage"><div class="peji-moonrock-scene"><div class="peji-moonrock-phone" data-preview-frame><video src="v2/peji/cafe-preview.mp4" muted playsinline preload="metadata" aria-label="Moonrock website walkthrough"></video></div></div><div class="peji-vid-controls" aria-label="Choose a preview"><button type="button" data-preview="0" aria-pressed="true">Restaurant</button><button type="button" data-preview="1" aria-pressed="false">Balloon &amp; Events</button><button type="button" data-preview-pause aria-label="Pause previews">Pause</button></div></div></div></div><a class="cap" href="${x.href}" target="_blank" rel="noopener"><b>${x.name}</b><span>${x.kind} · visit ↗</span></a></div>`;
+    }
+    if (x.type === 'iframe') {
+      return `<div class="site site-live" style="--dy:${x.dy}px;--r:${x.r}deg">${x.st}<div class="win win-dark"><div class="chrome"><i></i><i></i><i></i><a class="chrome-url" href="${x.href}" target="_blank" rel="noopener">${x.url}</a></div><div class="page peji-page" style="aspect-ratio:${x.w}/${x.h};background:${x.bg || '#1c0910'}"><iframe class="site-iframe" src="${x.src}" title="${x.title || x.name}" loading="lazy" scrolling="no"></iframe></div></div><a class="cap" href="${x.href}" target="_blank" rel="noopener"><b>${x.name}</b><span>${x.kind} · visit ↗</span></a></div>`;
+    }
+    return `<a class="site" href="${x.href}" target="_blank" rel="noopener" style="--dy:${x.dy}px;--r:${x.r}deg">${x.st}<div class="win"><div class="chrome"><i></i><i></i><i></i><span>${x.url}</span></div><div class="page" style="aspect-ratio:${x.w}/${x.h}"><img src="v2/b/${x.img}.${x.ext || 'webp'}?v=20261119s" width="${x.w}" height="${x.h}" alt="${x.name} website home page" loading="lazy"></div></div><div class="cap"><b>${x.name}</b><span>${x.kind} · visit ↗</span></div></a>`;
+  }).join('');
+
+  /* Tier-loop video preview (Moonrock Cafe & Balloon 3D/AR from peji.ca) */
+  (() => {
+    const root = brandRow.querySelector('[data-tier-loop]');
+    if (!root) return;
+    const card = root.closest('.site');
+    const video = root.querySelector('video');
+    const frame = root.querySelector('[data-preview-frame]');
+    const label = card && card.querySelector('[data-preview-label]');
+    const pause = root.querySelector('[data-preview-pause]');
+    const buttons = [...root.querySelectorAll('[data-preview]')];
+    const clips = [
+      { src: 'v2/peji/cafe-preview.mp4', label: 'Moonrock · restaurant website', phone: true },
+      { src: 'v2/peji/balloon-3d-preview.mp4', poster: 'v2/peji/balloon-3d-preview.jpg', label: 'Interactive 3D · balloon arrangements', phone: false },
+      { src: 'v2/peji/balloon-ar-preview.mp4', poster: 'v2/peji/balloon-ar-preview.jpg', label: 'Augmented reality · view in your room', phone: true }
+    ];
+    const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+    let index = 0, paused = reduced.matches, visible = false;
+    function sync() {
+      pause.textContent = paused ? 'Play' : 'Pause';
+      pause.setAttribute('aria-label', paused ? 'Play previews' : 'Pause previews');
+      if (paused || !visible) video.pause();
+      else video.play().catch(() => {});
+    }
+    function select(i) {
+      index = i;
+      const c = clips[i];
+      video.pause();
+      video.src = c.src;
+      if (c.poster) video.poster = c.poster;
+      else video.removeAttribute('poster');
+      video.setAttribute('aria-label', c.label);
+      if (label) label.textContent = c.label;
+      frame.classList.toggle('is-wide', !c.phone);
+      buttons.forEach((b, n) => b.setAttribute('aria-pressed', String(n === (i === 0 ? 0 : 1))));
+      video.load();
+      sync();
+    }
+    buttons.forEach((b, i) => b.addEventListener('click', e => { e.stopPropagation(); select(i); }));
+    pause.addEventListener('click', e => { e.stopPropagation(); paused = !paused; sync(); });
+    video.addEventListener('ended', () => { if (!paused) select((index + 1) % clips.length); });
+    new IntersectionObserver(([e]) => { visible = e.isIntersecting; sync(); }, { threshold: .15 }).observe(root);
+    reduced.addEventListener('change', () => { paused = reduced.matches; sync(); });
+    sync();
+  })();
   let bTop = 0, bRange = 1, bShift = 0;
   let bManual = false;
   function layoutBrand() {

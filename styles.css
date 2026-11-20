@@ -5899,3 +5899,33 @@ html:has(.cs.open) .sfx-btn { display: none; }
   .nw-actions .nw-cta { width: auto !important; height: 44px !important; padding: 0 16px 0 6px !important; gap: 8px; font-size: 14px !important; }
   .nw-actions .nw-pen { width: 32px; height: 32px; }
 }
+
+/* =========================================================
+   4b · LIVE PEJI.CA ANIMATION CARDS (Moonrock, MK Pipeline, Digital Brain)
+   ========================================================= */
+.site-live { display: block; color: inherit; }
+.site-live a.cap { text-decoration: none; color: inherit; }
+.site-live .chrome a.chrome-url { margin-left: 10px; flex: 1; min-width: 0; font: 400 12px/1 var(--geist); color: var(--ink-2); background: #fff; padding: 6px 10px; border-radius: 8px; text-decoration: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.site-live .chrome a.chrome-url:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 2px; }
+:root[data-theme="dark"] .site-live .chrome a.chrome-url { background: #1E1E1E; color: var(--ink-2); }
+:root[data-theme="dark"] .site-live .chrome a.chrome-url:hover { color: #F5F5F5; }
+.site-live .win-dark { background: #161723; }
+.site .page.peji-page { position: relative; background: #040408; }
+.site .page .site-iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
+.peji-vid-stage { position: absolute; inset: 0; display: flex; flex-direction: column; background: #040408; }
+.peji-moonrock-scene { position: relative; flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; overflow: hidden; background: #040408; padding: 12px; box-sizing: border-box; }
+.peji-moonrock-phone { position: relative; height: 100%; max-width: 100%; aspect-ratio: 270 / 550; filter: drop-shadow(0 12px 12px rgba(0, 0, 0, .55)); }
+.peji-moonrock-phone::after { content: ''; position: absolute; inset: 0; background: url("v2/peji/phone-frame.svg") center / 100% 100% no-repeat; pointer-events: none; }
+.peji-moonrock-phone video { position: absolute; left: 4.82%; top: 2.36%; width: 90.36%; height: 95.28%; object-fit: contain; background: #020204; border-radius: 18% / 8%; display: block; }
+.peji-moonrock-phone.is-wide { width: 100%; height: 100%; aspect-ratio: auto; filter: none; }
+.peji-moonrock-phone.is-wide::after { display: none; }
+.peji-moonrock-phone.is-wide video { inset: 0; left: 0; top: 0; width: 100%; height: 100%; border-radius: 6px; object-fit: contain; }
+.peji-vid-controls { flex: none; display: flex; align-items: center; gap: 6px; padding: 7px 10px; background: #161723; border-top: 1px solid rgba(255, 255, 255, .12); }
+.peji-vid-controls button { font: 600 11.5px/1 var(--sans); padding: 6px 10px; border-radius: 999px; border: 1px solid rgba(255, 255, 255, .28); background: transparent; color: #fff6f8; cursor: pointer; transition: background .2s, color .2s, border-color .2s; white-space: nowrap; }
+.peji-vid-controls button:hover { border-color: rgba(255, 255, 255, .6); background: rgba(255, 255, 255, .08); }
+.peji-vid-controls button[aria-pressed="true"] { background: #fff6f8; color: #401022; border-color: #fff6f8; }
+.peji-vid-controls [data-preview-pause] { margin-left: auto; }
+@media (max-width: 520px) {
+  .peji-vid-controls { padding: 6px 8px; gap: 4px; }
+  .peji-vid-controls button { font-size: 10.5px; padding: 5px 8px; }
+}

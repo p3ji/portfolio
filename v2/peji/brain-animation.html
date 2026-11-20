@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Digital Brain — Node Growth</title>
+<style>
+  :root{--bg:#0a0406;--panel-line:#ffffff1c;--text:#fff6f8;--muted:#e4c5cf;--copper:#d9b08c;--teal:#9fd8c8}
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0}
+  body{background:var(--bg);color:var(--text);font-family:'DM Sans',system-ui,-apple-system,'Segoe UI',sans-serif;overflow:hidden}
+
+  .brain-section{display:flex;flex-direction:column;height:100%}
+  .brain-left{flex:none;width:100%;padding:12px 16px;display:flex;flex-direction:column;border-bottom:1px solid var(--panel-line)}
+  .brain-canvas-container{flex:1;min-width:0;min-height:0;position:relative;overflow:hidden}
+
+  .brain-nodes{margin:0;font-size:1.12rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;line-height:1.3}
+  .brain-transport{display:none}
+  #brain-play-btn{width:40px;height:40px;border-radius:50%;border:1px solid var(--copper);background:#d9b08c26;color:var(--copper);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;transition:background .2s}
+  #brain-play-btn:hover{background:#d9b08c45}
+  #brain-play-btn svg{width:14px;height:14px;fill:currentColor}
+  #brain-slider{-webkit-appearance:none;appearance:none;flex:1;height:6px;border-radius:3px;background:#ffffff2e;outline:none;cursor:pointer}
+  #brain-slider::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:14px;height:14px;border-radius:50%;background:var(--copper);border:2px solid var(--bg);box-shadow:0 0 6px #d9b08c99}
+  #brain-slider::-moz-range-thumb{width:14px;height:14px;border-radius:50%;background:var(--copper);border:2px solid var(--bg)}
+
+  .brain-deltas{list-style:none;margin:auto 0 0;padding:0;display:flex;flex-direction:column;gap:8px;font-size:.8rem;color:var(--muted)}
+  .brain-deltas li{display:flex;align-items:center;gap:9px}
+  .delta-dot{width:7px;height:7px;border-radius:50%;background:var(--teal);box-shadow:0 0 6px #9fd8c8aa;flex:none}
+  .brain-deltas strong{color:var(--text);font-weight:600;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+
+  /* Compact embed (inside the business-site card) */
+  body.is-embedded .brain-left{padding:14px 14px;gap:12px}
+  body.is-embedded .brain-nodes{font-size:.95rem}
+  body.is-embedded #brain-play-btn{width:34px;height:34px}
+
+  @media (max-width:460px){
+    .brain-section{flex-direction:column}
+    .brain-left{width:auto;min-width:0;border-right:0;border-bottom:1px solid var(--panel-line);padding:12px 14px;gap:9px}
+    .brain-nodes{font-size:.85rem}
+    #brain-play-btn{width:32px;height:32px;flex:none}
+    .brain-deltas{margin-top:0;flex-direction:row;flex-wrap:wrap;gap:4px 16px;font-size:.72rem}
+  }
+button i{display:block;width:0;height:0;border-top:6px solid transparent;border-bottom:6px solid transparent;border-left:10px solid currentColor}button i.fa-pause{width:10px;height:12px;border:0;border-left:3px solid currentColor;border-right:3px solid currentColor}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<div class="brain-section" id="digital-brain">
+  <div class="brain-left" id="brain-ui-controls">
+    <p id="brain-stat-text" hidden></p><h2 class="brain-nodes" id="brain-slider-label">NODES: … / …</h2>
+    <div class="brain-transport">
+      <button type="button" id="brain-play-btn" aria-label="Play growth animation">
+        <svg id="icon-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11l9-5.5z"/></svg>
+        <svg id="icon-pause" viewBox="0 0 16 16" aria-hidden="true" hidden><path d="M3.5 2h3.4v12H3.5zM9.1 2h3.4v12H9.1z"/></svg>
+      </button>
+      <input type="range" id="brain-slider" min="0" max="100" value="100" step="0.1" aria-label="Growth progress">
+    </div>
+    <ul class="brain-deltas" id="brain-bullets"></ul>
+  </div>
+  <div id="brain-canvas-container" class="brain-canvas-container" aria-hidden="true"></div>
+</div>
+
+<script src="three.min.js"></script>
+<script src="journey-brain.js?v=fit2"></script>
+</body></html>
